@@ -47,8 +47,11 @@ class spView
     {
         try {
 
+            /**
+            *  @@@@修改模板路径找寻地址
+            */
             if (defined('THEME_NAME')) {
-                $theme_path = "./theme/" . THEME_NAME .'/'. $tplname;
+                $theme_path = "./templet/" . THEME_NAME .'/'. $tplname;
                 if (is_file($theme_path)) {
                     $tplname = $theme_path;
                 }

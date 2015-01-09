@@ -987,5 +987,17 @@ class admin extends top
 		}
 		$this->list = spClass('db_banner')->banner_list();
 		$this->display('admin/banner.html');
-	}	
+	}
+
+    /**
+     * 重写分类管理
+     */
+    public function term(){
+        $this->curr_system = ' id="current"';
+        $this->curr_systemdisplay = ' id="systemdisplay"';
+        $this->curr_term = 'id="acurrent"';
+
+        
+        $this->display("admin/term.html");
+    }
 }
