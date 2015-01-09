@@ -265,7 +265,7 @@ class blog extends top
 		$data['body'] = $result;
 		$this->api_success($data);
 	}
-	
+	//TODO
 	//后端改完了，就差添加收藏和取消收藏所记录的tid了，tid采用system tag 表的id来统一
 	function tag(){
 		$data = spClass('db_tag_system')->findTagByAttr($this->spArgs(),$this->uid);

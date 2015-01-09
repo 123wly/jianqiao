@@ -8,6 +8,7 @@
 define('APP_PATH',dirname(__FILE__));
 define('IN_APP',TRUE);
 define('SP_PATH',APP_PATH.'/init');
+//define("THEME_NAME",'baoding');
 if(!is_file(APP_PATH.'/config.php')){header('Location:install/');}
 
 if(isset($_REQUEST['ssid'])){session_id($_REQUEST['ssid']);}
