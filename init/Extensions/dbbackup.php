@@ -1,8 +1,6 @@
 <?php
 /////////////////////////////////////////////////////////////////
-//云边开源轻博, Copyright (C)   2010 - 2011  qing.thinksaas.cn 
-//EMAIL:nxfte@qq.com QQ:234027573                              
-//$Id: dbbackup.php 589 2012-05-11 15:50:28Z anythink $ 
+//万虎网络, Copyright (C)   2010 - 2011  www.wanhunet.com 
 
 /*code by anythink*/
 class dbbackup {

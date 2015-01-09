@@ -16,12 +16,14 @@
                 <th width="300">标题</th>
                 <th width="110">操作</th>
             </tr>
-            {foreach from=$cpage_cate item=vo}
+            {foreach from=$list item=vo}
             <tr class="table_hover">
-                <th width="20"></th>
+                <th width="20">
+                	<input type="text" />
+                </th>
                 <th width="30" class="m_title">排序</th>
                 <th width="300">
-                	
+
                 </th>
                 <td class="fun_con">
                     <a class="f_category" href="{spUrl c=admin a=cpage editCategory=$vo.id}" title="修改分类">分类</a>
@@ -31,7 +33,6 @@
             </tr>
             {/foreach}
         </table>
-        {$cpage_pager}
 
     </div>
 

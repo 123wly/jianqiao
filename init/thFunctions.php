@@ -1,8 +1,6 @@
 <?php
 /////////////////////////////////////////////////////////////////
-//云边开源轻博, Copyright (C)   2010 - 2011  qing.thinksaas.cn
-//EMAIL:nxfte@qq.com QQ:234027573
-//$Id: thFunctions.php 1192 2012-07-04 13:23:13Z anythink $
+//万虎网络, Copyright (C)   2010 - 2011  www.wanhunet.com 
 
 
 function randstr($len=6) {

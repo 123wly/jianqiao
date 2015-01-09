@@ -1,8 +1,6 @@
 <?php
 /////////////////////////////////////////////////////////////////
-//云边开源轻博, Copyright (C)   2010 - 2011  qing.thinksaas.cn 
-//EMAIL:nxfte@qq.com QQ:234027573                              
-//$Id: photo.class.php 1158 2012-07-01 14:30:28Z anythink $         
+//万虎网络, Copyright (C)   2010 - 2011  www.wanhunet.com    
 
 
 class yb_photo extends basePostModel

@@ -1,8 +1,6 @@
 <?php
 /////////////////////////////////////////////////////////////////
-//云边开源轻博, Copyright (C)   2010 - 2011  qing.thinksaas.cn 
-//EMAIL:nxfte@qq.com QQ:234027573                              
-//$Id: db_pm.php 698 2012-05-29 16:08:42Z anythink $ 
+//万虎网络, Copyright (C)   2010 - 2011  www.wanhunet.com 
 
 class db_pm extends spModel  
 {  

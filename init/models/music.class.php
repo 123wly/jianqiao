@@ -1,8 +1,6 @@
 <?php
 /////////////////////////////////////////////////////////////////
-//云边开源轻博, Copyright (C)   2010 - 2011  qing.thinksaas.cn 
-//EMAIL:nxfte@qq.com QQ:234027573                              
-//$Id: music.class.php 972 2012-06-22 12:57:31Z anythink $         
+//万虎网络, Copyright (C)   2010 - 2011  www.wanhunet.com      
 
 
 class yb_music extends basePostModel

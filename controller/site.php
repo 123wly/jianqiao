@@ -1,8 +1,6 @@
 ﻿<?php
 /////////////////////////////////////////////////////////////////
-//云边开源轻博, Copyright (C)   2010 - 2011  qing.thinksaas.cn 
-//EMAIL:nxfte@qq.com QQ:234027573                              
-//$Id: site.php 1288 2012-07-15 04:11:20Z anythink $ 
+//万虎网络, Copyright (C)   2010 - 2011  www.wanhunet.com 
 
 
 // 用来显示 关于 版权 用户协议 招聘 等 

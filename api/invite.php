@@ -1,8 +1,6 @@
 <?php
 /////////////////////////////////////////////////////////////////
-//云边开源轻博, Copyright (C)   2010 - 2011  qing.thinksaas.cn 
-//EMAIL:zhangshaomin_1990@126.com QQ:1470506882
-//$Id: invite.php 962 2012-06-22 07:30:13Z anythink $                            
+//万虎网络, Copyright (C)   2010 - 2011  www.wanhunet.com                           
 
 
 class invite extends top

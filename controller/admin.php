@@ -1,9 +1,6 @@
 <?php
-
 /////////////////////////////////////////////////////////////////
-//云边开源轻博, Copyright (C)   2010 - 2011  qing.thinksaas.cn 
-//EMAIL:nxfte@qq.com QQ:234027573                              
-//$Id: admin.php 1334 2012-08-06 14:25:25Z anythink $ 
+//万虎网络, Copyright (C)   2010 - 2011  www.wanhunet.com 
 
 
 class admin extends top
@@ -997,7 +994,7 @@ class admin extends top
         $this->curr_systemdisplay = ' id="systemdisplay"';
         $this->curr_term = 'id="acurrent"';
 
-        
+        // $this->list = 
         $this->display("admin/term.html");
     }
 }

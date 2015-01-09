@@ -1,9 +1,6 @@
 <?php
 /////////////////////////////////////////////////////////////////
-//云边开源轻博, Copyright (C)   2010 - 2011  qing.thinksaas.cn 
-//EMAIL:nxfte@qq.com QQ:234027573                              
-//$Id: video.class.php 611 2012-05-13 14:11:04Z anythink $         
-
+//万虎网络, Copyright (C)   2010 - 2011  www.wanhunet.com 
 
 class yb_video extends basePostModel
 {

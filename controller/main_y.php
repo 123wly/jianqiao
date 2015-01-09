@@ -1,8 +1,6 @@
 <?php
 /////////////////////////////////////////////////////////////////
-//云边开源轻博, Copyright (C)   2010 - 2011  qing.thinksaas.cn
-//EMAIL:nxfte@qq.com QQ:234027573
-//$Id: main.php 45 2011-11-07 06:33:21Z anythink $
+//万虎网络, Copyright (C)   2010 - 2011  www.wanhunet.com 
 
 
 class main extends top

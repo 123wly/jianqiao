@@ -1,8 +1,6 @@
 <?php
-
 /////////////////////////////////////////////////////////////////
-//云边开源轻博, Copyright (C)   2010 - 2011  qing.thinksaas.cn
-//EMAIL:zhangshaomin_1990@126.com QQ:1470506882
+//万虎网络, Copyright (C)   2010 - 2011  www.wanhunet.com 
 //邀请过的好友模块数据模型
 
 class db_invite_friend extends ybModel
