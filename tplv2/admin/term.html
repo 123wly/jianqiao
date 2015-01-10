@@ -19,11 +19,13 @@
             {foreach from=$list item=vo}
             <tr class="table_hover">
                 <th width="20">
-                	<input type="text" />
-                </th>
-                <th width="30" class="m_title">排序</th>
-                <th width="300">
 
+                </th>
+                <th width="30" class="m_title">
+                    <input type="text" value="{$vo.order}" style="width: 50px;text-align: center;height: 20px;line-height: 20px;" />
+                </th>
+                <th width="300" style="text-align: left;">
+                    <input type="text" value="{$vo.name}" style="text-align: left;height: 20px;line-height: 20px;" />
                 </th>
                 <td class="fun_con">
                     <a class="f_category" href="{spUrl c=admin a=cpage editCategory=$vo.id}" title="修改分类">分类</a>

@@ -994,7 +994,9 @@ class admin extends top
         $this->curr_systemdisplay = ' id="systemdisplay"';
         $this->curr_term = 'id="acurrent"';
 
-        // $this->list = 
+        $db_term = spClass("db_term");
+        $this->list = $db_term->findAll();
+
         $this->display("admin/term.html");
     }
 }
