@@ -990,13 +990,32 @@ class admin extends top
      * 重写分类管理
      */
     public function term(){
-        $this->curr_system = ' id="current"';
-        $this->curr_systemdisplay = ' id="systemdisplay"';
-        $this->curr_term = 'id="acurrent"';
+        $doAction = $this->spArgs("do");
+        if($doAction == "save"){
+            $this->termSave();
+        }
+        elseif($doAction == "add"){
+            $this->termAdd();
+        }
+        else {
+            $this->curr_system = ' id="current"';
+            $this->curr_systemdisplay = ' id="systemdisplay"';
+            $this->curr_term = 'id="acurrent"';
 
-        $db_term = spClass("db_term");
-        $this->list = $db_term->findAll();
+            $db_term = spClass("db_term");
 
-        $this->display("admin/term.html");
+            $list = $db_term->findAll();
+            $this->listTree = create_tree($list);
+            $this->display("admin/term.html");
+        }
     }
+
+    private function termAdd(){
+
+    }
+
+    private function termSave(){
+
+    }
+
 }

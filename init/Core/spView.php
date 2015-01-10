@@ -42,28 +42,32 @@ class spView
     /**
      * 输出页面
      * @param tplname 模板文件路径
+     * @@@ 添加php原生模板支持
      */
     public function display($tplname)
     {
-        try {
-
-            /**
-            *  @@@@修改模板路径找寻地址
-            */
-            if (defined('THEME_NAME')) {
-                $theme_path = "./templet/" . THEME_NAME .'/'. $tplname;
-                if (is_file($theme_path)) {
-                    $tplname = $theme_path;
-                }
+        /**
+        *  @@@修改模板路径找寻地址
+        */
+        if (defined('THEME_NAME')) {
+            $theme_path = "./templet/" . THEME_NAME .'/'. $tplname;
+            if (is_file($theme_path)) {
+                $tplname = $theme_path;
             }
-
-            $this->displayed = TRUE;
-            $this->addfuncs();
-            if ($GLOBALS['G_SP']['view']['debugging'] && SP_DEBUG) $this->engine->debugging = TRUE;
-            $this->engine->display($tplname);
-        } catch (Exception $e) {
-            spError($GLOBALS['G_SP']['view']['engine_name'] . ' Error: ' . $e->getMessage());
         }
+        if(substr($tplname, -4, 4) == ".php"){
+            require_once './templet/'.$tplname;
+        }else {
+            try {
+                $this->displayed = TRUE;
+                $this->addfuncs();
+                if ($GLOBALS['G_SP']['view']['debugging'] && SP_DEBUG) $this->engine->debugging = TRUE;
+                $this->engine->display($tplname);
+            } catch (Exception $e) {
+                spError($GLOBALS['G_SP']['view']['engine_name'] . ' Error: ' . $e->getMessage());
+            }
+        }
+        
     }
 
     /**

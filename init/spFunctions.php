@@ -413,3 +413,15 @@ function data_to_xml($data, $item='item', $id='id') {
     }
     return $xml;
 }
+
+function create_tree($arr,$pid=0) {
+    $ret = array();
+    foreach($arr as $k => $v) {
+        if($v['parent_id'] == $pid) {
+            $tmp = $arr[$k];unset($arr[$k]);
+            $tmp['children'] = create_tree($arr,$v['id']);
+            $ret[] = $tmp;
+        }
+    }
+    return $ret;
+}
