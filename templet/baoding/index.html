@@ -9,7 +9,12 @@
 </head>
 <body>
 	{php}
-		$aa = spClass("db_term")->find(array("id"=>1));
+		ob_start();
+		spClass("blog","","./api/blog.php")->feeds();
+		$aa = ob_get_contents();
+		ob_end_clean();
+		$bb = json_decode($aa,true);
+		print_r($bb);		
 	{/php}
 <!-- {include file="./templet/baoding/header.html"} -->
 </body>
