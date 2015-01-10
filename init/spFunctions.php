@@ -12,9 +12,19 @@ function spRun(){
 	// 对将要访问的控制器类进行实例化
 	$handle_controller = spClass($__controller, null, $GLOBALS['G_SP']["controller_path"].'/'.$__controller.".php");
 	// 调用控制器出错将调用路由错误处理函数
+
+	// @@@ 添加空置controller emptyController
 	if(!is_object($handle_controller) || !method_exists($handle_controller, $__action)){
-		eval($GLOBALS['G_SP']["dispatcher_error"]);
-		exit;
+		
+		/////
+		$__controllerSet = "emptyController";
+		$handle_controller = spClass($__controllerSet, null, $GLOBALS['G_SP']["controller_path"].'/'.$__controllerSet.".php");
+		/////
+
+		if(!method_exists($handle_controller, $__action)){
+			eval($GLOBALS['G_SP']["dispatcher_error"]);
+			exit;
+		}
 	}
 	// 路由并执行用户代码
 	$handle_controller->$__action();
