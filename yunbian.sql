@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2015-01-09 08:53:34
+Date: 2015-01-10 09:56:44
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -107,11 +107,13 @@ CREATE TABLE `wh_blog` (
   KEY `uid` (`uid`),
   KEY `top` (`top`),
   KEY `open` (`open`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wh_blog
 -- ----------------------------
+INSERT INTO `wh_blog` VALUES ('1', '1', '0', '1', '', '分享文字标题', '[attribute]a:0:{}[/attribute]分享文字标题<h3 class=\"title\" style=\"color: rgb(102, 102, 102); font-size: 16px; line-height: 25px; height: 25px;\">内容</h3><h3 class=\"title\" style=\"color: rgb(102, 102, 102); font-size: 16px; line-height: 25px; height: 25px;\">内容</h3>', '1', '2', '3', '1', '0', '1420769397');
+INSERT INTO `wh_blog` VALUES ('2', '2', '0', '1', '', '分享文字标题', '[repto]a:4:{s:3:\"uid\";s:1:\"1\";s:8:\"username\";s:0:\"\";s:6:\"domain\";s:0:\"\";s:4:\"time\";i:1420770085;}[/repto]分享文字标题<h3 class=\"title\" style=\"color: rgb(102, 102, 102); font-size: 16px; line-height: 25px; height: 25px;\">内容</h3><h3 class=\"title\" style=\"color: rgb(102, 102, 102); font-size: 16px; line-height: 25px; height: 25px;\">内容</h3>', '1', '0', '0', '0', '0', '1420770085');
 
 -- ----------------------------
 -- Table structure for `wh_cache`
@@ -130,18 +132,22 @@ INSERT INTO `wh_cache` VALUES ('ybconfig', '1720680584s:1256:\"a:26:{s:11:\"addi
 INSERT INTO `wh_cache` VALUES ('ybmodel', '1720682135s:1857:\"a:2:{s:5:\"model\";a:5:{i:0;s:1:\"1\";i:1;s:1:\"2\";i:2;s:1:\"3\";i:3;s:1:\"4\";i:4;s:1:\"6\";}s:4:\"data\";a:5:{i:1;a:10:{s:2:\"id\";s:1:\"1\";s:4:\"icon\";s:4:\"text\";s:4:\"name\";s:6:\"文字\";s:9:\"modelfile\";s:14:\"word.class.php\";s:6:\"status\";s:1:\"1\";s:5:\"mdesc\";s:12:\"发布文字\";s:7:\"version\";s:3:\"1.0\";s:6:\"author\";s:6:\"SYSTEM\";s:7:\"feedtpl\";s:0:\"\";s:3:\"cfg\";s:143:\"imguplod--1--是否开启图片上传\nimguploadsize--2048--图片上传尺寸不设置取全局\nimagetype--jpg|jpge|png|gif--图片上传类型\";}i:2;a:10:{s:2:\"id\";s:1:\"2\";s:4:\"icon\";s:5:\"music\";s:4:\"name\";s:6:\"音乐\";s:9:\"modelfile\";s:15:\"music.class.php\";s:6:\"status\";s:1:\"1\";s:5:\"mdesc\";s:12:\"发布音乐\";s:7:\"version\";s:3:\"1.0\";s:6:\"author\";s:6:\"SYSTEM\";s:7:\"feedtpl\";s:0:\"\";s:3:\"cfg\";s:182:\"enableurl--1--是否开启引用地址发布\r\nenableupload--1--是否开启上传发布\r\nuploadsize--5000--允许长传大小(KB)\r\nuploadtype--mp3|wma|mid|midi--允许上传的类型\";}i:3;a:10:{s:2:\"id\";s:1:\"3\";s:4:\"icon\";s:5:\"photo\";s:4:\"name\";s:6:\"图片\";s:9:\"modelfile\";s:15:\"photo.class.php\";s:6:\"status\";s:1:\"1\";s:5:\"mdesc\";s:12:\"发布图片\";s:7:\"version\";s:3:\"1.0\";s:6:\"author\";s:6:\"SYSTEM\";s:7:\"feedtpl\";s:0:\"\";s:3:\"cfg\";s:113:\"imagetype--jpg|jpge|png|gif--上传类型\nimagesize--20480--上传大小\nimagecount--20--每次最大上传数量\";}i:4;a:10:{s:2:\"id\";s:1:\"4\";s:4:\"icon\";s:5:\"video\";s:4:\"name\";s:6:\"视频\";s:9:\"modelfile\";s:15:\"video.class.php\";s:6:\"status\";s:1:\"1\";s:5:\"mdesc\";s:12:\"发布视频\";s:7:\"version\";s:3:\"1.0\";s:6:\"author\";s:6:\"SYSTEM\";s:7:\"feedtpl\";s:0:\"\";s:3:\"cfg\";s:0:\"\";}i:6;a:10:{s:2:\"id\";s:1:\"6\";s:4:\"icon\";s:5:\"movie\";s:4:\"name\";s:6:\"电影\";s:9:\"modelfile\";s:15:\"movie.class.php\";s:6:\"status\";s:1:\"1\";s:5:\"mdesc\";s:12:\"发布电影\";s:7:\"version\";s:3:\"1.0\";s:6:\"author\";s:6:\"SYSTEM\";s:7:\"feedtpl\";s:0:\"\";s:3:\"cfg\";s:38:\"enableurl--1--是否开启解析功能\";}}}\";');
 INSERT INTO `wh_cache` VALUES ('custompageCate', '1720680584s:888:\"a:5:{i:0;a:6:{s:2:\"id\";s:1:\"1\";s:4:\"tags\";s:5:\"about\";s:5:\"title\";s:12:\"关于我们\";s:7:\"keyword\";s:12:\"关于我们\";s:11:\"description\";s:12:\"关于我们\";s:6:\"orders\";s:1:\"1\";}i:1;a:6:{s:2:\"id\";s:1:\"2\";s:4:\"tags\";s:4:\"help\";s:5:\"title\";s:12:\"使用帮助\";s:7:\"keyword\";s:12:\"使用帮助\";s:11:\"description\";s:12:\"使用帮助\";s:6:\"orders\";s:1:\"2\";}i:2;a:6:{s:2:\"id\";s:1:\"3\";s:4:\"tags\";s:4:\"call\";s:5:\"title\";s:12:\"联系我们\";s:7:\"keyword\";s:12:\"联系我们\";s:11:\"description\";s:12:\"联系我们\";s:6:\"orders\";s:1:\"3\";}i:3;a:6:{s:2:\"id\";s:1:\"4\";s:4:\"tags\";s:7:\"service\";s:5:\"title\";s:12:\"服务条款\";s:7:\"keyword\";s:12:\"服务条款\";s:11:\"description\";s:12:\"服务条款\";s:6:\"orders\";s:1:\"4\";}i:4;a:6:{s:2:\"id\";s:1:\"5\";s:4:\"tags\";s:7:\"privacy\";s:5:\"title\";s:12:\"隐私政策\";s:7:\"keyword\";s:12:\"隐私政策\";s:11:\"description\";s:12:\"隐私政策\";s:6:\"orders\";s:1:\"5\";}}\";');
 INSERT INTO `wh_cache` VALUES ('adunit', '1720680584s:1224:\"a:6:{i:1;a:7:{s:2:\"id\";s:1:\"1\";s:5:\"title\";s:24:\"首页右侧底部广告\";s:5:\"adesc\";s:24:\"首页右侧底部广告\";s:3:\"img\";s:5:\"1.jpg\";s:6:\"orders\";s:1:\"1\";s:6:\"system\";s:1:\"1\";s:7:\"is_show\";s:1:\"1\";}i:2;a:7:{s:2:\"id\";s:1:\"2\";s:5:\"title\";s:21:\"首页顶部广告位\";s:5:\"adesc\";s:21:\"首页顶部广告位\";s:3:\"img\";s:5:\"2.jpg\";s:6:\"orders\";s:1:\"2\";s:6:\"system\";s:1:\"1\";s:7:\"is_show\";s:1:\"1\";}i:3;a:7:{s:2:\"id\";s:1:\"3\";s:5:\"title\";s:21:\"发现频道广告位\";s:5:\"adesc\";s:21:\"发现频道广告位\";s:3:\"img\";s:5:\"3.jpg\";s:6:\"orders\";s:1:\"4\";s:6:\"system\";s:1:\"1\";s:7:\"is_show\";s:1:\"1\";}i:4;a:7:{s:2:\"id\";s:1:\"4\";s:5:\"title\";s:27:\"推荐频道顶部广告位\";s:5:\"adesc\";s:27:\"推荐频道顶部广告位\";s:3:\"img\";s:5:\"4.jpg\";s:6:\"orders\";s:1:\"3\";s:6:\"system\";s:1:\"1\";s:7:\"is_show\";s:1:\"1\";}i:5;a:7:{s:2:\"id\";s:1:\"5\";s:5:\"title\";s:27:\"用户主页右侧广告位\";s:5:\"adesc\";s:27:\"用户主页右侧广告位\";s:3:\"img\";s:5:\"5.jpg\";s:6:\"orders\";s:1:\"5\";s:6:\"system\";s:1:\"1\";s:7:\"is_show\";s:1:\"1\";}i:6;a:7:{s:2:\"id\";s:1:\"6\";s:5:\"title\";s:30:\"用户主页详情页广告位\";s:5:\"adesc\";s:30:\"用户主页详情页广告位\";s:3:\"img\";s:5:\"6.jpg\";s:6:\"orders\";s:1:\"6\";s:6:\"system\";s:1:\"1\";s:7:\"is_show\";s:1:\"1\";}}\";');
-INSERT INTO `wh_cache` VALUES ('Ad_2', '1720706413s:4:\"b:0;\";');
-INSERT INTO `wh_cache` VALUES ('Ad_1', '1720706413s:4:\"b:0;\";');
-INSERT INTO `wh_cache` VALUES ('recommend_shuffle_3', '1420792813s:2:\"N;\";');
-INSERT INTO `wh_cache` VALUES ('findeUserTag_1', '1420792835s:4:\"b:0;\";');
+INSERT INTO `wh_cache` VALUES ('Ad_2', '1720852960s:4:\"b:0;\";');
+INSERT INTO `wh_cache` VALUES ('Ad_1', '1720852960s:4:\"b:0;\";');
+INSERT INTO `wh_cache` VALUES ('recommend_shuffle_3', '1420939360s:2:\"N;\";');
+INSERT INTO `wh_cache` VALUES ('findeUserTag_1', '1420855833s:4:\"b:0;\";');
 INSERT INTO `wh_cache` VALUES ('systag', '1720682140s:2504:\"a:26:{i:0;a:4:{s:3:\"cid\";s:1:\"1\";s:8:\"catename\";s:6:\"艺术\";s:4:\"sort\";s:1:\"1\";s:4:\"used\";s:1:\"0\";}i:1;a:4:{s:3:\"cid\";s:1:\"2\";s:8:\"catename\";s:6:\"时尚\";s:4:\"sort\";s:1:\"2\";s:4:\"used\";s:1:\"0\";}i:2;a:4:{s:3:\"cid\";s:1:\"3\";s:8:\"catename\";s:6:\"音乐\";s:4:\"sort\";s:1:\"3\";s:4:\"used\";s:1:\"0\";}i:3;a:4:{s:3:\"cid\";s:1:\"4\";s:8:\"catename\";s:6:\"摄影\";s:4:\"sort\";s:1:\"4\";s:4:\"used\";s:1:\"0\";}i:4;a:4:{s:3:\"cid\";s:1:\"5\";s:8:\"catename\";s:6:\"阅读\";s:4:\"sort\";s:1:\"5\";s:4:\"used\";s:1:\"0\";}i:5;a:4:{s:3:\"cid\";s:1:\"6\";s:8:\"catename\";s:6:\"动漫\";s:4:\"sort\";s:1:\"6\";s:4:\"used\";s:1:\"0\";}i:6;a:4:{s:3:\"cid\";s:1:\"7\";s:8:\"catename\";s:6:\"游戏\";s:4:\"sort\";s:1:\"7\";s:4:\"used\";s:1:\"0\";}i:7;a:4:{s:3:\"cid\";s:1:\"8\";s:8:\"catename\";s:6:\"随笔\";s:4:\"sort\";s:1:\"8\";s:4:\"used\";s:1:\"0\";}i:8;a:4:{s:3:\"cid\";s:1:\"9\";s:8:\"catename\";s:6:\"插画\";s:4:\"sort\";s:1:\"9\";s:4:\"used\";s:1:\"0\";}i:9;a:4:{s:3:\"cid\";s:2:\"10\";s:8:\"catename\";s:6:\"设计\";s:4:\"sort\";s:2:\"10\";s:4:\"used\";s:1:\"0\";}i:10;a:4:{s:3:\"cid\";s:2:\"11\";s:8:\"catename\";s:6:\"建筑\";s:4:\"sort\";s:2:\"11\";s:4:\"used\";s:1:\"0\";}i:11;a:4:{s:3:\"cid\";s:2:\"12\";s:8:\"catename\";s:6:\"创意\";s:4:\"sort\";s:2:\"12\";s:4:\"used\";s:1:\"0\";}i:12;a:4:{s:3:\"cid\";s:2:\"13\";s:8:\"catename\";s:6:\"猎图\";s:4:\"sort\";s:2:\"13\";s:4:\"used\";s:1:\"0\";}i:13;a:4:{s:3:\"cid\";s:2:\"14\";s:8:\"catename\";s:6:\"宠物\";s:4:\"sort\";s:2:\"14\";s:4:\"used\";s:1:\"0\";}i:14;a:4:{s:3:\"cid\";s:2:\"15\";s:8:\"catename\";s:6:\"汽车\";s:4:\"sort\";s:2:\"15\";s:4:\"used\";s:1:\"0\";}i:15;a:4:{s:3:\"cid\";s:2:\"16\";s:8:\"catename\";s:6:\"家居\";s:4:\"sort\";s:2:\"16\";s:4:\"used\";s:1:\"0\";}i:16;a:4:{s:3:\"cid\";s:2:\"17\";s:8:\"catename\";s:9:\"互联网\";s:4:\"sort\";s:2:\"17\";s:4:\"used\";s:1:\"0\";}i:17;a:4:{s:3:\"cid\";s:2:\"18\";s:8:\"catename\";s:6:\"旅行\";s:4:\"sort\";s:2:\"18\";s:4:\"used\";s:1:\"0\";}i:18;a:4:{s:3:\"cid\";s:2:\"19\";s:8:\"catename\";s:6:\"数码\";s:4:\"sort\";s:2:\"19\";s:4:\"used\";s:1:\"0\";}i:19;a:4:{s:3:\"cid\";s:2:\"20\";s:8:\"catename\";s:6:\"影视\";s:4:\"sort\";s:2:\"20\";s:4:\"used\";s:1:\"0\";}i:20;a:4:{s:3:\"cid\";s:2:\"21\";s:8:\"catename\";s:6:\"美食\";s:4:\"sort\";s:2:\"21\";s:4:\"used\";s:1:\"0\";}i:21;a:4:{s:3:\"cid\";s:2:\"22\";s:8:\"catename\";s:6:\"恋物\";s:4:\"sort\";s:2:\"22\";s:4:\"used\";s:1:\"0\";}i:22;a:4:{s:3:\"cid\";s:2:\"23\";s:8:\"catename\";s:6:\"趣味\";s:4:\"sort\";s:2:\"23\";s:4:\"used\";s:1:\"0\";}i:23;a:4:{s:3:\"cid\";s:2:\"24\";s:8:\"catename\";s:6:\"科学\";s:4:\"sort\";s:2:\"24\";s:4:\"used\";s:1:\"0\";}i:24;a:4:{s:3:\"cid\";s:2:\"25\";s:8:\"catename\";s:6:\"军事\";s:4:\"sort\";s:2:\"25\";s:4:\"used\";s:1:\"0\";}i:25;a:4:{s:3:\"cid\";s:2:\"26\";s:8:\"catename\";s:6:\"体育\";s:4:\"sort\";s:2:\"26\";s:4:\"used\";s:1:\"0\";}}\";');
-INSERT INTO `wh_cache` VALUES ('Ad_4', '1720706411s:4:\"b:0;\";');
-INSERT INTO `wh_cache` VALUES ('recommend_shuffle_all', '1420768561s:6:\"a:0:{}\";');
-INSERT INTO `wh_cache` VALUES ('discoverTag_30', '1420768561s:4:\"b:0;\";');
-INSERT INTO `wh_cache` VALUES ('Ad_3', '1720682161s:4:\"b:0;\";');
-INSERT INTO `wh_cache` VALUES ('Ad_5', '1720694851s:4:\"b:0;\";');
-INSERT INTO `wh_cache` VALUES ('loginUserHot', '1420709953s:4:\"b:0;\";');
-INSERT INTO `wh_cache` VALUES ('myfollow_1', '1420710007s:4:\"b:0;\";');
+INSERT INTO `wh_cache` VALUES ('Ad_4', '1720788398s:4:\"b:0;\";');
+INSERT INTO `wh_cache` VALUES ('recommend_shuffle_all', '1420856557s:551:\"a:2:{i:0;a:9:{s:3:\"bid\";s:1:\"2\";s:5:\"title\";s:18:\"分享文字标题\";s:4:\"body\";s:30:\"分享文字标题内容内容\";s:4:\"type\";s:1:\"1\";s:3:\"uid\";s:1:\"2\";s:8:\"username\";s:3:\"aaa\";s:5:\"b_url\";s:42:\"/yunbian/index.php?c=userblog&a=show&bid=2\";s:3:\"tag\";s:0:\"\";s:3:\"img\";s:1:\" \";}i:1;a:9:{s:3:\"bid\";s:1:\"1\";s:5:\"title\";s:18:\"分享文字标题\";s:4:\"body\";s:30:\"分享文字标题内容内容\";s:4:\"type\";s:1:\"1\";s:3:\"uid\";s:1:\"1\";s:8:\"username\";s:0:\"\";s:5:\"b_url\";s:42:\"/yunbian/index.php?c=userblog&a=show&bid=1\";s:3:\"tag\";s:0:\"\";s:3:\"img\";s:1:\" \";}}\";');
+INSERT INTO `wh_cache` VALUES ('discoverTag_30', '1420856648s:4:\"b:0;\";');
+INSERT INTO `wh_cache` VALUES ('Ad_3', '1720770248s:4:\"b:0;\";');
+INSERT INTO `wh_cache` VALUES ('Ad_5', '1720852952s:4:\"b:0;\";');
+INSERT INTO `wh_cache` VALUES ('loginUserHot', '1420773835s:442:\"a:1:{i:0;a:12:{s:2:\"id\";s:1:\"1\";s:3:\"bid\";s:1:\"1\";s:3:\"uid\";s:1:\"2\";s:6:\"repuid\";N;s:3:\"msg\";s:4:\"zxcv\";s:4:\"time\";s:10:\"1420770078\";s:8:\"username\";s:3:\"aaa\";s:7:\"blogtag\";a:2:{i:0;s:6:\"艺术\";i:1;s:6:\"时尚\";}s:5:\"u_url\";s:49:\"/yunbian/index.php?c=userblog&a=index&domain=aaaa\";s:5:\"u_img\";s:37:\"/yunbian/avatar.php?uid=2&size=middle\";s:5:\"b_url\";s:42:\"/yunbian/index.php?c=userblog&a=show&bid=1\";s:7:\"b_title\";s:18:\"分享文字标题\";}}\";');
+INSERT INTO `wh_cache` VALUES ('myfollow_1', '1420773032s:4:\"b:0;\";');
+INSERT INTO `wh_cache` VALUES ('Ad_6', '1720770072s:4:\"b:0;\";');
+INSERT INTO `wh_cache` VALUES ('findTagHotUser_d41d8cd98f00b204e9800998ecf8427e', '1420855828s:4:\"b:0;\";');
+INSERT INTO `wh_cache` VALUES ('myfollow_2', '1420788199s:8:\"s:1:\"1\";\";');
+INSERT INTO `wh_cache` VALUES ('findeUserTag_2', '1420856507s:4:\"b:0;\";');
 
 -- ----------------------------
 -- Table structure for `wh_catetags`
@@ -198,7 +204,6 @@ CREATE TABLE `wh_cpage_body` (
 -- ----------------------------
 -- Records of wh_cpage_body
 -- ----------------------------
-INSERT INTO `wh_cpage_body` VALUES ('1', ' <h3>我们是——云边网</h3> <p>云边网是国内首个率先开源的轻博客系统，从六月开发，八月测试，九月上线以来。将为用户提供最好用的轻博客平台。</p> <p>云边网是一个全新的、倾向于音乐话题的&ldquo;高质量内容发布和传播&rdquo;的轻博客社区。</p> <p>轻博客是介于博客与微博之间的一种网络服务，博客是倾向于表达的，微博则更倾向于社交和传播，轻博客吸收双方的优势。</p> <p>如果说微博是一份报纸，博客是一本书，那么轻博客则更像一本杂志，当然这只是从内容层面的一种形象比喻。</p> <p>既不同于微博也不同于博客，我们是一种全新的网络媒体。</p> <h3>云边网面向所有喜欢音乐的朋友，无论您</h3> <p>喜欢听，或是喜欢聊，或是喜欢唱，或是喜欢写，或是喜欢创作，或是乐手，或是后期 等等... 云边网正是您最佳的传播和交流平台。因为，我们只关注音乐。</p> <p>欢迎各位志同道合的朋友，到云边网来发布自己的作品，也欢迎各位专业朋友的点评与指导，让我们以音乐为目标，向着让更多喜欢音乐的人，获取更多精彩的内容为目标而共同努力。</p> <p>音乐是一种伟大的艺术，云边网的初衷正是希望将这种艺术升华，为您展示。</p> <h3>玩转云边</h3> <p>简洁的操作，让用户简单快速地发布文字、图片、音乐、视频，采用完全的内容和兴趣导航模式，让云边网成为一个全新的、真正致力于&ldquo;高质量内容发布和传播&rdquo;的轻博客社区。</p> <p>更多独有的多元化元素,可以直接上上传音乐至轻博，可直接插入虾米、雅燃等音乐，与大家分享你的音乐或你的感悟。</p> <p>以音乐为主线,以兴趣为话题，轻松快乐的参与和沟通，帮你找到你最想看到的内容、最想结识的朋友。一切都基于你的爱好，让每天都在发现兴趣的乐趣中度过。</p> <h3>立即使用</h3> <p>虽然目前是测试版本,但是您可以立即使用。无需邀请，秒速注册。迅速加入音乐大家庭中。</p> <p>云边网使用了html5和css3的一些新特性,如果您使用非IE浏览器将会获得更加友好的效果。</p> ');
 INSERT INTO `wh_cpage_body` VALUES ('2', ' <h3>发布内容</h3> <p>登陆后点击右侧 文字链接，即可进入发布文字功能。可输入内容，并可插入单张图片</p> <h3>发布音乐</h3> <p>登陆后点击右侧 音乐，即可进入发布音乐功能。您可以选择网络音乐 和 本地上传两种方式。</p> <p>网络音乐引用地址可以输入虾米、雅燃音乐、音悦台、优酷、土豆、6间房、腾讯播客、新浪博客、56.com等诸多网站播放地址。 也可以直接粘贴网络后缀为mp3的歌曲。</p> <p>本地上传您可以上传本地的MP3文件，但请注意的是您需要拥有该媒体的著作权，也就是说您自己录或者制作的音乐皆可，但不能上传网络上不属于您的版权的音乐。如果被查出或举报或版权纠纷我们将不负任何责任，并且删除该媒体资源。</p> <h3>发布图片</h3> <p>您可以同时上传最多20张照片作为博客内容，并且也可以编写介绍。</p> <h3>发布视频</h3> <p>视频引用地址可以输入虾米、雅燃音乐、音悦台、优酷、土豆、6间房、腾讯播客、新浪博客、56.com等诸多网站播放地址。建议您可以将录制好的视频传至以上媒体然后填写引用地址。</p> <p>同时您也可以编写介绍</p> <h3>关于标签</h3> <p>不管发布任何内容您都需要填写至少一个标签，轻博内容将根据标签来进行区分。因此填写一个或多个合适的标签是非常不错的选择。</p> <h3>关注和喜欢</h3> <p>加为关注的用户将会在您的首页显示最新发布动态</p> <p>加为喜欢的博客可方便您在右侧导航中快速的查找</p> ');
 INSERT INTO `wh_cpage_body` VALUES ('3', '<h3>官方网站</h3> <p>http://qing.thinksaas.cn</p> <h3>邮箱</h3> <p>nxfte<span id=\"ats\"></span>qq.com</p> <h3>交流群</h3> <p>qq group 176221558</p> <h3>商业授权</h3> <p>QQ：234027573</p> <h3>付款地址</h3> <p><a href=\"https://me.alipay.com/anythink\" target=\"_blank\">https://me.alipay.com/anythink</a></p> ');
 INSERT INTO `wh_cpage_body` VALUES ('4', '<p>本协议适用于云边网开发的云边网平台。使用云边网平台以及与其相关联的各项技术服务和网络服务之前，您必须同意接受本协议。若不接受本协议，您将无法使用云边网平台及相关服务。</p> <p>您可以通过以下方式接受本协议：一旦您注册云边账户并且发布第一条信息起，您对云边网平台及其他相关服务的使用将被视为您自实际 使用起便接受了本协议的全部条款。如果需要注销用户请发送注销申请邮件，我们将删除与您有关的全部内容，您与云边网所有服务都将被终止。注册账户需要用户 本人电子邮件作为注册账号，如果用户使用他人邮件账号注册并被邮件归属人举证成功者将删除用户账号及所有内容，并且一切法律责任自行承担，本站不承担任何 责任。</p> <p>云边网网络平台的所有权和运营权归云边网所有，并保留随时变更平台提供的信息和服务的权利。云边网所提供的相关信息和服务的使用者（以下简称&ldquo;用户&rdquo;）在使用之前必须同意以下的所有条款。</p> <p>用户在云边网平台上发布的信息内容由用户及云边网共同所有，任何其他组织或个人未经用户本人授权同意，不得复制、转载、擅改其内容。用户不得在云边网平台发布和散播任何形式的含有下列内容的信息：<br> 1）为相关法律法规所禁止；<br> 2）有悖于社会公共秩序和善良风俗；<br> 3）损害他人合法权益；<br> 4）其他云边网 认为不适当在本平台发布的内容。 <br> 5）通过发布音乐的上传功能上传非用户本人拥有版权的音频媒体。 <br> 云边网保留删除和变更上述相关信息的权利。</p> <p>用户应保证在云边网平台的注册信息的真实、准确和完整，并在资料变更时及时更新相关信息。对于任何信息不实所导致的用户本人或第三方损害，云边网不承担任何责任。用户应妥善保管个人注册信息及登录密码等资料，用户将对以其注册用户名进行的所有活动和事件负法律责任。</p> <p>云边网非常强调保护用户的隐私。云边网将致力于为用户提供最可靠的隐私保护措施。未经用户的特别授权，云边网不会将用户信息公开或透露给任何第三 方个人或机构，但在下列情形除外：<br> 1) 根据司法机关、政府部门的强制命令提供涉及用户信息的相关资料； <br> 2) 不可抗力与不可控因素导致的信息外泄；<br> 3) 云边网基于自身的合法维权需要而使用用户的相关信息。</p> <p>用户同意使用云边网平台服务所潜在的风险及其一切可能的后果将完全由自己承担，云边网对这些可能的风险和后果不承担任何责任。</p> <p>云边网不保证云边网平台提供的服务能够满足用户的所有要求，也不保证已存在的服务不会中断，对这些服务的及时性、安全 性、准确性也不作保证。对于因系统维护或升级的需要而需暂停网络服务的情形，云边网将视具体情形尽可能事先在重要页面发布通知。同时，云边网保留在不事先 通知用户的情况下中断或终止部分或全部服务的权利，对于因服务的中断或终止而造成的用户或第三方的任何损失，云边网不承担任何责任。</p> <p>用户同意尊重和维护云边网平台以及其他用户的合法权益。用户因违反有关法律、法规或协议规定中的任何条款而给云边网或任何第三方造成的损失，用户同意承担由此造成的一切损害赔偿责任。</p> <p>在适用法律允许的范围内，云边网保留对本协议任何条款的解释权和随时变更的权利。 云边网可能会随时根据需要修改本协议的任一条款。如发生此类变更，云边网会提供新版本的条款。用户在变更后对云边网平台服务的使用将视为已完全接受变更后的条款。</p> <p>本协议在根据下述规定终止前，将会一直适用。当下列情况出现时，云边网可以随时中止与用户的协议：<br> 1) 用户违反了本协议中的任何规定；<br> 2) 法律法规要求终止本协议;<br> 3) 云边网认为实际情形不再适宜继续执行本协议。</p> <p>本协议及因本协议产生的一切法律关系及纠纷，均适用中华人民共和国法律。用户与云边网在此同意以云边网营业所在地法院管辖。</p> ');
@@ -225,7 +230,6 @@ CREATE TABLE `wh_cpage_cate` (
 -- ----------------------------
 INSERT INTO `wh_cpage_cate` VALUES ('3', 'call', '联系我们', '联系我们', '联系我们', '3');
 INSERT INTO `wh_cpage_cate` VALUES ('2', 'help', '使用帮助', '使用帮助', '使用帮助', '2');
-INSERT INTO `wh_cpage_cate` VALUES ('1', 'about', '关于我们', '关于我们', '关于我们', '1');
 INSERT INTO `wh_cpage_cate` VALUES ('4', 'service', '服务条款', '服务条款', '服务条款', '4');
 INSERT INTO `wh_cpage_cate` VALUES ('5', 'privacy', '隐私政策', '隐私政策', '隐私政策', '5');
 
@@ -243,11 +247,14 @@ CREATE TABLE `wh_feeds` (
   `info` varchar(255) DEFAULT '' COMMENT '动态内容',
   `time` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wh_feeds
 -- ----------------------------
+INSERT INTO `wh_feeds` VALUES ('1', '1', '1', 'reply', '2', '回复本内容', 'zxcv', '1420770078');
+INSERT INTO `wh_feeds` VALUES ('2', '0', '1', 'foword', '2', '转载本内容', '', '1420770085');
+INSERT INTO `wh_feeds` VALUES ('4', '0', '1', 'likes', '2', '喜欢本内容', '', '1420770175');
 
 -- ----------------------------
 -- Table structure for `wh_findpwd`
@@ -278,11 +285,12 @@ CREATE TABLE `wh_follow` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `uid` (`uid`,`touid`),
   KEY `touid` (`touid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wh_follow
 -- ----------------------------
+INSERT INTO `wh_follow` VALUES ('1', '2', '1', '0', '1420770074');
 
 -- ----------------------------
 -- Table structure for `wh_invite`
@@ -327,11 +335,12 @@ CREATE TABLE `wh_likes` (
   PRIMARY KEY (`id`),
   KEY `bid` (`bid`),
   KEY `uid` (`uid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wh_likes
 -- ----------------------------
+INSERT INTO `wh_likes` VALUES ('2', '2', '1', '1420770175');
 
 -- ----------------------------
 -- Table structure for `wh_member`
@@ -365,12 +374,13 @@ CREATE TABLE `wh_member` (
   KEY `username` (`username`),
   KEY `domain` (`domain`),
   KEY `blogtag` (`blogtag`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wh_member
 -- ----------------------------
-INSERT INTO `wh_member` VALUES ('1', '1', '1', 'admin@admin.com', '1d6a0266434297b8c2771de4fca12a4a', 'E95I8c', '', '', '火星', null, null, '0', '0', '0', '', '1420680581', '1420706364', '127.0.0.1', '127.0.0.1', '1', '1', '1', null);
+INSERT INTO `wh_member` VALUES ('1', '1', '1', 'admin@admin.com', '1d6a0266434297b8c2771de4fca12a4a', 'E95I8c', '', '', '火星', null, null, '1', '0', '0', '', '1420680581', '1420706364', '127.0.0.1', '127.0.0.1', '1', '1', '1', null);
+INSERT INTO `wh_member` VALUES ('2', '1', '1', '1@nihao.com', '804ec9e27f66fb63e5c209e7539d285d', 'M~2Y5q', 'aaa', 'aaaa', '火星', '艺术,时尚', '', '1', '1', '1', '', '1420770068', '1420770281', '127.0.0.1', '127.0.0.1', '1', '1', '1', null);
 
 -- ----------------------------
 -- Table structure for `wh_memberex`
@@ -451,11 +461,12 @@ CREATE TABLE `wh_notice` (
   `time` int(10) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `foruid` (`foruid`,`isread`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='我的通知';
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='我的通知';
 
 -- ----------------------------
 -- Records of wh_notice
 -- ----------------------------
+INSERT INTO `wh_notice` VALUES ('1', '2', '3', '1', '关注通知', '关注了你', '0', 'user|1', '1420770074');
 
 -- ----------------------------
 -- Table structure for `wh_pm`
@@ -491,11 +502,12 @@ CREATE TABLE `wh_replay` (
   `msg` varchar(255) NOT NULL,
   `time` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wh_replay
 -- ----------------------------
+INSERT INTO `wh_replay` VALUES ('1', '1', '2', null, 'zxcv', '1420770078');
 
 -- ----------------------------
 -- Table structure for `wh_setting`
@@ -560,6 +572,23 @@ CREATE TABLE `wh_skins` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for `wh_sort`
+-- ----------------------------
+DROP TABLE IF EXISTS `wh_sort`;
+CREATE TABLE `wh_sort` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fid` int(11) DEFAULT NULL,
+  `order` varchar(255) DEFAULT '0' COMMENT '0',
+  `typename` varchar(255) DEFAULT NULL,
+  `k` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of wh_sort
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `wh_tags`
 -- ----------------------------
 DROP TABLE IF EXISTS `wh_tags`;
@@ -591,6 +620,8 @@ CREATE TABLE `wh_tags_blog` (
 -- ----------------------------
 -- Records of wh_tags_blog
 -- ----------------------------
+INSERT INTO `wh_tags_blog` VALUES ('1', '2');
+INSERT INTO `wh_tags_blog` VALUES ('2', '2');
 
 -- ----------------------------
 -- Table structure for `wh_tags_system`
@@ -606,6 +637,27 @@ CREATE TABLE `wh_tags_system` (
 -- ----------------------------
 -- Records of wh_tags_system
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for `wh_term`
+-- ----------------------------
+DROP TABLE IF EXISTS `wh_term`;
+CREATE TABLE `wh_term` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `parent_id` int(11) DEFAULT NULL,
+  `create_time` varchar(255) DEFAULT NULL,
+  `order` int(11) DEFAULT NULL,
+  `uid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of wh_term
+-- ----------------------------
+INSERT INTO `wh_term` VALUES ('1', 'name1', '0', null, '0', '0');
+INSERT INTO `wh_term` VALUES ('2', 'name2', '1', null, '0', '0');
+INSERT INTO `wh_term` VALUES ('3', 'name3', '1', null, '0', null);
 
 -- ----------------------------
 -- Table structure for `wh_theme`
