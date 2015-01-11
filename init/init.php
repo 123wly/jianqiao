@@ -95,13 +95,13 @@ if(!spAccess('r','ybconfig')){  //读取设置
 
 
 $GLOBALS['YB']['version'] = '2.0 RC';
-$GLOBALS['YB']['soft'] = '云边轻博';
-$GLOBALS['YB']['url'] = 'http://qing.thinksaas.cn';
-$GLOBALS['YB']['email'] = 'nxfte@qq.com';
+$GLOBALS['YB']['soft'] = '万虎网络';
+$GLOBALS['YB']['url'] = 'http://www.wanhunet.com';
+$GLOBALS['YB']['email'] = '435690026@qq.com';
 $GLOBALS['YB']['copyright'] = 'GNU GPL';
 $GLOBALS['YB']['year'] = '2011 - '.date('Y',time());
-$GLOBALS['YB']['author'] = 'anythink';
-$GLOBALS['YB']['code'] = 'anythink &lt;anythink.wx@gmail.com&gt; ';
-$GLOBALS['YB']['design'] = 'LDuo &lt;liuduo-i3@163.com&gt;';
+$GLOBALS['YB']['author'] = 'shiwolang';
+$GLOBALS['YB']['code'] = 'shiwolang &lt;shiwolang@gmail.com&gt; ';
+$GLOBALS['YB']['design'] = 'shiwolang &lt;shiwolang@gmail.com&gt;';
 require(SP_PATH.'/thFunctions.php');
 if(TRUE == $GLOBALS['G_SP']['auto_sp_run'])spRun();

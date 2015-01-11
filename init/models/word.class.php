@@ -62,6 +62,7 @@ class yb_word extends basePostModel
     {   
         preg_match_all( "/<img.[^>]*?(src|SRC)=\"[\"|'| ]{0,}([^>]*\\.(gif|jpg|jpeg|bmp|png))([\"|'|\\s]).*[\\/]?>/isU",stripslashes($body) , $info );
         $info = array_unique($info[2]);
+
         $str = '';
         foreach($info as $d)
         {
@@ -74,19 +75,23 @@ class yb_word extends basePostModel
                 }
              }  
              $str .= '\''.$d.'\',';
-            }
+        }
             
-            $str = substr($str,0,-1); //去掉逗号
-            if($str){ $where = "`path` not in ($str) and"; } //如果存在 就加限制
-            $result = spClass('db_attach')->findAll("$where  uid = {$this->uid} and bid = 0",'','id,path'); //获取到编辑器没有使用的
-
-            if(is_array($result))
+        $str = substr($str,0,-1); //去掉逗号
+        
+        if($str){ $where = "`path` in ($str) and"; } //如果存在 就加限制
+        $result = spClass('db_attach')->findAll("$where  uid = {$this->uid} and bid = 0",'','id,path'); //获取到编辑器没有使用的
+        //TODO
+        
+        
+        
+        if(is_array($result))
+        {
+            foreach($result as $d) //全部搞定
             {
-                foreach($result as $d) //全部搞定
-                {
-                    spClass('db_attach')->delBy($d['id'],$this->uid);
-                }
+                spClass('db_attach')->delBy($d['id'],$this->uid);
             }
+        }
         return $info;
     }
 

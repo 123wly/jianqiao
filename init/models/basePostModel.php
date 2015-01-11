@@ -23,6 +23,12 @@ abstract class basePostModel extends top
     
     /*显示发布前的东西*/
     function add(){
+
+        // @@@ 后台内联添加回跳
+        $success = $this->spArgs("success");
+        $this->success_s = empty($success) ? 0 : 1;
+        //////////
+        
         $this->myattach(); //获取媒体库的临时文件
     }
     
@@ -52,16 +58,19 @@ abstract class basePostModel extends top
 		if($this->spArgs('title') != ''){
 			$title = utf8_substr(strip_tags($this->spArgs('title')),0,50,0);
 		}
+
+        //@@@ 添加term_id支持
         
         $rows = array(
-            'title'=>$title, //超过50自动截取
-			'type' =>$this->mid,
-			'top'  =>$this->spArgs('top',0),
-			'tag'  =>$tag,
-			'body'=>$repto.$bodypre.strreplaces($this->spArgs('textarea')),
-			'noreply'=>$this->spArgs('noreplay',0),
-			'open' =>$this->spArgs('savetype',1),
-			'time' =>time()
+            'title'   => $title, //超过50自动截取
+            'type'    => $this->mid,
+            'top'     => $this->spArgs('top',0),
+            'tag'     => $tag,
+            'body'    => $repto.$bodypre.strreplaces($this->spArgs('textarea')),
+            'noreply' => $this->spArgs('noreplay',0),
+            'open'    => $this->spArgs('savetype',1),
+            'time'    => time(),
+            'term_id' => $this->spArgs("term_id")
         );
 		
 		$ret = $this->post_verify($this->spArgs('textarea')); //检测审核机制
@@ -89,6 +98,14 @@ abstract class basePostModel extends top
         spClass('db_tags')->tagCreate($rows['tag'],$bid,$this->uid);
 		$_SESSION['tempid'] = NULL;
         unset($_SESSION['tempid']);
+
+        // @@@ 后台内联添加回跳
+        if(isset($_POST['iframe_do'])){
+            header('Location:'.$_SERVER['HTTP_REFERER']."&success=1");
+            die;
+        }
+        /////////
+
 		return $bid;
     }
     

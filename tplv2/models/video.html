@@ -1,8 +1,20 @@
 {include file="require_header.html" addcss=yes editor=yes titlepre="分享视频"}
-
+<script type="text/javascript">
+	var success_s = {$success_s};
+	function hasParent(){
+		if(top.location != self.location){
+			if(success_s === 1){
+				alert("添加成功！");
+			}
+			var input = '<input type="hidden" name="iframe_do" value="1" />';
+			$("#form1").append(input);
+	    }
+	}
+</script>
 {literal}
 <script type="text/javascript">
 $(document).ready(function(){
+	hasParent();
 	$.isChange.Set("#title,#textarea",function(){
 		if($("#musicurl").val()!="http://"){return true;}
 	});
