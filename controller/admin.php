@@ -1005,17 +1005,45 @@ class admin extends top
             $db_term = spClass("db_term");
 
             $list = $db_term->findAll();
+            $this->list = $list;
             $this->listTree = create_tree($list);
             $this->display("admin/term.html");
         }
     }
 
     private function termAdd(){
-
+        $rs   = spClass("db_term")->create($_POST);
+        $json = $rs ? array("status"=>1) : array("status"=>0);
+        echo json_encode($json);
+        exit;
     }
 
     private function termSave(){
+        $data = array();
+        $json = array("status" => 1);
+        foreach ($_POST as $key => $value) {
+            $rs = spClass("db_term")->update(array("id"=>$key),$value);
+            if(!$rs){
+                $json['status'] = 0;
+                break;
+            }
+        }
+        echo json_encode($json);
+        exit;
+    }
 
+    //@@@ 添加内容
+    public function content_add(){
+        $this->curr_content_add = ' id="acurrent"';
+        $this->curr_blogdisplay = ' id="blogdisplay"';
+        $this->curr_blog = ' id="current"';
+
+        $terms = spClass("db_term")->findAll(array("uid"=>$_SESSION['uid']));
+        $this->terms = "";
+        foreach ($terms as $k => $vo) {
+            $this->terms .= '<option value="'.$vo['id'].'">'.$vo['name'].'</option>';
+        }
+        $this->display("admin/content_add.html");
     }
 
 }

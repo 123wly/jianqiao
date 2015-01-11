@@ -1,4 +1,16 @@
 {include file="require_header.html" addcss=yes editor=yes}
+<script type="text/javascript">
+	var success_s = {$success_s};
+	function hasParent(){
+		if(top.location != self.location){
+			if(success_s === 1){
+				alert("添加成功！");
+			}
+			var input = '<input type="hidden" name="iframe_do" value="1" />';
+			$("#form1").append(input);
+	    }
+	}
+</script>
 <script> 
 var swfpath = '{$syskin}'; 
 var bid     = '{$blog.bid}';
@@ -12,6 +24,7 @@ var size    = '{$tpl_config.imagesize}';
 {literal}
 <script type="text/javascript">
 $(document).ready(function(){
+	hasParent();
 
 		//$(".attach_img").
 			// 离开页面前提示

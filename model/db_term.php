@@ -18,7 +18,14 @@ class db_term extends ybModel
         $this->data[$name] = $value;
         return $this;
     }
-
+    public function create($row){
+        $row['create_time'] = time();
+        $row['uid'] = $_SESSION['uid'];
+        if(empty($row['order'])){
+            $row['order'] = 0;
+        }
+        return parent::create($row);
+    }
     public function read($conditions = null, $sort = null, $fields = null)
     {
         $data = $this->find($conditions, $sort, $fields);

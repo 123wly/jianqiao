@@ -282,6 +282,7 @@ class spModel {
 	 * @param conditions    数组形式，查找条件，此参数的格式用法与find/findAll的查找条件参数是相同的。
 	 * @param row    数组形式，修改的数据，
 	 *  此参数的格式用法与create的$row是相同的。在符合条件的记录中，将对$row设置的字段的数据进行修改。
+	 *  @@@ 这个字段有漏洞 `字段名`
 	 */
 	public function update($conditions, $row)
 	{
@@ -292,7 +293,7 @@ class spModel {
 			$join = array();
 			foreach( $conditions as $key => $condition ){
 				$condition = $this->escape($condition);
-				$join[] = "{$key} = {$condition}";
+				$join[] = "`{$key}` = {$condition}";
 			}
 			$where = "WHERE ".join(" AND ",$join);
 		}else{
@@ -300,7 +301,7 @@ class spModel {
 		}
 		foreach($row as $key => $value){
 			$value = $this->escape($value);
-			$vals[] = "{$key} = {$value}";
+			$vals[] = "`{$key}` = {$value}";
 		}
 		$values = join(", ",$vals);
 		$sql = "UPDATE {$this->tbl_name} SET {$values} {$where}";
