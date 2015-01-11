@@ -43,8 +43,7 @@ class blog extends top
 	
 	
 	//获取单个博客
-	function getOneBlog(){
-		$bid = (int) $this->spArgs('bid');
+	function getOneBlog($bid){
 		$sql = "SELECT b. * , k.id AS likeid  ,m.username,m.domain
 				FROM `".DBPRE."blog` AS b LEFT JOIN `".DBPRE."likes` AS k ON ( b.bid = k.bid AND k.uid ='$this->uid' )
 				LEFT JOIN `".DBPRE."member`  as m on b.uid = m.uid where b.open in (1,-2) and b.bid = '$bid'";
@@ -503,6 +502,21 @@ class blog extends top
 		if($split != 1){
 			$d['show_reply'] = 1; //展开评论
 		}
+	}
+
+	function getBolgList($term_id=null){
+		$sql ="select * from ".DBPRE."blog where term_id= '".$term_id."'";
+		$data['blog'] = spClass('db_blog')->findSql($sql);
+		//$test = spClass('db_blog')->dumpSql($sql);
+		// $data['blog'] = spClass('db_blog')->spPager($this->spArgs('page',1),10)->findSql($sql);
+		// $data['page'] = spClass('db_blog')->spPager()->getPager();
+			
+		foreach($data['blog'] as &$d){
+			$this->foramt_feeds($d,0);
+		}
+        return ($data);
+
+
 	}
 	
 	

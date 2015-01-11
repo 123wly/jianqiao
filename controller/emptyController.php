@@ -6,6 +6,7 @@
 class emptyController extends top
 {
 	public function index(){
-		echo $this->spArgs("aa");
+		$c = $this->spArgs("c");
+		$this->display($c . ".php");
 	}
 }

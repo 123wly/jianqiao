@@ -6,6 +6,9 @@
  * spRun  执行用户代码
  */
 function spRun(){
+	//@@@ 设置root
+	getRoot();
+	///
 	GLOBAL $__controller, $__action;
 	// 对路由进行自动执行相关操作
 	spLaunch("router_prefilter");
@@ -435,3 +438,4 @@ function create_tree($arr,$pid=0) {
     }
     return $ret;
 }
+include './init/functions.php';

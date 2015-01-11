@@ -56,7 +56,7 @@ class spView
             }
         }
         if(substr($tplname, -4, 4) == ".php"){
-            require_once './templet/'.$tplname;
+            require $tplname;
         }else {
             try {
                 $this->displayed = TRUE;

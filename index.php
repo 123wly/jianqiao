@@ -6,6 +6,7 @@
 
 
 define('APP_PATH',dirname(__FILE__));
+define('URL_PATH',$_SERVER['SERVER_NAME'].'/yunbian');
 define('IN_APP',TRUE);
 define('SP_PATH',APP_PATH.'/init');
 define("THEME_NAME",'baoding');
