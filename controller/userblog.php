@@ -43,6 +43,8 @@ class userblog extends top
 		$this->bid = intval($this->spArgs('bid'));
 		//检测是否存在
 		$sql = "SELECT * FROM `".DBPRE."blog` AS b  where b.open = 1 and b.bid = '$bid'";
+		// $test=spClass('db_blog')->find(array('bid'=>$this->bid));
+		// var_dump($test);
 		if(spClass('db_blog')->find(array('bid'=>$this->bid)))
 		{
 			spClass('db_blog')->incrField(array('bid'=>$this->spArgs('bid')), 'hitcount'); 
@@ -50,6 +52,7 @@ class userblog extends top
 		}else{
 			err404('您查看的内容可能已经修改或者删除。');	
 		}
+		
 	}
 	
 	
