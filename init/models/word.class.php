@@ -81,9 +81,8 @@ class yb_word extends basePostModel
         
         if($str){ $where = "`path` not in ($str) and"; } //如果存在 就加限制
         $result = spClass('db_attach')->findAll("$where  uid = {$this->uid} and bid = 0",'','id,path'); //获取到编辑器没有使用的
+        
         //TODO
-        
-        
         
         if(is_array($result))
         {
