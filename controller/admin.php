@@ -1002,6 +1002,12 @@ class admin extends top
         elseif($doAction == "add"){
             $this->termAdd();
         }
+        elseif($doAction == "edit"){
+            $this->termEdit();
+        }
+        elseif($doAction == "update"){
+            $this->termEditPost();
+        }
         else {
             $this->curr_system = ' id="current"';
             $this->curr_systemdisplay = ' id="systemdisplay"';
@@ -1013,6 +1019,31 @@ class admin extends top
             $this->list = $list;
             $this->listTree = create_tree($list);
             $this->display("admin/term.html");
+        }
+    }
+
+    private function termEdit(){
+        $this->curr_system = ' id="current"';
+        $this->curr_systemdisplay = ' id="systemdisplay"';
+        $this->curr_term = 'id="acurrent"';
+
+        $db_term = spClass("db_term")->find(array("id"=>$this->spArgs('id')));
+        $this->term = $db_term;
+        if($db_term['recommend'] == 1){
+            $this->push_true = "checked";
+        }else {
+            $this->push_false = "checked";
+        }
+
+        $this->display("admin/term_edit.html");
+    }
+    private function termEditPost(){
+        $rs = spClass("db_term")->update(array("id"=>$_POST['id']),$_POST);
+        // var_dump(spClass("db_term")->dumpSql());var_dump($_POST);die;
+        if($rs){
+            $this->success('保存成功', spUrl('admin', 'term'));
+        }else {
+            $this->error('保存失败'); 
         }
     }
 

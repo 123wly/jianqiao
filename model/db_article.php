@@ -14,16 +14,5 @@ class db_article extends ybModel
 		$row['uid'] = $_SESSION['uid'];
 		return parent::create($row);
 	}
-
-	public function delarticle($bid){
-	 spClass('db_article')->deleteByPk($bid); //删除日志	
-	}
-
-	// public function list($row){
-	// 	$row['create_time'] = time();
-	// 	$row['uid'] = $_SESSION['uid'];
-	// 	return parent::create($row);
-	// }
- 
 }
 ?>

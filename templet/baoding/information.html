@@ -1,0 +1,125 @@
+{extends file='./templet/baoding/public/layout_zd.html'}
+{block name=content}
+    <div id="content">
+        <div class="toptp">
+            <img src="{$skin_path}images/datbut.png" />
+        </div>
+        <div class="gyjq main">
+            
+            {include_php './templet/baoding/public/lhz.php'}
+
+            <div class="left chz">
+                <h1>剑桥资讯<span>Cambridge News</span></h1>
+                <div class="zxlb">
+                    <div class="tab_title">
+                        <div class="u">
+                            <ul class="scrol">
+                                {foreach $achildNode as $vo}
+                                    {if $vo@index eq 0}
+                                        <li class="selected">{$vo.name}</li>
+                                    {else}
+                                        <li>{$vo.name}</li>
+                                    {/if}
+                                {/foreach}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab_content">
+                        {foreach $content as $key => $vo}
+                            {if $vo@index eq 0}
+                                {$none=''}
+                            {else}
+                                {$none=none}
+                            {/if}
+                            <div class="hui {$none}">
+                                <ul>
+                                    {foreach $vo as $k => $v}
+                                    {if is_numeric($k)}
+                                        <li>
+                                            <span>[{$v.create_time|date_format:'%Y-%m-%d'}]</span>
+                                            <a href="{spUrl c=$v.tpl}">{$v.title}</a>
+                                        </li>
+                                    {/if}
+                                    {/foreach}
+                                </ul>
+                                <p>
+                                    <a href="{spUrl c={$vo.tpl} tid={$key}}">浏览更多相关新闻 > </a>
+                                </p>
+                            </div>
+                        {/foreach}
+                    </div>
+                </div>
+            </div>
+            <div class="right rhz">
+                <h3>幼儿园预约试听</h3>
+                <table>
+                    <tr>
+                        <td class="wenz left">宝宝姓名：</td>
+                        <td class="text left">
+                            <input type="text" value="" name="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="wenz left">联系电话：</td>
+                        <td class="text left">
+                            <input type="text" value="" name="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="wenz left">选择省份：</td>
+                        <td class="text left">
+                            <select name="">
+                                <option>河北省</option>
+                                <option>河北省</option>
+                                <option>河北省</option>
+                                <option>河北省</option>
+                                <option>河北省</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="wenz left">选择区县：</td>
+                        <td class="text left">
+                            <select name="">
+                                <option>河北省</option>
+                                <option>河北省</option>
+                                <option>河北省</option>
+                                <option>河北省</option>
+                                <option>河北省</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="wenz left">选择园所：</td>
+                        <td class="text left">
+                            <select name="">
+                                <option>河北省</option>
+                                <option>河北省</option>
+                                <option>河北省</option>
+                                <option>河北省</option>
+                                <option>河北省</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="wenz left">试听时间：</td>
+                        <td class="text left">
+                            <input type="text" value="" name="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="wenz left">验证码：</td>
+                        <td class="yzm left">
+                            <input class="left" type="text" value="" name="" />
+                            <span class="left"><img src="{$skin_path}images/yanzhenm.jpg" /></span>
+                        </td>
+                    </tr>
+                </table>
+                <p>
+                    <input name="" type="button" value="提交" />
+                </p>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+{/block}

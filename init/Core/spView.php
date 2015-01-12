@@ -55,17 +55,13 @@ class spView
                 $tplname = $theme_path;
             }
         }
-        if(substr($tplname, -4, 4) == ".php"){
-            require $tplname;
-        }else {
-            try {
-                $this->displayed = TRUE;
-                $this->addfuncs();
-                if ($GLOBALS['G_SP']['view']['debugging'] && SP_DEBUG) $this->engine->debugging = TRUE;
-                $this->engine->display($tplname);
-            } catch (Exception $e) {
-                spError($GLOBALS['G_SP']['view']['engine_name'] . ' Error: ' . $e->getMessage());
-            }
+        try {
+            $this->displayed = TRUE;
+            $this->addfuncs();
+            if ($GLOBALS['G_SP']['view']['debugging'] && SP_DEBUG) $this->engine->debugging = TRUE;
+            $this->engine->display($tplname);
+        } catch (Exception $e) {
+            spError($GLOBALS['G_SP']['view']['engine_name'] . ' Error: ' . $e->getMessage());
         }
         
     }
@@ -90,6 +86,7 @@ class spView
      */
     public function __template_spUrl($params)
     {
+        // print_r($params);
         $controller = $GLOBALS['G_SP']["default_controller"];
         $action = $GLOBALS['G_SP']["default_action"];
         $args = array();

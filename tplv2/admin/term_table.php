@@ -70,6 +70,7 @@ function listTreeDump($array,$strList){
         </th>
         <td class="fun_con">
             <a class="f_delete" href="javascript:;" id="del_<?php echo $vo['id']?>" title="删除">删除</a>
+            <a class="" href="<?php echo spUrl('admin','term',array('do'=>'edit','id'=>$vo['id'])); ?>" title="添加封面">添加封面</a>
         </td>
     </tr>
     <?php 
