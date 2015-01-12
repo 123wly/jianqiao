@@ -16,6 +16,7 @@ class term extends top
 		$data= spClass('db_term')->findAll($conditions);
         return ($data);
 	}
+	//获取图片
 	function getSlide($type){
 		$sql ="select * from ".DBPRE."ad_list where auid= '".$type."'";
 		$data=spClass('db_term')->findSql($sql);
