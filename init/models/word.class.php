@@ -79,7 +79,7 @@ class yb_word extends basePostModel
             
         $str = substr($str,0,-1); //去掉逗号
         
-        if($str){ $where = "`path` in ($str) and"; } //如果存在 就加限制
+        if($str){ $where = "`path` not in ($str) and"; } //如果存在 就加限制
         $result = spClass('db_attach')->findAll("$where  uid = {$this->uid} and bid = 0",'','id,path'); //获取到编辑器没有使用的
         //TODO
         
