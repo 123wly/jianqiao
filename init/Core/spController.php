@@ -67,6 +67,7 @@ class spController {
      * @param $url   跳转地址
      */
     public function success($msg, $url = ''){
+
 		$url = empty($url) ? "window.history.back();" : "top.location.href=\"{$url}\";";
 		echo "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><script>function sptips(){alert(\"{$msg}\");{$url}}</script></head><body onload=\"sptips()\"></body></html>";
 		exit;

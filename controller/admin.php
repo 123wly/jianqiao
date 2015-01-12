@@ -1055,7 +1055,13 @@ class admin extends top
         $this->display("admin/article_add.html");
     }
     public function article_save(){
-        var_dump($_POST);
+        $_POST["content"] = $_POST['editorValue'];
+        $rs = spClass("db_article")->create($_POST);
+        if($rs){
+            $this->success("添加成功");
+        }else {
+            $this->error("添加失败");
+        }
     }
 
 }

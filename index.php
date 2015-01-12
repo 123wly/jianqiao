@@ -16,6 +16,6 @@ $spConfig["view"]["config"]["template_dir"] = 'tplv2';
 require(SP_PATH.'/init.php');
 header('Content-type: text/html; charset=utf-8');
 
-
+getRoot();
 spRun();
 ?>
