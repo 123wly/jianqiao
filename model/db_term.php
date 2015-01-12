@@ -26,9 +26,10 @@ class db_term extends ybModel
         }
         return parent::create($row);
     }
-    public function read($conditions = null, $sort = null, $fields = null)
+    public function read($conditions = null)
     {
-        $data = $this->find($conditions, $sort, $fields);
+        $where["id"] = $conditions;
+        $data = $this->find($where);
         $this->data = $data;
         return $this;
     }

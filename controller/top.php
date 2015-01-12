@@ -7,10 +7,11 @@ class top extends spController
 	
 	 // 构造函数，进行全局操作的位置  
      function __construct(){  
-         parent::__construct(); 
-		 global $site_uri;
-         $this->yb = $GLOBALS['YB'] + $GLOBALS['G_SP']['yb'];
-		 $this->url = $site_uri;
+        parent::__construct(); 
+		global $site_uri;
+        $this->yb = $GLOBALS['YB'] + $GLOBALS['G_SP']['yb'];
+		$this->url = $site_uri;
+
      }  
 
 

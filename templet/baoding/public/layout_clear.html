@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>剑桥资讯</title>
+    <link type="text/css" href="{$skin_path}css/baes.css" rel="stylesheet" />
+    <link type="text/css" href="{$skin_path}css/zy.css" rel="stylesheet" />
+    <script language="javascript" src="{$skin_path}js/jquery-1.11.1.min.js"></script>
+    {block name=head}{/block}
+</head>
+
+<body>
+    <div id="header">
+        <div class="main">
+            <div class="left logo">
+                <a href="index.html">
+                    <img src="{$skin_path}images/logo.png" />
+                </a>
+            </div>
+            {include_php './templet/baoding/public/nav.php'} 
+            <div class="clear"></div>
+        </div>
+    </div>
+    {block name=content}{/block}
+    {include_php './templet/baoding/public/foot.php'}
+</body>
+
+</html>
+<script type="text/javascript">
+$(function() {
+    $('.orgin_input').bind({
+        focus: function() {
+            if (this.value == this.defaultValue) {
+                this.value = "";
+            }
+        },
+        blur: function() {
+            if (this.value == "") {
+                this.value = this.defaultValue;
+            }
+        }
+    });
+})
+</script>

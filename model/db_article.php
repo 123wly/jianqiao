@@ -14,6 +14,5 @@ class db_article extends ybModel
 		$row['uid'] = $_SESSION['uid'];
 		return parent::create($row);
 	}
-
 }
 ?>

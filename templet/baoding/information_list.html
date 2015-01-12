@@ -1,0 +1,139 @@
+{extends file='./templet/baoding/public/layout_clear.html'}
+{block name=content}
+    <div id="content">
+        <div class="toptp">
+            <img src="{$skin_path}images/datbut.png" />
+        </div>
+        <div class="gyjq main">
+            
+            {include_php './templet/baoding/public/lhz.php'}
+
+            <div class="left chz">
+                <h1>{$term_info.name}<span>{$term_info.en_name}</span></h1>
+                <div class="zxtw">
+                    {foreach $results as $key => $vo}
+                        <div class="zxtw_hz">
+                            <div class="left hzl">
+                                <img src="{$vo.cover|upload_echo}" />
+                            </div>
+                            <div class="right hzr">
+                                <ul>
+                                    <li>
+                                        <span>[{$vo.create_time|date_format:'%Y-%m-%d'}]</span>
+                                        <a href="">{$vo.title}</a>
+                                    </li>
+                                    <div class="clear"></div>
+                                </ul>
+                                <p>{$vo.brief|msubstr:"0":'100'}</p>
+                                <p class="gengd">
+                                    <a href="">READ MORE</a>
+                                </p>
+                            </div>
+                        </div>
+                    {/foreach}
+
+                </div>
+                <div class="ym">
+                    <ul>
+                        {if $pager}
+                            <!--在当前页不是第一页的时候，显示前页和上一页-->
+                            {if $pager.current_page != $pager.first_page}
+                                <li class="syy">
+                                    <a href="{spUrl c=information_list tid=$tid a=index page=$pager.prev_page}"> < </a>
+                                </li>
+                            {/if}
+                            <!--开始循环页码，同时如果循环到当前页则不显示链接-->
+                            {foreach from=$pager.all_pages item=thepage}
+                                {if $thepage != $pager.current_page}
+                                    <li class="sz">
+                                        <a href="{spUrl c=information_list tid=$tid a=index page=$thepage}">{$thepage}</a>
+                                    </li>
+                                {else}
+                                    <li class="sz hover">
+                                        <a href="javascript:;">{$thepage}</a>
+                                    </li>
+                                {/if}
+                            {/foreach}
+                            <!--在当前页不是最后一页的时候，显示下一页和后页-->
+                            {if $pager.current_page != $pager.last_page}
+                                <li class="syy">
+                                    <a href="{spUrl c=information_list tid=$tid a=index page=$pager.next_page}"> > </a>
+                                </li>
+                            {/if}
+                        {/if}                        
+                    </ul>
+                </div>
+            </div>
+            <div class="right rhz">
+                <h3>幼儿园预约试听</h3>
+                <table>
+                    <tr>
+                        <td class="wenz left">宝宝姓名：</td>
+                        <td class="text left">
+                            <input type="text" value="" name="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="wenz left">联系电话：</td>
+                        <td class="text left">
+                            <input type="text" value="" name="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="wenz left">选择省份：</td>
+                        <td class="text left">
+                            <select name="">
+                                <option>河北省</option>
+                                <option>河北省</option>
+                                <option>河北省</option>
+                                <option>河北省</option>
+                                <option>河北省</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="wenz left">选择区县：</td>
+                        <td class="text left">
+                            <select name="">
+                                <option>河北省</option>
+                                <option>河北省</option>
+                                <option>河北省</option>
+                                <option>河北省</option>
+                                <option>河北省</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="wenz left">选择园所：</td>
+                        <td class="text left">
+                            <select name="">
+                                <option>河北省</option>
+                                <option>河北省</option>
+                                <option>河北省</option>
+                                <option>河北省</option>
+                                <option>河北省</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="wenz left">试听时间：</td>
+                        <td class="text left">
+                            <input type="text" value="" name="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="wenz left">验证码：</td>
+                        <td class="yzm left">
+                            <input class="left" type="text" value="" name="" />
+                            <span class="left"><img src="{$skin_path}images/yanzhenm.jpg" /></span>
+                        </td>
+                    </tr>
+                </table>
+                <p>
+                    <input name="" type="button" value="提交" />
+                </p>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+{/block}
