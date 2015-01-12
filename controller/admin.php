@@ -1046,4 +1046,16 @@ class admin extends top
         $this->display("admin/content_add.html");
     }
 
+    public function article_add(){
+        $this->curr_content_add = ' id="acurrent"';
+        $this->curr_blogdisplay = ' id="blogdisplay"';
+        $this->curr_blog = ' id="current"';
+
+        $this->terms = spClass("db_term")->findAll();
+        $this->display("admin/article_add.html");
+    }
+    public function article_save(){
+        var_dump($_POST);
+    }
+
 }
