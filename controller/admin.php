@@ -949,6 +949,11 @@ class admin extends top
 		spClass('db_sort','th_sort')->get_ids();
 		$this->sort = spClass('db_sort','th_sort')->get_f_sort();
 		$this->son = spClass('db_sort','th_sort');
+
+        $this->curr_sort = ' id="acurrent"';
+        $this->curr_blogdisplay = ' id="blogdisplay"';
+        $this->curr_blog = ' id="current"';
+
 		$this->display('admin/sort.html');
 	}
 	function banner()
@@ -1093,6 +1098,64 @@ class admin extends top
         }else {
             $this->error("添加失败");
         }
+    }
+
+
+    //
+    public function article_edit(){
+
+        $this->article = spClass('db_article')->find(array('id'=>$_GET['id']));
+    
+        $this->terms   = spClass('db_term')->findAll();
+        $this->root    = __ROOT__;
+
+        $this->display("admin/article_edit.html");
+    }
+
+
+
+    public function article_update(){
+
+        $rs = spClass("db_article")->update(array( 'id' => $_POST['id'] ), $_POST);
+
+        if($rs){
+            $this->success("修改成功",spUrl('admin','article_list'));
+        }else {
+            $this->error("修改失败");
+        }
+    }
+
+
+    //@@@内容列表---
+    public function article_list() {
+        //搜素功能
+        if($this->spArgs('submit')){
+            $title  = $this->spArgs('title');
+            $niname = $this->spArgs('niname');
+            $where  = "title like '%$title%'";
+
+            if($niname){
+                $where .= " and uid = '$niname'";
+            }
+        }
+        //end
+        
+        $uid = $_SESSION['uid'];
+
+        $this->article_list = spClass('db_article')->spLinker()->spPager($this->spArgs('page', 1), 20)->findAll($where, 'id asc');
+        if($this->spArgs('submit')){
+            $this->pager = spClass('db_article')->spPager()->pagerHtml('admin', 'article', array('title' => $title, 'niname' => $niname, 'submit' => $this->spArgs('submit')));
+        }else{
+            $this->pager = spClass('db_article')->spPager()->pagerHtml('admin', 'article_list');
+        }
+        
+        //左侧菜单显示
+        $this->curr_content_list = ' id="acurrent"';
+        $this->curr_blogdisplay = ' id="blogdisplay"';
+        $this->curr_blog = ' id="current"';
+        //end
+
+        $this->display('admin/article_list.html');
     }
 
 }
