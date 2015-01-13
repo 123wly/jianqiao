@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2015-01-12 18:32:12
+Date: 2015-01-13 17:49:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -79,19 +79,23 @@ CREATE TABLE `wh_article` (
   `brief` varchar(255) DEFAULT NULL,
   `term_id` int(11) DEFAULT NULL,
   `tpl` varchar(255) DEFAULT NULL,
+  `from` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wh_article
 -- ----------------------------
-INSERT INTO `wh_article` VALUES ('8', '剑桥新闻1', '<p>剑桥新闻1剑桥新闻1剑桥新闻1剑桥新闻1剑桥新闻1剑桥新闻1剑桥新闻1</p>', '1421037248', null, '54b34ebf8bb39ggt1.png', '1', '剑桥新闻1剑桥新闻1剑桥新闻1剑桥新闻1', '31', 'aaa');
-INSERT INTO `wh_article` VALUES ('9', '剑桥新闻2', '<p>剑桥新闻2剑桥新闻2剑桥新闻2剑桥新闻2剑桥新闻2<br/></p>', '1421037317', null, '54b34f044e9fdtfrfgf.jpg', '1', '剑桥新闻2剑桥新闻2剑桥新闻2剑桥新闻2', '31', 'aaa');
-INSERT INTO `wh_article` VALUES ('10', '剑桥新闻2', '<p>剑桥新闻2剑桥新闻2剑桥新闻2剑桥新闻2剑桥新闻2</p>', '1421037327', null, '54b34f0e6e86etfrfgf.jpg', '1', '剑桥新闻2剑桥新闻2剑桥新闻2剑桥新闻2', '31', 'aaa');
-INSERT INTO `wh_article` VALUES ('11', '教育一', '<p>教育一</p>', '1421042690', null, '54b3640120339datd.png', '1', '教育一', '4', 'aaa');
-INSERT INTO `wh_article` VALUES ('12', '教育2', '<p>教育2教育2</p>', '1421042707', null, '54b36411f3ccddatd.png', '1', '教育2教育2', '4', 'aaa');
-INSERT INTO `wh_article` VALUES ('13', '教育3', '<p>教育3教育3</p>', '1421042726', null, '54b3642578109datd.png', '1', '教育3教育3教育3', '4', 'aaa');
-INSERT INTO `wh_article` VALUES ('14', '教育4', '<p>教育4教育4</p>', '1421042742', null, '54b364359767bdatd.png', '1', '教育4教育4', '4', 'aaa');
+INSERT INTO `wh_article` VALUES ('8', '剑桥新闻1', '<p>我是宸宝妈妈，我是一位每天往返10公里送孩子上幼儿园的妈妈，我参加了宸宝幼儿园的家长志愿周，这是我在伊顿幼儿园一天的感受：</p>\r\n\r\n                    <p style=\"text-indent: 0em;\">早晨7：00</p>\r\n                    <p style=\"color: #444444;font-size: 16px;line-height: 26px;padding-top: 0px;\">宸宝睁开眼睛第一句话：“妈妈，今天你去班里给我当老师吗？”我低声说：“是的，宝贝儿。”虽然我的语气中带着坚定。但是内心却忐忑不安，因为我不知道今天我能否胜任这个角色。</p>\r\n\r\n                    <p style=\"text-indent: 0em;\">早晨8：00</p>\r\n                    <p style=\"color: #444444;font-size: 16px;line-height: 26px;padding-top: 5px;\">伊顿慧智双语幼儿园——济南大地锐城校园\r\n                        <br /> 早上好，爷爷。宸宝一进幼儿园的门口就大声的给幼儿园保安打招呼。保安叔叔也回应宸宝，你好小朋友。这简单的称呼一下拉近了人与人之间的距离，在孩子的眼里没有职务级别之分，只有尊重……这一点其实是我一直很看重的。\r\n                    </p>\r\n                    <p style=\"text-align:center;\">\r\n                    </p>\r\n                    <p>进入幼儿园大厅，就听到good morning宸宝，路老师带着满脸的微笑给宸宝打招呼，宸宝大声的回应，good morning路老师，然后接受幼儿园校医的晨检，这里说明一下，晨检是每位儿童到幼儿园的第一项工作。老师检查孩子的嗓子，双手，体温。如果都是正常就会发一个小绿牌示意这是健康宝宝，如果嗓子有点红，或者最近有过发烧，就发给小朋友一个黄色牌，示意班里老师要注意这个小朋友，多观察，多给喝水……在这点上我觉得伊顿做的特别好。</p>\r\n\r\n                    <p>宸宝领着绿牌准备上楼，这时候有位别的班老师喊宸宝早，宸宝也兴奋的跟老师打招呼，我很诧异，因为平时我不接送宸宝不认识那位老师，不知道老师姓啥，所以只能微笑，这位老师说，我可喜欢宸宝了，见了就逗他。哈，我这内心小激动了一下，这臭小子还挺有人缘的。</p>', '1421037248', null, '54b34ebf8bb39ggt1.png', '1', '剑桥新闻1剑桥新闻1剑桥新闻1剑桥新闻1', '31', 'information_zd', '剑桥新世纪幼q园');
+INSERT INTO `wh_article` VALUES ('9', '剑桥新闻2', '<p>剑桥新闻2剑桥新闻2剑桥新闻2剑桥新闻2剑桥新闻2<br/></p>', '1421037317', null, '54b34f044e9fdtfrfgf.jpg', '1', '剑桥新闻2剑桥新闻2剑桥新闻2剑桥新闻2', '31', 'information_zd', '剑桥新世纪幼q园1');
+INSERT INTO `wh_article` VALUES ('10', '剑桥新闻3', '<p>剑桥新闻2剑桥新闻2剑桥新闻2剑桥新闻2剑桥新闻2</p>', '1421037327', null, '54b34f0e6e86etfrfgf.jpg', '1', '剑桥新闻2剑桥新闻2剑桥新闻2剑桥新闻2', '31', 'information_zd', '剑桥新世纪幼q园2');
+INSERT INTO `wh_article` VALUES ('11', '教育一', '<p>教育一</p>', '1421042690', null, '54b3640120339datd.png', '1', '教育一', '4', 'information_zd', null);
+INSERT INTO `wh_article` VALUES ('12', '教育2', '<p>教育2教育2</p>', '1421042707', null, '54b36411f3ccddatd.png', '1', '教育2教育2', '4', 'information_zd', null);
+INSERT INTO `wh_article` VALUES ('13', '教育3', '<p>教育3教育3</p>', '1421042726', null, '54b3642578109datd.png', '1', '教育3教育3教育3', '4', 'information_zd', null);
+INSERT INTO `wh_article` VALUES ('14', '教育4', '<p>教育4教育4</p>', '1421042742', null, '54b364359767bdatd.png', '1', '教育4教育4', '4', 'information_zd', null);
+INSERT INTO `wh_article` VALUES ('15', '剑桥简介', '<p>保定剑桥幼儿园隶属于保定剑桥教育集团，自2002年成立至今，现拥有近30所幼儿园。在“以生态式教育，培养完整儿童”的教育理念的指引下，兼顾国际视野与中国文化传统，为每一个孩子量身定制最适合自身的学习方法，致力于培养具有“中国灵魂、世界眼光、科学品格、健康心格、强壮体格”的健康、快乐、有爱、创新的世界小公民。</p><p>集团旗下的近30所幼儿园，建筑面积在1500㎡-5500㎡之间，注重自然生态和人文生态的有机结合，让孩子在自然、环保的环境中自由发展，感受生命成长的过程。宽敞、平整的活动场地，先进的设施设备，各类专用室及丰富的教玩具、活动器械，充分满足了幼儿活动的需求；密布的竹林，别具一格；水车沙池，相映成趣；种植养殖区更是培养幼儿动手能力、观察能力的好去处……洁净宽敞、绿色生态、温馨优美的园所环境，自由、平等、和谐的人文氛围，筑就了全体师生学习成长的乐园。</p><p>集团立足“优质资源均衡” 的高度，力求从集团化管理模式、教师队伍培养、办学特色等方面多管齐下，以丰厚的教育底蕴、一流的教学质量、优质的教师队伍以及人性化的园舍环境，为孩子们营造了一个又一个张扬个性、开启智慧的乐园，每一个幼儿园都彰显出独特的风景。集团坚持以孩子发展为本、教研与科研结合，真正实现集团化办园朝着优质、均衡</p><p><br/></p>', '1421114653', null, '', '1', '剑桥简介剑桥简介剑桥简介剑桥简介剑桥简介', '10', null, null);
+INSERT INTO `wh_article` VALUES ('16', '联系我们', '<h5>保定剑桥幼儿园</h5><ul class=\" list-paddingleft-2\"><li>总部地址：保定市高开区盛兴中路369号</li><li>联系电话：0312-3122001</li><li>邮 &nbsp; &nbsp; &nbsp;编：071000</li><li>e-mali：54974514@qq.com</li></ul><iframe class=\"ueditor_baidumap\" src=\"http://localhost/yunbian/statics/ueditor/dialogs/map/show.html#center=115.501866,38.884406&zoom=16&width=530&height=340&markers=115.499099,38.883844&markerStyles=l,A\" frameborder=\"0\" height=\"344\" width=\"534\"></iframe>', '1421116007', '', '', '1', '', '14', '', null);
+INSERT INTO `wh_article` VALUES ('17', '办学理念', '<p style=\"text-indent:inherit;\"><span style=\"display:block; color:#2d9cb5; font-size:18px;\">办学理念</span>\r\n            以生态式教育，培养完整儿童</p>\r\n            \r\n            <p style=\"text-indent:inherit;\"><span style=\"display:block; color:#2d9cb5; font-size:18px;\">教育方式</span>\r\n            剑桥关注每一个孩子，剑桥深爱每一个孩子，剑桥不让任何孩子落伍</p>\r\n            \r\n            <p style=\"text-indent:inherit;\"><span style=\"display:block; color:#2d9cb5; font-size:18px;\">培养目标</span>\r\n            幼儿培养目标：健康活泼、文明友善、聪明好学、自信大方。<br />\r\n            健康活泼：身心得到良好发展，学会自立、学会交往、学会生存。<br />\r\n            文明友善：懂得爱护自己、爱护别人、爱护环境，懂得与人和谐相处。<br />\r\n            聪明好学：喜欢探究、喜欢学习、积极动手动脑、心灵手巧。<br />\r\n            勇敢自信：具有良好的个性品质，会面对困难，有初步责任感。</p>\r\n            \r\n            <p style=\"text-indent:inherit;\"><span style=\"display:block; color:#2d9cb5; font-size:18px;\">发展规划</span>\r\n            立足长远，跨越发展，打造精品，创建名园</p>', '1421116007', null, null, '1', null, '11', null, null);
 
 -- ----------------------------
 -- Table structure for `wh_attachments`
@@ -108,13 +112,14 @@ CREATE TABLE `wh_attachments` (
   `time` int(10) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `bid` (`bid`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COMMENT='附件表';
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COMMENT='附件表';
 
 -- ----------------------------
 -- Records of wh_attachments
 -- ----------------------------
 INSERT INTO `wh_attachments` VALUES ('28', '0', 'attachs/tmp/0548086896.png', 'BaiduShurufa_2015-1-10_15-4-31.png', '706', 'png', '2', '1420955288');
 INSERT INTO `wh_attachments` VALUES ('29', '0', 'attachs/tmp/0548129751.png', 'BaiduShurufa_2015-1-11_13-10-55.png', '5840', 'png', '2', '1420955292');
+INSERT INTO `wh_attachments` VALUES ('30', '26', 'attachs/15/1/13/26/0821059088.png', '', '687884', 'png', '1', '1421137265');
 
 -- ----------------------------
 -- Table structure for `wh_blog`
@@ -140,12 +145,14 @@ CREATE TABLE `wh_blog` (
   KEY `uid` (`uid`),
   KEY `top` (`top`),
   KEY `open` (`open`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wh_blog
 -- ----------------------------
 INSERT INTO `wh_blog` VALUES ('24', '2', '0', '1', '', 'asdf', '[attribute]a:2:{i:0;s:28:\"attachs/15/1/11/24/t_0539041582.png\";i:1;s:28:\"attachs/15/1/11/24/t_0539098306.png\";}[/attribute]asdf<a href=\"attachs/15/1/11/24/0539041582.png\"><img src=\"attachs/15/1/11/24/t_0539041582.png\" class=\"feedimg\" alt=\"\" /></a><a href=\"attachs/15/1/11/24/0539098306.png\"><img src=\"attachs/15/1/11/24/t_0539098306.png\" class=\"feedimg\" alt=\"\" /></a>', '1', '1', '0', '0', '0', '1420954751', null);
+INSERT INTO `wh_blog` VALUES ('25', '1', '0', '1', '', '啊三扥阿桑扥', '[attribute]a:0:{}[/attribute]三扥阿瑟', '1', '0', '0', '0', '0', '1421137254', null);
+INSERT INTO `wh_blog` VALUES ('26', '1', '0', '3', '', 'zxczxcv', '[attribute]a:2:{s:5:\"count\";i:1;s:3:\"img\";a:1:{i:0;a:2:{s:3:\"url\";s:28:\"attachs/15/1/13/26/t_0821059088.png\";s:4:\"desc\";s:0:\"\";}}}[/attribute]zxcvzxcv', '1', '1', '0', '0', '0', '1421137268', null);
 
 -- ----------------------------
 -- Table structure for `wh_cache`
@@ -163,8 +170,7 @@ CREATE TABLE `wh_cache` (
 INSERT INTO `wh_cache` VALUES ('ybconfig', '1720680584s:1256:\"a:26:{s:11:\"addimg_type\";s:16:\"jpg|png|jpge|bmp\";s:13:\"addimg_upsize\";s:7:\"2097152\";s:9:\"guestMode\";s:1:\"0\";s:14:\"hotuser_switch\";s:1:\"1\";s:12:\"invite_count\";s:1:\"5\";s:17:\"invite_expiration\";s:2:\"10\";s:13:\"invite_switch\";s:1:\"0\";s:11:\"keep_domain\";s:230:\"www,yunbian,bbs,music,map,index,register,login,tag,now,admin,recommend,discovery,myfollow,mypost,mylikes,myreplays,mynotices,edit,logout,home,gomember,location,showinfo,about,copyright,call,service,privacy,custom,read,pm,user,site\";s:10:\"keep_email\";s:13:\"admin,yunbian\";s:11:\"keep_niname\";s:68:\"yunbian,admin,administrator,master,webmaster,email,username,password\";s:8:\"keep_rep\";s:19:\"操你妈,艹你妈\";s:15:\"loginCodeSwitch\";s:1:\"1\";s:13:\"recomm_switch\";s:1:\"0\";s:13:\"regCodeSwitch\";s:1:\"1\";s:12:\"show_ajax_to\";s:1:\"4\";s:14:\"show_page_mode\";s:1:\"0\";s:13:\"show_page_num\";s:2:\"10\";s:10:\"site_count\";s:0:\"\";s:9:\"site_desc\";s:36:\"又一个云边轻博客系统诞生\";s:12:\"site_keyword\";s:82:\"云边,yunbian,PHP,MYSQL,轻博客,开源,轻博,qing,开源轻博,开源轻博客\";s:10:\"site_title\";s:12:\"网站标题\";s:13:\"site_titlepre\";s:15:\"网站副标题\";s:12:\"theme_upload\";s:1:\"1\";s:16:\"theme_uploadsize\";s:7:\"1048576\";s:16:\"theme_uploadtype\";s:11:\"jpg,png,gif\";s:13:\"wizard_switch\";s:1:\"0\";}\";');
 INSERT INTO `wh_cache` VALUES ('ybmodel', '1720682135s:1857:\"a:2:{s:5:\"model\";a:5:{i:0;s:1:\"1\";i:1;s:1:\"2\";i:2;s:1:\"3\";i:3;s:1:\"4\";i:4;s:1:\"6\";}s:4:\"data\";a:5:{i:1;a:10:{s:2:\"id\";s:1:\"1\";s:4:\"icon\";s:4:\"text\";s:4:\"name\";s:6:\"文字\";s:9:\"modelfile\";s:14:\"word.class.php\";s:6:\"status\";s:1:\"1\";s:5:\"mdesc\";s:12:\"发布文字\";s:7:\"version\";s:3:\"1.0\";s:6:\"author\";s:6:\"SYSTEM\";s:7:\"feedtpl\";s:0:\"\";s:3:\"cfg\";s:143:\"imguplod--1--是否开启图片上传\nimguploadsize--2048--图片上传尺寸不设置取全局\nimagetype--jpg|jpge|png|gif--图片上传类型\";}i:2;a:10:{s:2:\"id\";s:1:\"2\";s:4:\"icon\";s:5:\"music\";s:4:\"name\";s:6:\"音乐\";s:9:\"modelfile\";s:15:\"music.class.php\";s:6:\"status\";s:1:\"1\";s:5:\"mdesc\";s:12:\"发布音乐\";s:7:\"version\";s:3:\"1.0\";s:6:\"author\";s:6:\"SYSTEM\";s:7:\"feedtpl\";s:0:\"\";s:3:\"cfg\";s:182:\"enableurl--1--是否开启引用地址发布\r\nenableupload--1--是否开启上传发布\r\nuploadsize--5000--允许长传大小(KB)\r\nuploadtype--mp3|wma|mid|midi--允许上传的类型\";}i:3;a:10:{s:2:\"id\";s:1:\"3\";s:4:\"icon\";s:5:\"photo\";s:4:\"name\";s:6:\"图片\";s:9:\"modelfile\";s:15:\"photo.class.php\";s:6:\"status\";s:1:\"1\";s:5:\"mdesc\";s:12:\"发布图片\";s:7:\"version\";s:3:\"1.0\";s:6:\"author\";s:6:\"SYSTEM\";s:7:\"feedtpl\";s:0:\"\";s:3:\"cfg\";s:113:\"imagetype--jpg|jpge|png|gif--上传类型\nimagesize--20480--上传大小\nimagecount--20--每次最大上传数量\";}i:4;a:10:{s:2:\"id\";s:1:\"4\";s:4:\"icon\";s:5:\"video\";s:4:\"name\";s:6:\"视频\";s:9:\"modelfile\";s:15:\"video.class.php\";s:6:\"status\";s:1:\"1\";s:5:\"mdesc\";s:12:\"发布视频\";s:7:\"version\";s:3:\"1.0\";s:6:\"author\";s:6:\"SYSTEM\";s:7:\"feedtpl\";s:0:\"\";s:3:\"cfg\";s:0:\"\";}i:6;a:10:{s:2:\"id\";s:1:\"6\";s:4:\"icon\";s:5:\"movie\";s:4:\"name\";s:6:\"电影\";s:9:\"modelfile\";s:15:\"movie.class.php\";s:6:\"status\";s:1:\"1\";s:5:\"mdesc\";s:12:\"发布电影\";s:7:\"version\";s:3:\"1.0\";s:6:\"author\";s:6:\"SYSTEM\";s:7:\"feedtpl\";s:0:\"\";s:3:\"cfg\";s:38:\"enableurl--1--是否开启解析功能\";}}}\";');
 INSERT INTO `wh_cache` VALUES ('custompageCate', '1720680584s:888:\"a:5:{i:0;a:6:{s:2:\"id\";s:1:\"1\";s:4:\"tags\";s:5:\"about\";s:5:\"title\";s:12:\"关于我们\";s:7:\"keyword\";s:12:\"关于我们\";s:11:\"description\";s:12:\"关于我们\";s:6:\"orders\";s:1:\"1\";}i:1;a:6:{s:2:\"id\";s:1:\"2\";s:4:\"tags\";s:4:\"help\";s:5:\"title\";s:12:\"使用帮助\";s:7:\"keyword\";s:12:\"使用帮助\";s:11:\"description\";s:12:\"使用帮助\";s:6:\"orders\";s:1:\"2\";}i:2;a:6:{s:2:\"id\";s:1:\"3\";s:4:\"tags\";s:4:\"call\";s:5:\"title\";s:12:\"联系我们\";s:7:\"keyword\";s:12:\"联系我们\";s:11:\"description\";s:12:\"联系我们\";s:6:\"orders\";s:1:\"3\";}i:3;a:6:{s:2:\"id\";s:1:\"4\";s:4:\"tags\";s:7:\"service\";s:5:\"title\";s:12:\"服务条款\";s:7:\"keyword\";s:12:\"服务条款\";s:11:\"description\";s:12:\"服务条款\";s:6:\"orders\";s:1:\"4\";}i:4;a:6:{s:2:\"id\";s:1:\"5\";s:4:\"tags\";s:7:\"privacy\";s:5:\"title\";s:12:\"隐私政策\";s:7:\"keyword\";s:12:\"隐私政策\";s:11:\"description\";s:12:\"隐私政策\";s:6:\"orders\";s:1:\"5\";}}\";');
-INSERT INTO `wh_cache` VALUES ('recommend_shuffle_3', '1421038213s:325:\"a:1:{i:0;a:7:{s:3:\"bid\";s:2:\"15\";s:3:\"uid\";s:1:\"2\";s:3:\"img\";s:35:\"attachs/15/1/11/15/t_0424349877.png\";s:8:\"username\";s:3:\"aaa\";s:5:\"h_url\";s:55:\"/yunbian/index.php?c=userblog&a=index&domain=home&uid=2\";s:5:\"h_img\";s:36:\"/yunbian/avatar.php?uid=2&size=small\";s:5:\"b_url\";s:43:\"/yunbian/index.php?c=userblog&a=show&bid=15\";}}\";');
-INSERT INTO `wh_cache` VALUES ('findeUserTag_1', '1420855833s:4:\"b:0;\";');
+INSERT INTO `wh_cache` VALUES ('findeUserTag_1', '1421223668s:4:\"b:0;\";');
 INSERT INTO `wh_cache` VALUES ('systag', '1720682140s:2504:\"a:26:{i:0;a:4:{s:3:\"cid\";s:1:\"1\";s:8:\"catename\";s:6:\"艺术\";s:4:\"sort\";s:1:\"1\";s:4:\"used\";s:1:\"0\";}i:1;a:4:{s:3:\"cid\";s:1:\"2\";s:8:\"catename\";s:6:\"时尚\";s:4:\"sort\";s:1:\"2\";s:4:\"used\";s:1:\"0\";}i:2;a:4:{s:3:\"cid\";s:1:\"3\";s:8:\"catename\";s:6:\"音乐\";s:4:\"sort\";s:1:\"3\";s:4:\"used\";s:1:\"0\";}i:3;a:4:{s:3:\"cid\";s:1:\"4\";s:8:\"catename\";s:6:\"摄影\";s:4:\"sort\";s:1:\"4\";s:4:\"used\";s:1:\"0\";}i:4;a:4:{s:3:\"cid\";s:1:\"5\";s:8:\"catename\";s:6:\"阅读\";s:4:\"sort\";s:1:\"5\";s:4:\"used\";s:1:\"0\";}i:5;a:4:{s:3:\"cid\";s:1:\"6\";s:8:\"catename\";s:6:\"动漫\";s:4:\"sort\";s:1:\"6\";s:4:\"used\";s:1:\"0\";}i:6;a:4:{s:3:\"cid\";s:1:\"7\";s:8:\"catename\";s:6:\"游戏\";s:4:\"sort\";s:1:\"7\";s:4:\"used\";s:1:\"0\";}i:7;a:4:{s:3:\"cid\";s:1:\"8\";s:8:\"catename\";s:6:\"随笔\";s:4:\"sort\";s:1:\"8\";s:4:\"used\";s:1:\"0\";}i:8;a:4:{s:3:\"cid\";s:1:\"9\";s:8:\"catename\";s:6:\"插画\";s:4:\"sort\";s:1:\"9\";s:4:\"used\";s:1:\"0\";}i:9;a:4:{s:3:\"cid\";s:2:\"10\";s:8:\"catename\";s:6:\"设计\";s:4:\"sort\";s:2:\"10\";s:4:\"used\";s:1:\"0\";}i:10;a:4:{s:3:\"cid\";s:2:\"11\";s:8:\"catename\";s:6:\"建筑\";s:4:\"sort\";s:2:\"11\";s:4:\"used\";s:1:\"0\";}i:11;a:4:{s:3:\"cid\";s:2:\"12\";s:8:\"catename\";s:6:\"创意\";s:4:\"sort\";s:2:\"12\";s:4:\"used\";s:1:\"0\";}i:12;a:4:{s:3:\"cid\";s:2:\"13\";s:8:\"catename\";s:6:\"猎图\";s:4:\"sort\";s:2:\"13\";s:4:\"used\";s:1:\"0\";}i:13;a:4:{s:3:\"cid\";s:2:\"14\";s:8:\"catename\";s:6:\"宠物\";s:4:\"sort\";s:2:\"14\";s:4:\"used\";s:1:\"0\";}i:14;a:4:{s:3:\"cid\";s:2:\"15\";s:8:\"catename\";s:6:\"汽车\";s:4:\"sort\";s:2:\"15\";s:4:\"used\";s:1:\"0\";}i:15;a:4:{s:3:\"cid\";s:2:\"16\";s:8:\"catename\";s:6:\"家居\";s:4:\"sort\";s:2:\"16\";s:4:\"used\";s:1:\"0\";}i:16;a:4:{s:3:\"cid\";s:2:\"17\";s:8:\"catename\";s:9:\"互联网\";s:4:\"sort\";s:2:\"17\";s:4:\"used\";s:1:\"0\";}i:17;a:4:{s:3:\"cid\";s:2:\"18\";s:8:\"catename\";s:6:\"旅行\";s:4:\"sort\";s:2:\"18\";s:4:\"used\";s:1:\"0\";}i:18;a:4:{s:3:\"cid\";s:2:\"19\";s:8:\"catename\";s:6:\"数码\";s:4:\"sort\";s:2:\"19\";s:4:\"used\";s:1:\"0\";}i:19;a:4:{s:3:\"cid\";s:2:\"20\";s:8:\"catename\";s:6:\"影视\";s:4:\"sort\";s:2:\"20\";s:4:\"used\";s:1:\"0\";}i:20;a:4:{s:3:\"cid\";s:2:\"21\";s:8:\"catename\";s:6:\"美食\";s:4:\"sort\";s:2:\"21\";s:4:\"used\";s:1:\"0\";}i:21;a:4:{s:3:\"cid\";s:2:\"22\";s:8:\"catename\";s:6:\"恋物\";s:4:\"sort\";s:2:\"22\";s:4:\"used\";s:1:\"0\";}i:22;a:4:{s:3:\"cid\";s:2:\"23\";s:8:\"catename\";s:6:\"趣味\";s:4:\"sort\";s:2:\"23\";s:4:\"used\";s:1:\"0\";}i:23;a:4:{s:3:\"cid\";s:2:\"24\";s:8:\"catename\";s:6:\"科学\";s:4:\"sort\";s:2:\"24\";s:4:\"used\";s:1:\"0\";}i:24;a:4:{s:3:\"cid\";s:2:\"25\";s:8:\"catename\";s:6:\"军事\";s:4:\"sort\";s:2:\"25\";s:4:\"used\";s:1:\"0\";}i:25;a:4:{s:3:\"cid\";s:2:\"26\";s:8:\"catename\";s:6:\"体育\";s:4:\"sort\";s:2:\"26\";s:4:\"used\";s:1:\"0\";}}\";');
 INSERT INTO `wh_cache` VALUES ('adunit', '1721036981s:1408:\"a:7:{i:1;a:7:{s:2:\"id\";s:1:\"1\";s:5:\"title\";s:24:\"首页右侧底部广告\";s:5:\"adesc\";s:24:\"首页右侧底部广告\";s:3:\"img\";s:5:\"1.jpg\";s:6:\"orders\";s:1:\"1\";s:6:\"system\";s:1:\"1\";s:7:\"is_show\";s:1:\"0\";}i:2;a:7:{s:2:\"id\";s:1:\"2\";s:5:\"title\";s:21:\"首页顶部广告位\";s:5:\"adesc\";s:21:\"首页顶部广告位\";s:3:\"img\";s:5:\"2.jpg\";s:6:\"orders\";s:1:\"2\";s:6:\"system\";s:1:\"1\";s:7:\"is_show\";s:1:\"0\";}i:3;a:7:{s:2:\"id\";s:1:\"3\";s:5:\"title\";s:21:\"发现频道广告位\";s:5:\"adesc\";s:21:\"发现频道广告位\";s:3:\"img\";s:5:\"3.jpg\";s:6:\"orders\";s:1:\"4\";s:6:\"system\";s:1:\"1\";s:7:\"is_show\";s:1:\"0\";}i:4;a:7:{s:2:\"id\";s:1:\"4\";s:5:\"title\";s:27:\"推荐频道顶部广告位\";s:5:\"adesc\";s:27:\"推荐频道顶部广告位\";s:3:\"img\";s:5:\"4.jpg\";s:6:\"orders\";s:1:\"3\";s:6:\"system\";s:1:\"1\";s:7:\"is_show\";s:1:\"0\";}i:5;a:7:{s:2:\"id\";s:1:\"5\";s:5:\"title\";s:27:\"用户主页右侧广告位\";s:5:\"adesc\";s:27:\"用户主页右侧广告位\";s:3:\"img\";s:5:\"5.jpg\";s:6:\"orders\";s:1:\"5\";s:6:\"system\";s:1:\"1\";s:7:\"is_show\";s:1:\"0\";}i:6;a:7:{s:2:\"id\";s:1:\"6\";s:5:\"title\";s:30:\"用户主页详情页广告位\";s:5:\"adesc\";s:30:\"用户主页详情页广告位\";s:3:\"img\";s:5:\"6.jpg\";s:6:\"orders\";s:1:\"6\";s:6:\"system\";s:1:\"1\";s:7:\"is_show\";s:1:\"0\";}i:7;a:7:{s:2:\"id\";s:1:\"7\";s:5:\"title\";s:18:\"首页头部导航\";s:5:\"adesc\";s:18:\"首页头部导航\";s:3:\"img\";s:0:\"\";s:6:\"orders\";s:1:\"7\";s:6:\"system\";s:1:\"0\";s:7:\"is_show\";s:1:\"1\";}}\";');
 INSERT INTO `wh_cache` VALUES ('recommend_shuffle_all', '1420856557s:551:\"a:2:{i:0;a:9:{s:3:\"bid\";s:1:\"2\";s:5:\"title\";s:18:\"分享文字标题\";s:4:\"body\";s:30:\"分享文字标题内容内容\";s:4:\"type\";s:1:\"1\";s:3:\"uid\";s:1:\"2\";s:8:\"username\";s:3:\"aaa\";s:5:\"b_url\";s:42:\"/yunbian/index.php?c=userblog&a=show&bid=2\";s:3:\"tag\";s:0:\"\";s:3:\"img\";s:1:\" \";}i:1;a:9:{s:3:\"bid\";s:1:\"1\";s:5:\"title\";s:18:\"分享文字标题\";s:4:\"body\";s:30:\"分享文字标题内容内容\";s:4:\"type\";s:1:\"1\";s:3:\"uid\";s:1:\"1\";s:8:\"username\";s:0:\"\";s:5:\"b_url\";s:42:\"/yunbian/index.php?c=userblog&a=show&bid=1\";s:3:\"tag\";s:0:\"\";s:3:\"img\";s:1:\" \";}}\";');
@@ -173,7 +179,8 @@ INSERT INTO `wh_cache` VALUES ('myfollow_1', '1420773032s:4:\"b:0;\";');
 INSERT INTO `wh_cache` VALUES ('findTagHotUser_d41d8cd98f00b204e9800998ecf8427e', '1420855828s:4:\"b:0;\";');
 INSERT INTO `wh_cache` VALUES ('myfollow_2', '1420957494s:8:\"s:1:\"1\";\";');
 INSERT INTO `wh_cache` VALUES ('findeUserTag_2', '1421041692s:4:\"b:0;\";');
-INSERT INTO `wh_cache` VALUES ('loginUserHot', '1421027943s:370:\"a:1:{i:0;a:12:{s:2:\"id\";s:1:\"1\";s:3:\"bid\";s:1:\"1\";s:3:\"uid\";s:1:\"2\";s:6:\"repuid\";N;s:3:\"msg\";s:4:\"zxcv\";s:4:\"time\";s:10:\"1420770078\";s:8:\"username\";s:3:\"aaa\";s:7:\"blogtag\";a:2:{i:0;s:6:\"艺术\";i:1;s:6:\"时尚\";}s:5:\"u_url\";s:49:\"/yunbian/index.php?c=userblog&a=index&domain=aaaa\";s:5:\"u_img\";s:37:\"/yunbian/avatar.php?uid=2&size=middle\";s:5:\"b_url\";N;s:7:\"b_title\";N;}}\";');
+INSERT INTO `wh_cache` VALUES ('loginUserHot', '1421141444s:374:\"a:1:{i:0;a:12:{s:2:\"id\";s:1:\"1\";s:3:\"bid\";s:1:\"1\";s:3:\"uid\";s:1:\"2\";s:6:\"repuid\";N;s:3:\"msg\";s:4:\"zxcv\";s:4:\"time\";s:10:\"1420770078\";s:8:\"username\";s:3:\"aaa\";s:7:\"blogtag\";a:2:{i:0;s:6:\"艺术\";i:1;s:6:\"时尚\";}s:5:\"u_url\";s:51:\"/yunbianv2/index.php?c=userblog&a=index&domain=aaaa\";s:5:\"u_img\";s:39:\"/yunbianv2/avatar.php?uid=2&size=middle\";s:5:\"b_url\";N;s:7:\"b_title\";N;}}\";');
+INSERT INTO `wh_cache` VALUES ('recommend_shuffle_3', '1421223668s:322:\"a:1:{i:0;a:7:{s:3:\"bid\";s:2:\"26\";s:3:\"uid\";s:1:\"1\";s:3:\"img\";s:35:\"attachs/15/1/13/26/t_0821059088.png\";s:8:\"username\";s:0:\"\";s:5:\"h_url\";s:55:\"/yunbian/index.php?c=userblog&a=index&domain=home&uid=1\";s:5:\"h_img\";s:36:\"/yunbian/avatar.php?uid=1&size=small\";s:5:\"b_url\";s:43:\"/yunbian/index.php?c=userblog&a=show&bid=26\";}}\";');
 
 -- ----------------------------
 -- Table structure for `wh_catetags`
@@ -405,7 +412,7 @@ CREATE TABLE `wh_member` (
 -- ----------------------------
 -- Records of wh_member
 -- ----------------------------
-INSERT INTO `wh_member` VALUES ('1', '1', '1', 'admin@admin.com', '1d6a0266434297b8c2771de4fca12a4a', 'E95I8c', '', '', '火星', null, null, '1', '0', '0', '', '1420680581', '1421024361', '127.0.0.1', '127.0.0.1', '1', '1', '1', null);
+INSERT INTO `wh_member` VALUES ('1', '1', '1', 'admin@admin.com', '1d6a0266434297b8c2771de4fca12a4a', 'E95I8c', 'asdf', '', '火星', null, 'asdfasdf', '3', '0', '0', '', '1420680581', '1421024361', '127.0.0.1', '127.0.0.1', '1', '1', '1', null);
 INSERT INTO `wh_member` VALUES ('2', '1', '1', '1@nihao.com', '804ec9e27f66fb63e5c209e7539d285d', 'M~2Y5q', 'aaa', 'aaaa', '火星', '艺术,时尚', '', '23', '1', '1', '', '1420770068', '1420770281', '127.0.0.1', '127.0.0.1', '1', '1', '1', null);
 
 -- ----------------------------
@@ -681,13 +688,13 @@ CREATE TABLE `wh_term` (
   `tpl` varchar(255) DEFAULT NULL,
   `en_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wh_term
 -- ----------------------------
 INSERT INTO `wh_term` VALUES ('1', '关于剑桥', '0', null, '0', '1', '54b345bdf309btfrfgf.jpg', '关于剑桥关于剑桥', '1', 'sdf', 'about cambridge');
-INSERT INTO `wh_term` VALUES ('2', '剑桥分院', '0', null, '0', '1', null, null, null, null, null);
+INSERT INTO `wh_term` VALUES ('2', '剑桥分院', '0', null, '0', '1', null, null, null, 'park', null);
 INSERT INTO `wh_term` VALUES ('3', '剑桥印象', '0', null, '0', '1', null, null, null, null, null);
 INSERT INTO `wh_term` VALUES ('4', '剑桥教育', '0', null, '0', '1', null, null, null, null, null);
 INSERT INTO `wh_term` VALUES ('5', '剑桥生活', '0', null, '0', '1', '54b34d649573ctfrfgf.jpg', '剑桥生活剑桥生活剑桥生活', null, null, null);
@@ -695,11 +702,11 @@ INSERT INTO `wh_term` VALUES ('6', '家园共育', '0', null, '0', '1', null, nu
 INSERT INTO `wh_term` VALUES ('7', '选择剑桥', '0', '', '0', '1', null, null, null, null, null);
 INSERT INTO `wh_term` VALUES ('8', '加盟剑桥', '0', '', '0', '1', null, null, null, null, null);
 INSERT INTO `wh_term` VALUES ('9', '招聘信息', '0', '', '0', '1', null, null, null, null, null);
-INSERT INTO `wh_term` VALUES ('10', '剑桥简介', '1', null, '0', '1', '54b371c181bcbdatd.png', 'sdfsdf', null, null, null);
-INSERT INTO `wh_term` VALUES ('11', '办学理念', '1', null, '0', '1', null, null, null, null, null);
+INSERT INTO `wh_term` VALUES ('10', '剑桥简介', '1', null, '0', '1', '54b371c181bcbdatd.png', 'sdfsdf', null, 'page', 'Cambridge Introduction');
+INSERT INTO `wh_term` VALUES ('11', '办学理念', '1', null, '0', '1', null, null, null, 'page', 'Educational philosophy');
 INSERT INTO `wh_term` VALUES ('12', '集团文化', '1', null, '0', '1', null, null, null, null, null);
 INSERT INTO `wh_term` VALUES ('13', '剑桥资讯', '1', null, '0', '1', null, null, null, 'information', null);
-INSERT INTO `wh_term` VALUES ('14', '联系剑桥', '1', null, '0', '1', null, null, null, null, null);
+INSERT INTO `wh_term` VALUES ('14', '联系剑桥', '1', null, '0', '1', null, null, null, 'page', 'Contact Cambridge');
 INSERT INTO `wh_term` VALUES ('15', '剑桥设施', '3', null, '0', '1', null, null, null, null, null);
 INSERT INTO `wh_term` VALUES ('16', '放心食堂', '3', null, '0', '1', null, null, null, null, null);
 INSERT INTO `wh_term` VALUES ('17', '魅力教师', '3', null, '0', '1', null, null, null, null, null);
@@ -746,3 +753,4 @@ CREATE TABLE `wh_theme` (
 -- ----------------------------
 -- Records of wh_theme
 -- ----------------------------
+INSERT INTO `wh_theme` VALUES ('1', 'a:10:{s:4:\"user\";N;s:5:\"setup\";N;s:15:\"#header_bg|img1\";s:40:\"/attachs/theme/2015/01/13/1421137324.jpg\";s:28:\"#header_bg|background-repeat\";s:5:\"repet\";s:30:\"#header_bg|background-position\";s:13:\"bottom center\";s:32:\"#header_bg|background-attachment\";s:6:\"scroll\";s:27:\"#header_bg|background-color\";s:7:\"#ffffff\";s:13:\"#sign|display\";s:5:\"block\";s:14:\"#title@a|color\";s:7:\"#7d2f2f\";s:18:\"#box_title@a|color\";s:7:\"#b86969\";}', 'a:1:{s:10:\"page_limit\";s:2:\"14\";}', '\n#header_bg{background:url(/attachs/theme/2015/01/13/1421137324.jpg);}\n#header_bg{background-repeat:repet;}\n#header_bg{background-position:bottom center;}\n#header_bg{background-attachment:scroll;}\n#header_bg{background-color:#ffffff;}\n#sign{display:block;}\n#title a{color:#7d2f2f;}\n#box_title a{color:#b86969;}', '2015/01/13/1421137324.jpg', null, null, null, null);
