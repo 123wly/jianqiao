@@ -37,7 +37,7 @@
                                     {if is_numeric($k)}
                                         <li>
                                             <span>[{$v.create_time|date_format:'%Y-%m-%d'}]</span>
-                                            <a href="{spUrl c=$v.tpl}">{$v.title}</a>
+                                            <a href="{spUrl c=$v.tpl id=$v.id}">{$v.title}</a>
                                         </li>
                                     {/if}
                                     {/foreach}

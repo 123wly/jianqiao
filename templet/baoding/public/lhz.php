@@ -1,4 +1,8 @@
 <?php 
+    if(!isset($_GET['tid']) and isset($_GET['id'])){
+        $rs = spClass("db_article")->find(array("id"=>intval($_GET['id'])), "","term_id");
+        if($rs) $_GET['tid'] = $rs['term_id'];
+    }
     $term   = spClass("db_term")->find(array("id"=>$_GET['tid']));
     $parent = spClass("db_term")->find(array("id"=>$term['parent_id']));
     $childNode = spClass("db_term")->findAll(array("parent_id"=>$parent['id']));

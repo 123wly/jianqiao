@@ -1,0 +1,182 @@
+@charset "utf-8";
+@import url("http://files.cnblogs.com/ariesjia/reset.css");
+.wrapper{width:950px;margin:0 auto;background:#fff;
+border-left:5px #fff solid;
+border-right:5px #fff solid;
+}
+.MainBook{
+background:#eeeeee;
+padding:16px;
+}
+.LeftBook{width:200px;margin-left:10px;float:left;background:;height:550px}
+.CenterBook{background:#eeeeee;margin:0 auto;
+opacity:0.62;filter:alpha(opacity=62);}
+.MagMain{height:520px;display:block;margin:0 auto;width:740px;
+}
+.ContralBook{background:#d0d0d0;
+height:40px;display:block;position:relative;
+z-index:3;text-align:center;line-height:40px;
+padding-left:5px;overflow:hidden;}
+#ViewMag{width:871.5px;
+height:526px;z-index:20;position:absolute;
+left:50%;
+margin-left:-435px;
+margin-top:-263px;
+top:50%;
+overflow:hidden;display:none;
+border:4px black solid;cursor:move;}
+#ViewMag img{width:871.5px;height:1060px;cursor: move;}
+#LeftMag,#RightMag
+{top:30px;position:relative;width:370px;float:left;height:450px;overflow:hidden;}
+#LeftMag {background:url('http://www.cnblogs.com/images/cnblogs_com/ariesjia/es/leftBook.png') no-repeat;}
+#RightMag{background:url('http://www.cnblogs.com/images/cnblogs_com/ariesjia/es/rightBook.png') right top no-repeat;}
+#LeftMag div,#RightMag div{overflow:hidden;width:360px;height:448px;display:block; position:absolute;top:0px;border-top:1px #999999 solid; border-bottom:1px #999999 solid;} 
+#LeftMag div{right:0px;}
+#LeftMag img,#RightMag img{
+width:100%;
+height:100%;
+}
+#LeftMag span,#RightMag span
+{position:absolute;width:15px;height:450px;overflow:hidden; z-index:3;}
+#LeftMag span
+{right:0px;background:url(''http://images.cnblogs.com/cnblogs_com/ariesjia/left.gif') repeat-y; 
+filter: Alpha(Opacity=0,finishOpacity=50,style=1,startY=0,startX=0,finishY=0,finishX=60);}
+#RightMag span
+{left:0px;background:url(''http://images.cnblogs.com/cnblogs_com/ariesjia/right.gif') repeat-y; 
+filter: Alpha(Opacity=90,finishOpacity=0,style=1,startY=0,startX=0,finishY=0,finishX=60);}
+
+
+
+#config
+{
+width:300px;
+height:350px;
+position:absolute;
+left:50%;
+top:50%;
+margin-left:-150px;
+margin-top:-175px;
+background:#000;
+visibility:hidden;
+color:#fff;
+opacity:0.7;filter:alpha(opacity=70);
+z-index:99999999;
+}
+.QQxiaoyou{
+position:absolute;
+left:50%;
+top:50%;
+margin-top:-33px;
+z-index:9999;
+filter: Alpha(Opacity=90,Opacity=100,finishOpacity=90,style=2,startY=0,startX=0,finishY=0,finishX=60);
+overflow:hidden;
+display:block;
+}
+.QQxiaoyou #JTooltipsContent p{
+float:left;color:#000;padding:0 30px 0 40px;
+height:66px;
+line-height:66px;
+display:block;
+text-align:center;
+font-size:18px;
+font-weight:bold;
+font-family:微软雅黑;
+background:url('http://www.cnblogs.com/images/cnblogs_com/ariesjia/bg_load.png') left no-repeat;
+}
+.QQxiaoyou #JTooltipsContent span{
+float:left;display:block;padding:0 0 0 10px;height:66px;background:url('http://www.cnblogs.com/images/cnblogs_com/ariesjia/bg_load.png') right no-repeat;}
+
+
+
+
+
+
+.Myspace .rc-tp, .Myspace .rc-bt {position: relative;display: block;height: 4px;}
+.Myspace .rc-tp span,.Myspace .rc-bt span {width:4px;float:right;height:4px;display:block;}
+.Myspace .rc-tp {margin-bottom: -4px;}
+.Myspace .rc-bt {margin-top:-4px;}
+.Myspace .rc-tp{background-image: url('../images/conner_top_left.gif');background-repeat:no-repeat;}
+.Myspace .rc-tp span{background-image: url('../images/conner_top_right.gif');background-repeat:no-repeat;}
+.Myspace .rc-bt{background-image: url('../images/conner_bottom_left.gif');background-repeat:no-repeat;}
+.Myspace .rc-bt span{background-image: url('../images/conner_bottom_right.gif');background-repeat:no-repeat;}
+
+.Myspace{
+z-index:9999;
+filter: Alpha(Opacity=90,Opacity=100,finishOpacity=90,style=2,startY=0,startX=0,finishY=0,finishX=60);
+overflow:hidden;
+display:block;
+background:#7B7B7B;}
+.Myspace #JTooltipsTitle
+{
+margin:10px 10px 0 10px;
+height:20px;
+background:#88CFE5;
+border-bottom:1px #002737 solid;
+}
+.Myspace #JTooltipsContent {
+margin:0 10px 0 10px;
+padding:25px 10px 25px 10px;
+background:#fff;
+font-family:Helvetica, sans-serif;
+border-bottom:1px #c8c8c8 solid;
+overflow:hidden;
+}
+.Myspace #JTooltipsBottom{
+height:20px;
+margin:0 10px 10px 10px;
+padding:5px 10px 5px 10px;
+background:#eee;
+font-family:Helvetica, sans-serif;
+}
+.Myspace #JTooltipsBottom input
+{
+background:#88CFE5;
+border-bottom:1px #002737 solid;
+border-top:1px #ccc solid;
+border-right:1px #002737 solid;
+border-left:1px #ccc solid;
+margin-left:10px;
+font-size:12px;
+color:#107AA6;
+}
+
+
+
+
+.perGirl{
+z-index:999999999999999999;
+filter: Alpha(Opacity=90,Opacity=100,finishOpacity=90,style=2,startY=0,startX=0,finishY=0,finishX=60);
+overflow:hidden;
+display:block;
+clear: both;
+background:#FEC7FB;
+color:#777;
+line-height:28px;
+border:1px gray solid;
+text-align:center;
+padding:10px;font-weight:bold;}
+.perGirl img{
+height:28px;
+width:28px;
+float:left;
+margin-right:5px;
+}
+.perGirl p{
+float:left;
+height:28px;
+text-align:center;
+line-height:28px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

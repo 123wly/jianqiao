@@ -1,0 +1,18 @@
+{extends file='./templet/baoding/public/layout_clear.html'}
+{block name=content}
+    <div id="content">
+        <div class="toptp">
+            <img src="{$skin_path}images/datbut.png" />
+        </div>
+        <div class="gyjq main">
+            {include_php './templet/baoding/public/lhz.php'}
+            <div class="left chz">
+                <h1>{$termInfo.name}<span>{$termInfo.en_name}</span></h1>
+                {$pageInfo.content}
+            </div>
+            {include_php './templet/baoding/public/shiting.php'}
+        </div>
+    </div>
+{/block}
+
+

@@ -14,5 +14,20 @@ class db_article extends ybModel
 		$row['uid'] = $_SESSION['uid'];
 		return parent::create($row);
 	}
+	public function next($id, $up = false, $tids = array()){
+		$thisArticle = $this->find(array("id"=>$id),"","id,term_id");
+		$whereTid    = "";
+		if(count($tids) > 0){
+			$whereTid = "'".implode("','", $tids)."'";
+		}else {
+			$whereTid = "'".$thisArticle['term_id']."'";
+		}
+		$co    = $up  ? "<" : ">";
+		$order = $up ? "id desc" : "id asc";
+		$id    = intval($id);
+		$where = "`id` " . $co . " '" . $id . "' AND term_id IN (".$whereTid.")";
+		return $this->find($where, $order);
+
+	}
 }
 ?>

@@ -1,0 +1,134 @@
+@charset "UTF-8";
+.wrapper {
+	width: 1200px;
+	margin: 0 auto;
+	position: relative;
+}
+#banner {
+	width: 100%;
+	height: 615px;
+	background: #ffffff;
+	overflow: hidden;
+	position: relative;
+}
+#banner_img {
+	display: block;
+	position: relative;
+}
+#banner_img li {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 615px;
+	background-position: center;
+	background-size: cover;
+	display: none;
+}
+/*ñͼƬ-------ʼ*/
+#banner_img li.item1 {
+	background-image:url(../images/dabeij.png);
+	display: block;
+}
+#banner_img li.item2 {
+	background-image:url(../images/dabeij.png);
+}
+#banner_img li.item3 {
+	background-image:url(../images/dabeij.png);
+}
+#banner_img li.item4 {
+	background-image:url(../images/dabeij.png);
+}
+#banner_img li.item5 {
+	background-image:url(../images/dabeij.png);
+}
+#banner_img li.item6 {
+	background-image:url(../images/dabeij.png);
+}
+#banner_img li.item7 {
+	background-image:url(../images/dabeij.png);
+}
+#banner_img li.item8 {
+	background-image:url(../images/dabeij.png);
+}
+/*ñͼƬ--------*/
+#banner_img .ad_img {
+	position: absolute;
+	right: 130px;
+	top:70px;
+	width: 610px;
+	height: 544px;
+}
+#banner_img .ad_txt {
+	position: absolute;
+	left: 20px;
+	top: 90px;
+	color: #fff;
+	text-shadow: 1px 1px rgba(51,51,51,0.3);
+}
+#banner_img .ad_txt h2 {
+	width:435px;
+	height:150px;
+	_zoom:1;
+	padding-left:80px;
+	overflow:hidden;
+}
+#banner_img .ad_txt h2 span{
+	display:block;
+	float:right;
+}
+#banner_img .ad_txt p{
+	_zoom:1;
+	overflow:hidden;
+	margin:90px 0;
+}
+#banner_img .ad_txt p span{
+	display:block;
+	float:left;
+	padding:5px;
+}
+#banner_img .ad_txt a {
+	display: block;
+	width: 100px;
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	margin-top: 10px;
+	background: #fff;
+	color: #666;
+	text-decoration: none;
+	text-shadow: none;
+}
+#banner_ctr {
+	position: absolute;
+	left: 85%;
+	z-index: 1;
+	top:35%;
+}
+#banner_ctr ul {
+	width: 30px;
+	font-size: 0;
+	line-height: 0;
+	position: relative;
+	float: right;
+}
+#banner_ctr li {
+	display: block;
+	width: 24px;
+	height: 24px;
+	cursor: pointer;
+	margin:10px 0;
+}
+#drag_ctr {
+	position: absolute;
+	top: -14px;
+	left: 20px;
+	width: 115px;
+	height: 156px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	bottom: 170px;
+}
+#drag_arrow {
+}

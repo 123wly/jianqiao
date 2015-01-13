@@ -1,321 +1,82 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>剑桥资讯内容页</title>
-<link type="text/css" href="css/baes.css" rel="stylesheet" />
-<link type="text/css" href="css/zy.css" rel="stylesheet" />
-<script language="javascript" src="js/jquery-1.11.1.min.js"></script>
-</head>
-
-<body>
-<div id="header">
-	<div class="main">
-    	<div class="left logo">
-        	<a href="index.html"><img src="images/logo.png" /></a>
+{extends file='./templet/baoding/public/layout_clear.html'}
+{block name=content}
+    <div id="content">
+        <div class="toptp">
+            <img src="{$skin_path}images/datbut.png" />
         </div>
-        <div class="right rnav">
-        	<div class="sousuo">
-            	<p class="wpd left"><a href="">用户登录</a><a href="">注册</a></p>
-                <p class="sous left">
-                	<input class="text left orgin_input" type="text" value="查找您附近的幼儿园" />
-                    <input class="tij right" type="submit" value="" />
-                </p>
-                <div class="clear"></div>
-            </div>
-            <div class="clear"></div>
-            <div class="nav">
-            	<ul class="jMenu">
-                    <li class="drop-menu-effect shouye"> <a href="" title=""><img src="images/shouye.png" /></a></li> 
-                    <li class="drop-menu-effect hover"> <a href="" title="">关于剑桥</a>
-                        <ul class="submenu">
-                        	<div class="jiant"><img src="images/jiantou.png" /></div>
-                            <div class="left">
-                                <ul>
-                                    <li><a href="">剑桥简介</a></li>
-                                    <li><a href="">办学理念</a></li>
-                                    <li><a href="">剑桥新闻</a></li>
-                                    <li><a href="">通知通告</a></li>
-                                    <li><a href="">联系剑桥</a></li>
-                                </ul>
+        <div class="gyjq main">
+
+            {include_php './templet/baoding/public/lhz.php'}
+            
+            <div class="left chz">
+                <div class="zxnry">
+                    <h2>{$articleInfo.title}</h2>
+                    <div class="textnr">
+                        <p class="left">
+                            <span>时间：{$articleInfo.create_time|date_format:'%Y-%m-%d'}</span>
+                            <span>来源：{$articleInfo.from}</span>
+                        </p>
+                        <ul class="left bdsharebuttonbox">
+                            <li><span>分享 Share：</span>
+                            </li>
+                            <li class="wx">
+                                <!-- <a class="weix1" href="javascript:;"></a> -->
+                            </li>
+                            <li class="qq">
+                                <a class="popup_sqq" data-cmd="sqq" href=""></a>
+                            </li>
+                            <li class="wb">
+                                <a class="bds_tsina" data-cmd="tsina" href=""></a>
+                            </li>
+                            <li class="kj">
+                                <a class="bds_qzone" data-cmd="qzone" href=""></a>
+                            </li>
+                            <div class="clear"></div>
+                            <div id="weixkz1">
+                                <input type="button" onclick="hidd()" value="" style="background:url(images/close.png) no-repeat;" id="dj1" />
+                                <h4>分享到微信朋友圈</h4>
+                                <p class="tp"><img src="images/wx.png" />
+                                </p>
+                                <p class="wnzi">打开微信，点击底部的“发现”，使用“扫一扫”即可将网页分享至朋友圈。</p>
                             </div>
-                            <div class="sxian"></div>
-                            <div class="right">
-                                <img src="images/tfrfgf.jpg" />
-                                <p>保定市剑桥英语学校是1997年5月经教育行政主管部门批准，由社会教育人士赵旭明博士创办的一所新型英语学校。</p>
-                            </div>   
-                        </ul>
-                        <div class="clear"></div>
-                    </li>      
-                    <li class="drop-menu-effect"><a href="" title="">剑桥分园</a>
-                        
-                    </li>
-                    <li class="drop-menu-effect"><a href="" title="">剑桥印象</a>
-                        
-                    </li>
-                    <li class="drop-menu-effect"><a href="" title="">剑桥教育</a></li>
-                    <li class="drop-menu-effect"><a href="" title="">剑桥生活</a>
-                        
-                    </li>
-                    <li class="drop-menu-effect"><a href="" title="">家园共育</a>
-                        
-                    </li>
-                    <li class="drop-menu-effect"><a href="" title="">选择剑桥</a>
-                    	<ul class="submenu">
-                        	<div class="jiant"><img src="images/jiantou.png" /></div>
-                            <div class="left">
-                                <ul>
-                                    <li><a href="">剑桥简介</a></li>
-                                    <li><a href="">办学理念</a></li>
-                                    <li><a href="">剑桥新闻</a></li>
-                                    <li><a href="">通知通告</a></li>
-                                    <li><a href="">联系剑桥</a></li>
-                                </ul>
-                            </div>
-                            <div class="sxian"></div>
-                            <div class="right">
-                                <img src="images/tfrfgf.jpg" />
-                                <p>保定市剑桥英语学校是1997年5月经教育行政主管部门批准，由社会教育人士赵旭明博士创办的一所新型英语学校。</p>
-                            </div>   
-                        </ul>
-                    </li>
-                    <li class="drop-menu-effect"><a href="" title="">加盟剑桥</a>
-                    
-                    </li> 
-                    <li class="drop-menu-effect"><a href="" title="">招聘信息</a>
-                    
-                    </li>   
-               </ul>
-            </div>
-<script>
-function dropMenu(obj){
-		$(obj).each(function(){
-			var theSpan = $(this);
-			var theMenu = theSpan.find(".submenu");
-			var tarHeight = theMenu.height();
-			theMenu.css({height:0,opacity:0});
+                            <script>
+                            $("li.wx .weix1").click(function() {
+                                document.getElementById("weixkz1").style.display = "block";
+                            });
 
-			
-			var t1;
-			
-			function expand() {
-				clearTimeout(t1);
-				theSpan.find('a').addClass("selected");
-				theMenu.stop().show().animate({height:tarHeight,opacity:1},200);
-			}
-			
-			function collapse() {
-				clearTimeout(t1);
-				t1 = setTimeout(function(){
-					theSpan.find('a').removeClass("selected");
-					theMenu.stop().animate({height:0,opacity:0},200,function(){
-						$(this).css({display:"none"});
-					});
-				}, 250);
-			}
-			
-			theSpan.hover(expand, collapse);
-			theMenu.hover(expand, collapse);
-		});
-	}
-
-$(document).ready(function(){
-	
-	dropMenu(".drop-menu-effect");
-
-});
-</script>
-        </div>
-        <div class="clear"></div>
-    </div>
-</div>
-<div id="content">
-	<div class="toptp">
-    	<img src="images/datbut.png" />
-    </div>
-    <div class="gyjq main">
-        <div class="left lhz">
-            <h2>关于剑桥<span>about cambridge</span></h2>
-            <ul>
-            	<li><a href="">剑桥简介</a></li>
-                <li><a>办学理念</a></li>
-                <li><a href="">集团文化</a></li>
-                <li><a class="hover" href="">剑桥资讯</a></li>
-                <li><a href="">联系剑桥</a></li>
-            </ul>
-        </div>
-        <div class="left chz">
-        	<div class="zxnry">
-            	<h2>剑桥新闻名称</h2>
-                <div class="textnr">
-                    <p class="left"><span>时间：2014-01-06</span>   <span> 来源：剑桥新世纪幼儿园</span></p>
-                    <ul class="left bdsharebuttonbox">
-                        <li><span>分享 Share：</span></li>
-                        <li class="wx"><a class="weix1" href="javascript:;"></a></li>
-                        <li class="qq"><a class="popup_sqq" data-cmd="sqq" href=""></a></li>
-                        <li class="wb"><a class="bds_tsina" data-cmd="tsina" href=""></a></li>
-                        <li class="kj"><a class="bds_qzone" data-cmd="qzone" href=""></a></li>
-                        <div class="clear"></div>
-                        <div id="weixkz1">
-                            <input type="button" onclick="hidd()" value=""  style="background:url(images/close.png) no-repeat;"  id="dj1"/>
-                            <h4>分享到微信朋友圈</h4>
-                            <p class="tp"><img src="images/wx.png" /></p>
-                            <p class="wnzi">打开微信，点击底部的“发现”，使用“扫一扫”即可将网页分享至朋友圈。</p>
-                        </div>
-                        <script>
-                        $("li.wx .weix1").click( function () {
-                            document.getElementById("weixkz1").style.display="block";
-                        });
-    
-                            function hidd(){    
-                            document.getElementById("weixkz1").style.display="none";
+                            function hidd() {
+                                document.getElementById("weixkz1").style.display = "none";
                             }
+                            </script>
+                        </ul>
+                        <div class="clear"></div>
+                        <script>
+                        window._bd_share_config = {
+                            "common": {
+                                "bdSnsKey": {},
+                                "bdText": "",
+                                "bdMini": "2",
+                                "bdPic": "",
+                                "bdStyle": "0",
+                                "bdSize": "16"
+                            },
+                            "share": {}
+                        };
+                        with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
                         </script>
+                    </div>
+                    {$articleInfo.content}
+                    <ul class="syyxyi">
+                        <li>
+                            <a href="{$up.href}">上一篇：{$up.title}</a>
+                        </li>
+                        <li>
+                            <a href="{$next.href}">下一篇：{$next.title}</a>
+                        </li>
                     </ul>
-                    <div class="clear"></div>
-                    <script>
-window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
-               		</script>
-				</div>
-                <p>我是宸宝妈妈，我是一位每天往返10公里送孩子上幼儿园的妈妈，我参加了宸宝幼儿园的家长志愿周，这是我在伊顿幼儿园一天的感受：</p>
-
-                    <p style="text-indent: 0em;">早晨7：00</p>
-                        <p style="color: #444444;font-size: 16px;line-height: 26px;padding-top: 0px;">宸宝睁开眼睛第一句话：“妈妈，今天你去班里给我当老师吗？”我低声说：“是的，宝贝儿。”虽然我的语气中带着坚定。但是内心却忐忑不安，因为我不知道今天我能否胜任这个角色。</p>
-                    
-                    <p style="text-indent: 0em;">早晨8：00</p>
-                        <p style="color: #444444;font-size: 16px;line-height: 26px;padding-top: 5px;">伊顿慧智双语幼儿园——济南大地锐城校园<br />
-                        早上好，爷爷。宸宝一进幼儿园的门口就大声的给幼儿园保安打招呼。保安叔叔也回应宸宝，你好小朋友。这简单的称呼一下拉近了人与人之间的距离，在孩子的眼里没有职务级别之分，只有尊重……这一点其实是我一直很看重的。</p>
- 						<p style="text-align:center;"><img src="images/W020100712316785681484.jpg" /></p>
-                        <p>进入幼儿园大厅，就听到good morning宸宝，路老师带着满脸的微笑给宸宝打招呼，宸宝大声的回应，good morning路老师，然后接受幼儿园校医的晨检，这里说明一下，晨检是每位儿童到幼儿园的第一项工作。老师检查孩子的嗓子，双手，体温。如果都是正常就会发一个小绿牌示意这是健康宝宝，如果嗓子有点红，或者最近有过发烧，就发给小朋友一个黄色牌，示意班里老师要注意这个小朋友，多观察，多给喝水……在这点上我觉得伊顿做的特别好。</p>
-                    
-                        <p>宸宝领着绿牌准备上楼，这时候有位别的班老师喊宸宝早，宸宝也兴奋的跟老师打招呼，我很诧异，因为平时我不接送宸宝不认识那位老师，不知道老师姓啥，所以只能微笑，这位老师说，我可喜欢宸宝了，见了就逗他。哈，我这内心小激动了一下，这臭小子还挺有人缘的。</p>
-                 <ul class="syyxyi">       
-	                <li><a href="">上一篇：新闻标题新闻标题新闻标题新闻标题</a></li>
-					<li><a href="">下一篇：没有了</a></li>
-                 </ul>
+                </div>
             </div>
-        </div>
-        <div class="right rhz">
-        	<h3>幼儿园预约试听</h3>
-            <table>
-                  <tr>
-                    <td class="wenz left">宝宝姓名：</td>
-                    <td class="text left"><input type="text" value="" name="" /></td>
-                  </tr>
-                  <tr>
-                    <td class="wenz left">联系电话：</td>
-                    <td class="text left"><input type="text" value="" name="" /></td>
-                  </tr>
-                  <tr>
-                    <td class="wenz left">选择省份：</td>
-                    <td class="text left">
-                    	<select name="">
-                        	<option>河北省</option>
-                            <option>河北省</option>
-                            <option>河北省</option>
-                            <option>河北省</option>
-                            <option>河北省</option>
-                        </select>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="wenz left">选择区县：</td>
-                    <td class="text left">
-                    	<select name="">
-                        	<option>河北省</option>
-                            <option>河北省</option>
-                            <option>河北省</option>
-                            <option>河北省</option>
-                            <option>河北省</option>
-                        </select>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="wenz left">选择园所：</td>
-                    <td class="text left">
-                    	<select name="">
-                        	<option>河北省</option>
-                            <option>河北省</option>
-                            <option>河北省</option>
-                            <option>河北省</option>
-                            <option>河北省</option>
-                        </select>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="wenz left">试听时间：</td>
-                    <td class="text left"><input type="text" value="" name="" /></td>
-                  </tr>
-                  <tr>
-                    <td class="wenz left">验证码：</td>
-                    <td class="yzm left">
-                        <input class="left" type="text" value="" name="" />
-                        <span class="left"><img src="images/yanzhenm.jpg" /></span>
-                    </td>
-                  </tr>
-            </table>
-			<p><input name="" type="button" value="提交" /></p>
-        </div>
-        <div class="clear"></div> 
-    </div>
-</div>
-<div id="footer">
-	<div class="main">
-    	<div class="foot_top">
-            <ul>
-            	<h3>为什么选择剑桥<span>Why Choose Jianqiao</span></h3>
-                <li>家长最信赖的幼教品牌</li>
-                <li>权威科学的课程设置</li>
-                <li>国际认证的标准化管理</li>
-                <li>专业敬业富有爱心的教师</li>
-                <li>科学安全的营养膳食</li>
-                <li>安全环保舒适快乐的环境</li>
-                <li>丰富多彩的幼儿园生活</li>
-                <li>优秀宝宝见证剑桥</li>
-                <li>宝宝家长的赞誉与认可</li>
-            </ul>
-            <div class="kongge"></div>
-            <ul>
-            	<h3>其他产业<span>Other Industries</span></h3>
-                <li>华顿英语培训学校</li>
-                <li>剑桥小学</li>
-                <li>剑桥体育用品有限公司</li>
-            </ul>
-            <div class="kongge"></div>
-            <ul>
-            	<h3>联系我们<span>Contact Us</span></h3>
-                <li>幼儿园客服热线：400 0312 501</li>
-                <li>培训部客服热线：400 0312 502</li>
-                <li>成人部客服热线：400 0312 503</li>
-                <li>总部地址：高开区盛兴路369号</li>
-                <li>总部电话：2035995 5992828</li>
-            </ul>
-            <div class="kongge"></div>
-            <ul>
-            	<h3>为什么选择剑桥<span>Why Choose Jianqiao</span></h3>
-                <li class="weix"><img src="images/wx.png" /></li>
-            </ul>
-        </div>
-        <div class="foot_bottom">
-        	<p>北京万虎时代网络科技有限公司版权所有 | Copyright 2014-2015 All rights reserved | <span>技术支持：<a href="">万虎网络</a></span> </p>
+            {include_php './templet/baoding/public/shiting.php'}
         </div>
     </div>
-</div>
-</body>
-</html>
-<script type="text/javascript">
-	$(function() {
-		$('.orgin_input').bind({
-			focus: function() {
-			if (this.value == this.defaultValue) {
-			this.value = "";
-		}
-	     },
-		blur: function() {
-		   if (this.value == "") {
-			  this.value = this.defaultValue;
-		}
-	}
-  });
-})
-</script>
+{/block}

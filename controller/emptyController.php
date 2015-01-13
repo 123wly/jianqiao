@@ -5,30 +5,41 @@
 
 class emptyController extends top
 {
+	public $dTerm;
+	public $dArticle;
+
+	function __construct() {
+        parent::__construct();
+        $this->dTerm = spClass("db_term");
+        $this->dArticle = spClass("db_article");
+    }
 
 	public function index(){
 		$c = $this->spArgs("c");
 		$this->assignown("tid",$this->spArgs("tid"));
 		$this->assignown("id",$this->spArgs("id"));
 
-		switch ($c) {
-			case 'index':
-				$this->home();
-				break;
-			
-			default:
-				if(method_exists($this,"__".$c)){
-					call_user_func_array(array($this,"__".$c), array());
-				}
-				break;
+		if(method_exists($this,"__".$c)){
+			call_user_func_array(array($this,"__".$c), array());
 		}
+
 		$this->assignown("root",__ROOT__);
 		$this->assignown('skin_path',"".__ROOT__.'/templet/' . THEME_NAME .'/');
 		
 		$this->display($c . ".html");
 	}
+
 	public function assignown($name, $value){
 		$this->v->engine->assign($name, $value);
+	}
+
+
+	public function __page(){
+		$termInfo = $this->dTerm->find(array("id"=>$this->spArgs("tid")));
+		$pageInfo = $this->dArticle->find(array("term_id"=>$termInfo['id']));
+
+		$this->assignown("termInfo",$termInfo);
+		$this->assignown("pageInfo",$pageInfo);
 	}
 
 	public function __information(){
@@ -39,7 +50,6 @@ class emptyController extends top
 			$news = spClass("db_article")->findAll(array("term_id"=>$value['id']),"id desc","term_id,id,title,brief,cover,create_time,tpl","10");
 			$content[$value['id']] = $news;
 			$content[$value['id']]['tpl'] = $childNode[$key]['tpl'];
-
 		}
 		$this->assignown("content",$content);
 	}
@@ -53,10 +63,37 @@ class emptyController extends top
 
 		$this->assignown("results",$results);
 		$this->assignown("pager",$pager);
-
 	}
 
-	public function home(){
+	public function __information_zd(){
+		$articleInfo = $this->dArticle->find(array("id"=>$_GET['id']));
+		$this->assignown("articleInfo",$articleInfo);
+
+		// 上一篇
+		$upArticle = $this->dArticle->next($_GET['id'], true);
+		if(empty($upArticle)){
+			$up['href'] = "javascript:;";
+			$up['title'] = "没有了";
+		}else {
+			$up['href'] = spUrl($upArticle['tpl'],"",array("id"=>$upArticle['id']));
+			$up['title'] = $upArticle['title'];
+		}
+
+		// 下一篇
+		$nextArticle = $this->dArticle->next($_GET['id']);
+		if(empty($nextArticle)){
+			$next['href'] = "javascript:;";
+			$next['title'] = "没有了";
+		}else {
+			$next['href'] = spUrl($nextArticle['tpl'],"",array("id"=>$nextArticle['id']));
+			$next['title'] = $nextArticle['title'];
+		}
+		// 赋值
+		$this->assignown("up",$up);
+		$this->assignown("next",$next);
+	}
+
+	public function __index(){
 
 		//新闻
 		$news = spClass("db_article")->findAll(array("term_id"=>31),"id desc","id,title,brief,cover,create_time","8");
