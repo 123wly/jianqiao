@@ -1,44 +1,5 @@
-<?php
-
-$categorys = spClass('db_term')->findAll();
-//var_dump($categorys);
- function sortOut($cate,$pid=0,$level=0,$html='--'){
-         $tree = array();
-         foreach($cate as $v){
-           // dump($v);
-             if($v['id'] == $pid){
-                  $v['level'] = $level + 1;
-                  $v['html'] = str_repeat($html, $level);
-                  $tree[] = $v;
-                  $tree = array_merge($tree, self::sortOut($cate,$v['id'],$level+1,$html));
-             }
-         }
-         return $tree;
-   }
-
-   function tree(&$list,$pid=0,$level=0,$html='--'){
-    static $tree = array();
-    foreach($list as $v){
-        if($v['pid'] == $pid){
-            $v['sort'] = $level;
-            $v['html'] = str_repeat($html,$level);
-            $tree[] = $v;
-            tree($list,$v['id'],$level+1);
-        } 
-    }
-    return $tree;
-}
-    $test=sortOut($categorys);
-    $test1=tree($categorys);
-    dump($test); 
-  
- ?>
-
-
-
-
-<?php $listTree = $_smarty_tpl->getVariable('listTree')->value;?>
-<?php $list     = $_smarty_tpl->getVariable('list')->value;?>
+<?php $listTree  = $_smarty_tpl->getVariable('listTree')->value;?>
+<?php $list      = $_smarty_tpl->getVariable('list')->value;?>
 <?php 
     $parent_ids = array();
     $strList = '<option value ="0">根目录</option>';
@@ -48,8 +9,8 @@ $categorys = spClass('db_term')->findAll();
     }
  ?>
 <?php
-$GLOBALS['count_aa'] = 0;
-function listTreeDump($array,$strList){   
+    $GLOBALS['count_aa'] = 0;
+    function listTreeDump($array,$strList){   
 ?>
 <?php foreach ($array as $k => $vo): ?>
     <tr class="table_hover">

@@ -1,338 +1,49 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>剑桥分园——子页</title>
-<link type="text/css" href="css/baes.css" rel="stylesheet" />
-<link type="text/css" href="css/zy.css" rel="stylesheet" />
-<script language="javascript" src="js/jquery-1.11.1.min.js"></script>
-</head>
-<body>
-<div id="header">
-	<div class="main">
-    	<div class="left logo">
-        	<a href="index.html"><img src="images/logo.png" /></a>
-        </div>
-        <div class="right rnav">
-        	<div class="sousuo">
-            	<p class="wpd left"><a href="">用户登录</a><a href="">注册</a></p>
-                <p class="sous left">
-                	<input class="text left orgin_input" type="text" value="查找您附近的幼儿园" />
-                    <input class="tij right" type="submit" value="" />
-                </p>
-                <div class="clear"></div>
-            </div>
-            <div class="clear"></div>
-            <div class="nav">
-            	<ul class="jMenu">
-                    <li class="drop-menu-effect shouye"> <a href="" title=""><img src="images/shouye.png" /></a></li> 
-                    <li class="drop-menu-effect hover"> <a href="" title="">关于剑桥</a>
-                        <ul class="submenu">
-                        	<div class="jiant"><img src="images/jiantou.png" /></div>
-                            <div class="left">
-                                <ul>
-                                    <li><a href="">剑桥简介</a></li>
-                                    <li><a href="">办学理念</a></li>
-                                    <li><a href="">剑桥新闻</a></li>
-                                    <li><a href="">通知通告</a></li>
-                                    <li><a href="">联系剑桥</a></li>
-                                </ul>
-                            </div>
-                            <div class="sxian"></div>
-                            <div class="right">
-                                <img src="images/tfrfgf.jpg" />
-                                <p>保定市剑桥英语学校是1997年5月经教育行政主管部门批准，由社会教育人士赵旭明博士创办的一所新型英语学校。</p>
-                            </div>   
-                        </ul>
-                        <div class="clear"></div>
-                    </li>      
-                    <li class="drop-menu-effect"><a href="" title="">剑桥分园</a>
-                        
-                    </li>
-                    <li class="drop-menu-effect"><a href="" title="">剑桥印象</a>
-                        
-                    </li>
-                    <li class="drop-menu-effect"><a href="" title="">剑桥教育</a></li>
-                    <li class="drop-menu-effect"><a href="" title="">剑桥生活</a>
-                        
-                    </li>
-                    <li class="drop-menu-effect"><a href="" title="">家园共育</a>
-                        
-                    </li>
-                    <li class="drop-menu-effect"><a href="" title="">选择剑桥</a>
-                    	<ul class="submenu">
-                        	<div class="jiant"><img src="images/jiantou.png" /></div>
-                            <div class="left">
-                                <ul>
-                                    <li><a href="">剑桥简介</a></li>
-                                    <li><a href="">办学理念</a></li>
-                                    <li><a href="">剑桥新闻</a></li>
-                                    <li><a href="">通知通告</a></li>
-                                    <li><a href="">联系剑桥</a></li>
-                                </ul>
-                            </div>
-                            <div class="sxian"></div>
-                            <div class="right">
-                                <img src="images/tfrfgf.jpg" />
-                                <p>保定市剑桥英语学校是1997年5月经教育行政主管部门批准，由社会教育人士赵旭明博士创办的一所新型英语学校。</p>
-                            </div>   
-                        </ul>
-                    </li>
-                    <li class="drop-menu-effect"><a href="" title="">加盟剑桥</a>
-                    
-                    </li> 
-                    <li class="drop-menu-effect"><a href="" title="">招聘信息</a>
-                    
-                    </li>   
-               </ul>
-            </div>
-<script>
-function dropMenu(obj){
-		$(obj).each(function(){
-			var theSpan = $(this);
-			var theMenu = theSpan.find(".submenu");
-			var tarHeight = theMenu.height();
-			theMenu.css({height:0,opacity:0});
-
-			
-			var t1;
-			
-			function expand() {
-				clearTimeout(t1);
-				theSpan.find('a').addClass("selected");
-				theMenu.stop().show().animate({height:tarHeight,opacity:1},200);
-			}
-			
-			function collapse() {
-				clearTimeout(t1);
-				t1 = setTimeout(function(){
-					theSpan.find('a').removeClass("selected");
-					theMenu.stop().animate({height:0,opacity:0},200,function(){
-						$(this).css({display:"none"});
-					});
-				}, 250);
-			}
-			
-			theSpan.hover(expand, collapse);
-			theMenu.hover(expand, collapse);
-		});
-	}
-
-$(document).ready(function(){
-	
-	dropMenu(".drop-menu-effect");
-
-});
-</script>
-        </div>
-        <div class="clear"></div>
-    </div>
-</div>
+{extends file='./templet/baoding/public/layout_clear.html'}
+{block name=content}
 <div id="content">
-	<div class="toptp">
-    	<img src="images/fanyuntopt.jpg" />
+    <div class="toptp">
+        <img src="{$skin_path}images/fanyuntopt.jpg" />
     </div>
     <div class="jqfeny main">
-    	<div class="left lhz">
-            <h2>剑桥分园<span>cambridge branch</span></h2>
-            <ul>
-            	<li><a class="hover" href="">保定南市区</a></li>
-                <li><a>保定北市区</a></li>
-                <li><a href="">保定新市区</a></li>
-                <li><a href="">保定高开区</a></li>
-                <li><a href="">保定周边县</a></li>
-            </ul>
-        </div>
+        
+        {include_php './templet/baoding/public/lhz.php'}
+
         <div class="right rfeny">
-        	<div class="hz_fenyzy left">
-            	<div class="tp_top">
-                	<img src="images/ggt6.png" />
+            {foreach $articles as $vo}
+                <div class="hz_fenyzy left">
+                    <div class="tp_top">
+                        <img src="{$vo.cover|upload_echo}" />
+                    </div>
+                    <h3>{$vo.title}</h3>
+                    {$vo.content}
+                    <p class="gengduo"><a href="{$vo.tpl}">READ MORE</a>
+                    </p>
+                    <div class="clear"></div>
                 </div>
-                <ul>
-                	<h3>剑桥新世纪幼儿园</h3>
-                    <li>银杏路527号新世纪花园小区内</li>
-                    <li>TEL: 0312-3152998</li>
-                </ul>
-                <p><a href="">READ MORE</a></p>
-                <div class="clear"></div>
-            </div>
-            <div class="hz_fenyzy left">
-            	<div class="tp_top">
-                	<img src="images/ggt6.png" />
-                </div>
-                <ul>
-                	<h3>剑桥新世纪幼儿园</h3>
-                    <li>银杏路527号新世纪花园小区内</li>
-                    <li>TEL: 0312-3152998</li>
-                </ul>
-                <p><a href="">READ MORE</a></p>
-                <div class="clear"></div>
-            </div>
-            <div class="hz_fenyzy left">
-            	<div class="tp_top">
-                	<img src="images/ggt6.png" />
-                </div>
-                <ul>
-                	<h3>剑桥新世纪幼儿园</h3>
-                    <li>银杏路527号新世纪花园小区内</li>
-                    <li>TEL: 0312-3152998</li>
-                </ul>
-                <p><a href="">READ MORE</a></p>
-                <div class="clear"></div>
-            </div>
-            <div class="hz_fenyzy left">
-            	<div class="tp_top">
-                	<img src="images/ggt6.png" />
-                </div>
-                <ul>
-                	<h3>剑桥新世纪幼儿园</h3>
-                    <li>银杏路527号新世纪花园小区内</li>
-                    <li>TEL: 0312-3152998</li>
-                </ul>
-                <p><a href="">READ MORE</a></p>
-                <div class="clear"></div>
-            </div>
-            <div class="hz_fenyzy left">
-            	<div class="tp_top">
-                	<img src="images/ggt6.png" />
-                </div>
-                <ul>
-                	<h3>剑桥新世纪幼儿园</h3>
-                    <li>银杏路527号新世纪花园小区内</li>
-                    <li>TEL: 0312-3152998</li>
-                </ul>
-                <p><a href="">READ MORE</a></p>
-                <div class="clear"></div>
-            </div>
-            <div class="hz_fenyzy left">
-            	<div class="tp_top">
-                	<img src="images/ggt6.png" />
-                </div>
-                <ul>
-                	<h3>剑桥新世纪幼儿园</h3>
-                    <li>银杏路527号新世纪花园小区内</li>
-                    <li>TEL: 0312-3152998</li>
-                </ul>
-                <p><a href="">READ MORE</a></p>
-                <div class="clear"></div>
-            </div>
-            <div class="hz_fenyzy left">
-            	<div class="tp_top">
-                	<img src="images/ggt6.png" />
-                </div>
-                <ul>
-                	<h3>剑桥新世纪幼儿园</h3>
-                    <li>银杏路527号新世纪花园小区内</li>
-                    <li>TEL: 0312-3152998</li>
-                </ul>
-                <p><a href="">READ MORE</a></p>
-                <div class="clear"></div>
-            </div>
-            <div class="hz_fenyzy left">
-            	<div class="tp_top">
-                	<img src="images/ggt6.png" />
-                </div>
-                <ul>
-                	<h3>剑桥新世纪幼儿园</h3>
-                    <li>银杏路527号新世纪花园小区内</li>
-                    <li>TEL: 0312-3152998</li>
-                </ul>
-                <p><a href="">READ MORE</a></p>
-                <div class="clear"></div>
-            </div>
-            <div class="hz_fenyzy left">
-            	<div class="tp_top">
-                	<img src="images/ggt6.png" />
-                </div>
-                <ul>
-                	<h3>剑桥新世纪幼儿园</h3>
-                    <li>银杏路527号新世纪花园小区内</li>
-                    <li>TEL: 0312-3152998</li>
-                </ul>
-                <p><a href="">READ MORE</a></p>
-                <div class="clear"></div>
-            </div>
+            {/foreach}
             <div class="clear"></div>
-            <div class="ym">
-               <ul>
-                 <li class="syy">
-                   <a href=""> < </a>
-                 </li>
-                 <li class="sz hover">
-                   <a href="">1</a>
-                 </li>
-                 <li class="sz">
-                   <a href="">2</a>
-                 </li>
-                 <li class="sz">
-                   <a href="">3</a>
-                 </li>
-                 <li class="syy">
-                   <a href=""> > </a>
-                 </li>
-              </ul>
-           </div>
+            <!-- <div class="ym">
+                <ul>
+                    <li class="syy">
+                        <a href="">
+                            < </a>
+                    </li>
+                    <li class="sz hover">
+                        <a href="">1</a>
+                    </li>
+                    <li class="sz">
+                        <a href="">2</a>
+                    </li>
+                    <li class="sz">
+                        <a href="">3</a>
+                    </li>
+                    <li class="syy">
+                        <a href=""> > </a>
+                    </li>
+                </ul>
+            </div> -->
         </div>
         <div class="clear"></div>
     </div>
 </div>
-<div id="footer">
-	<div class="main">
-    	<div class="foot_top">
-            <ul>
-            	<h3>为什么选择剑桥<span>Why Choose Jianqiao</span></h3>
-                <li>家长最信赖的幼教品牌</li>
-                <li>权威科学的课程设置</li>
-                <li>国际认证的标准化管理</li>
-                <li>专业敬业富有爱心的教师</li>
-                <li>科学安全的营养膳食</li>
-                <li>安全环保舒适快乐的环境</li>
-                <li>丰富多彩的幼儿园生活</li>
-                <li>优秀宝宝见证剑桥</li>
-                <li>宝宝家长的赞誉与认可</li>
-            </ul>
-            <div class="kongge"></div>
-            <ul>
-            	<h3>其他产业<span>Other Industries</span></h3>
-                <li>华顿英语培训学校</li>
-                <li>剑桥小学</li>
-                <li>剑桥体育用品有限公司</li>
-            </ul>
-            <div class="kongge"></div>
-            <ul>
-            	<h3>联系我们<span>Contact Us</span></h3>
-                <li>幼儿园客服热线：400 0312 501</li>
-                <li>培训部客服热线：400 0312 502</li>
-                <li>成人部客服热线：400 0312 503</li>
-                <li>总部地址：高开区盛兴路369号</li>
-                <li>总部电话：2035995 5992828</li>
-            </ul>
-            <div class="kongge"></div>
-            <ul>
-            	<h3>为什么选择剑桥<span>Why Choose Jianqiao</span></h3>
-                <li class="weix"><img src="images/wx.png" /></li>
-            </ul>
-        </div>
-        <div class="foot_bottom">
-        	<p>北京万虎时代网络科技有限公司版权所有 | Copyright 2014-2015 All rights reserved | <span>技术支持：<a href="">万虎网络</a></span> </p>
-        </div>
-    </div>
-</div>
-</body>
-</html>
-<script type="text/javascript">
-	$(function() {
-		$('.orgin_input').bind({
-			focus: function() {
-			if (this.value == this.defaultValue) {
-			this.value = "";
-		}
-	     },
-		blur: function() {
-		   if (this.value == "") {
-			  this.value = this.defaultValue;
-		}
-	}
-  });
-})
-</script>
+{/block}

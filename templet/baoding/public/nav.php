@@ -1,5 +1,5 @@
 <?php $skin_path = $_smarty_tpl->getVariable('skin_path')->value; ?>
-<?php $terms = spClass("db_term")->findAll(array("uid"=>THEME_UID)); $terms = create_tree($terms);?>
+<?php $terms = spClass("db_term")->findAll(array("uid"=>THEME_UID,"nav"=>'1'),"`order` asc"); $terms = create_tree($terms);?>
 <div class="right rnav">
     <div class="sousuo">
         <p class="wpd left"><a href="">用户登录</a><a href="">注册</a>

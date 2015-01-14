@@ -29,5 +29,12 @@ class db_article extends ybModel
 		return $this->find($where, $order);
 
 	}
+	public function find($conditions = null, $sort = null, $fields = null) {
+        $data = parent::find($conditions, $sort, $fields);
+        if(!empty($data['imgs'])){
+        	$data['imgs_json'] = json_decode($data['imgs'],true);
+        }
+        return $data;
+    }
 }
 ?>

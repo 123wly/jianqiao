@@ -1035,6 +1035,11 @@ class admin extends top
             $this->push_false = "checked";
         }
 
+        if($db_term['nav'] == 1){
+            $this->nav_true = "checked";
+        }else {
+            $this->nav_false = "checked";
+        }
         $this->display("admin/term_edit.html");
     }
     private function termEditPost(){

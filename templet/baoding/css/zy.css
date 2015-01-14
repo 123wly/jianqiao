@@ -615,21 +615,21 @@
 }
 #content .rfeny .hz_fenyzy ul{
 	display:block;
-	height:110px;
-	padding-top:10px;
+	height:85px;
 }
-#content .rfeny .hz_fenyzy ul h3{
+#content .rfeny .hz_fenyzy h3{
 	font-size:18px;
 	color:#2d9cb5;
+	padding:5px 0;
 	font-weight:normal;
 	line-height:30px;
 }
-#content .rfeny .hz_fenyzy ul li{
+#content .rfeny .hz_fenyzy ul li p{
 	color:#666666;
 	font-size:14px;
 	line-height:30px;
 }
-#content .rfeny .hz_fenyzy p{
+#content .rfeny .hz_fenyzy p.gengduo{
 	font-size:14px;
 	float:right;
 	font-family:Arial;
@@ -646,10 +646,10 @@
 #content .rfeny .hz_fenyzy:hover{
 	background:#2d9cb5;
 }
-#content .rfeny .hz_fenyzy:hover ul h3{
+#content .rfeny .hz_fenyzy:hover h3{
 	color:#ffffff;
 } 
-#content .rfeny .hz_fenyzy:hover ul li{
+#content .rfeny .hz_fenyzy:hover ul li p{
 	color:#ffffff;
 }
 #content .rfeny .hz_fenyzy:hover p a{

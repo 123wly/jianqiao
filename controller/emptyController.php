@@ -18,6 +18,16 @@ class emptyController extends top
 		$c = $this->spArgs("c");
 		$this->assignown("tid",$this->spArgs("tid"));
 		$this->assignown("id",$this->spArgs("id"));
+		
+		if(isset($_GET['tid'])){
+			$termInfo = $this->dTerm->find(array("id"=>intval($_GET['tid'])));
+			$this->assignown("cTerm",$termInfo);
+		}
+
+		if(isset($_GET['id'])){
+			$articleInfo = $this->dArticle->find(array("id"=>intval($_GET['id'])));
+			$this->assignown("cArticle",$articleInfo);
+		}
 
 		if(method_exists($this,"__".$c)){
 			call_user_func_array(array($this,"__".$c), array());
@@ -53,6 +63,17 @@ class emptyController extends top
 		}
 		$this->assignown("content",$content);
 	}
+	
+	public function __education_jqzk(){
+
+		$results = spClass("db_article")->spPager($this->spArgs('page', 1), 4)->findAll(array("term_id"=>$_GET['tid']),"id desc","term_id,id,title,brief,cover,create_time,tpl"); 
+		$pager = spClass("db_article")->spPager()->getPager();
+		// print_r($results);
+
+		$this->assignown("results",$results);
+		$this->assignown("pager",$pager);
+
+	}
 
 	public function __information_list(){
 		$term_info = spClass("db_term")->find(array("id"=>$_GET['tid']));
@@ -63,6 +84,16 @@ class emptyController extends top
 
 		$this->assignown("results",$results);
 		$this->assignown("pager",$pager);
+	}
+	
+	public function __park(){
+		$childNode = $this->dTerm->findAll(array("parent_id"=>$_GET['tid']));
+		$this->assignown("childNode", $childNode);
+	}
+
+	public function __park_zy(){
+		$article = $this->dArticle->findAll(array("term_id"=>$_GET['tid']));
+		$this->assignown("articles", $article);
 	}
 
 	public function __information_zd(){
@@ -91,6 +122,16 @@ class emptyController extends top
 		// 赋值
 		$this->assignown("up",$up);
 		$this->assignown("next",$next);
+	}
+
+	public function __life(){
+		
+		$results = spClass("db_article")->spPager($this->spArgs('page', 1), 4)->findAll(array("term_id"=>$_GET['tid']),"id desc","term_id,id,title,brief,cover,create_time,tpl"); 
+		$pager = spClass("db_article")->spPager()->getPager();
+		// print_r($results);
+		
+		$this->assignown("results",$results);
+		$this->assignown("pager",$pager);
 	}
 
 	public function __index(){

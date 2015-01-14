@@ -5,7 +5,7 @@
     }
     $term   = spClass("db_term")->find(array("id"=>$_GET['tid']));
     $parent = spClass("db_term")->find(array("id"=>$term['parent_id']));
-    $childNode = spClass("db_term")->findAll(array("parent_id"=>$parent['id']));
+    $childNode = spClass("db_term")->findAll(array("parent_id"=>$parent['id']),"`order` asc");
 ?>
 <div class="left lhz">
     <h2>

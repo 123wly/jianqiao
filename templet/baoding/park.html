@@ -6,56 +6,25 @@
         </div>
         <div class="jqfeny main">
             <div class="hz_top">
-                <h2>剑桥分园</h2>
-                <p>保定剑桥幼儿园隶属于保定剑桥教育集团，自2002年成立至今，现拥有近30所幼儿园。在“以生态式教育，培养完整儿童”的教育理念的指引下，兼顾国际视野与中国文化传统，为每一个孩子量 身定制最适合自身的学习方法，致力于培养具有“中国灵魂、世界眼光、科学品格、健康心格、强壮体格”的健康、快乐、有爱、创新的世界小公民。
+                <h2>{$cTerm.name}</h2>
+                <p>
+                    {$cTerm.brief}
                 </p>
             </div>
             <div class="hz_fenq">
-                <div class="left hz_fenqnk">
-                    <div class="fenqutp">
-                        <h3>保定南市区</h3>
-                        <p class="tpg"><img src="{$skin_path}images/fenyuantu2.jpg" />
-                        </p>
-                        <p><a href="">进入查看分园</a>
-                        </p>
+                {foreach $childNode as $vo}
+                    <div class="left hz_fenqnk">
+                        <div class="fenqutp">
+                            <h3>{$vo.name}</h3>
+                            <p class="tpg">
+                                <img src="{$vo.cover|upload_echo}" />
+                            </p>
+                            <p>
+                                <a href="{spUrl c=$vo.tpl tid=$vo.id}">进入查看分园</a>
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div class="left hz_fenqnk">
-                    <div class="fenqutp">
-                        <h3>保定北市区</h3>
-                        <p><img src="{$skin_path}images/fenyuantu3.jpg" />
-                        </p>
-                        <p><a href="">进入查看分园</a>
-                        </p>
-                    </div>
-                </div>
-                <div class="left hz_fenqnk">
-                    <div class="fenqutp">
-                        <h3>保定新市区</h3>
-                        <p><img src="{$skin_path}images/fenyuantu4.jpg" />
-                        </p>
-                        <p><a href="">进入查看分园</a>
-                        </p>
-                    </div>
-                </div>
-                <div class="left hz_fenqnk">
-                    <div class="fenqutp">
-                        <h3>保定开市区</h3>
-                        <p><img src="{$skin_path}images/fenyuantu5.jpg" />
-                        </p>
-                        <p><a href="">进入查看分园</a>
-                        </p>
-                    </div>
-                </div>
-                <div class="left hz_fenqnk">
-                    <div class="fenqutp">
-                        <h3>保定周边县</h3>
-                        <p><img src="{$skin_path}images/fenyuantu1.jpg" />
-                        </p>
-                        <p><a href="">进入查看分园</a>
-                        </p>
-                    </div>
-                </div>
+                {/foreach}
                 <div class="clear"></div>
             </div>
         </div>

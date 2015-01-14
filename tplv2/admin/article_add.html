@@ -2,6 +2,7 @@
 <script type="text/javascript" charset="utf-8" src="./statics/ueditor/ueditor.config.js"></script>
 <script type="text/javascript" charset="utf-8" src="./statics/ueditor/ueditor.all.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="./statics/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript" src="{$syskin}/js/phpjs.js"></script>
 <script src="./statics/uploadify/jquery.uploadify.min.js"></script>
 <link href="./statics/uploadify/uploadify.css" rel="stylesheet" />
 
@@ -46,6 +47,47 @@
                         </td>
                     </tr>
                     <tr>
+                        <td class="t_title">模板文件</td>
+                        <td class="c_input_small">
+                            <div style="height: 10px;"></div>
+                            <input type="text" name="tpl" value="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="t_title">文章图组</td>
+                        <td class="c_input_small">
+                            <div style="height: 10px;"></div>
+                            <style type="text/css">
+                                #ul_tuzu {
+                                    display: inline-block;
+                                }
+                                #ul_tuzu li{
+                                    display: inline-block;
+                                    width: 100%;
+                                }
+                                #ul_tuzu li span{
+                                    height: 100px;
+                                    line-height: 100px;
+                                    cursor: pointer;
+                                    display: inline-block;
+                                }
+                                #ul_tuzu li img {
+                                    float: left;
+                                    display: inline-block;
+                                }
+                            </style>
+                            <ul id="ul_tuzu">
+                                
+                            </ul>
+                            <div class="upload_avatar">
+                                <input id="f_tuzu" name="f_tuzu" type="file" multiple="true" value="" />
+                                <input id="imgs" name="imgs" value="" type='hidden' />
+                            </div>
+                        
+                            
+                        </td>
+                    </tr>
+                    <tr>
                         <td class="t_title">封面</td>
                         <td class="c_input_small">
                             <div style="height: 10px;"></div>
@@ -67,6 +109,16 @@
 </div>
 <script type="text/javascript">
     
+    var root = '{$url}/uploads/'
+    
+    function imgs2val(){
+        var imgs = [];
+        $.each($("#ul_tuzu > li > img"), function(index, val) {
+            imgs.push($(this).attr("src").replace(root, ""));
+        });
+        $("#imgs").val(json_encode(imgs));
+    }
+
     $(document).ready(function() {
         var ue = UE.getEditor('editor');
         $('#file_upload').uploadify({
@@ -85,6 +137,31 @@
                 
             },
         });
+        //TODO 删除图片删除文件
+        $(".del_img").live("click",function(){
+            var filename = $(this).parent("li").find("img").attr("src").replace(root,"");
+            var obj = $(this).parent("li").remove();
+            imgs2val();
+        });
+
+        $('#f_tuzu').uploadify({
+            'swf': './statics/uploadify/uploadify.swf',
+            'uploader': '{spUrl c=publicc a=uploadFile}',
+            'buttonText': '上传图片',
+            'onUploadSuccess': function(file, data, response) {
+                data = $.parseJSON(data);
+                if(data.status === 1){
+                    var info =  root + data.info;
+                    var li = '<li><img src="' + info + '" height="100" /><span class="del_img">删除</span></li>';
+                    $("#ul_tuzu").append(li);
+                    imgs2val();
+                }else {
+                    alert("上传失败！");
+                }
+                
+            },
+        });
+
     });
 </script>
 {include file='admin/footer.html'}
