@@ -17,57 +17,70 @@
 
 <div id="wrap_admin">
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
-<tr><td width="160" valign="top">
-    <div id="admin_area">
-	    <div id="admin_shadow"></div> 
-	    <div class="logo"><a href="{spUrl c=admin a=index}">logo</a></div>
-		<div class="logo_line"></div>
-		<div class="admin_menu">
+<tr>
+	<td width="160" valign="top">
+	    <div id="admin_area">
+		    <div id="admin_shadow"></div> 
+		    <div class="logo"><a href="{spUrl c=admin a=index}">logo</a></div>
+			<div class="logo_line"></div>
+			<div class="admin_menu">
 
-		    <ul id="nav">
-			    <li><a href="{spUrl c=admin a=index}" {$curr_index}><span class="f_index">管理平台</span></a></li>
-				
-				<li><a href="{spUrl c=admin a=system}" {$curr_system}><span class="f_system">系统管理</span></a></li>
-                <div {$curr_systemdisplay}>
-				    <a href="{spUrl c=admin a=models}" {$curr_models}>模型管理</a>
-                    <a href="{spUrl c=admin a=cpage}" {$curr_cpage}>自定义页面管理</a>
-                    <a href="{spUrl c=admin a=term}" {$curr_term}>网站栏目管理</a>
-				</div>
+			    <ul id="nav">
+			        <li>
+			        	<a href="{spUrl c=admin a=index}" {$curr_index}><span class="f_index">管理平台</span></a>
+			        </li>
 
-				<li><a href="{spUrl c=admin a=blog}" {$curr_blog}><span class="f_blog">内容管理</span></a></li>
-				<div {$curr_blogdisplay}>
-					<a href="{spUrl c=admin a=article_add}" {$curr_content_add}>添加内容</a>
-					<a href="{spUrl c=admin a=article_list}" {$curr_content_list}>内容列表</a>
-				    <a href="{spUrl c=admin a=blog}" {$curr_ablog}>博客内容</a>
-					 <a href="{spUrl c=admin a=blogverify}" {$curr_ablogverify}>内容审核</a>
-				    <a href="{spUrl c=admin a=systag}" {$curr_systag}>系统标签</a>
-					 <a href="{spUrl c=admin a=usertag}" {$curr_usertag}>用户标签</a>
-					 <!-- <a href="{spUrl c=admin a=sort}" {$curr_sort}>分类管理</a> -->
+			        <li>
+			        	<a href="{spUrl c=admin a=system}" {$curr_system}><span class="f_system">系统管理</span></a>
+			        </li>
+			        <div {$curr_systemdisplay}>
+			            <a href="{spUrl c=admin a=models}" {$curr_models}>模型管理</a>
+			            <a href="{spUrl c=admin a=cpage}" {$curr_cpage}>自定义页面管理</a>
+			            <a href="{spUrl c=admin a=term}" {$curr_term}>网站栏目管理</a>
+			        </div>
 
-					<!--
-					<a href="{spUrl c=admin a=recommend}" {$curr_recommend}>推荐</a>
-					-->
-				</div>
-				
-                <li><a href="{spUrl c=admin a=adUnit}" {$curr_adUnit}><span class="f_ad">广告管理</span></a></li>
-                 <div {$curr_addisplay}>
-				    <a href="{spUrl c=admin a=adUnit}" {$curr_aadUnit}>广告位管理</a>
-				    <a href="{spUrl c=admin a=adContent}" {$curr_aadlist}>广告管理</a>
-				</div>
-				
-				<li><a href="{spUrl c=admin a=user}" {$curr_user}><span class="f_user">用户管理</span></a></li>
-				<div {$curr_noticedisplay}>
-				    <a href="{spUrl c=admin a=notice}" {$curr_anotice}>系统通知</a>
-				  
-				</div>
-				<li><a href="{spUrl c=admin a=theme}" {$curr_theme}><span class="f_theme">主题管理</span></a></li>
-				<li><a href="{spUrl c=admin a=database}" {$curr_database}><span class="f_database">数据管理</span></a></li>
-				
-			</ul>
+			        <li>
+			        	<a href="{spUrl c=admin a=blog}" {$curr_blog}><span class="f_blog">博客管理</span></a>
+			        </li>
+			        <div {$curr_blogdisplay}>
+			            <a href="{spUrl c=admin a=blog}" {$curr_ablog}>博客内容</a>
+			            <a href="{spUrl c=admin a=blogverify}" {$curr_ablogverify}>内容审核</a>
+			            <a href="{spUrl c=admin a=systag}" {$curr_systag}>系统标签</a>
+			            <a href="{spUrl c=admin a=usertag}" {$curr_usertag}>用户标签</a>
+			            <!-- <a href="{spUrl c=admin a=sort}" {$curr_sort}>分类管理</a> -->
+			            <!--<a href="{spUrl c=admin a=recommend}" {$curr_recommend}>推荐</a>-->
+			        </div>
+					
+					<li>
+						<a href="{spUrl c=admin a=article_list}" {$curr_article}><span class="f_system">文章管理</span></a>
+					</li>
+					<div {$curr_article_div}>
+			            <a href="{spUrl c=admin a=article_list}" {$curr_article_list}>内容列表</a>
+					    <a href="{spUrl c=admin a=article_add}" {$curr_article_add}>添加内容</a>
+					</div>
+
+			        <li>
+			        	<a href="{spUrl c=admin a=adUnit}" {$curr_adUnit}><span class="f_ad">广告管理</span></a>
+			        </li>
+			        <div {$curr_addisplay}>
+			            <a href="{spUrl c=admin a=adUnit}" {$curr_aadUnit}>广告位管理</a>
+			            <a href="{spUrl c=admin a=adContent}" {$curr_aadlist}>广告管理</a>
+			        </div>
+
+			        <li><a href="{spUrl c=admin a=user}" {$curr_user}><span class="f_user">用户管理</span></a>
+			        </li>
+			        <div {$curr_noticedisplay}>
+			            <a href="{spUrl c=admin a=notice}" {$curr_anotice}>系统通知</a>
+
+			        </div>
+			        <li><a href="{spUrl c=admin a=theme}" {$curr_theme}><span class="f_theme">主题管理</span></a>
+			        </li>
+			        <li><a href="{spUrl c=admin a=database}" {$curr_database}><span class="f_database">数据管理</span></a>
+			        </li>
+
+			    </ul>
+			</div>
 		</div>
-		
-	</div>
-	
 	</td>
 	<td valign="top">
     <div id="admin_header">

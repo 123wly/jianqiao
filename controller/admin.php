@@ -5,16 +5,19 @@
 
 class admin extends top
 {
+    public $showclan = 'style="display: block;"';
 
-    function __construct() {
+    function __construct()
+    {
         parent::__construct();
         $this->get = $this->spArgs();
-        if($_SESSION['admin'] != 1){
+        if ($_SESSION['admin'] != 1) {
             prient_jump(spUrl('main'));
         }
     }
 
-    function index() {
+    function index()
+    {
         $os = explode(" ", php_uname());
         $this->server = $_SERVER;
         $this->os = php_uname();
@@ -25,10 +28,10 @@ class admin extends top
         $this->ybsoftencode = base64_encode($GLOBALS['YB']['version']);
 
 
-        if(!function_exists("gd_info")){
+        if (!function_exists("gd_info")) {
             $this->gd = '不支持,无法处理图像';
         }
-        if(function_exists(gd_info)){
+        if (function_exists(gd_info)) {
             $gd = @gd_info();
             $this->gd = $gd["GD Version"];
             $gd ? '&nbsp; 版本：' . $gd : '';
@@ -43,7 +46,8 @@ class admin extends top
 
     /*     * new add* */
 
-    function updata() {
+    function updata()
+    {
         $os = explode(" ", php_uname());
         $this->ybsoft = $GLOBALS['YB'];
         $this->server = $_SERVER;
@@ -55,10 +59,10 @@ class admin extends top
         $this->ybsoftencode = base64_encode($GLOBALS['YB']['version']);
 
 
-        if(!function_exists("gd_info")){
+        if (!function_exists("gd_info")) {
             $this->gd = '不支持,无法处理图像';
         }
-        if(function_exists(gd_info)){
+        if (function_exists(gd_info)) {
             $gd = @gd_info();
             $this->gd = $gd["GD Version"];
             $gd ? '&nbsp; 版本：' . $gd : '';
@@ -70,15 +74,16 @@ class admin extends top
         $this->display('admin/updata.html');
     }
 
-    function system() {
+    function system()
+    {
 
-        if($this->spArgs('submit')){
+        if ($this->spArgs('submit')) {
             spClass('db_setting')->saveConfig($this->spArgs('val'));
 
             $this->jump(spUrl('admin', 'system', array('ac' => 'ok')));
         }
 
-        if($this->spArgs('testSendMail')){
+        if ($this->spArgs('testSendMail')) {
             spClass('db_notice')->sendMailTest();
             exit('<hr/>请确保您打开了邮件发送开关，测试邮件才会发送。开启邮件DEBUG模式会看到详细的发送过程。如果发送成功请关闭。');
         }
@@ -91,12 +96,13 @@ class admin extends top
         $this->display('admin/system.html');
     }
 
-    function models() {
+    function models()
+    {
         $this->curr_system = ' id="current"';
         $this->curr_systemdisplay = ' id="systemdisplay"';
 
-        if($this->spArgs('setup')){
-            if($this->spArgs('submit')){
+        if ($this->spArgs('setup')) {
+            if ($this->spArgs('submit')) {
                 $row = $this->spArgs();
                 $row['config'] = htmlspecialchars($row['config']);
                 spClass('db_models')->update(array('id' => $this->spArgs('setup')), $row);
@@ -112,21 +118,22 @@ class admin extends top
         $this->display('admin/models.html');
     }
 
-    function blog() {
+    function blog()
+    {
 
-        if($this->spArgs('submit')){
+        if ($this->spArgs('submit')) {
             $title = $this->spArgs('title');
 
             $niname = $this->spArgs('niname');
             $where = "title like '%$title%'";
-            if($niname){
+            if ($niname) {
                 $where .= " and uid = '$niname'";
             }
         }
         $this->blog = spClass('db_blog')->spLinker()->spPager($this->spArgs('page', 1), 20)->findAll($where, 'bid desc');
-        if($this->spArgs('submit')){
+        if ($this->spArgs('submit')) {
             $this->pager = spClass('db_blog')->spPager()->pagerHtml('admin', 'blog', array('title' => $title, 'niname' => $niname, 'submit' => $this->spArgs('submit')));
-        }else{
+        } else {
             $this->pager = spClass('db_blog')->spPager()->pagerHtml('admin', 'blog');
         }
 
@@ -136,13 +143,14 @@ class admin extends top
         $this->display('admin/blog.html');
     }
 
-    function blogverify() {
-		if($this->spArgs('verify')){
-			$bid = (int) $this->spArgs('verify');
-			spClass('db_blog')->update(array('bid'=>$bid) ,array('open'=>1));
-			$this->success('审核通过');
-		}
-		$where = 'open = -2';
+    function blogverify()
+    {
+        if ($this->spArgs('verify')) {
+            $bid = (int)$this->spArgs('verify');
+            spClass('db_blog')->update(array('bid' => $bid), array('open' => 1));
+            $this->success('审核通过');
+        }
+        $where = 'open = -2';
         $this->blog = spClass('db_blog')->spLinker()->spPager($this->spArgs('page', 1), 20)->findAll($where, 'bid desc');
         $this->pager = spClass('db_blog')->spPager()->pagerHtml('admin', 'blogverify');
 
@@ -151,42 +159,45 @@ class admin extends top
         $this->curr_blog = ' id="current"';
         $this->display('admin/blog_verify.html');
     }
-	
-    function user() {
-        if($this->spArgs('mod') == 'info'){
-			
-			if($this->spArgs('delface')){
-				$uid = $this->spArgs('delface');
-				$path1 = APP_PATH.'/avatar/'.$this->get_avatar($uid,'big');
-				$path2 = APP_PATH.'/avatar/'.$this->get_avatar($uid);
-				$path3 = APP_PATH.'/avatar/'.$this->get_avatar($uid,'small');
-				@unlink($path1); @unlink($path2); @unlink($path2);
-				$this->jump(spUrl('admin', 'user', array('mod'=>'info','uid'=>$uid,'ac' => 'ok')));
-			}
-		
+
+    function user()
+    {
+        if ($this->spArgs('mod') == 'info') {
+
+            if ($this->spArgs('delface')) {
+                $uid = $this->spArgs('delface');
+                $path1 = APP_PATH . '/avatar/' . $this->get_avatar($uid, 'big');
+                $path2 = APP_PATH . '/avatar/' . $this->get_avatar($uid);
+                $path3 = APP_PATH . '/avatar/' . $this->get_avatar($uid, 'small');
+                @unlink($path1);
+                @unlink($path2);
+                @unlink($path2);
+                $this->jump(spUrl('admin', 'user', array('mod' => 'info', 'uid' => $uid, 'ac' => 'ok')));
+            }
+
             $this->info = spClass('db_member')->find(array('uid' => $this->spArgs('uid')));
             $this->display('admin/user_info.html');
             exit;
         }
 
-        if($this->spArgs('lockuser')){
+        if ($this->spArgs('lockuser')) {
             spClass('db_blog')->lockUser($this->spArgs('lockuser'));
         }
-        if($this->spArgs('resetpwd')){
-			if($this->spArgs('pwd') != 'null'){
-				if(spClass('db_blog')->resetPwd($this->spArgs('resetpwd'), $this->spArgs('pwd'))){
-					exit('修改完成,重新登录后生效');
-				}
-			}else{
-				exit('新密码不能为空');
-			}
+        if ($this->spArgs('resetpwd')) {
+            if ($this->spArgs('pwd') != 'null') {
+                if (spClass('db_blog')->resetPwd($this->spArgs('resetpwd'), $this->spArgs('pwd'))) {
+                    exit('修改完成,重新登录后生效');
+                }
+            } else {
+                exit('新密码不能为空');
+            }
         }
-		
-		
-        if($this->spArgs('where')){
+
+
+        if ($this->spArgs('where')) {
             $name = $this->spArgs('where');
             $where = " uid = '$name' or email = '$name' or domain  = '$name' or username like '%$name%'";
-        }else{
+        } else {
             $where = '';
         }
 
@@ -198,21 +209,23 @@ class admin extends top
         $this->curr_noticedisplay = ' id="blogdisplay"';
         $this->display('admin/user.html');
     }
-	
-	private function get_avatar($uid, $size = 'middle', $type = '') {
-		$size = in_array($size, array('big', 'middle', 'small')) ? $size : 'middle';
-		$uida = abs(intval($uid));
-		$uid = sprintf("%09d", $uid);
-		$dir1 = substr($uid, 0, 3);
-		$dir2 = substr($uid, 3, 2);
-		$dir3 = substr($uid, 5, 2);
-		$typeadd = $type == 'real' ? '_real' : '';
-		return $dir1.'/'.$dir2.'/'.$dir3.'/'.$typeadd.$size.'_'.substr($uid, -2).".jpg";
-	}
 
-    function notice() {
-        if($this->spArgs('addnotice')){
-            if($this->spArgs('title') == '' || $this->spArgs('info') == ''){
+    private function get_avatar($uid, $size = 'middle', $type = '')
+    {
+        $size = in_array($size, array('big', 'middle', 'small')) ? $size : 'middle';
+        $uida = abs(intval($uid));
+        $uid = sprintf("%09d", $uid);
+        $dir1 = substr($uid, 0, 3);
+        $dir2 = substr($uid, 3, 2);
+        $dir3 = substr($uid, 5, 2);
+        $typeadd = $type == 'real' ? '_real' : '';
+        return $dir1 . '/' . $dir2 . '/' . $dir3 . '/' . $typeadd . $size . '_' . substr($uid, -2) . ".jpg";
+    }
+
+    function notice()
+    {
+        if ($this->spArgs('addnotice')) {
+            if ($this->spArgs('title') == '' || $this->spArgs('info') == '') {
                 $this->jump(spUrl('admin', 'notice', array('ac' => 'err')));
             }
             $all = spCLass('db_member')->findAll('', '', 'uid');
@@ -221,30 +234,30 @@ class admin extends top
             $info = $this->spArgs('info');
             $time = time();
             $sql = "INSERT INTO `" . DBPRE . "notice` (`uid` ,`sys` ,`foruid` ,`title` ,`info` ,`isread` ,`location` ,`time`)VALUES ";
-            foreach($all as $d){
+            foreach ($all as $d) {
                 $where .= "('0', '2', '{$d['uid']}', '$title', '$info', '0', '', '$time'),";
             }
             $where = $sql . substr($where, 0, -1);
             $res = spClass('db_notice')->runSql($where);
-            if($res){
+            if ($res) {
                 $this->success('全站用户发送完毕', spUrl('admin', 'notice'));
-            }else{
+            } else {
                 $this->success('操作失败', spUrl('admin', 'notice'));
             }
         }
 
-        if($this->spArgs('del')){
-            if($this->spArgs('delid')){
-                foreach($this->spArgs('delid') as $k => $d){
+        if ($this->spArgs('del')) {
+            if ($this->spArgs('delid')) {
+                foreach ($this->spArgs('delid') as $k => $d) {
                     spClass('db_notice')->deleteByPk($k);
                 }
                 $this->success('删除成功', spUrl('admin', 'notice'));
-            }else{
+            } else {
                 $this->success('操作失败', spUrl('admin', 'notice'));
             }
         }
 
-        if($this->spArgs('clear')){
+        if ($this->spArgs('clear')) {
             spClass('db_notice')->delete(array('sys' => $this->spArgs('clear')));
             $this->success('删除成功', spUrl('admin', 'notice'));
         }
@@ -257,21 +270,22 @@ class admin extends top
         $this->display('admin/notice.html');
     }
 
-    function systag() {
+    function systag()
+    {
 
-        if($this->spArgs('syscate')){
+        if ($this->spArgs('syscate')) {
             spClass('db_category')->saveCate($this->spArgs());
             $this->jump(spUrl('admin', 'systag', array('ac' => 'ok')));
         }
-        if($this->spArgs('sysadd')){
-            if($this->spArgs('sort') == '' || $this->spArgs('cname') == ''){
+        if ($this->spArgs('sysadd')) {
+            if ($this->spArgs('sort') == '' || $this->spArgs('cname') == '') {
                 $this->jump(spUrl('admin', 'systag', array('ac' => 'err')));
             }
             spClass('db_category')->create(array('sort' => $this->spArgs('sort'), 'catename' => $this->spArgs('cname')));
             $this->jump(spUrl('admin', 'systag', array('ac' => 'ok')));
         }
 
-        if($this->spArgs('sysdel')){
+        if ($this->spArgs('sysdel')) {
             spClass('db_category')->deleteByPk($this->spArgs('sysdel'));
             exit;
         }
@@ -287,31 +301,31 @@ class admin extends top
         $this->display('admin/systag.html');
     }
 
-    function usertag() {
-		if($this->spArgs('rebuilt')){
+    function usertag()
+    {
+        if ($this->spArgs('rebuilt')) {
             spClass('db_tag_system')->Recombination();
-			$this->jump(spUrl('admin', 'usertag', array('ac' => 'ok')));
+            $this->jump(spUrl('admin', 'usertag', array('ac' => 'ok')));
         }
-		
-        if($this->spArgs('usercate')){
+
+        if ($this->spArgs('usercate')) {
             spClass('db_tags')->saveCate($this->spArgs());
             $this->jump(spUrl('admin', 'usertag', array('ac' => 'ok')));
         }
 
-        if($this->spArgs('userdel')){
+        if ($this->spArgs('userdel')) {
             spClass('db_tags')->deleteByPk($this->spArgs('userdel'));
             exit;
         }
-		if($this->spArgs('clean')){
-			spClass('db_tags')->cleantag();
-			  $this->jump(spUrl('admin', 'usertag', array('ac' => 'ok')));
-		}
+        if ($this->spArgs('clean')) {
+            spClass('db_tags')->cleantag();
+            $this->jump(spUrl('admin', 'usertag', array('ac' => 'ok')));
+        }
         $obj = spClass('db_tags');
         $obj->linker[1] = false;
         $this->usrtag = $obj->spLinker()->spPager($this->spArgs('page', 1), 20)->findAll($where, 'tid  desc'); //系统tag
 
         $this->usrtagpage = $obj->spPager()->pagerHtml('admin', 'usertag');
-
 
 
         $this->curr_blogdisplay = ' id="blogdisplay"';
@@ -323,67 +337,68 @@ class admin extends top
 
     /* 推荐管理 */
 
-    function recommend() {
-        if($this->spArgs('submit')){
-            if(is_array($this->spArgs('delall')) || is_array($this->spArgs('opened'))){
+    function recommend()
+    {
+        if ($this->spArgs('submit')) {
+            if (is_array($this->spArgs('delall')) || is_array($this->spArgs('opened'))) {
                 //如果要删除
-                if(is_array($this->spArgs('delall'))){
-                    foreach($this->spArgs('delall') as $d){
+                if (is_array($this->spArgs('delall'))) {
+                    foreach ($this->spArgs('delall') as $d) {
                         spClass('db_recommend')->delete(array('id' => $d));
                     }
                 }
                 //如果要通过
-                if(is_array($this->spArgs('opened'))){
-                    foreach($this->spArgs('opened') as $d){
+                if (is_array($this->spArgs('opened'))) {
+                    foreach ($this->spArgs('opened') as $d) {
                         spClass('db_recommend')->update(array('id' => $d), array('open' => 1));
                     }
                 }
                 $this->success('操作成功', spUrl('admin', 'recommend'));
-            }else{
+            } else {
                 $this->error('没有需要审核通过或者删除的推荐');
             }
             exit;
         }
 
 
-        if($this->spArgs('recommendadd')){
+        if ($this->spArgs('recommendadd')) {
             $return = spClass('db_recommend')->createRecommend($this->spArgs());
-            if($return == -1){
+            if ($return == -1) {
                 $this->error('不存在的日志');
             }
-            if($return == -2){
+            if ($return == -2) {
                 $this->error('已经存在的日志');
             }
             $this->success('添加成功', spUrl('admin', 'recommend'));
         }
-        if($this->spArgs('recommenduser')){
+        if ($this->spArgs('recommenduser')) {
             $return = spClass('db_recommend')->createRecommend($this->spArgs());
-            if($return == -3){
+            if ($return == -3) {
                 $this->error('不存在的用户');
             }
-            if($return == -4){
+            if ($return == -4) {
                 $this->error('已经在列表中');
             }
             $this->success('添加成功', spUrl('admin', 'recommend'));
         }
 
         $where = '';
-        if($this->spArgs('filter') == 'user'){
+        if ($this->spArgs('filter') == 'user') {
             $where = 'tuiuid != 0';
         }
-        if($this->spArgs('filter') == 'blog'){
+        if ($this->spArgs('filter') == 'blog') {
             $where = 'tuiuid = 0';
         }
-        if($this->spArgs('order') == 'open'){
+        if ($this->spArgs('order') == 'open') {
             $where .= ' and open = 1';
         }
-        if($this->spArgs('order') == 'close'){
+        if ($this->spArgs('order') == 'close') {
             $where .= ' and open = 0';
         }
         $this->recommend = spClass('db_recommend')->spLinker()->spPager($this->spArgs('page', 1), 10)->findAll($where, 'time desc');
-        if($this->spArgs('filter')){
+        if ($this->spArgs('filter')) {
             $this->pager = spClass('db_recommend')->spPager()->pagerHtml('admin', 'recommend', array('filter' => $this->spArgs('filter'), 'order' => $this->spArgs('order')));
-        }else{
+        } else {
             $this->pager = spClass('db_recommend')->spPager()->pagerHtml('admin', 'recommend');
         }
 
@@ -399,9 +414,10 @@ class admin extends top
         $this->display('admin/recommend.html');
     }
 
-    function theme() {
-        if($this->spArgs('m') == 'info'){
-            if($this->spArgs('submit')){
+    function theme()
+    {
+        if ($this->spArgs('m') == 'info') {
+            if ($this->spArgs('submit')) {
                 spClass('db_skins')->update(array('id' => $this->spArgs('id')), $this->spArgs());
                 $this->success('保存成功', spUrl('admin', 'theme'));
             }
@@ -410,13 +426,13 @@ class admin extends top
             exit;
         }
 
-        if($this->spArgs('m') == 'install'){
+        if ($this->spArgs('m') == 'install') {
             $file = $_FILES['themefile'];
-            if($file['error'] == 4){
+            if ($file['error'] == 4) {
                 $this->error('请选择需要安装的主题文件');
             }
 
-            if(!strpos($file['name'], 'zip')){
+            if (!strpos($file['name'], 'zip')) {
                 $this->error('您只能上传ZIP主题文件包');
             }
 
@@ -426,34 +442,34 @@ class admin extends top
             $tmpdir = APP_PATH . '/' . $GLOBALS['G_SP']['view']['config']['template_dir'] . '/theme/';
 
 
-            if(!$zip->extract(PCLZIP_OPT_PATH, $tmpdir . '__temp')){
+            if (!$zip->extract(PCLZIP_OPT_PATH, $tmpdir . '__temp')) {
                 $this->error('无法释放压缩文件,请检查您目录的写权限');
             }
 
-            if(!file_exists($tmpdir . '__temp/theme.php') || !require_once $tmpdir . '__temp/theme.php'){
+            if (!file_exists($tmpdir . '__temp/theme.php') || !require_once $tmpdir . '__temp/theme.php') {
                 $this->error('无法读取主题配置信息,可能该主题已损坏');
             }
 
             //读取文件信息 $theme_info 变量被引入
-            if(is_dir($tmpdir . $theme_info['skindir'])){
-                if($theme_info['skindir'] != '')
+            if (is_dir($tmpdir . $theme_info['skindir'])) {
+                if ($theme_info['skindir'] != '')
                     __deldirs($tmpdir . $theme_info['skindir']);
             }
             //检查支持的版本情况
             $ver = explode(' ', $GLOBALS['YB']['version']);
 
-            if($theme_info['support'] < $ver[0]){
+            if ($theme_info['support'] < $ver[0]) {
                 $no_support = '您的系统版本:' . $ver[0] . '\n\n主题支持版本：' . $theme_info['support'] . '\n\n由于主题版本支持过低,使用该主题时可能会出现问题,如出现问题请立即停止使用该主题';
             }
 
-            if(!rename($tmpdir . '__temp', $tmpdir . $theme_info['skindir'])){
+            if (!rename($tmpdir . '__temp', $tmpdir . $theme_info['skindir'])) {
                 $this->error('无法重命目录名,请检查系统权限');
             }
 
             $result = spClass('db_skins')->find(array('skindir' => $theme_info['skindir']));
-            if(is_array($result)){
+            if (is_array($result)) {
                 $this->error('该目录已被安装,重新安装请先卸载');
-            }else{
+            } else {
 
                 $where = array(
                     'skindir' => $theme_info['skindir'],
@@ -464,7 +480,7 @@ class admin extends top
                     'open' => 0,
                     'usenumber' => 0,
                 );
-                if(isset($setup_info)){
+                if (isset($setup_info)) {
                     $where = array_merge($where, array('setup' => serialize($setup_info))); //钩子
                 }
 
@@ -473,11 +489,11 @@ class admin extends top
                 $this->error('主题已经安装，您可以立即启用它\n\n' . $no_support);
             }
         }
-        if($this->spArgs('m') == 'uninstall'){
+        if ($this->spArgs('m') == 'uninstall') {
             $rs = spClass('db_skins')->find(array('id' => $this->spArgs('id')));
             spClass('db_skins')->delete(array('id' => $this->spArgs('id')));
-			spClass('db_theme')->delete(array('theme'=>$rs['skindir'])); //将用户设置的删掉
-            if($rs['skindir']){
+            spClass('db_theme')->delete(array('theme' => $rs['skindir'])); //将用户设置的删掉
+            if ($rs['skindir']) {
                 $dir = APP_PATH . '/' . $GLOBALS['G_SP']['view']['config']['template_dir'] . '/theme/' . $rs['skindir'];
                 __deldirs($dir);
             }
@@ -487,33 +503,31 @@ class admin extends top
         }
 
 
-
-
-        if($this->spArgs('filter')){
-            if($this->spArgs('filter') == 'close'){
+        if ($this->spArgs('filter')) {
+            if ($this->spArgs('filter') == 'close') {
                 $where = array('open' => 0);
                 $page = array('filter' => 'close');
-				$this->curr_no = ' class="current"';
+                $this->curr_no = ' class="current"';
             }
-            if($this->spArgs('filter') == 'open'){
+            if ($this->spArgs('filter') == 'open') {
                 $where = "exclusive = 0 and open = 1";
                 $page = array('filter' => 'open');
-				$this->curr_open = ' class="current"';
+                $this->curr_open = ' class="current"';
             }
-            if($this->spArgs('filter') == 'exclusive'){
+            if ($this->spArgs('filter') == 'exclusive') {
                 $where = "exclusive != 0";
                 $page = array('filter' => 'exclusive');
-				$this->curr_exclu = ' class="current"';
+                $this->curr_exclu = ' class="current"';
             }
-        }else{
+        } else {
             $where = '';
-			$this->curr_all = ' class="current"';
+            $this->curr_all = ' class="current"';
         }
 
         $this->skins = spClass('db_skins')->spPager($this->spArgs('page', 1), 3)->findAll($where, 'id desc');
-        if($page){
+        if ($page) {
             $this->pager = spClass('db_skins')->spPager()->pagerHtml('admin', 'theme', $page);
-        }else{
+        } else {
             $this->pager = spClass('db_skins')->spPager()->pagerHtml('admin', 'theme');
         }
 
@@ -525,38 +539,40 @@ class admin extends top
 
     /* 自动升级系统 */
 
-    function autoupdate() {
+    function autoupdate()
+    {
         $this->display('admin/autoupdate.html');
     }
 
-    function database() {
+    function database()
+    {
         //初始化数据库处理
         $db = spClass('dbbackup', array(0 => $GLOBALS['G_SP']['db']));
         $this->table = $db->showAllTable($this->spArgs('chk'));
-        if($this->spArgs('dbac') == 'op'){
+        if ($this->spArgs('dbac') == 'op') {
             $db->optimizeTable($this->spArgs('tabl'));
             exit;
         }
-        if($this->spArgs('dbac') == 'rep'){
+        if ($this->spArgs('dbac') == 'rep') {
             $db->repairTable($this->spArgs('tabl'));
             exit;
         }
-        if($this->spArgs('outab')){
+        if ($this->spArgs('outab')) {
             $db->outTable($this->spArgs('outab'));
             exit;
         }
-        if($this->spArgs('ouall')){
+        if ($this->spArgs('ouall')) {
             $db->outAllData();
             exit;
         }
-
 
 
         $this->curr_database = ' id="current"';
         $this->display('admin/database.html');
     }
 
-    function clearcache() {
+    function clearcache()
+    {
         spClass('db_cache')->delete();
         $this->success('已经清除所有缓存');
     }
@@ -565,7 +581,8 @@ class admin extends top
      * @author 霸气千秋
      * @todo 自定义页面操作
      */
-    public function cpage() {
+    public function cpage()
+    {
         $db_cpage_cate = spClass("db_cpage_cate");
 
         $this->curr_system = ' id="current"';
@@ -573,10 +590,10 @@ class admin extends top
         $this->curr_cpage = 'id="acurrent"';
 
         /**
-         * 删除 
+         * 删除
          */
-        if($id = $this->spArgs('del')){
-            if(true == $db_cpage_cate->deleteCate((int) $id))
+        if ($id = $this->spArgs('del')) {
+            if (true == $db_cpage_cate->deleteCate((int)$id))
                 $this->success('删除成功');
             else
                 $this->error('删除失败');
@@ -586,8 +603,8 @@ class admin extends top
         /**
          * 添加分类
          */
-        if($this->spArgs('addCategory')){
-            if(true == $db_cpage_cate->addCate($this->spArgs()))
+        if ($this->spArgs('addCategory')) {
+            if (true == $db_cpage_cate->addCate($this->spArgs()))
                 $this->success('添加分类成功');
             else
                 $this->error('添加失败');
@@ -595,12 +612,12 @@ class admin extends top
         }
 
         /**
-         * 编辑分类 
+         * 编辑分类
          */
-        if($id = $this->spArgs('editCategory')){
-            if($this->spArgs('post')){
+        if ($id = $this->spArgs('editCategory')) {
+            if ($this->spArgs('post')) {
 
-                if(true == $db_cpage_cate->editCate($this->spArgs(), array('id' => (int) $id)))
+                if (true == $db_cpage_cate->editCate($this->spArgs(), array('id' => (int)$id)))
                     $this->success('修改成功', spUrl('admin', 'cpage'));
                 else
                     $this->error('修改失败');
@@ -614,15 +631,15 @@ class admin extends top
         /*
          * 添加body
          */
-        if($id = $this->spArgs('addBody')){
+        if ($id = $this->spArgs('addBody')) {
             $db_cpage_body = spClass('db_cpage_body');
-            if('yes' == $this->spArgs('isSubmit')){//判断是否为表单提交
+            if ('yes' == $this->spArgs('isSubmit')) {//判断是否为表单提交
                 $content = strreplaces($this->spArgs('content'));
                 $row = array(
-                    'cid' => (int) $id,
+                    'cid' => (int)$id,
                     'body' => strreplaces($content),
                 );
-                if(true == $db_cpage_body->addBody($row))
+                if (true == $db_cpage_body->addBody($row))
                     $this->success('添加/修改成功', spUrl('admin', 'cpage'));
                 // $this->jump ($url)
                 else
@@ -630,7 +647,7 @@ class admin extends top
                 return;
             }
             $this->ass = $db_cpage_cate->findAll(null, null, 'title,id');
-            $cid = is_numeric($id) ? (int) $id : $this->ass[0]['id']; //不对,如果,这个
+            $cid = is_numeric($id) ? (int)$id : $this->ass[0]['id']; //不对,如果,这个
             $this->body = $db_cpage_body->find(array('cid' => $cid));
             $this->display('admin/cpage_add_body.html');
             return;
@@ -643,27 +660,28 @@ class admin extends top
 
     /**
      * @author 霸气千秋
-     * @todo 广告位置管理 
+     * @todo 广告位置管理
      */
-    public function adUnit() {
+    public function adUnit()
+    {
         $db_ad_unit = spClass('db_ad_unit');
         $this->curr_adUnit = ' id="current"';
         $this->curr_addisplay = ' id="addisplay"';
         $this->curr_aadUnit = 'id="acurrent"';
 
         //改变广告位是否显示
-        if($this->spArgs('flag')){
-			$this->ClearSpAccess();
-		   if(true == $db_ad_unit->changeShow(array('is_show' => (int) $this->spArgs('en_show')), array('id' => (int) $this->spArgs('id')))){
+        if ($this->spArgs('flag')) {
+            $this->ClearSpAccess();
+            if (true == $db_ad_unit->changeShow(array('is_show' => (int)$this->spArgs('en_show')), array('id' => (int)$this->spArgs('id')))) {
                 $this->success('修改成功');
-            }else{
+            } else {
                 $this->error('修改失败');
             }
             return;
         }
 
         //添加
-        if($this->spArgs('add')){
+        if ($this->spArgs('add')) {
             $row = array(
                 'title' => strreplaces($this->spArgs('title')),
                 'adesc' => strreplaces($this->spArgs('adesc')),
@@ -671,18 +689,18 @@ class admin extends top
                 'orders' => strreplaces($this->spArgs('orders')),
                 'is_show' => strreplaces($this->spArgs('is_show')),
             );
-            if($db_ad_unit->addUnit($row)){
+            if ($db_ad_unit->addUnit($row)) {
                 $this->ClearSpAccess();
                 $this->success('添加成功');
-            }else{
+            } else {
                 $this->error('添加失败');
             }
             return;
         }
 
-        if($id = $this->spArgs('edit')){
+        if ($id = $this->spArgs('edit')) {
             //修改操作
-            if($_id = $this->spArgs('id')){
+            if ($_id = $this->spArgs('id')) {
                 //组织参数
                 $row = array(
                     'title' => strreplaces($this->spArgs('title')),
@@ -692,22 +710,22 @@ class admin extends top
                     'is_show' => strreplaces($this->spArgs('is_show')),
                 );
                 //组织条件
-                $condition = array('id' => (int) $_id);
-                if(true == $db_ad_unit->editUnit($row, $condition)){
+                $condition = array('id' => (int)$_id);
+                if (true == $db_ad_unit->editUnit($row, $condition)) {
                     $this->ClearSpAccess();
                     $this->success('修改成功', spUrl('admin', 'adUnit'));
-                }else{
+                } else {
                     $this->error('修改失败');
                 }
                 return;
             }
-            $id = (int) $id;
+            $id = (int)$id;
             $this->rs = $db_ad_unit->find(array('id' => $id));
             $this->display('admin/ad_unit_edit.html');
             return;
         }
 
-        if($this->spArgs('show')){
+        if ($this->spArgs('show')) {
             $this->isshow = 1;
             $this->rs = $db_ad_unit->find(array('id' => $this->spArgs('show')));
             $this->display('admin/ad_unit_edit.html');
@@ -715,11 +733,11 @@ class admin extends top
         }
 
         //删除
-        if($id = $this->spArgs('del')){
-            if($db_ad_unit->delUnit(array('id' => (int) $id))){
+        if ($id = $this->spArgs('del')) {
+            if ($db_ad_unit->delUnit(array('id' => (int)$id))) {
                 $this->ClearSpAccess();
                 $this->success('删除成功');
-            }else{
+            } else {
                 $this->error('删除失败');
             }
             return;
@@ -733,9 +751,10 @@ class admin extends top
 
     /**
      * @author 霸气千秋
-     * @todo 广告内容管理     
+     * @todo 广告内容管理
      */
-    public function adContent() {
+    public function adContent()
+    {
         $db_ad_list = spClass('db_ad_list');
         $this->curr_adUnit = ' id="current"';
         $this->curr_addisplay = ' id="addisplay"';
@@ -743,22 +762,22 @@ class admin extends top
         $param = $this->spArgs();
 
         //改变广告是否显示
-        if($this->spArgs('flag')){
-			$this->ClearSpAccess();
-            if(true == $db_ad_list->changeShow(array('is_show' => (int) $this->spArgs('en_show')), array('adid' => (int) $this->spArgs('id')))){
+        if ($this->spArgs('flag')) {
+            $this->ClearSpAccess();
+            if (true == $db_ad_list->changeShow(array('is_show' => (int)$this->spArgs('en_show')), array('adid' => (int)$this->spArgs('id')))) {
                 $this->success('修改成功');
-            }else{
+            } else {
                 $this->error('修改失败');
             }
             return;
         }
 
         //删除
-        if($id = $param['del']){
-            if($db_ad_list->delList(array('adid' => (int) $id))){
+        if ($id = $param['del']) {
+            if ($db_ad_list->delList(array('adid' => (int)$id))) {
                 $this->ClearSpAccess();
                 $this->success('删除成功');
-            }else{
+            } else {
                 $this->error('删除失败');
             }
             return;
@@ -766,9 +785,9 @@ class admin extends top
 
 
         //编辑和新增
-        if($param['edit']){
+        if ($param['edit']) {
             //提交编辑处理
-            if($param['edit_submit']){
+            if ($param['edit_submit']) {
                 $date = ($param['date'][0] == '' and $param['date'][1] == '') ? '' : $param['date'][0] . "|" . $param['date'][1];
 
                 $row = array(
@@ -783,44 +802,44 @@ class admin extends top
                 );
 
                 $ret = $this->upLoadPic();
-                if($ret['error']){
+                if ($ret['error']) {
                     $this->error('上传失败:' . $ret['error']);
                 }
 
 
                 //如果是图片广告
-                if($row['type'] == 1){
+                if ($row['type'] == 1) {
                     $row['body'] = strreplaces($param['body_img']);
-                    if($ret['img'] != ''){
+                    if ($ret['img'] != '') {
                         $row['body'] = $ret['img'];
                     }
                 }
-                if($row['type'] == 2){
+                if ($row['type'] == 2) {
                     $row['body'] = $param['body_html'];
                 }
 
                 //新增
-                if($param['edit'] == 'add'){
-                    if($row['title'] == '' || $row['body'] == '' || $row['weight'] == ''){
+                if ($param['edit'] == 'add') {
+                    if ($row['title'] == '' || $row['body'] == '' || $row['weight'] == '') {
                         $this->error('标题,广告,权重不能为空', spUrl('admin', 'adContent'));
                     }
-                    if($db_ad_list->addList($row)){
+                    if ($db_ad_list->addList($row)) {
                         $this->success('创建成功', spUrl('admin', 'adContent'));
-                    }else{
+                    } else {
                         $this->error('创建失败', spUrl('admin', 'adContent'));
                     }
-                }else{
-                    $condition = array('adid' => (int) $param['edit']);
-                    if($db_ad_list->editList($row, $condition)){
+                } else {
+                    $condition = array('adid' => (int)$param['edit']);
+                    if ($db_ad_list->editList($row, $condition)) {
                         $this->ClearSpAccess();
                         $this->success('修改成功', spUrl('admin', 'adContent'));
-                    }else{
+                    } else {
                         $this->error('修改失败', spUrl('admin', 'adContent'));
                     }
                 }
             }
             $this->adUnit = spClass('db_ad_unit')->findAll(); //获取广告位列表
-            $condition = array('adid' => (int) $param['edit']);
+            $condition = array('adid' => (int)$param['edit']);
             $_data = $db_ad_list->find($condition);
             //处理下时间
             $_data['time_date_limit'] = explode('|', $_data['time_date_limit']);
@@ -831,14 +850,14 @@ class admin extends top
 
         $this->adUnit = spClass('db_ad_unit')->findAll();
         $data = $db_ad_list->spPager($this->spArgs(page, 1), 10)->findAll(null, 'adid desc');
-        foreach($data as $key => &$val){
+        foreach ($data as $key => &$val) {
             //日期处理
             $time_date_limit = explode('|', $val['time_date_limit']);
             $val['time_date_limit'] = $time_date_limit[0] == null ? '无限制' : '[' . $time_date_limit[0] . '] 至 [' . $time_date_limit[1] . ']';
 
             //广告类型处理
             $_type = '';
-            switch($val['type']){
+            switch ($val['type']) {
                 case 1:
                     $val['type'] = '图片广告';
                     break;
@@ -857,8 +876,8 @@ class admin extends top
             }
 
             //广告位置处理
-            foreach($this->adUnit as $k => $v){
-                if($v['id'] == $val['auid']){
+            foreach ($this->adUnit as $k => $v) {
+                if ($v['id'] == $val['auid']) {
                     $val['auid'] = $v['title'];
                 }
             }
@@ -868,36 +887,38 @@ class admin extends top
         $this->display('admin/ad_list.html');
     }
 
-    private function ClearSpAccess() {
+    private function ClearSpAccess()
+    {
         $db_ad_unit = spClass('db_ad_unit');
         $ret = $db_ad_unit->findAll(null, null, 'id');
-        foreach($ret as $k => $v){
+        foreach ($ret as $k => $v) {
             //清空所有类别的缓存
             spAccess('c', 'Ad_' . $v['id'], null);
-			spAccess('c', 'adunit', null);
+            spAccess('c', 'adunit', null);
         }
     }
 
     //上传图片
-    private function upLoadPic() {
+    private function upLoadPic()
+    {
         $file = $_FILES['filedata'];
-        if($file['error'] == 4)
+        if ($file['error'] == 4)
             return array('error' => '');
-        if($file['error'] == 1)
+        if ($file['error'] == 1)
             return array('error' => '上传的文件超过了 php.ini 中 upload_max_filesize 选项限制的值');
-        if($file['error'] == 2)
+        if ($file['error'] == 2)
             return array('error' => '传文件的大小超过了 HTML 表单中 MAX_FILE_SIZE 选项指定的值');
-        if($file['error'] == 3)
+        if ($file['error'] == 3)
             return array('error' => '文件只有部分被上传');
-        if($file['error'] == 5)
+        if ($file['error'] == 5)
             return array('error' => '上传文件大小为0');
-        if($file['error'] == 6)
+        if ($file['error'] == 6)
             return array('error' => '缺少临时文件夹');
-        if($file['error'] == 7)
+        if ($file['error'] == 7)
             return array('error' => '写文件失败');
-        if($file['error'] == 8)
+        if ($file['error'] == 8)
             return array('error' => '上传被其它扩展中断');
-        if($file['size'] > 2097152)
+        if ($file['size'] > 2097152)
             return array('error' => '请上传小于2M的文件');
 
         $ext = pathinfo($file['name']);
@@ -905,110 +926,101 @@ class admin extends top
         $fext = $ext['extension'];
 
         $support_ext = array('jpg', 'png', 'gif', 'jpeg');
-        if(!in_array($fext, $support_ext)){
+        if (!in_array($fext, $support_ext)) {
             return array('error' => '只能上传jpg,png,gif');
         }
 
         $addir = APP_PATH . '/attachs/ad/';
         $Relative_path = 'attachs/ad/';
 
-        if(!is_dir($addir)){
+        if (!is_dir($addir)) {
             __mkdirs($addir);
         }
 
 
-        if(move_uploaded_file($file['tmp_name'], $addir . $name)){
+        if (move_uploaded_file($file['tmp_name'], $addir . $name)) {
             return array('error' => '', 'img' => $Relative_path . $name);
-        }else{
+        } else {
             return array('error' => '移动文件失败，请检查' . $addir . '目录权限');
         }
     }
 
-	//添加banner管理模块和分类管理模块
-	function sort()
-	{	
-		if (isset($_GET['do']) && $_GET['do']='add') 
-		{
-			$id = spClass('db_sort')->create($this->spArgs());
-			echo $id;
-			die;
-		}
-		if($this->spArgs('mod') == 'del')
-		{
-			$id = $this->spArgs('id');
-			spClass('db_sort')->delete(array('id'=>$id));
-			$this->success('删除成功',spUrl('admin','sort'));
-		}
-		if($this->spArgs('mod') == 'edit')
-		{
-			$id = $this->spArgs('id');
-			spClass('db_sort')->update(array('id'=>$id),$this->spArgs());
-			echo 1;
-			die;
-		}
-		spClass('db_sort','th_sort')->get_ids();
-		$this->sort = spClass('db_sort','th_sort')->get_f_sort();
-		$this->son = spClass('db_sort','th_sort');
+    //添加banner管理模块和分类管理模块
+    function sort()
+    {
+        if (isset($_GET['do']) && $_GET['do'] = 'add') {
+            $id = spClass('db_sort')->create($this->spArgs());
+            echo $id;
+            die;
+        }
+        if ($this->spArgs('mod') == 'del') {
+            $id = $this->spArgs('id');
+            spClass('db_sort')->delete(array('id' => $id));
+            $this->success('删除成功', spUrl('admin', 'sort'));
+        }
+        if ($this->spArgs('mod') == 'edit') {
+            $id = $this->spArgs('id');
+            spClass('db_sort')->update(array('id' => $id), $this->spArgs());
+            echo 1;
+            die;
+        }
+        spClass('db_sort', 'th_sort')->get_ids();
+        $this->sort = spClass('db_sort', 'th_sort')->get_f_sort();
+        $this->son = spClass('db_sort', 'th_sort');
 
         $this->curr_sort = ' id="acurrent"';
         $this->curr_blogdisplay = ' id="blogdisplay"';
         $this->curr_blog = ' id="current"';
 
-		$this->display('admin/sort.html');
-	}
-	function banner()
-	{
-		if ($this->spArgs('mod') == 'add') 
-		{
-			if (isset($_POST['create'])) 
-			{
-				$row['title'] = $_POST['title'];
-				$row['href'] = $_POST['href'];
-				$row['order'] = $_POST['order'];
-				$row['fid'] = $_POST['fid'];
-				$row['ggw'] = $_POST['ggw'];
-				if (isset($_FILES['url'])) 
-				{
-					$image_name = strrchr($_FILES['url']['name'],'.');
-					$name = uniqid().$image_name;
-					$row['url'] = 'tpl/images/upload/'.$name;
-					move_uploaded_file($_FILES['url']['tmp_name'],$row['url']);
-				}
-				spClass('db_banner')->add_banner($row);
-				$this->success('添加成功','index.php?c=admin&a=banner');
-			}
-			
-			$this->display('admin/add_banner.html');
-			die;
-		}
-		if($this->spArgs('mod') == 'del')
-		{
-			$id = $this->spArgs('id');
-			spClass('db_banner')->delete(array('id'=>$id));
-			$this->success('删除成功',spUrl('admin','banner'));
-		}
-		$this->list = spClass('db_banner')->banner_list();
-		$this->display('admin/banner.html');
-	}
+        $this->display('admin/sort.html');
+    }
+
+    function banner()
+    {
+        if ($this->spArgs('mod') == 'add') {
+            if (isset($_POST['create'])) {
+                $row['title'] = $_POST['title'];
+                $row['href'] = $_POST['href'];
+                $row['order'] = $_POST['order'];
+                $row['fid'] = $_POST['fid'];
+                $row['ggw'] = $_POST['ggw'];
+                if (isset($_FILES['url'])) {
+                    $image_name = strrchr($_FILES['url']['name'], '.');
+                    $name = uniqid() . $image_name;
+                    $row['url'] = 'tpl/images/upload/' . $name;
+                    move_uploaded_file($_FILES['url']['tmp_name'], $row['url']);
+                }
+                spClass('db_banner')->add_banner($row);
+                $this->success('添加成功', 'index.php?c=admin&a=banner');
+            }
+
+            $this->display('admin/add_banner.html');
+            die;
+        }
+        if ($this->spArgs('mod') == 'del') {
+            $id = $this->spArgs('id');
+            spClass('db_banner')->delete(array('id' => $id));
+            $this->success('删除成功', spUrl('admin', 'banner'));
+        }
+        $this->list = spClass('db_banner')->banner_list();
+        $this->display('admin/banner.html');
+    }
 
     /**
      * 重写分类管理
      */
-    public function term(){
+    public function term()
+    {
         $doAction = $this->spArgs("do");
-        if($doAction == "save"){
+        if ($doAction == "save") {
             $this->termSave();
-        }
-        elseif($doAction == "add"){
+        } elseif ($doAction == "add") {
             $this->termAdd();
-        }
-        elseif($doAction == "edit"){
+        } elseif ($doAction == "edit") {
             $this->termEdit();
-        }
-        elseif($doAction == "update"){
+        } elseif ($doAction == "update") {
             $this->termEditPost();
-        }
-        else {
+        } else {
             $this->curr_system = ' id="current"';
             $this->curr_systemdisplay = ' id="systemdisplay"';
             $this->curr_term = 'id="acurrent"';
@@ -1022,49 +1034,54 @@ class admin extends top
         }
     }
 
-    private function termEdit(){
+    private function termEdit()
+    {
         $this->curr_system = ' id="current"';
         $this->curr_systemdisplay = ' id="systemdisplay"';
         $this->curr_term = 'id="acurrent"';
 
-        $db_term = spClass("db_term")->find(array("id"=>$this->spArgs('id')));
+        $db_term = spClass("db_term")->find(array("id" => $this->spArgs('id')));
         $this->term = $db_term;
-        if($db_term['recommend'] == 1){
+        if ($db_term['recommend'] == 1) {
             $this->push_true = "checked";
-        }else {
+        } else {
             $this->push_false = "checked";
         }
 
-        if($db_term['nav'] == 1){
+        if ($db_term['nav'] == 1) {
             $this->nav_true = "checked";
-        }else {
+        } else {
             $this->nav_false = "checked";
         }
         $this->display("admin/term_edit.html");
     }
-    private function termEditPost(){
-        $rs = spClass("db_term")->update(array("id"=>$_POST['id']),$_POST);
+
+    private function termEditPost()
+    {
+        $rs = spClass("db_term")->update(array("id" => $_POST['id']), $_POST);
         // var_dump(spClass("db_term")->dumpSql());var_dump($_POST);die;
-        if($rs){
+        if ($rs) {
             $this->success('保存成功', spUrl('admin', 'term'));
-        }else {
-            $this->error('保存失败'); 
+        } else {
+            $this->error('保存失败');
         }
     }
 
-    private function termAdd(){
-        $rs   = spClass("db_term")->create($_POST);
-        $json = $rs ? array("status"=>1) : array("status"=>0);
+    private function termAdd()
+    {
+        $rs = spClass("db_term")->create($_POST);
+        $json = $rs ? array("status" => 1) : array("status" => 0);
         echo json_encode($json);
         exit;
     }
 
-    private function termSave(){
+    private function termSave()
+    {
         $data = array();
         $json = array("status" => 1);
         foreach ($_POST as $key => $value) {
-            $rs = spClass("db_term")->update(array("id"=>$key),$value);
-            if(!$rs){
+            $rs = spClass("db_term")->update(array("id" => $key), $value);
+            if (!$rs) {
                 $json['status'] = 0;
                 break;
             }
@@ -1073,94 +1090,84 @@ class admin extends top
         exit;
     }
 
-    //@@@ 添加内容
-    public function content_add(){
-        $this->curr_content_add = ' id="acurrent"';
-        $this->curr_blogdisplay = ' id="blogdisplay"';
-        $this->curr_blog = ' id="current"';
+    //@@@ 文章管理
 
-        $terms = spClass("db_term")->findAll(array("uid"=>$_SESSION['uid']));
-        $this->terms = "";
-        foreach ($terms as $k => $vo) {
-            $this->terms .= '<option value="'.$vo['id'].'">'.$vo['name'].'</option>';
-        }
-        $this->display("admin/content_add.html");
-    }
+    public function article_add()
+    {
 
-    public function article_add(){
-        $this->curr_content_add = ' id="acurrent"';
-        $this->curr_blogdisplay = ' id="blogdisplay"';
-        $this->curr_blog = ' id="current"';
+        $this->curr_article = ' id="current"';
+        $this->curr_article_add = ' id="acurrent"';
+        $this->curr_article_div = $this->showclan;
 
         $this->terms = spClass("db_term")->findAll();
         $this->display("admin/article_add.html");
     }
-    public function article_save(){
+
+    public function article_save()
+    {
         $_POST["content"] = $_POST['editorValue'];
         $rs = spClass("db_article")->create($_POST);
-        if($rs){
+        if ($rs) {
             $this->success("添加成功");
-        }else {
+        } else {
             $this->error("添加失败");
         }
     }
 
+    public function article_edit()
+    {
 
-    //
-    public function article_edit(){
+        $this->article = spClass('db_article')->find(array('id' => $_GET['id']));
 
-        $this->article = spClass('db_article')->find(array('id'=>$_GET['id']));
-    
-        $this->terms   = spClass('db_term')->findAll();
-        $this->root    = __ROOT__;
+        $this->terms = spClass('db_term')->findAll();
+        $this->root = __ROOT__;
 
         $this->display("admin/article_edit.html");
     }
 
+    public function article_update()
+    {
 
+        $rs = spClass("db_article")->update(array('id' => $_POST['id']), $_POST);
 
-    public function article_update(){
-
-        $rs = spClass("db_article")->update(array( 'id' => $_POST['id'] ), $_POST);
-
-        if($rs){
-            $this->success("修改成功",spUrl('admin','article_list'));
-        }else {
+        if ($rs) {
+            $this->success("修改成功", spUrl('admin', 'article_list'));
+        } else {
             $this->error("修改失败");
         }
     }
 
+    public function article_list()
+    {
+        $dArticle = spClass("db_article");
 
-    //@@@内容列表---
-    public function article_list() {
-        //搜素功能
-        if($this->spArgs('submit')){
-            $title  = $this->spArgs('title');
-            $niname = $this->spArgs('niname');
-            $where  = "title like '%$title%'";
+        $this->curr_article = ' id="current"';
+        $this->curr_article_list = ' id="acurrent"';
+        $this->curr_article_div = $this->showclan;
 
-            if($niname){
-                $where .= " and uid = '$niname'";
+        if (isset($_GET['uid']) or isset($_GET['titlelike'])) {
+            $_GET["uid"] = intval($_GET['uid']);
+            if (!empty($_GET['uid'])) {
+                $where = " article.`uid`='" . $_GET['uid'] . "' ";
             }
+            if (!empty($_GET['titlelike'])) {
+                $where = ' article.`title` like ' . $dArticle->escape('%' . $_GET['titlelike'] . '%');
+            }
+            if (!empty($_GET['titlelike']) and !empty($_GET['uid'])) {
+                $where = " article.`uid`='" . $_GET['uid'] . "' and" . ' article.`title` like ' . $dArticle->escape('%' . $_GET['titlelike'] . '%');
+            }
+            if (empty($where)) {
+                $where = " article.`uid`=" . $_SESSION['uid'];
+            }
+        } else {
+            $where = " article.`uid`=" . $_SESSION['uid'];
         }
-        //end
-        
-        $uid = $_SESSION['uid'];
-
-        $this->article_list = spClass('db_article')->spLinker()->spPager($this->spArgs('page', 1), 20)->findAll($where, 'id asc');
-        if($this->spArgs('submit')){
-            $this->pager = spClass('db_article')->spPager()->pagerHtml('admin', 'article', array('title' => $title, 'niname' => $niname, 'submit' => $this->spArgs('submit')));
-        }else{
-            $this->pager = spClass('db_article')->spPager()->pagerHtml('admin', 'article_list');
-        }
-        
-        //左侧菜单显示
-        $this->curr_content_list = ' id="acurrent"';
-        $this->curr_blogdisplay = ' id="blogdisplay"';
-        $this->curr_blog = ' id="current"';
-        //end
-
+        $sql = "SELECT article.id,article.create_time,article.title,term.name,member.username,member.uid FROM (wh_article as article INNER JOIN wh_term as term ON article.term_id=term.id) INNER JOIN wh_member as member ON article.uid=member.uid WHERE " . $where . " ORDER BY `id` DESC";
+        $this->article_list = $dArticle->spPager($this->spArgs('page', 1), 10)->findSql($sql);
+        $this->pager = spClass("db_article")->spPager()->pagerHtml('admin', 'article_list');
         $this->display('admin/article_list.html');
     }
+
+    //@@@ 招聘管理
 
 }

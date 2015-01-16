@@ -122,7 +122,7 @@
 
                 {if $vo@index eq 0}
                     <div class="imagedesc left w350">
-                        <a href="">
+                        <a href="{spUrl c=$vo.tpl tid=$vo.id}">
                             <img src="{$vo.cover|upload_echo}" />
                         </a>
                         <div class="core_desc">
@@ -139,7 +139,7 @@
                     <div class="left w370">
                         {foreach $vo as $v}
                             <div class="imagedesc">
-                                <a href="">
+                                <a href="{spUrl c=$v.tpl tid=$v.id}">
                                     <img src="{$v.cover|upload_echo}" />
                                 </a>
                                 <div class="core_desc">

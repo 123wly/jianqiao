@@ -7,11 +7,11 @@
 
 <div id="content">
     <style type="text/css" media="screen">
-        .t_title{
-            width : 80px;
-        }
+    .t_title {
+        width: 80px;
+    }
     </style>
-   <div class="con_system">
+    <div class="con_system">
         <form action="{spUrl c=admin a=article_update}" method="post">
             <table width="100%" cellpadding="0" cellspacing="0" border="0" class="table_padding">
                 <tbody>
@@ -20,7 +20,7 @@
                         <td class="c_input_small">
                             <select name="term_id">
                                 {foreach $terms as $vo}
-                                    <option value="{$vo.id}" {if $vo['id'] == 5 }selected{/if}>{$vo.name}</option>
+                                    <option value="{$vo.id}">{$vo.name}</option>
                                 {/foreach}
                             </select>
                         </td>
@@ -29,7 +29,7 @@
                         <td class="t_title">标题</td>
                         <td class="c_input_small">
                             <input type="text" name="title" value="{$article.title}" />
-                             <input type="hidden" name="id" value="{$article.id}" />
+                            <input type="hidden" name="id" value="{$article.id}" />
                         </td>
                     </tr>
 
@@ -37,7 +37,7 @@
                         <td class="t_title">内容</td>
                         <td class="c_input_small">
                             <script id="editor" type="text/plain" name="content" style="width:90%;height:200px;">
-                             {$article.content}
+                                {$article.content}
                             </script>
                         </td>
                     </tr>
@@ -53,13 +53,7 @@
                         <td class="c_input_small">
                             <div style="height: 10px;"></div>
                             <a href='javascript:void(0);' onclick="javascript:$('#file_upload').uploadify('upload','*');">
-                                <img id="image" 
-                               {if $article[0][cover]==""}
-                                src="{$root}/uploads/{$article.cover}"
-                               {else}
-                               src="./statics/uploadify/upload-pic.png"
-                               {/if}
-                                width="135" height="113" border="0" />
+                                <img id="image" {if !empty($article.cover)} src="{$root}/uploads/{$article.cover}" {else} src="./statics/uploadify/upload-pic.png" {/if} width="135" height="113" border="0" />
                             </a>
 
                             <div class="upload_avatar">
@@ -70,30 +64,31 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="btn_area"><input name="submit" class="btn_save submit" type="submit" value="保存"></div>
+            <div class="btn_area">
+                <input name="submit" class="btn_save submit" type="submit" value="保存">
+            </div>
         </form>
     </div>
 </div>
 <script type="text/javascript">
-    
-    $(document).ready(function() {
-        var ue = UE.getEditor('editor');
-        $('#file_upload').uploadify({
-            'swf': './statics/uploadify/uploadify.swf',
-            'uploader': '{spUrl c=publicc a=uploadFile}',
-            'buttonText': '上传图片',
-            'onUploadSuccess': function(file, data, response) {
-                data = $.parseJSON(data);
-                if(data.status === 1){
-                    var info = '{$url}/uploads/' + data.info;
-                    $('#image').attr('src', '' + info);
-                    $('#cover').val(data.info);
-                }else {
-                    alert("上传失败！");
-                }
-                
-            },
-        });
+$(document).ready(function() {
+    var ue = UE.getEditor('editor');
+    $('#file_upload').uploadify({
+        'swf': './statics/uploadify/uploadify.swf',
+        'uploader': '{spUrl c=publicc a=uploadFile}',
+        'buttonText': '上传图片',
+        'onUploadSuccess': function(file, data, response) {
+            data = $.parseJSON(data);
+            if (data.status === 1) {
+                var info = '{$url}/uploads/' + data.info;
+                $('#image').attr('src', '' + info);
+                $('#cover').val(data.info);
+            } else {
+                alert("上传失败！");
+            }
+
+        },
     });
+});
 </script>
 {include file='admin/footer.html'}

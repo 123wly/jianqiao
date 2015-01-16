@@ -1,0 +1,113 @@
+{extends file='./templet/baoding/public/layout_clear.html'}
+{block name=head}
+    <script src="./statics/showdate.js"></script>
+{/block}
+{block name=content}
+    <div id="content">
+        <div class="toptp">
+            <img src="{$skin_path}images/jygttop.jpg" />
+        </div>
+        <div class="xzjq main">
+            
+            {include_php './templet/baoding/public/lhz.php'}
+
+            <div class="left chz">
+                <h1>我要报名<span>I Want To Register</span></h1>
+                <div class="wyyy_nr">
+                    <table>
+                        <tr>
+                            <td class="tex left">宝 宝 姓 名 ：</td>
+                            <td class="text left">
+                                <input name="" value="" type="text" />
+                            </td>
+                            <td class="left xbxz">
+                                <input type="radio" name="gender" value="男" checked="checked" />男</td>
+                            <td class="left xbxz">
+                                <input type="radio" name="gender" value="女" checked="checked" />女</td>
+                        </tr>
+                        <tr>
+                            <td class="tex left">宝 宝 生 日 ：</td>
+                            <td class="text left">
+                                <input name="bbsr" id="bbsr" value="" type="text" />
+                            </td>
+                            <td class="left"><img src="{$skin_path}images/rl.png" onclick="return Calendar('bbsr');" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tex left">期待入园日期：</td>
+                            <td class="text left">
+                                <input name="ruyuan" id="ruyuan" value="" type="text" />
+                            </td>
+                            <td class="left">
+                                <img src="{$skin_path}images/rl.png" onclick="return Calendar('ruyuan');" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tex left">联 系 电 话 ：</td>
+                            <td class="text left">
+                                <input name="" value="" type="text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tex left">家庭住址/小区 ：</td>
+                            <td class="text left">
+                                <input name="" value="" type="text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tex xzxx left">选 择 学 校</td>
+                        </tr>
+                        <tr>
+                            <td class="tex left">选择省份：</td>
+                            <td class="text left">
+                                <select name="">
+                                    <option>河北省</option>
+                                    <option>河北省</option>
+                                    <option>河北省</option>
+                                    <option>河北省</option>
+                                    <option>河北省</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tex left">选择区县：</td>
+                            <td class="text left">
+                                <select name="">
+                                    <option>河北省</option>
+                                    <option>河北省</option>
+                                    <option>河北省</option>
+                                    <option>河北省</option>
+                                    <option>河北省</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tex left">选择园所：</td>
+                            <td class="text left">
+                                <select name="">
+                                    <option>河北省</option>
+                                    <option>河北省</option>
+                                    <option>河北省</option>
+                                    <option>河北省</option>
+                                    <option>河北省</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr class="wtly">
+                            <td class="tex left">意见和问题：</td>
+                            <td class="left">
+                                <textarea name="" cols="40" rows="10"></textarea>
+                            </td>
+                        </tr>
+                    </table>
+                    <p>
+                        <input name="" type="button" value="提 交" />
+                    </p>
+                </div>
+            </div>
+
+            {include_php './templet/baoding/public/shiting.php'}
+        
+        </div>
+    </div>
+{/block}

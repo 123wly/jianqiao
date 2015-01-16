@@ -35,7 +35,7 @@ class emptyController extends top
 
 		$this->assignown("root",__ROOT__);
 		$this->assignown('skin_path',"".__ROOT__.'/templet/' . THEME_NAME .'/');
-		
+	
 		$this->display($c . ".html");
 	}
 
@@ -123,17 +123,49 @@ class emptyController extends top
 		$this->assignown("up",$up);
 		$this->assignown("next",$next);
 	}
+	
+	public function __wsmxzjq(){
+		$results = spClass("db_article")->spPager($this->spArgs('page', 1), 4)->findAll(array("term_id"=>$_GET['tid']),"id desc","term_id,id,title,brief,cover,create_time,tpl"); 
+		$pager = spClass("db_article")->spPager()->getPager();
+		
+		$this->assignown("results",$results);
+		$this->assignown("pager",$pager);
+	}
 
 	public function __life(){
-		
-		$results = spClass("db_article")->spPager($this->spArgs('page', 1), 4)->findAll(array("term_id"=>$_GET['tid']),"id desc","term_id,id,title,brief,cover,create_time,tpl"); 
+		if($_GET['tid'] == "25"){
+			$childNode = $this->dTerm->findAll(array("parent_id"=>$_GET['tid']),"","id");
+			$terms = array();
+			foreach ($childNode as $key => $value) {
+				$terms[] = $value['id'];
+			}
+			$whereTid = "'".implode("','", $terms)."'";
+			$where = "`term_id` IN (".$whereTid.")";
+			$results = spClass("db_article")->spPager($this->spArgs('page', 1), 6)->findAll($where ,"id desc","term_id,id,title,brief,cover,create_time,tpl"); 
+			$pager = spClass("db_article")->spPager()->getPager();
+			$this->assignown("results",$results);
+			$this->assignown("pager",$pager);
+		}else {
+			$results = spClass("db_article")->spPager($this->spArgs('page', 1), 4)->findAll(array("term_id"=>$_GET['tid']),"id desc","term_id,id,title,brief,cover,create_time,tpl"); 
+			$pager = spClass("db_article")->spPager()->getPager();
+			
+			$this->assignown("results",$results);
+			$this->assignown("pager",$pager);
+		}
+	}
+
+	public function __bjtd(){
+
+		$results = spClass("db_article")->spPager($this->spArgs('page', 1), 2)->findAll(array("term_id"=>$_GET['tid']),"id desc","term_id,id,title,brief,cover,create_time,tpl"); 
 		$pager = spClass("db_article")->spPager()->getPager();
 		// print_r($results);
 		
 		$this->assignown("results",$results);
 		$this->assignown("pager",$pager);
 	}
-
+	public function __jiamenjianqiao(){
+		$this->__page();
+	}
 	public function __index(){
 
 		//新闻
@@ -149,9 +181,11 @@ class emptyController extends top
 		$this->assignown("jiaoyu",$jiaoyu);
 
 		// 家园共育
-		$gongyu = spClass("db_term")->findAll(array("parent_id"=>6,"recommend"=>1),"","*","5");
+		$gongyu = spClass("db_term")->findAll(array("parent_id"=>6,"recommend"=>1),"`order` asc","*","2");
+		$hudong = spClass("db_term")->findAll(array("parent_id"=>25,"recommend"=>1),"","*",3);
+		$gys = array_merge($hudong, $gongyu);
 		$gongyugood = array();
-		foreach ($gongyu as $key => $value) {
+		foreach ($gys as $key => $value) {
 			if($key != 0){
 				if($key % 2 == 0){
 					$gongyugood[count($gongyugood)-1][] = $value;

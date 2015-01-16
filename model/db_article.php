@@ -8,7 +8,7 @@ class db_article extends ybModel
 
 	var $pk = "id"; // 主键
 	var $table = "article"; // 数据表的名称
-	
+
 	public function create($row){
 		$row['create_time'] = time();
 		$row['uid'] = $_SESSION['uid'];
@@ -29,6 +29,7 @@ class db_article extends ybModel
 		return $this->find($where, $order);
 
 	}
+	
 	public function find($conditions = null, $sort = null, $fields = null) {
         $data = parent::find($conditions, $sort, $fields);
         if(!empty($data['imgs'])){
