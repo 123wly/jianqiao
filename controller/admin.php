@@ -14,6 +14,10 @@ class admin extends top
         if ($_SESSION['admin'] != 1) {
             prient_jump(spUrl('main'));
         }
+
+        //@@@@
+        $this->cook_year = intval(date('Y'));
+        $this->cook_week = intval(date("W"));
     }
 
     function index()
@@ -1092,12 +1096,23 @@ class admin extends top
 
     //@@@ 文章管理
 
+    public function article_find(){
+        $id                 = $_POST['id'];
+        $articleInfo        = spClass("db_article")->find(array("id"=>$id));
+        echo json_encode($articleInfo);
+        die;
+    }
+
     public function article_add()
     {
 
         $this->curr_article = ' id="current"';
         $this->curr_article_add = ' id="acurrent"';
         $this->curr_article_div = $this->showclan;
+
+        if(isset($_GET['id'])){
+            $this->edit = 1;
+        }
 
         $this->terms = spClass("db_term")->findAll();
         $this->display("admin/article_add.html");
@@ -1106,12 +1121,22 @@ class admin extends top
     public function article_save()
     {
         $_POST["content"] = $_POST['editorValue'];
-        $rs = spClass("db_article")->create($_POST);
-        if ($rs) {
-            $this->success("添加成功");
-        } else {
-            $this->error("添加失败");
+        if(isset($_POST['edit'])){
+            $rs = spClass("db_article")->update(array("id"=>$_POST['id'],"uid"=>$_SESSION['uid']), $_POST);
+        }else {
+            $rs = spClass("db_article")->create($_POST);
         }
+        if ($rs) {
+            $this->success("保存成功");
+        } else {
+            $this->error("保存失败");
+        }
+    }
+
+    public function article_del(){
+        $rs = spClass("db_article")->delete(array("id"=>$_POST['id'],"uid"=>$_SESSION['uid']));
+        echo $rs ? "1" : "0";
+        die;
     }
 
     public function article_edit()
@@ -1127,7 +1152,6 @@ class admin extends top
 
     public function article_update()
     {
-
         $rs = spClass("db_article")->update(array('id' => $_POST['id']), $_POST);
 
         if ($rs) {
@@ -1170,4 +1194,169 @@ class admin extends top
 
     //@@@ 招聘管理
 
+    public function zhaopin(){
+
+        $this->curr_zhaopin = ' id="current"';
+        $this->curr_zhaopin_div = $this->showclan;
+
+        $doAction = $this->spArgs("do");
+        switch ($doAction) {
+            case 'save':
+                $this->zhaopin_save();
+                break;
+            case 'list':
+                $this->zhaopin_list();
+                break;
+            case 'jianli':
+                $this->zhaopin_jianli();
+                break;
+            case 'post_save':
+                $this->zhaopin_post_save();
+                break;
+            case 'del':
+                $this->zhaopin_del();
+                break;
+            default:
+                $this->zhaopin_list();
+                break;
+        }
+    }
+    
+    public function zhaopin_find(){
+        $id                 = $_POST['id'];
+        $zhaopinInfo        = spClass("db_zhaopin")->find(array("id"=>$id));
+        echo json_encode($zhaopinInfo);
+        die;
+    }
+
+    public function zhaopin_save(){
+        $this->curr_zhaopin_save = ' id="acurrent"';
+        $this->terms = spClass("db_term")->findAll();
+        if(isset($_GET['id'])){
+            $this->edit = 1;
+            $data = spClass('db_zhaopin')->find(array("id"=>$_GET['id']));
+            $data['content'] = $this->zpubb2html($data['content'], true);
+            $this->term_id = $data['term_id'];
+            $this->info = $data;
+        }
+
+        $this->display("admin/zhaopin_save.html");
+    }
+
+    public function zhaopin_post_save(){
+        $_POST['content'] = $this->zpubb2html($_POST['content']);
+        if(isset($_POST['edit'])){
+            $rs = spClass("db_zhaopin")->update(array("id"=>$_POST['id'],"uid"=>$_SESSION['uid']), $_POST);
+        }else {
+            $rs = spClass("db_zhaopin")->create($_POST);
+        }
+        if ($rs) {
+            $this->success("保存成功");
+        } else {
+            $this->error("保存失败");
+        }
+
+    }
+
+    private function zpubb2html($content, $h2u = false){
+        if(!$h2u){
+            $content = str_replace("[h]","<h4>",$content);
+            $content = str_replace("[/h]","</h4>",$content);
+            $content = str_replace("[p]","<p>",$content);
+            $content = str_replace("[/p]","</p>",$content);
+        }else {
+            $content = str_replace("<h4>","[h]",$content);
+            $content = str_replace("</h4>","[/h]",$content);
+            $content = str_replace("<p>","[p]",$content);
+            $content = str_replace("</p>","[/p]",$content);
+        }
+        return $content;
+    }
+
+    public function zhaopin_list(){
+        $this->curr_zhaopin_list = ' id="acurrent"';
+
+        $this->list =  spClass("db_zhaopin")->spPager($this->spArgs('page', 1), 10)->findAll(array("uid"=>$_SESSION['uid']),"id desc");
+        $this->pager = spClass("db_zhaopin")->spPager()->pagerHtml('admin', 'zhaopin', array("do"=>"list"));
+
+        $this->display("admin/zhaopin_list.html");
+    }
+
+    public function zhaopin_jianli(){
+        $this->curr_zhaopin_jianli = ' id="acurrent"';
+        $this->display("admin/zhaopin_jianli.html");
+    }
+
+    public function zhaopin_del(){
+        $rs = spClass("db_zhaopin")->delete(array("id"=>$_POST['id'],"uid"=>$_SESSION['uid']));
+        echo $rs ? "1" : "0";
+        die;
+    }
+    
+    //@@@预约报名
+
+    public function bmorder(){
+        $this->curr_bm = ' id="current"';
+        $this->curr_bm_div = $this->showclan;
+        $this->curr_bm_list = ' id="acurrent"';
+
+        $this->list  =  spClass("db_baoming")->spPager($this->spArgs('page', 1), 10)->findAll("","id desc","");
+        $this->pager = spClass("db_baoming")->spPager()->pagerHtml('admin', 'bmorder');
+
+        $this->display("admin/bmorder_list.html");
+    }
+
+    //@@@ 食谱管理
+
+    public function cook(){
+        $doAction = $this->spArgs("do");
+        $this->curr_cook = ' id="current"';
+        $this->curr_cook_div = $this->showclan;
+        if(method_exists($this, "cook_" . $doAction)){
+            call_user_func_array(array($this, "cook_" . $doAction), array());
+        }
+    }
+
+    public function cook_week(){
+        $this->curr_cook_week = ' id="acurrent"';
+
+
+        $weeks = get_week($this->spArgs("year"));
+        $this_week = $weeks[$this->spArgs("week") - 1];
+        $week_days = array();
+        for ($i=0; $i <5 ; $i++) { 
+            $week_days[$i + 1] = date('Y-m-d',strtotime('+'.$i.' day', $this_week[2]));
+        }
+        $this->week_days = $week_days;
+        $this->upweek = (intval($this->spArgs("week")) - 1 < 2 ) ? 2 : (intval($this->spArgs("week")) - 1) ;
+        $this->nextweek = ($this->spArgs("week") + 1 > count($weeks) ) ? count($weeks) : ($this->spArgs("week") + 1 );
+
+        $sql = " `date` >= ".$this_week[2]." and `date` <= ".$this_week[3];
+        $this->week_data = spClass("db_cook")->findAll($sql);
+
+        $this->display("admin/cook_week.html");
+    }
+
+    public function cook_week_post(){
+        $db = spClass("db_cook");
+        $status = 1;
+        foreach ($_POST as $key => $vo) {
+            $vo["date"] = strtotime($vo['date']);
+            $rs = $db->save($vo);
+            if(!$rs){
+                $status = 0;
+            }
+        }
+        if($status == 1){
+            $this->success("保存成功");
+        }else {
+            $this->error("保存失败");
+        }
+    }
+    
+    public function cook_day(){
+        $this->curr_cook_day = ' id="acurrent"';
+    }
+    
+    public function cook_day_post(){}
 }

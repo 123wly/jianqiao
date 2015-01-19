@@ -56,7 +56,33 @@
 					</li>
 					<div {$curr_article_div}>
 			            <a href="{spUrl c=admin a=article_list}" {$curr_article_list}>内容列表</a>
-					    <a href="{spUrl c=admin a=article_add}" {$curr_article_add}>添加内容</a>
+					    <a href="{spUrl c=admin a=article_add}" {$curr_article_add}>增改内容</a>
+					</div>
+
+					<li>
+						<a href="{spUrl c=admin a=zhaopin}" {$curr_zhaopin}><span class="f_system">招聘管理</span></a>
+					</li>
+					<div {$curr_zhaopin_div}>
+			            <a href="{spUrl c=admin a=zhaopin do=list}" {$curr_zhaopin_list}>招聘列表</a>
+					    <a href="{spUrl c=admin a=zhaopin do=save}" {$curr_zhaopin_save}>增改岗位</a>
+					    <a href="{spUrl c=admin a=zhaopin do=jianli}" {$curr_zhaopin_jianli}>简历列表</a>
+					</div>
+
+					<li>
+						<a href="{spUrl c=admin a=bmorder}" {$curr_bm}><span class="f_system">报名管理</span></a>
+					</li>
+					<div {$curr_bm_div}>
+			            <a href="{spUrl c=admin a=bmorder}" {$curr_bm_list}>报名列表</a>
+					</div>
+
+					<li>
+						<a href="{spUrl c=admin a=cook do=week year=$cook_year week={$cook_week}}" {$curr_cook}>
+							<span class="f_system">食谱管理</span>
+						</a>
+					</li>
+					<div {$curr_cook_div}>
+			            <a href="{spUrl c=admin a=cook do=week year=$cook_year week={$cook_week}}" {$curr_cook_week}>周食谱</a>
+			            <!-- <a href="{spUrl c=admin a=cook do=day}" {$curr_cook_day}>日食谱</a> -->
 					</div>
 
 			        <li>

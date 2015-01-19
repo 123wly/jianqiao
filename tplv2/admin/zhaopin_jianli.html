@@ -1,0 +1,54 @@
+{include file='admin/header.html'}
+<div id="content">
+	<div class="con_index" style="margin-bottom:10px;">
+		<div class="sec">
+			<h2>列表</h2>
+		</div>
+		<div class="navpage">{$pager}<div class="clear"></div></div>
+	      	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_model">
+		    	<tr class="table_title">
+				  	<th width="30" class="m_title">操作</th>
+			      	<th width="30">ID</th>
+				  	<th width="150">标题</th>
+                    <th width="80">栏目</th>
+				  	<th width="80">作者</th>
+				  	<th width="60">时间</th>
+				  	<th width="60">操作</th>
+			   	</tr>
+			    {foreach from=$article_list item=d}
+			   	<tr class="table_hover" id="article_{$d.id}">
+			     	<td class="m_title" style="padding-top:13px">
+                        <input id="checkbox" class="ckeckbox" type="checkbox" name="delid" delid="{$d.id}"></td>
+			      	<td>{$d.id}</td>
+				  	<td class="tt_title">
+				  		<a href="javascript:;" target="_blank">{if $d.title == ''}没有标题{else}{$d.title}{/if}</a>
+				  	</td>
+                    <td width="80">{$d.name}</td>
+				  	<td>{$d.username} (ID:{$d.uid})</td>
+				  	<td>{$d.create_time|date_format:"%Y-%m-%d"}</td>
+				  	<td class="fun_con mfun">
+				      	<a class="f_edit mtop" href="{spUrl c=admin a=article_add id=$d.id}" target="_blank">编辑</a>
+					  	<a class="f_delete mtop" href="javascript:;" onclick="del_article({$d.id})">删除</a>
+					</td>
+			   	</tr>
+			   	{/foreach}
+		  	</table>
+	</div>
+	
+	<div class="navpage">{$pager}<div class="clear"></div></div>
+	<script>
+		function del_article(id){
+			if(confirm("确定要删除此文章吗？")){
+		    	$.post('{spUrl c=admin a=article_del}', { id : id }, function(data) {
+		    		if(data === '1'){
+		    			alert("删除成功");
+		    			window.location.reload();
+		    		}else {
+		    			alert("删除失败");
+		    		}
+		    	});
+		   	}
+		}
+	</script>
+</div>
+{include file='admin/footer.html'}

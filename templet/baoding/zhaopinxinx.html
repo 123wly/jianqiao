@@ -5,17 +5,11 @@
             <img src="{$skin_path}images/zpxxbjt.jpg" />
         </div>
         <div class="zpxi main">
-            <div class="left lhz">
-                <h2>招聘信息<span>Job Offers</span></h2>
-                <ul>
-                    <li><a class="hover" href="">社会招聘</a>
-                    </li>
-                    <li><a>校园招聘</a>
-                    </li>
-                </ul>
-            </div>
+            
+            {include_php './templet/baoding/public/lhz.php'}
+
             <div class="right zpxinr">
-                <h1>招聘信息<span>Job Offers</span></h1>
+                <h1>{$cTerm.name}<span>{$cTerm.en_name}</span></h1>
                 <table width="940">
                     <tr>
                         <td class="zw">职位</td>
@@ -26,37 +20,52 @@
                         <td class="shij">截止日期</td>
                         <td class="xianq"> </td>
                     </tr>
+                    {foreach $results as $key => $vo}
                     <tr>
-                        <td>剑桥新世纪幼儿园园长</td>
-                        <td>5年</td>
-                        <td>1</td>
-                        <td>本科</td>
-                        <td>河北保定 </td>
-                        <td>2015-02-01</td>
+                        <td>{$vo.zhiwei}</td>
+                        <td>{$vo.jingyan}</td>
+                        <td>{$vo.renshu}</td>
+                        <td>{$vo.xueli}</td>
+                        <td>{$vo.didian}</td>
+                        <td>{$vo.jiezhi}</td>
                         <td>
-                            <a href=""><img src="{$skin_path}images/ghfghkfl.png" />
+                            <a href="{spUrl c=$vo.tpl zid=$vo.id}">
+                                <img src="{$skin_path}images/ghfghkfl.png" />
                             </a>
                         </td>
                     </tr>
+                    {/foreach}
                 </table>
                 <div class="ym">
                     <ul>
-                        <li class="syy">
-                            <a href="">
-                                < </a>
-                        </li>
-                        <li class="sz hover">
-                            <a href="">1</a>
-                        </li>
-                        <li class="sz">
-                            <a href="">2</a>
-                        </li>
-                        <li class="sz">
-                            <a href="">3</a>
-                        </li>
-                        <li class="syy">
-                            <a href=""> > </a>
-                        </li>
+                        {if $pager}
+                            <!--在当前页不是第一页的时候，显示前页和上一页-->
+                            {if $pager.current_page != $pager.first_page}
+                                <li class="syy">
+                                    <a href="{spUrl c=zhaopinxinx tid=$tid a=index page=$pager.prev_page}"> &lt; </a>
+                                </li>
+                            {/if}
+                            <!--开始循环页码，同时如果循环到当前页则不显示链接-->
+                            {foreach from=$pager.all_pages item=thepage}
+                                {if $thepage eq $pager.current_page -1 or $thepage eq $pager.current_page or $thepage eq $pager.current_page + 1}
+                                    {if $thepage != $pager.current_page}
+                                        <li class="sz">
+                                            <a href="{spUrl c=zhaopinxinx tid=$tid a=index page=$thepage}">{$thepage}</a>
+                                        </li>
+                                    {else}
+                                        <li class="sz hover">
+                                            <a href="javascript:;">{$thepage}</a>
+                                        </li>
+                                    {/if}
+                                {/if}
+                            {/foreach}
+                            <!--在当前页不是最后一页的时候，显示下一页和后页-->
+                            {if $pager.current_page != $pager.last_page}
+                                <li class="syy">
+                                    <a href="{spUrl c=zhaopinxinx tid=$tid a=index page=$pager.next_page}"> &gt; </a>
+                                </li>
+                            {/if}
+                        {/if}                        
                     </ul>
                 </div>
             </div>

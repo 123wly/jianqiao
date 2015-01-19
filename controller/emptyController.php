@@ -33,6 +33,10 @@ class emptyController extends top
 			call_user_func_array(array($this,"__".$c), array());
 		}
 
+		$schools = spClass("db_member")->findAll(array("role"=>1),"`uid` asc","username,uid");
+		$schools[] = spClass("db_member")->find(array("role"=>0),"`uid` asc","username,uid");
+		$this->assignown("schools",$schools);
+
 		$this->assignown("root",__ROOT__);
 		$this->assignown('skin_path',"".__ROOT__.'/templet/' . THEME_NAME .'/');
 	
@@ -43,6 +47,29 @@ class emptyController extends top
 		$this->v->engine->assign($name, $value);
 	}
 
+	public function __mzsp(){
+		$weeks = get_week(intval(date("Y")));
+
+		$week_num = isset($_GET['week']) ? intval($_GET['week']) : intval(date("W"));
+        $this_week = $weeks[$week_num - 1];
+
+        $sql = " `date` >= ".$this_week[2]." and `date` <= ".$this_week[3];
+        
+        $week_data = spClass("db_cook")->findAll($sql,"","zao,zaodian,wu,wudian,wan");
+        $data = array();
+        foreach ($week_data as $key => $value) {
+        	foreach ($value as $k => $vo) {
+        		$data[$k][] = $vo;
+        	}
+        }
+        $this->assignown("week_data", $data);
+
+        $upweek = (intval($this_week) - 1 < 2 ) ? 2 : (intval($this_week) - 1) ;
+        $nextweek = ($week_num + 1 > count($weeks) ) ? count($weeks) : ($week_num + 1 );
+
+        $this->assignown("upweek", $upweek);
+        $this->assignown("nextweek", $nextweek);
+	}
 
 	public function __page(){
 		$termInfo = $this->dTerm->find(array("id"=>$this->spArgs("tid")));
@@ -211,6 +238,36 @@ class emptyController extends top
 		$this->assignown("zuopin", $zuopin);
 
 
+	}
+	public function __zhaopinxinx(){
+		$termInfo = $this->dTerm->find(array("id"=>$_GET['tid']));
+		if($termInfo['parent_id'] == 0){
+			$childNode = $this->dTerm->findAll(array("parent_id"=>$termInfo['id']),"`order` asc","id");
+			$ids = array();
+			foreach ($childNode as $key => $value) {
+				$ids[] = $value['id'];
+			}
+			$whereTid = " `term_id` in ('".implode("','", $ids)."') ";
+		}else {
+			$whereTid = array("term_id"=>$_GET['tid']);
+		}
+		$results = spClass("db_zhaopin")->spPager($this->spArgs('page', 1), 1)->findAll($whereTid, "id desc");
+		$pager = spClass("db_zhaopin")->spPager()->getPager();
+		$this->assignown("results",$results);
+		$this->assignown("pager",$pager);
+	}
+	public function __zhaopinxinx_zd(){
+		$info = spClass("db_zhaopin")->find(array("id"=>$_GET['zid']));
+		$this->assignown("info", $info);
+	}
+	public function __search(){
+		$obj = spClass('db_article');
+		$keyword = urldecode($this->spArgs('keyword'));
+		$condition = ' title like '.$obj->escape('%'.$keyword.'%');
+		$result = $obj->spPager($this->spArgs('page', 1), 10)->findAll($condition);
+		$pager     = $this->dArticle->spPager()->getPager();
+		$this->assignown("results",$result);
+		$this->assignown("pager",$pager);
 	}
 
 }

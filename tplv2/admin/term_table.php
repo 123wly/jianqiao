@@ -73,7 +73,6 @@
     $(document).ready(function() {
         var parent_select = jQuery.parseJSON('<?php echo json_encode($parent_ids); ?>');
         $.each(parent_select, function(key, val) {
-            $("select" + key + '[parent_id]')
             $("select[name='" + key + "[parent_id]']").get(0).value = val;
         });
         $(".add").live('click',function(){

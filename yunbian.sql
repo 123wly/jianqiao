@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2015-01-16 17:44:27
+Date: 2015-01-19 17:53:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -137,7 +137,7 @@ INSERT INTO `wh_article` VALUES ('56', '为什么选择剑桥2', '<p>为什么�
 INSERT INTO `wh_article` VALUES ('57', '为什么选择剑桥3', '<p>为什么选择剑桥</p>', '1421037248', null, '54b34ebf8bb39ggt1.png', '1', '为什么选择剑桥为什么选择剑桥为什么选择剑桥为什么选择剑桥为什么选择剑桥为什么选择剑桥为什么选择剑桥为什么选择剑桥', '29', 'information_zd', '剑桥新世纪幼q园');
 INSERT INTO `wh_article` VALUES ('58', '为什么选择剑桥4', '<p>为什么选择剑桥</p>', '1421037248', null, '54b34ebf8bb39ggt1.png', '1', '为什么选择剑桥为什么选择剑桥为什么选择剑桥为什么选择剑桥为什么选择剑桥为什么选择剑桥为什么选择剑桥为什么选择剑桥', '29', 'information_zd', '剑桥新世纪幼q园');
 INSERT INTO `wh_article` VALUES ('59', '为什么选择剑桥5', '<p>为什么选择剑桥</p>', '1421037248', null, '54b34ebf8bb39ggt1.png', '1', '为什么选择剑桥为什么选择剑桥为什么选择剑桥为什么选择剑桥为什么选择剑桥为什么选择剑桥为什么选择剑桥为什么选择剑桥', '29', 'information_zd', '剑桥新世纪幼q园');
-INSERT INTO `wh_article` VALUES ('60', '加盟剑桥', '<p><img alt=\"8加盟剑桥_03.png\" src=\"/ueditor/php/upload/image/20150115/1421310364961502.png\" title=\"1421310364961502.png\"/></p>', '1421310372', '', '', '1', '', '8', '', null);
+INSERT INTO `wh_article` VALUES ('60', '加盟剑桥', '<p><img alt=\"8加盟剑桥_03.png\" src=\"/ueditor/php/upload/image/20150115/1421310364961502.png\" title=\"1421310364961502.png\"/></p>', '1421310372', '[\"54b9cf1801a8dfenyuantu1.jpg\",\"54b9cf19d725cfenyuantu2.jpg\"]', '54b9cf00dc8b4datd.png', '1', '加盟剑桥加盟剑桥加盟剑桥加盟剑桥', '8', 'tpl', '剑桥新世纪幼园');
 
 -- ----------------------------
 -- Table structure for `wh_attachments`
@@ -170,18 +170,27 @@ DROP TABLE IF EXISTS `wh_baoming`;
 CREATE TABLE `wh_baoming` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `bbname` varchar(255) DEFAULT NULL,
+  `gender` varchar(255) DEFAULT NULL,
   `bbsr` varchar(255) DEFAULT NULL,
   `ruyuan` varchar(255) DEFAULT NULL,
   `tel` varchar(255) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
   `xuexiao` varchar(255) DEFAULT NULL,
   `yijian` varchar(1000) DEFAULT NULL,
+  `stdate` varchar(255) DEFAULT NULL,
+  `create_time` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wh_baoming
 -- ----------------------------
+INSERT INTO `wh_baoming` VALUES ('1', 'asf', '女', '2015-1-16', '2015-1-14', 'zxcv', 'zxcv', '总园', 'zxvzxcv', null, null);
+INSERT INTO `wh_baoming` VALUES ('2', 'asf', '女', '2015-1-16', '2015-1-14', 'zxcv', 'zxcv', '总园', 'zxvzxcv', null, null);
+INSERT INTO `wh_baoming` VALUES ('3', 'asf', '女', '2015-1-16', '2015-1-14', 'zxcv', 'zxcv', '总园', 'zxvzxcv', null, null);
+INSERT INTO `wh_baoming` VALUES ('4', 'asf', '女', '2015-1-16', '2015-1-14', 'zxcv', 'zxcv', '总园', 'zxvzxcv', null, null);
+INSERT INTO `wh_baoming` VALUES ('5', 'asf', '女', '2015-1-16', '2015-1-14', 'zxcv', 'zxcv', '总园', 'zxvzxcv', null, null);
+INSERT INTO `wh_baoming` VALUES ('6', 'aa', null, null, null, 'aa', null, '分园一', null, 'vv', null);
 
 -- ----------------------------
 -- Table structure for `wh_blog`
@@ -285,6 +294,46 @@ INSERT INTO `wh_catetags` VALUES ('23', '趣味', '23', '0');
 INSERT INTO `wh_catetags` VALUES ('24', '科学', '24', '0');
 INSERT INTO `wh_catetags` VALUES ('25', '军事', '25', '0');
 INSERT INTO `wh_catetags` VALUES ('26', '体育', '26', '0');
+
+-- ----------------------------
+-- Table structure for `wh_cook`
+-- ----------------------------
+DROP TABLE IF EXISTS `wh_cook`;
+CREATE TABLE `wh_cook` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` varchar(255) DEFAULT NULL,
+  `zao` text,
+  `zaodian` text,
+  `wu` text,
+  `wudian` text,
+  `wan` text,
+  `create_time` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of wh_cook
+-- ----------------------------
+INSERT INTO `wh_cook` VALUES ('16', '1448841600', 'aaaaaazzz', 'zzzzz', 'vvvv', '', '', '1421656343');
+INSERT INTO `wh_cook` VALUES ('17', '1448928000', 'a', '', '', '', '', '1421656343');
+INSERT INTO `wh_cook` VALUES ('18', '1449014400', '', 'vvcvcv', '', '', '', '1421656343');
+INSERT INTO `wh_cook` VALUES ('19', '1449100800', '', '', '', '', '', '1421656343');
+INSERT INTO `wh_cook` VALUES ('20', '1449187200', '', '', '', '', '', '1421656343');
+INSERT INTO `wh_cook` VALUES ('21', '1450051200', 'asfdsf', '', '', '', '', '1421658651');
+INSERT INTO `wh_cook` VALUES ('22', '1450137600', 'zxvzxcv', '', '', '', '', '1421658651');
+INSERT INTO `wh_cook` VALUES ('23', '1450224000', '', '', '', '', '', '1421658651');
+INSERT INTO `wh_cook` VALUES ('24', '1450310400', '', '', '', '', '', '1421658651');
+INSERT INTO `wh_cook` VALUES ('25', '1450396800', '', '', '', '', '', '1421658651');
+INSERT INTO `wh_cook` VALUES ('26', '1421625600', 'zxcvzxcv', '', '', '', '', '1421658861');
+INSERT INTO `wh_cook` VALUES ('27', '1421712000', 'asdfasdf', 'zxcv', 'z', '', '', '1421658861');
+INSERT INTO `wh_cook` VALUES ('28', '1421798400', 'mmmmmmmmmm', '', 'zxcv', '', 'zz', '1421658861');
+INSERT INTO `wh_cook` VALUES ('29', '1421884800', 'z', '', 'zxcv', '', 'zz', '1421658861');
+INSERT INTO `wh_cook` VALUES ('30', '1421971200', '', 'z', '', '', 'zzz', '1421658861');
+INSERT INTO `wh_cook` VALUES ('31', '1422230400', 'aaaa\r\naaaa', '', '', '', '', '1421660972');
+INSERT INTO `wh_cook` VALUES ('32', '1422316800', 'xxxxxxx', '', '', 'z', '', '1421660972');
+INSERT INTO `wh_cook` VALUES ('33', '1422403200', '', 'xxxxxxx', 'x', '', '', '1421660972');
+INSERT INTO `wh_cook` VALUES ('34', '1422489600', '', '', '', '', '', '1421660972');
+INSERT INTO `wh_cook` VALUES ('35', '1422576000', '', '', '', '', '', '1421660972');
 
 -- ----------------------------
 -- Table structure for `wh_cpage_body`
@@ -419,21 +468,6 @@ CREATE TABLE `wh_invite_friend` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `wh_jianli`
--- ----------------------------
-DROP TABLE IF EXISTS `wh_jianli`;
-CREATE TABLE `wh_jianli` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `file_name` int(11) DEFAULT NULL,
-  `create_time` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of wh_jianli
--- ----------------------------
-
--- ----------------------------
 -- Table structure for `wh_likes`
 -- ----------------------------
 DROP TABLE IF EXISTS `wh_likes`;
@@ -480,6 +514,7 @@ CREATE TABLE `wh_member` (
   `m_fow` tinyint(1) NOT NULL DEFAULT '1',
   `m_pm` tinyint(1) NOT NULL DEFAULT '1',
   `theme` varchar(255) DEFAULT NULL,
+  `role` int(11) DEFAULT NULL COMMENT '0 总管理员 1 分园',
   PRIMARY KEY (`uid`),
   KEY `username` (`username`),
   KEY `domain` (`domain`),
@@ -489,8 +524,8 @@ CREATE TABLE `wh_member` (
 -- ----------------------------
 -- Records of wh_member
 -- ----------------------------
-INSERT INTO `wh_member` VALUES ('1', '1', '1', 'admin@admin.com', '1d6a0266434297b8c2771de4fca12a4a', 'E95I8c', '管理员', '', '火星', null, 'asdfasdf', '3', '0', '0', '', '1420680581', '1421397685', '127.0.0.1', '127.0.0.1', '1', '1', '1', null);
-INSERT INTO `wh_member` VALUES ('2', '1', '1', '1@nihao.com', '804ec9e27f66fb63e5c209e7539d285d', 'M~2Y5q', 'aaa', 'aaaa', '火星', '艺术,时尚', '', '23', '1', '1', '', '1420770068', '1420770281', '127.0.0.1', '127.0.0.1', '1', '1', '1', null);
+INSERT INTO `wh_member` VALUES ('1', '1', '1', 'admin@admin.com', '1d6a0266434297b8c2771de4fca12a4a', 'E95I8c', '总园', '', '火星', null, 'asdfasdf', '3', '0', '0', '', '1420680581', '1421397685', '127.0.0.1', '127.0.0.1', '1', '1', '1', null, '0');
+INSERT INTO `wh_member` VALUES ('2', '1', '1', '1@nihao.com', '804ec9e27f66fb63e5c209e7539d285d', 'M~2Y5q', '分园一', 'aaaa', '火星', '艺术,时尚', '', '23', '1', '1', '', '1420770068', '1420770281', '127.0.0.1', '127.0.0.1', '1', '1', '1', null, '1');
 
 -- ----------------------------
 -- Table structure for `wh_memberex`
@@ -766,7 +801,7 @@ CREATE TABLE `wh_term` (
   `en_name` varchar(255) DEFAULT NULL,
   `nav` int(11) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wh_term
@@ -779,7 +814,7 @@ INSERT INTO `wh_term` VALUES ('5', '剑桥生活', '0', null, '0', '1', '54b34d6
 INSERT INTO `wh_term` VALUES ('6', '家园共育', '0', null, '0', '1', '54b345bdf309btfrfgf.jpg', '剑桥生活剑桥生活剑桥生活', null, null, 'Home Produced', '1');
 INSERT INTO `wh_term` VALUES ('7', '选择剑桥', '0', '', '0', '1', '54b345bdf309btfrfgf.jpg', '剑桥生活剑桥生活剑桥生活', null, null, null, '1');
 INSERT INTO `wh_term` VALUES ('8', '加盟剑桥', '0', '', '0', '1', '54b345bdf309btfrfgf.jpg', '剑桥生活剑桥生活剑桥生活', null, 'jiamenjianqiao', null, '1');
-INSERT INTO `wh_term` VALUES ('9', '招聘信息', '0', '', '0', '1', '54b345bdf309btfrfgf.jpg', '剑桥生活剑桥生活剑桥生活', null, 'zhaopinxinx', null, '1');
+INSERT INTO `wh_term` VALUES ('9', '招聘信息', '0', '', '0', '1', '54b345bdf309btfrfgf.jpg', '剑桥生活剑桥生活剑桥生活', null, 'zhaopinxinx', 'Job Offers', '1');
 INSERT INTO `wh_term` VALUES ('10', '剑桥简介', '1', null, '0', '1', '54b371c181bcbdatd.png', 'sdfsdf', null, 'page', 'Cambridge Introduction', '1');
 INSERT INTO `wh_term` VALUES ('11', '办学理念', '1', null, '0', '1', null, null, null, 'page', 'Educational philosophy', '1');
 INSERT INTO `wh_term` VALUES ('12', '集团文化', '1', null, '0', '1', null, null, null, 'page', null, '1');
@@ -817,6 +852,8 @@ INSERT INTO `wh_term` VALUES ('44', '保定周边县', '2', '1421201847', '0', '
 INSERT INTO `wh_term` VALUES ('46', '课程体系', '4', '1421201847', '1', '1', null, null, null, 'page', 'Course System', '1');
 INSERT INTO `wh_term` VALUES ('47', '特色教学展示', '4', null, '1', '1', null, null, null, 'information_list', 'Featured teaching show', '1');
 INSERT INTO `wh_term` VALUES ('48', '教学成果', '4', null, '1', '1', null, null, null, 'information_list', 'Teaching Achievement', '1');
+INSERT INTO `wh_term` VALUES ('49', '社会招聘', '9', null, '0', '1', null, null, null, 'zhaopinxinx', 'Job Offers', '0');
+INSERT INTO `wh_term` VALUES ('50', '校园招聘', '9', null, '0', '1', null, null, null, 'zhaopinxinx', 'Job Offers', '0');
 
 -- ----------------------------
 -- Table structure for `wh_theme`
@@ -845,17 +882,40 @@ INSERT INTO `wh_theme` VALUES ('1', 'a:10:{s:4:\"user\";N;s:5:\"setup\";N;s:15:\
 -- ----------------------------
 DROP TABLE IF EXISTS `wh_zhaopin`;
 CREATE TABLE `wh_zhaopin` (
-  `id` int(11) NOT NULL DEFAULT '0',
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `zhiwei` varchar(255) DEFAULT NULL,
   `jingyan` varchar(255) DEFAULT NULL,
   `renshu` varchar(255) DEFAULT NULL,
   `xueli` varchar(255) DEFAULT NULL,
   `didian` varchar(255) DEFAULT NULL,
   `jiezhi` varchar(255) DEFAULT NULL,
+  `content` text,
   `create_time` varchar(255) DEFAULT NULL,
+  `uid` int(11) DEFAULT NULL,
+  `term_id` int(11) DEFAULT NULL,
+  `tpl` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of wh_zhaopin
+-- ----------------------------
+INSERT INTO `wh_zhaopin` VALUES ('1', '职位', '123', '人数', '学历aaa', '地点', '2015-1-15', '<h4>标题sss</h4>\r\n<p>一行内容</p>\r\n<p>一行sdf内容</p>', '1421477724', '1', '49', 'zhaopinxinx_zd');
+INSERT INTO `wh_zhaopin` VALUES ('4', 'aaa', 'aaa', 'aa', 'aaa', 'aaa', '2015-1-13', '<h4>标题aaa</h4>\r\n<p>一行内容aaa</p>\r\n<p>一行内容aaa</p>\r\n<h4>标题aaa</h4>\r\n<p>一行内容aaa</p>\r\n<p>一行内容aaa</p>', '1421479510', '1', '49', 'zhaopinxinx_zd');
+INSERT INTO `wh_zhaopin` VALUES ('5', 'bbb', 'bbbb', 'bbbb', 'bbbb', 'bbbbbb', '2015-1-29', '<h4>标题bbb</h4>\r\n<p>一行内容bb</p>\r\n<p>一行内容bb</p>\r\n<h4>标题bbb</h4>\r\n<p>一行内容bb</p>\r\n<p>一行内容bb</p>', '1421479532', '1', '50', 'zhaopinxinx_zd');
+
+-- ----------------------------
+-- Table structure for `wh_zpjianli`
+-- ----------------------------
+DROP TABLE IF EXISTS `wh_zpjianli`;
+CREATE TABLE `wh_zpjianli` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `file_name` int(11) DEFAULT NULL,
+  `create_time` varchar(255) DEFAULT NULL,
+  `zid` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of wh_zhaopin
+-- Records of wh_zpjianli
 -- ----------------------------

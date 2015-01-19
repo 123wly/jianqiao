@@ -13,7 +13,7 @@
         }
     </style>
    <div class="con_system">
-        <form action="{spUrl c=admin a=article_save}" method="post">
+        <form action="{spUrl c=admin a=article_save}" method="post" id="form">
             <table width="100%" cellpadding="0" cellspacing="0" border="0" class="table_padding">
                 <tbody>
                     <tr>
@@ -100,6 +100,7 @@
                             <div style="height: 10px;"></div>
                             <a href='javascript:void(0);' onclick="javascript:$('#file_upload').uploadify('upload','*');">
                                 <img id="image" src="./statics/uploadify/upload-pic.png" width="135" height="113" border="0" />
+                                <div id="del_cover">删除</div>
                             </a>
 
                             <div class="upload_avatar">
@@ -110,7 +111,13 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="btn_area"><input name="submit" class="btn_save submit" type="submit" value="保存"></div>
+            <div class="btn_area">
+                {if $edit eq 1}
+                    <input name="edit" type="hidden" value="1" />
+                    <input name="id" type="hidden" value="{$smarty.get.id}" />
+                {/if}
+                <input name="submit" class="btn_save submit" type="submit" value="保存" />
+            </div>
         </form>
     </div>
 </div>
@@ -128,6 +135,12 @@
 
     $(document).ready(function() {
         var ue = UE.getEditor('editor');
+
+        $("#del_cover").live("click",function(){
+            $("#cover").val("");
+            $("#image").attr("src","./statics/uploadify/upload-pic.png");
+        });
+
         $('#file_upload').uploadify({
             'swf': './statics/uploadify/uploadify.swf',
             'uploader': '{spUrl c=publicc a=uploadFile}',
@@ -169,6 +182,44 @@
             },
         });
 
+
+
+        {if $edit eq 1}
+            $.post('{spUrl c=admin a=article_find}', { id : {$smarty.get.id} }, function(data) {
+                var obj = $.parseJSON(data);
+                var formin = $("#form input,#form textarea");
+                $.each(obj, function(index, val) {
+                    $.each(formin, function(key, vo) {
+                        if ($(this).attr("name") === index){
+                            $(this).val(val);
+                        }
+                    });
+                });
+                
+                ue.ready(function() {
+                    ue.setContent(obj.content);
+                });
+
+                $("select[name='term_id']").get(0).value = obj.term_id;
+
+                if(obj.imgs !== null){
+                    var imgs = $.parseJSON(obj.imgs);
+                    $.each(imgs, function(index, val) {
+                        var info =  root + val;
+                        var li = '<li><img src="' + info + '" height="100" /><span class="del_img">删除</span></li>';
+                        $("#ul_tuzu").append(li);
+                    });
+                    imgs2val();
+                }
+                if(obj.cover !== null && obj.cover.length !== 0 ){
+                    $("#image").attr("src", root + obj.cover);
+                }else {
+                    $("#image").attr("src", "./statics/uploadify/upload-pic.png");
+                }
+            });
+        {/if}
+
     });
 </script>
+
 {include file='admin/footer.html'}

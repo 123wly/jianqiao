@@ -1,15 +1,18 @@
 <?php $skin_path = $_smarty_tpl->getVariable('skin_path')->value; ?>
 <?php $terms = spClass("db_term")->findAll(array("uid"=>THEME_UID,"nav"=>'1'),"`order` asc"); $terms = create_tree($terms);?>
 <div class="right rnav">
-    <div class="sousuo">
-        <p class="wpd left"><a href="">用户登录</a><a href="">注册</a>
-        </p>
-        <p class="sous left">
-            <input class="text left orgin_input" type="text" value="查找您附近的幼儿园" />
-            <input class="tij right" type="submit" value="" />
-        </p>
-        <div class="clear"></div>
-    </div>
+    <form action="<?php echo spUrl('search',''); ?>" method="get">
+        <div class="sousuo">
+            <p class="wpd left"><a href="">用户登录</a><a href="">注册</a>
+            </p>
+            <p class="sous left">
+                <input type="hidden" name="c" value="search" />
+                <input class="text left orgin_input" type="text" name="keyword" value="查找您附近的幼儿园" />
+                <input class="tij right" type="submit" value="" />
+            </p>
+            <div class="clear"></div>
+        </div>
+    </form>
     <div class="clear"></div>
     <div class="nav">
         <ul class="jMenu">
