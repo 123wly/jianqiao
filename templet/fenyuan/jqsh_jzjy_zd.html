@@ -1,0 +1,37 @@
+{extends file='./templet/fenyuan/public/layout.html'}
+{block name=head}
+<link type="text/css" href="{$skin_path}css/zy_fy.css" rel="stylesheet" />
+{/block}
+{block name=content}
+<div id="content">
+	{include_php './templet/fenyuan/public/tptop.php'}
+	<div class="main jqsh">
+    	<div class="left gy_left">
+        	{include_php './templet/fenyuan/public/gy_left.php'}
+          {include_php './templet/fenyuan/public/yuyue.php'}
+        </div>
+        <div class="right gy_right">
+            <div class="gywmnr">
+            	<h3>{$page_show.title}</h3>
+                <div class="textnr">
+                    <p class="left"><span>时间：{$page_show.create_time|date_format:'%Y-%m-%d'}</span>   <span> 来源：{$page_show.from}</span></p>
+
+                        {include_php './templet/fenyuan/public/share.php'}
+				</div>
+                <p style="text-indent:2em;padding-top:40px;color: #444444;font-size: 16px;">
+                    {$page_show.content}
+                </p>
+                <ul class="syyxyi">       
+	                   <li>
+                            <a href="{$up.href}">上一篇：{$up.title}</a>
+                        </li>
+                        <li>
+                            <a href="{$next.href}">下一篇：{$next.title}</a>
+                        </li>
+                 </ul>
+            </div> 
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+{/block}

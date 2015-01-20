@@ -1,0 +1,241 @@
+@charset "utf-8";
+
+@charset "utf-8";
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	font-family:"微软雅黑","宋体";
+	font-size:14px;
+	background:#fafafa;
+	background:#FF9;
+}
+@media screen and (max-width:1000px) { /*当屏幕尺寸小于1000px时，应用下面的CSS样式*/
+	body{
+		width:1300px
+	}
+    #header{
+        width:1300px;
+    }
+}
+li{
+	list-style:none;
+}
+a{
+	text-decoration:none;
+	outline:none;
+}
+img{
+	border:none;
+	outline:none;
+}
+input{
+	outline:none;
+}
+.clear{
+	clear:both;
+}
+.main{
+	width:1200px;
+	margin:0 auto;
+}
+.left{
+	float:left;
+}
+.right{
+	float:right;
+}
+#header{
+	height:114px;
+	width:100%;
+}
+#header .top{
+	width:100%;
+	height:70px;
+	background:#1f9fba;
+}
+#header .top .top_nav{
+	position:relative;
+	height:114px;
+}
+#header .top .top_nav .logo{
+	width:252px;
+	height:158px;
+	overflow:hidden;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:99999;
+}
+#header .top .top_nav .logo img{
+	width:100%;
+	height:auto;
+}
+#header .top .top_nav .nav{
+	position:absolute;
+	left:270px;
+}
+#header .top .top_nav .nav ul li{
+	float:left;
+	font-size:18px;
+}
+#header .top .top_nav .nav ul li a{
+	color:#ffffff;
+	display:block;
+	width:132px;
+	height:80px;
+	line-height:80px;
+	text-align:center;
+	position:relative;
+}
+#header .top .top_nav .nav ul li a span{
+	display:block;
+	width:13px;
+	height:19px;
+	position:absolute;
+	left:-13px;
+	bottom:-9px;
+}
+#header .top .top_nav .nav ul li.hoverd a span{
+	display:block;
+	width:13px;
+	height:19px;
+	position:absolute;
+	left:-13px;
+	bottom:1px;
+}
+#header .top .top_nav .nav ul li.hoverd a.gywmdj{
+	height:90px;
+}
+#header .top .top_nav .nav ul li.hoverd a.gywmdj span{
+	display:block;
+	width:13px;
+	height:19px;
+	position:absolute;
+	left:-13px;
+	bottom:1px;
+	background:url(../images/doan.png) no-repeat;
+	display:block;
+}
+#header .top .top_nav .nav ul li a:hover{
+	height:90px;
+}
+#header .top .top_nav .nav ul li a:hover span{
+	background:url(../images/doannn.png) no-repeat;
+	display:block;
+}
+#header .top .top_nav .nav ul li a.hover{
+	height:90px;
+}
+#header .top .top_nav .nav ul li a.hover span{
+	background:url(../images/doannn.png) no-repeat;
+	display:block;
+}
+#header .top .top_nav .nav ul li.hover a{
+	height:90px;
+}
+#header .top .top_nav .nav ul li.hover a span{
+	background:url(../images/doannn.png) no-repeat;
+	display:block;
+}
+#header .top .top_nav .nav ul li.hoverd a:hover{
+	height:90px;
+}
+#header .top .top_nav .nav ul li.hoverd a:hover span{
+	background:url(../images/doan.png) no-repeat;
+	display:block;
+}
+#header .top .top_nav .nav ul li.lvs a{
+	background:#9bba1f;
+}
+#header .top .top_nav .nav ul li.cens a{
+	background:#ffa200;
+}
+#header .top .top_nav .nav ul li.hos a{
+	background:#ca3535;
+}
+#header .top .top_nav .nav ul li.las a{
+	background:#15c1e5;
+}
+
+
+
+
+#footer{
+	background:#387897;
+	width:100%;
+}
+#footer .foot_top{
+	padding:40px 0 30px 0;
+	_zoom:1;
+	overflow:hidden;
+}
+#footer .foot_top ul{
+	width:220px;
+	float:left;
+	color:#fff;
+}
+#footer .foot_top ul h3{
+	font-size:18px;
+	line-height:26px;
+	font-weight:600;
+	height:60px;
+	border-bottom:4px solid #14b9d6;
+	margin-bottom:10px;
+}
+#footer .foot_top ul h3 span{
+	display:block;
+	text-transform:capitalize;
+}
+#footer .foot_top ul li{
+	line-height:26px;
+	font-size:12px;
+}
+#footer .foot_top ul li.weix{
+	width:200px;
+	height:197px;
+	overflow:hidden;
+	margin:0 auto;
+}
+#footer .foot_top ul li.weix img{
+	width:100%;
+}
+#footer .foot_top .kongge{
+	float:left;
+	width:100px;
+	height:80px;
+}
+#footer .foot_bottom{
+	background:url(../images/dbx.png);
+	height:45px;
+	overflow:hidden;	
+}
+#footer .foot_bottom p{
+	text-align:center;
+	line-height:45px;
+	font-size:12px;
+	color:#fff;
+}
+#footer .foot_bottom p a{
+	color:#fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

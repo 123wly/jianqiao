@@ -32,11 +32,10 @@ class emptyController extends top
 		if(method_exists($this,"__".$c)){
 			call_user_func_array(array($this,"__".$c), array());
 		}
-		if(method_exists($this,"__f_".$c)){
-				call_user_func_array(array($this,"__f_".$c), array());
-				
-		}
-		
+
+		$schools = spClass("db_member")->findAll(array("role"=>1),"`uid` asc","username,uid");
+		$schools[] = spClass("db_member")->find(array("role"=>0),"`uid` asc","username,uid");
+		$this->assignown("schools",$schools);
 
 		$this->assignown("root",__ROOT__);
 		$this->assignown('skin_path',"".__ROOT__.'/templet/' . THEME_NAME .'/');
@@ -47,7 +46,6 @@ class emptyController extends top
 	public function assignown($name, $value){
 		$this->v->engine->assign($name, $value);
 	}
-
 
 	public function __mzsp(){
 		$weeks = get_week(intval(date("Y")));
@@ -270,204 +268,6 @@ class emptyController extends top
 		$pager     = $this->dArticle->spPager()->getPager();
 		$this->assignown("results",$result);
 		$this->assignown("pager",$pager);
-	}
-
-
-
-
-
-
-
-
-	///////////////////////////////////////////////////
-
-	public function __f_index(){
-		//分园新闻
-		$f_n=sPclass("db_term")->find(array("id"=>75));
-		$f_news = spClass("db_article")->findAll(array("term_id"=>75),"id desc","id,title,content,create_time,tpl","4");
-		$this->assignown("f_n",$f_n);
-		$this->assignown("f_news",$f_news);
-		//分园介绍
-		$f_jh=spClass("db_term")->find(array("id"=>56));
-		$f_jieshao = spClass("db_article")->find(array("term_id"=>56));
-		$this->assignown("f_jh",$f_jh);
-		$this->assignown("f_jieshao",$f_jieshao);
-		//家长寄语
-		$f_ju=spClass("db_term")->find(array("id"=>66));
-		$f_jiyu=spClass("db_article")->findAll(array("term_id"=>66),"id desc","id,title,content,tpl","2");
-		$this->assignown("f_ju",$f_ju);
-		$this->assignown("f_jiyu",$f_jiyu);
-		//剑桥生活
-		$f_sh=spClass("db_term")->find(array("id"=>51));
-		$this->assignown("f_sh",$f_sh);
-		//精彩活动
-		$f_hd_term=sPclass("db_term")->find(array("id"=>62));
-		$f_hd=spClass("db_article")->findAll(array("term_id"=>62),"id desc","id,title,cover,tpl","8");
-		$this->assignown("f_hd_term",$f_hd_term);
-		$this->assignown("f_hd",$f_hd);
-		//欢乐课堂
-		$f_kt_term=sPclass("db_term")->find(array("id"=>64));
-		$f_kt=spClass("db_article")->findAll(array("term_id"=>64),"id desc","id,title,cover,tpl","8");
-		$this->assignown("f_kt_term",$f_kt_term);
-		$this->assignown("f_kt",$f_kt);
-	}
-
-	public function __f_page_show(){
-		$page_show  = $this->dArticle->find(array("id"=>$_GET['id']));
-		$imgs=str_replace("[\"","",$page_show['imgs']);
-		$imgs=str_replace("\"]","",$imgs);
-		$imgs=explode('","',$imgs);
-		$this->assignown("page_show",$page_show);
-		$this->assignown("imgs",$imgs);
-		// 上一篇
-		$upArticle = $this->dArticle->next($_GET['id'], true);
-		if(empty($upArticle)){
-			$up['href'] = "javascript:;";
-			$up['title'] = "没有了";
-		}else {
-			$up['href'] = spUrl($upArticle['tpl'],"",array("id"=>$upArticle['id']));
-			$up['title'] = $upArticle['title'];
-		}
-
-		// 下一篇
-		$nextArticle = $this->dArticle->next($_GET['id']);
-		if(empty($nextArticle)){
-			$next['href'] = "javascript:;";
-			$next['title'] = "没有了";
-		}else {
-			$next['href'] = spUrl($nextArticle['tpl'],"",array("id"=>$nextArticle['id']));
-			$next['title'] = $nextArticle['title'];
-		}
-		// 赋值 
-		$this->assignown("up",$up);
-		$this->assignown("next",$next);
-	}
-
-	public function __f_term($pagenum=2,$order="id desc"){
-
-		$term = spClass("db_term")->find(array("id"=>$_GET['tid']));
-		if(!$term['parent_id']){
-			$term = spClass("db_term")->find(array("parent_id"=>$_GET['tid']));
-		}
-
-		$articles=spClass("db_article")->spPager($this->spArgs('page', 1),$pagenum)->findAll(array("term_id"=>$term['id']),$order);
-
-		$article=spClass("db_article")->find(array("term_id"=>$term['id']));
-
-		$pager = spClass("db_article")->spPager()->getPager();
-		$this->assignown("term",$term);
-		$this->assignown("articles",$articles);
-		$this->assignown("article",$article);
-		$this->assignown("pager",$pager);
-	}
-
-	public function __f_gywm_fyjs(){
-
-		$this->__f_term();	
-
-	}
-
-	public function __f_gywm_zxxx(){
-		$flag_new="selected";
-		$flag_new2="hui";
-		$flag_tz2="none hui";
-		$flag_tz=$_GET['pagetz'];
-		if($flag_tz){
-			$flag_tz="class='selected'";
-			$flag_tz2="hui";
-
-			$flag_new="";
-			$flag_new2="none hui";
-		}
-		$this->assignown("flag_new",$flag_new);
-		$this->assignown("flag_new2",$flag_new2);
-		$this->assignown("flag_tz",$flag_tz);
-		$this->assignown("flag_tz2",$flag_tz2);
-
-
-
-		//分园新闻
-		$term_new=spClass("db_term")->find(array("id"=>75));
-		$f_news = spClass("db_article")->spPager($this->spArgs('page', 1), 2)->findAll(array("term_id"=>75),"id desc");
-		$pager = spClass("db_article")->spPager()->getPager();
-		$this->assignown("term_new",$term_new);
-		$this->assignown("pager",$pager);
-		$this->assignown("f_news",$f_news);
-
-		//分园通知
-		$term_tz=spClass("db_term")->find(array("id"=>74));
-		$f_tz = spClass("db_article")->spPager($this->spArgs('pagetz', 1), 2)->findAll(array("term_id"=>74),"id desc");
-		$pager_tz = spClass("db_article")->spPager()->getPager();
-		$this->assignown("term_tz",$term_tz);
-		$this->assignown("pager_tz",$pager_tz);
-		$this->assignown("f_tz",$f_tz);
-	}
-	public function __f_gywm_zxxx_zd(){
-		$this->__f_page_show();
-		
-	}
-	public function __f_gywm_lxwm(){
-		$this->__f_term($pagenum=1);
-		
-	}
-	public function __f_ydfc(){
-		$this->__f_term();
-	}
-
-	public function __f_jqsh_jcsh(){
-		$this->__f_term($pagenum=3);
-	}
-
-	public function __f_wsbj_wsxzs(){
-		$this->__f_term();
-	}
-	public function __f_mzsp_sp(){
-		$this->__f_term();
-	}
-
-	public function __f_yybm_wybm(){
-		$this->__f_term();
-	}
-
-	public function __f_ydfc_jscyzs(){
-		$this->__f_term($pagenum=2);
-
-	}
-	
-	public function __f_jqsh_jcsh_zd(){
-		$this->__f_page_show();
-	}
-
-	public function __f_jqsh_ktnr(){
-		$this->__f_term();
-	}
-
-	public function __f_jqsh_jzjy(){
-		$this->__f_term($pagenum=1);
-	}
-
-	public function __f_jqsh_jzjy_zd(){
-		$this->__f_page_show();
-	}
-
-	public function __f_wsbj_wsxzs_zd(){
-		$this->__f_page_show();
-	}
-
-	public function __f_ydfc_yzxx(){
-		$this->__f_term($pagenum=1);
-	}
-
-	public function __f_ydfc_jscyzs_zd(){
-		$this->__f_page_show();
-	}
-
-	public function __f_yybm_wyyy(){
-		$this->__f_term($pagenum=1);
-	}
-
-	public function __f_bjztc(){
-		$this->__f_term();
 	}
 
 }

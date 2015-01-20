@@ -1,0 +1,201 @@
+{extends file='./templet/fenyuan/public/layout.html'}
+{block name=head}
+<link type="text/css" href="{$skin_path}css/zy_fy.css" rel="stylesheet" />
+<script language="javascript">
+    $(function(){
+        var index = 0;  
+        $(".tab_title ul li").click(function(){
+            index = $(".tab_title ul li").index(this);
+            $(this).addClass("selected").siblings().removeClass("selected");
+            $(".tab_content .hui").eq(index).show().siblings().hide();
+        });
+        var i = 4;  //定义每个面板显示8个菜单
+        var len = $(".u .scrol li").length;  //获得LI元素的个数
+        var page = 1;
+        var maxpage = Math.ceil(len/i);
+        var scrollWidth = $(".u").width();
+        $(".vright").click(function(e){
+            if(!$(".u .scrol").is(":animated")){
+            if(page == maxpage ){
+                $(".u .scrol").stop();
+                $("#div1").css({
+                    "top": (e.pageY + 20) +"px",
+                    "left": (e.pageX + 20) +"px",
+                    "opacity": "0.9"
+                }).stop(true,false).fadeIn(800).fadeOut(800);
+            }
+            else{
+                $(".u .scrol").animate({
+                    left : "-=" + scrollWidth +"px"
+                },2000);
+                page++;
+            }
+            }
+        });
+        $(".vleft").click(function(){
+        if(!$(".u .scrol").is(":animated")){
+            if(page == 1){
+            $(".u .scrol").stop();
+            }else{
+            $(".u .scrol").animate({
+                left : "+=" + scrollWidth +"px"
+            },2000);
+            page--;
+            }
+            }
+        });
+    });
+</script>
+{/block}
+{block name=content}
+<div id="content">
+	{include_php './templet/fenyuan/public/tptop.php'}
+	<div class="main gywm">
+    	<div class="left gy_left">
+        {include_php './templet/fenyuan/public/gy_left.php'}
+        {include_php './templet/fenyuan/public/yuyue.php'}
+        </div>
+        <div class="right gy_right">
+            <div class="fxst">
+            	<div class="tab_title">
+                    <div class="u">
+                       <ul class="scrol">
+                           <li class="selected"><a>每周食谱</a></li>
+                           <li><a>今日食谱</a></li>
+                           <div class="clear"></div>
+                       </ul>
+                    </div>
+                </div>
+                <div class="tab_content">
+                   <div class="hui">
+                   		<div class="txtx_top">
+                            <p class="shangz"><a href=""> &lt;&lt; 上一周  </a> </p>
+                            <p class="xiaox"><img src="{$skin_path}images/xiaox.png" /></p>
+                            <p class="riqi">01/05 - 01/09</p>
+                            <p class="xiaz"><a href=""> 下一周 &gt;&gt; </a></p>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="ysb">
+                            <ul class="ysb_top">
+                                <li><img src="{$skin_path}images/shijianb.jpg" /></li>
+                                <li><img src="{$skin_path}images/zhouyi.jpg" /></li>
+                                <li><img src="{$skin_path}images/zhouer.jpg" /></li>
+                                <li><img src="{$skin_path}images/zhousan.jpg" /></li>
+                                <li><img src="{$skin_path}images/zhousi.jpg" /></li>
+                                <li><img src="{$skin_path}images/zhouwu.jpg" /></li>
+                                <div class="clear"></div>
+                            </ul>
+                            <ul class="left ysb_left">
+                                <li><img src="{$skin_path}images/zaodian .png" /></li>
+                                <li><img src="{$skin_path}images/zaodian.png" /></li>
+                                <li><img src="{$skin_path}images/wucan.png" /></li>
+                                <li><img src="{$skin_path}images/zhongdian.png" /></li>
+                                <li><img src="{$skin_path}images/wanchan.png" /></li>
+                            </ul>
+                            <ul class="left ysb_right">
+                                <li title="小糖包\什锦疙瘩汤\茶叶蛋\什锦疙瘩汤"><span>小糖包</span><span>什锦疙瘩汤</span><span>茶叶蛋</span><span>什锦疙瘩汤</span></li>
+                                <li title="小糖包\什锦疙瘩汤\茶叶蛋\什锦疙瘩汤"><span>小糖包</span><span>什锦疙瘩汤</span><span>茶叶蛋</span></li>
+                                <li title="小糖包\什锦疙瘩汤\茶叶蛋\什锦疙瘩汤"><span>小糖包</span><span>什锦疙瘩汤</span><span>茶叶蛋</span></li>
+                                <li title="小糖包\什锦疙瘩汤\茶叶蛋\什锦疙瘩汤"><span>小糖包</span><span>什锦疙瘩汤</span><span>茶叶蛋</span></li>
+                                <li title="小糖包\什锦疙瘩汤\茶叶蛋\什锦疙瘩汤"><span>小糖包</span><span>什锦疙瘩汤</span><span>茶叶蛋</span></li>
+                                <li title="小糖包\什锦疙瘩汤\茶叶蛋\什锦疙瘩汤"><span>小糖包</span><span>什锦疙瘩汤</span><span>茶叶蛋</span></li>
+                                <li title="小糖包\什锦疙瘩汤\茶叶蛋\什锦疙瘩汤"><span>小糖包</span><span>什锦疙瘩汤</span><span>茶叶蛋</span></li>
+                                <li title="小糖包\什锦疙瘩汤\茶叶蛋\什锦疙瘩汤"><span>小糖包</span><span>什锦疙瘩汤</span><span>茶叶蛋</span></li>
+                                <li title="小糖包\什锦疙瘩汤\茶叶蛋\什锦疙瘩汤"><span>小糖包</span><span>什锦疙瘩汤</span><span>茶叶蛋</span></li>
+                                <li title="小糖包\什锦疙瘩汤\茶叶蛋\什锦疙瘩汤"><span>小糖包</span><span>什锦疙瘩汤</span><span>茶叶蛋</span></li>
+                                <li title="小糖包\什锦疙瘩汤\茶叶蛋\什锦疙瘩汤"><span>小糖包</span><span>什锦疙瘩汤</span><span>茶叶蛋</span></li>
+                                <li title="小糖包\什锦疙瘩汤\茶叶蛋\什锦疙瘩汤"><span>小糖包</span><span>什锦疙瘩汤</span><span>茶叶蛋</span></li>
+                                <li title="小糖包\什锦疙瘩汤\茶叶蛋\什锦疙瘩汤"><span>小糖包</span><span>什锦疙瘩汤</span><span>茶叶蛋</span></li>
+                                <li title="小糖包\什锦疙瘩汤\茶叶蛋\什锦疙瘩汤"><span>小糖包</span><span>什锦疙瘩汤</span><span>茶叶蛋</span></li>
+                                <li title="小糖包\什锦疙瘩汤\茶叶蛋\什锦疙瘩汤"><span>小糖包</span><span>什锦疙瘩汤</span><span>茶叶蛋</span></li>
+                                <li title="小糖包\什锦疙瘩汤\茶叶蛋\什锦疙瘩汤"><span>小糖包</span><span>什锦疙瘩汤</span><span>茶叶蛋</span></li>
+                                <li title="小糖包\什锦疙瘩汤\茶叶蛋\什锦疙瘩汤"><span>小糖包</span><span>什锦疙瘩汤</span><span>茶叶蛋</span></li>
+                                <li title="小糖包\什锦疙瘩汤\茶叶蛋\什锦疙瘩汤"><span>小糖包</span><span>什锦疙瘩汤</span><span>茶叶蛋</span></li>
+                                <li title="小糖包\什锦疙瘩汤\茶叶蛋\什锦疙瘩汤"><span>小糖包</span><span>什锦疙瘩汤</span><span>茶叶蛋</span></li>
+                                <li title="小糖包\什锦疙瘩汤\茶叶蛋\什锦疙瘩汤"><span>小糖包</span><span>什锦疙瘩汤</span><span>茶叶蛋</span></li>
+                                <li title="小糖包\什锦疙瘩汤\茶叶蛋\什锦疙瘩汤"><span>小糖包</span><span>什锦疙瘩汤</span><span>茶叶蛋</span></li>
+                                <li title="小糖包\什锦疙瘩汤\茶叶蛋\什锦疙瘩汤"><span>小糖包</span><span>什锦疙瘩汤</span><span>茶叶蛋</span></li>
+                                <li title="小糖包\什锦疙瘩汤\茶叶蛋\什锦疙瘩汤"><span>小糖包</span><span>什锦疙瘩汤</span><span>茶叶蛋</span></li>
+                                <li title="小糖包\什锦疙瘩汤\茶叶蛋\什锦疙瘩汤"><span>小糖包</span><span>什锦疙瘩汤</span><span>茶叶蛋</span></li>
+                                <li title="小糖包\什锦疙瘩汤\茶叶蛋\什锦疙瘩汤"><span>小糖包</span><span>什锦疙瘩汤</span><span>茶叶蛋</span></li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                   </div>
+                   <div class="hui none">
+                   		<h4>今日早餐</h4>
+                        <table width="800">
+                          <tr>
+                            <td class="w365">
+                            	<ul>
+                                	<li>小糖包</li>
+                                    <li>什锦疙瘩汤</li>
+                                    <li>茶叶蛋</li>
+                                </ul>
+                            </td>
+                            <td class="430"><p><img src="{$skin_path}images/06.png" /></p></td>
+                          </tr>
+                        </table>
+						<h4>今日早点</h4>
+                        <table width="800">
+                          <tr>
+                            <td class="w365">
+                            	<p><img src="{$skin_path}images/10.png" /></p>
+                            </td>
+                            <td class="430">
+                            	<ul>
+                                	<li>达利园软面包</li>
+                                </ul>
+                            </td>
+                          </tr>
+                        </table>
+                        <h4>今日午餐</h4>
+                        <table width="800">
+                          <tr>
+                            <td class="w365">
+                            	<ul>
+                                	<li>奶香馒头 </li>
+                                    <li>牛肉炖土豆烩菜 </li>
+                                    <li>黄瓜炒鸡蛋</li>
+                                    <li>冰糖紫米粥</li>
+                                </ul>
+                            </td>
+                            <td class="430"><p><img src="{$skin_path}images/16.png" /></p></td>
+                          </tr>
+                        </table>
+                        <h4>今日午点</h4>
+                        <table width="800">
+                          <tr>
+                            <td class="w365">
+                            	<p><img src="{$skin_path}images/24.png" /></p>
+                            </td>
+                            <td class="430">
+                            	<ul>
+                                	<li>苹果</li>
+                                </ul>
+                            </td>
+                          </tr>
+                        </table>
+                        <h4>今日晚餐</h4>
+                        <table width="800">
+                          <tr>
+                            <td class="w365">
+                            	<ul>
+                                	<li>小糖包</li>
+                                    <li>什锦疙瘩汤</li>
+                                    <li>茶叶蛋</li>
+                                </ul>
+                            </td>
+                            <td class="430"><p><img src="{$skin_path}images/30.png" /></p></td>
+                          </tr>
+                        </table>
+                   </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+{/block}

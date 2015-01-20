@@ -1,0 +1,244 @@
+{extends file='./templet/fenyuan/public/layout.html'}
+{block name=head}
+<script language="javascript">
+    $(function(){
+        var index = 0;  
+        $(".tab_title ul li").click(function(){
+            index = $(".tab_title ul li").index(this);
+            $(this).addClass("selected").siblings().removeClass("selected");
+            $(".tab_content .hui").eq(index).show().siblings().hide();
+        });
+        var i = 4;  //定义每个面板显示8个菜单
+        var len = $(".u .scrol li").length;  //获得LI元素的个数
+        var page = 1;
+        var maxpage = Math.ceil(len/i);
+        var scrollWidth = $(".u").width();
+        $(".vright").click(function(e){
+            if(!$(".u .scrol").is(":animated")){
+            if(page == maxpage ){
+                $(".u .scrol").stop();
+                $("#div1").css({
+                    "top": (e.pageY + 20) +"px",
+                    "left": (e.pageX + 20) +"px",
+                    "opacity": "0.9"
+                }).stop(true,false).fadeIn(800).fadeOut(800);
+            }else{ 
+                $(".u .scrol").animate({
+                    left : "-=" + scrollWidth +"px"
+                },2000);
+                page++;
+            }
+            }
+        });
+        $(".vleft").click(function(){
+        if(!$(".u .scrol").is(":animated")){
+            if(page == 1){
+            $(".u .scrol").stop();
+            }else{
+            $(".u .scrol").animate({
+                left : "+=" + scrollWidth +"px"
+            },2000);
+            page--;
+            }
+            }
+        });
+    });
+</script>
+{/block}
+
+
+{block name=content}
+<body>
+
+<div id="content">
+	<div class="imgtp">
+    	<div id="owl-demo" class="owl-carousel owl-theme">
+          <div class="item">
+          	<img src="{$skin_path}images/shangtu.png">
+            <div class="tpd">
+                <p>英语互动活动
+                    <span>活动介绍活动介绍活动介,绍活动介绍活动介绍活动介绍活动介绍... ...</span>
+                </p>
+            </div>
+          </div>
+          <div class="item">
+          	<img src="{$skin_path}images/shangtu.png">
+            <div class="tpd">
+                <p>英语互动活动
+                    <span>活动介绍活动介绍活动介,绍活动介绍活动介绍活动介绍活动介绍... ...</span>
+                </p>
+            </div>
+          </div>
+          <div class="item">
+          	<img src="{$skin_path}images/shangtu.png">
+            <div class="tpd">
+                <p>英语互动活动
+                    <span>活动介绍活动介绍活动介,绍活动介绍活动介绍活动介绍活动介绍... ...</span>
+                </p>
+            </div>
+          </div>
+        </div> 
+    </div>
+<script>
+    $(document).ready(function() {
+      $("#owl-demo").owlCarousel({
+      navigationText : false,
+      slideSpeed : 300,
+      itemsCustom : false, 
+      paginationSpeed : 400,
+      singleItem : true,
+	  autoPlay : true
+ });
+    });
+</script> 
+	<div class="lmkuai main">
+    	<div class="xwzx hztk">
+			<div class="p35">
+        		<h2>{$f_n.name}<span>{$f_n.en_name}</span></h2>
+                <div class="xwzx_xian">
+                       {foreach $f_news as $vo}
+                      
+                     {if $vo@index eq 0}
+                    <h3 class="qdbj"><a href="{spUrl c=$vo.tpl id=$vo.id}">{$vo.title}</a></h3>
+                    <p>{$vo.content|msubstr:'0':'70'}</p>
+                    {else}
+
+                    <h3><a href="">{$vo.title}</a></h3>
+                    {/if}
+                    {/foreach}
+                </div>
+                <div class="genduo">
+                	<a href="{spUrl c=$f_n.tpl tid=$f_n.id}"></a>
+                </div>
+            </div>
+        </div>
+        <div class="fyjs hztk">
+        	<div class="p35">
+        		<h2>{$f_jh.name}<span>{$f_jh.en_name}</span></h2>
+              
+                <div class="tupian">
+                    <img src="{$f_jieshao.cover|upload_echo}" />
+                </div>
+                <p>{$f_jieshao.content|msubstr:'0':'80'}</p>
+                <div class="genduo">
+                        <a href="{spUrl c=$f_jh.tpl tid=$f_jh.id}"></a>
+                </div>
+            </div>
+        </div>
+        <div class="jsmw hztk">
+        	<div class="p35">
+        		<h2>{$f_ju.name}<span>{$f_ju.en_name}</span></h2>
+                {foreach $f_jiyu as $vo}
+            	<h3><a href="{spUrl c=$vo.tpl id=$vo.id}">{$vo.title}</a></h3>
+                <p>{$vo.content|msubstr:'0':'80'}</p>
+                {/foreach}
+                <div class="genduo">
+                        <a href="{spUrl c=$f_ju.tpl tid=$f_ju.id}"></a>
+                </div>
+           </div>
+        </div>
+    </div>
+    <div class="cyzs">
+    	<div class="main">
+        	<h2><img src="{$skin_path}images/cyzs.png" /></h2>
+            	<div class="tab_title">
+                    <div class="u">
+                        <ul class="scrol">
+                            <li class="selected"><a>全 部</a></li>
+                            <li><a>{$f_hd_term.name}</a></li>
+                            <li><a>{$f_kt_term.name}</a></li>
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab_content">
+                    <div class="hui">
+                        {foreach $f_hd as $vo}
+
+                    	<div class="hz">
+                        	<a href="{spUrl c=$vo.tpl id=$vo.id}"><img src="{$vo.cover|upload_echo}" /></a>
+                            <p>{$vo.title}</p>
+                        </div>
+                        {if $vo@index eq 3}
+                        {break}
+                        {/if}
+                        {/foreach}
+
+                        {foreach $f_kt as $vo}
+                        <div class="hz">
+                            <a href="{spUrl c=$vo.tpl id=$vo.id}"><img src="{$vo.cover|upload_echo}" /></a>
+                            <p>{$vo.title}</p>
+                        </div>
+                        {if $vo@index eq 3}
+                        {break}
+                        {/if}
+                        {/foreach}
+                         <div class="clear"></div>
+                        <div class="gengduo">
+                            <a href="{spUrl c=$f_sh.tpl tid=$f_sh.id}"><img src="{$skin_path}images/gengduo.png" /></a>
+                        </div>
+                    </div>
+                    
+                    <div class="none hui">
+                    	{foreach $f_hd as $vo}
+
+                        <div class="hz">
+                            <a href="{spUrl c=$vo.tpl id=$vo.id}"><img src="{$vo.cover|upload_echo}" /></a>
+                            <p>{$vo.title}</p>
+                        </div>
+                         {/foreach}
+                        <div class="clear"></div>
+                        <div class="gengduo">
+                        	<a href="{spUrl c=$f_hd_term.tpl tid=$f_hd_term.id}"><img src="{$skin_path}images/gengduo.png" /></a>
+                        </div>
+                    </div>
+
+
+                    <div class="none hui">
+                    {foreach $f_kt as $vo}
+                        <div class="hz">
+                            <a href="{spUrl c=$vo.tpl id=$vo.id}"><img src="{$vo.cover|upload_echo}" /></a>
+                            <p>{$vo.title}</p>
+                        </div>
+                    {/foreach}
+                        <div class="clear"></div>
+                        <div class="gengduo">
+                        	<a href="{spUrl c=$f_kt_term.tpl tid=$f_kt_term.id}"><img src="{$skin_path}images/gengduo.png" /></a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div class="yxjs">
+    	<div class="main">
+            <ul>
+            	<li><a href="{spUrl c=ydfc_yzxx tid=61}"><img src="{$skin_path}images/15.png" /><span><img src="{$skin_path}images/03.png" /></span></a></li>
+            	<li><a href="{spUrl c=wsbj_wsxzs tid=52}"><img src="{$skin_path}images/14.png" /><span><img src="{$skin_path}images/2.png" /></span></a></li>
+                <li><a href="{spUrl c=mzsp_sp tid=53}"><img src="{$skin_path}images/13.png" /><span><img src="{$skin_path}images/3.png" /></span></a></li>
+                <li><a href="{spUrl c=yybm_wybm tid=54}"><img src="{$skin_path}images/12.png" /><span><img src="{$skin_path}images/4.png" /></span></a></li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+    </div>
+    <div class="bot_top main">
+    	<div class="left tpyj">
+        	<img src="{$skin_path}images/fjiaosyfudsg.png" />
+        </div>
+        <div class="right biaog">
+        	<p>
+            	<span class="left"><input class="orgin_input" type="text" name="" value="" placeholder="学生姓名" /></span>
+                <span class="right"><input class="orgin_input" type="text" name="" value="" placeholder="学生性别" /></span>
+                <div class="clear"></div>
+            </p>
+            <p>
+                <span class="left"><input class="orgin_input" type="text" name="" value="" placeholder="家庭地址"/></span>
+                <span class="right"><input class="orgin_input" type="text" name="" value="" placeholder="联系方式" /></span>
+                <div class="clear"></div>
+            </p>
+            <p class="zxnr"><textarea name="" class="orgin_input" placeholder="咨询内容"></textarea></p>
+            <p class="tijiao"><input class="orgin_input" name="" type="button" value="我要报名" /></p>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+{/block}

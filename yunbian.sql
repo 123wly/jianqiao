@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2015-01-19 17:53:52
+Date: 2015-01-20 11:03:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -51,7 +51,7 @@ CREATE TABLE `wh_ad_unit` (
   `system` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否为系统投放位',
   `is_show` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wh_ad_unit
@@ -63,6 +63,7 @@ INSERT INTO `wh_ad_unit` VALUES ('4', '推荐频道顶部广告位', '推荐频�
 INSERT INTO `wh_ad_unit` VALUES ('5', '用户主页右侧广告位', '用户主页右侧广告位', '5.jpg', '5', '1', '0');
 INSERT INTO `wh_ad_unit` VALUES ('6', '用户主页详情页广告位', '用户主页详情页广告位', '6.jpg', '6', '1', '0');
 INSERT INTO `wh_ad_unit` VALUES ('7', '首页头部导航', '首页头部导航', '', '7', '0', '1');
+INSERT INTO `wh_ad_unit` VALUES ('8', '分园首页轮播图', '分园首页轮播图', '', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for `wh_article`
@@ -81,7 +82,7 @@ CREATE TABLE `wh_article` (
   `tpl` varchar(255) DEFAULT NULL,
   `from` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=109 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wh_article
@@ -138,6 +139,54 @@ INSERT INTO `wh_article` VALUES ('57', '为什么选择剑桥3', '<p>为什么�
 INSERT INTO `wh_article` VALUES ('58', '为什么选择剑桥4', '<p>为什么选择剑桥</p>', '1421037248', null, '54b34ebf8bb39ggt1.png', '1', '为什么选择剑桥为什么选择剑桥为什么选择剑桥为什么选择剑桥为什么选择剑桥为什么选择剑桥为什么选择剑桥为什么选择剑桥', '29', 'information_zd', '剑桥新世纪幼q园');
 INSERT INTO `wh_article` VALUES ('59', '为什么选择剑桥5', '<p>为什么选择剑桥</p>', '1421037248', null, '54b34ebf8bb39ggt1.png', '1', '为什么选择剑桥为什么选择剑桥为什么选择剑桥为什么选择剑桥为什么选择剑桥为什么选择剑桥为什么选择剑桥为什么选择剑桥', '29', 'information_zd', '剑桥新世纪幼q园');
 INSERT INTO `wh_article` VALUES ('60', '加盟剑桥', '<p><img alt=\"8加盟剑桥_03.png\" src=\"/ueditor/php/upload/image/20150115/1421310364961502.png\" title=\"1421310364961502.png\"/></p>', '1421310372', '[\"54b9cf1801a8dfenyuantu1.jpg\",\"54b9cf19d725cfenyuantu2.jpg\"]', '54b9cf00dc8b4datd.png', '1', '加盟剑桥加盟剑桥加盟剑桥加盟剑桥', '8', 'tpl', '剑桥新世纪幼园');
+INSERT INTO `wh_article` VALUES ('61', '剑桥新闻fff', '<p>我是宸宝妈妈，我是一位每天往返10公里送孩子上幼儿园的妈妈，我参加了宸宝幼儿园的家长志愿周，这是我在伊顿幼儿园一天的感受：</p>\r\n\r\n                    <p style=\"text-indent: 0em;\">早晨7：00</p>\r\n                    <p style=\"color: #444444;font-size: 16px;line-height: 26px;padding-top: 0px;\">宸宝睁开眼睛第一句话：“妈妈，今天你去班里给我当老师吗？”我低声说：“是的，宝贝儿。”虽然我的语气中带着坚定。但是内心却忐忑不安，因为我不知道今天我能否胜任这个角色。</p>\r\n\r\n                    <p style=\"text-indent: 0em;\">早晨8：00</p>\r\n                    <p style=\"color: #444444;font-size: 16px;line-height: 26px;padding-top: 5px;\">伊顿慧智双语幼儿园——济南大地锐城校园\r\n                        <br /> 早上好，爷爷。宸宝一进幼儿园的门口就大声的给幼儿园保安打招呼。保安叔叔也回应宸宝，你好小朋友。这简单的称呼一下拉近了人与人之间的距离，在孩子的眼里没有职务级别之分，只有尊重……这一点其实是我一直很看重的。\r\n                    </p>\r\n                    <p style=\"text-align:center;\">\r\n                    </p>\r\n                    <p>进入幼儿园大厅，就听到good morning宸宝，路老师带着满脸的微笑给宸宝打招呼，宸宝大声的回应，good morning路老师，然后接受幼儿园校医的晨检，这里说明一下，晨检是每位儿童到幼儿园的第一项工作。老师检查孩子的嗓子，双手，体温。如果都是正常就会发一个小绿牌示意这是健康宝宝，如果嗓子有点红，或者最近有过发烧，就发给小朋友一个黄色牌，示意班里老师要注意这个小朋友，多观察，多给喝水……在这点上我觉得伊顿做的特别好。</p>\r\n\r\n                    <p>宸宝领着绿牌准备上楼，这时候有位别的班老师喊宸宝早，宸宝也兴奋的跟老师打招呼，我很诧异，因为平时我不接送宸宝不认识那位老师，不知道老师姓啥，所以只能微笑，这位老师说，我可喜欢宸宝了，见了就逗他。哈，我这内心小激动了一下，这臭小子还挺有人缘的。</p>', '1421037248', null, '54b34ebf8bb39ggt1.png', '2', '剑桥新闻1剑桥新闻1剑桥新闻1剑桥新闻1', '75', 'gywm_zxxx_zd', '剑桥新世纪幼q园');
+INSERT INTO `wh_article` VALUES ('62', '剑桥新闻fff222', '<p>我是宸宝妈妈，我是一位每天往返10公里送孩子上幼儿园的妈妈，我参加了宸宝幼儿园的家长志愿周，这是我在伊顿幼儿园一天的感受：</p>\r\n\r\n                    <p style=\"text-indent: 0em;\">早晨7：00</p>\r\n                    <p style=\"color: #444444;font-size: 16px;line-height: 26px;padding-top: 0px;\">宸宝睁开眼睛第一句话：“妈妈，今天你去班里给我当老师吗？”我低声说：“是的，宝贝儿。”虽然我的语气中带着坚定。但是内心却忐忑不安，因为我不知道今天我能否胜任这个角色。</p>\r\n\r\n                    <p style=\"text-indent: 0em;\">早晨8：00</p>\r\n                    <p style=\"color: #444444;font-size: 16px;line-height: 26px;padding-top: 5px;\">伊顿慧智双语幼儿园——济南大地锐城校园\r\n                        <br /> 早上好，爷爷。宸宝一进幼儿园的门口就大声的给幼儿园保安打招呼。保安叔叔也回应宸宝，你好小朋友。这简单的称呼一下拉近了人与人之间的距离，在孩子的眼里没有职务级别之分，只有尊重……这一点其实是我一直很看重的。\r\n                    </p>\r\n                    <p style=\"text-align:center;\">\r\n                    </p>\r\n                    <p>进入幼儿园大厅，就听到good morning宸宝，路老师带着满脸的微笑给宸宝打招呼，宸宝大声的回应，good morning路老师，然后接受幼儿园校医的晨检，这里说明一下，晨检是每位儿童到幼儿园的第一项工作。老师检查孩子的嗓子，双手，体温。如果都是正常就会发一个小绿牌示意这是健康宝宝，如果嗓子有点红，或者最近有过发烧，就发给小朋友一个黄色牌，示意班里老师要注意这个小朋友，多观察，多给喝水……在这点上我觉得伊顿做的特别好。</p>\r\n\r\n                    <p>宸宝领着绿牌准备上楼，这时候有位别的班老师喊宸宝早，宸宝也兴奋的跟老师打招呼，我很诧异，因为平时我不接送宸宝不认识那位老师，不知道老师姓啥，所以只能微笑，这位老师说，我可喜欢宸宝了，见了就逗他。哈，我这内心小激动了一下，这臭小子还挺有人缘的。</p>', '1421037248', null, '54b34ebf8bb39ggt1.png', '2', '剑桥新闻1剑桥新闻1剑桥新闻1剑桥新闻1', '75', 'gywm_zxxx_zd', '剑桥新世纪幼q园');
+INSERT INTO `wh_article` VALUES ('63', '剑桥新闻fff333', '保定剑桥幼儿园隶属于保定剑桥教育集团，自2002年成立至今，现拥有近30所幼儿园。在“以生态式教育，培养完整儿童”的教育理念的指引下，兼顾国际视野与中国文化传统，为每一个孩子量身定制最适合自身的学习方法，致力于培养具有“中国灵魂、世界眼光、科学品格、健康心格、强壮体格”的健康、快乐、有爱、创新的世界小公民保定剑桥幼儿园隶属于保定剑桥教育集团，自2002年成立至今，现拥有近30所幼儿园。在“以生态式教育，培养完整儿童”的教育理念的指引下，兼顾国际视野与中国文化传统，为每一个孩子量身定制最适合自身的学习方法，致力于培养具有“中国灵魂、世界眼光、科学品格、健康心格、强壮体格”的健康、快乐、有爱、创新的世界小公民', '1421037248', null, '54b34ebf8bb39ggt1.png', '2', '剑桥新闻1剑桥新闻1剑桥新闻1剑桥新闻1', '75', 'gywm_zxxx_zd', '剑桥新世纪幼q园');
+INSERT INTO `wh_article` VALUES ('64', '剑桥新闻fff444', '保定剑桥幼儿园隶属于保定剑桥教育集团，自2002年成立至今，现拥有近30所幼儿园。在“以生态式教育，培养完整儿童”的教育理念的指引下，兼顾国际视野与中国文化传统，为每一个孩子量身定制最适合自身的学习方法，致力于培养具有“中国灵魂、世界眼光、科学品格、健康心格、强壮体格”的健康、快乐、有爱、创新的世界小公民保定剑桥幼儿园隶属于保定剑桥教育集团，自2002年成立至今，现拥有近30所幼儿园。在“以生态式教育，培养完整儿童”的教育理念的指引下，兼顾国际视野与中国文化传统，为每一个孩子量身定制最适合自身的学习方法，致力于培养具有“中国灵魂、世界眼光、科学品格、健康心格、强壮体格”的健康、快乐、有爱、创新的世界小公民', '1421037248', null, '54b34ebf8bb39ggt1.png', '2', '剑桥新闻1剑桥新闻1剑桥新闻1剑桥新闻1', '75', 'gywm_zxxx_zd', '剑桥新世纪幼q园');
+INSERT INTO `wh_article` VALUES ('65', '分园介绍', '保定剑桥幼儿园隶属于保定剑桥教育集团，自2002年成立至今，现拥有近30所幼儿园。在“以生态式教育，培养完整儿童”的教育理念的指引下，兼顾国际视野与中国文化传统，为每一个孩子量身定制最适合自身的学习方法，致力于培养具有“中国灵魂、世界眼光、科学品格、健康心格、强壮体格”的健康、快乐、有爱、创新的世界小公民保定剑桥幼儿园隶属于保定剑桥教育集团，自2002年成立至今，现拥有近30所幼儿园。在“以生态式教育，培养完整儿童”的教育理念的指引下，兼顾国际视野与中国文化传统，为每一个孩子量身定制最适合自身的学习方法，致力于培养具有“中国灵魂、世界眼光、科学品格、健康心格、强壮体格”的健康、快乐、有爱、创新的世界小公民', '1421037248', null, 'ggt6.png', '2', '剑桥新闻1剑桥新闻1剑桥新闻1剑桥新闻1', '56', 'information_zd', '剑桥新世纪幼q园');
+INSERT INTO `wh_article` VALUES ('66', '家长寄语1', '<p>家长寄语1家长寄语1家长寄语1</p>', '1421037327', null, '54b34f0e6e86etfrfgf.jpg', '2', '特色教学特色教学特色教学特色教学特色教学特色教学', '66', 'jqsh_jzjy_zd', '剑桥新世纪幼q园2');
+INSERT INTO `wh_article` VALUES ('67', '家长寄语2', '<p>家长寄语2家长寄语2家长寄语2家长寄语2家长寄语2家长寄语2家长寄语2家长寄语2家长寄语2家长寄语2家长寄语2家长寄语2家长寄语2家长寄语2家长寄语2家长寄语2家长寄语2家长寄语2</p>', '1421037327', null, '54b34f0e6e86etfrfgf.jpg', '2', '特色教学特色教学特色教学特色教学特色教学特色教学', '66', 'jqsh_jzjy_zd', '剑桥新世纪幼q园2');
+INSERT INTO `wh_article` VALUES ('68', '精彩活动1', '<p>精彩活动1精彩活动1精彩活动1精彩活动1</p>', '1421037327', null, '54b5d706e86c5ggt6.png', '2', '精彩活动1精彩活动1精彩活动1精彩活动1', '62', 'jqsh_jcsh_zd', '剑桥新世纪幼q园2');
+INSERT INTO `wh_article` VALUES ('69', '精彩活动2', '<p>精彩活动2精彩活动2精彩活动2精彩活动2</p>', '1421037327', null, '54b5d706e86c5ggt6.png', '2', '精彩活动2精彩活动2精彩活动2精彩活动2', '62', 'jqsh_jcsh_zd', '剑桥新世纪幼q园2');
+INSERT INTO `wh_article` VALUES ('70', '精彩活动3', '<p>精彩活动3精彩活动3精彩活动3精彩活动3</p>', '1421037327', null, '54b5d706e86c5ggt6.png', '2', '精彩活动3精彩活动3精彩活动3精彩活动3', '62', 'jqsh_jcsh_zd', '剑桥新世纪幼q园2');
+INSERT INTO `wh_article` VALUES ('71', '精彩活动4', '<p>精彩活动4精彩活动4精彩活动4精彩活动4</p>', '1421037327', null, '54b5d706e86c5ggt6.png', '2', '精彩活动4精彩活动4精彩活动4精彩活动4', '62', 'jqsh_jcsh_zd', '剑桥新世纪幼q园2');
+INSERT INTO `wh_article` VALUES ('72', '欢乐课堂1', '<p>欢乐课堂1欢乐课堂1欢乐课堂1欢乐课堂1</p>', '1421037327', null, '54b5d706e86c5ggt6.png', '2', '欢乐课堂1欢乐课堂1欢乐课堂1欢乐课堂1', '64', 'jqsh_ktnr_zd', '剑桥新世纪幼q园2');
+INSERT INTO `wh_article` VALUES ('73', '欢乐课堂2', '<p>欢乐课堂2</p>', '1421037327', null, '54b5d706e86c5ggt6.png', '2', '欢乐课堂2欢乐课堂2欢乐课堂2欢乐课堂2', '64', 'jqsh_ktnr_zd', '剑桥新世纪幼q园2');
+INSERT INTO `wh_article` VALUES ('74', '通知公告1', '<p>通知公告1通知公告1通知公告1通知公告1</p>', '1421042690', null, '54b3640120339datd.png', '2', '通知公告1通知公告1', '74', 'gywm_zxxx_zd', null);
+INSERT INTO `wh_article` VALUES ('75', '通知公告2', '<p>通知公告2通知公告2通知公告2通知公告2</p>', '1421042690', null, '54b3640120339datd.png', '2', '通知公告2通知公告2通知公告2', '74', 'gywm_zxxx_zd', null);
+INSERT INTO `wh_article` VALUES ('76', '通知公告3', '<p>通知公告3通知公告3通知公告3</p>', '1421042690', null, '54b3640120339datd.png', '2', '通知公告3通知公告3通知公告3', '74', 'gywm_zxxx_zd', null);
+INSERT INTO `wh_article` VALUES ('77', '教师1', '<p>园长及教师园长及教师园长及教师园长及教师园长及教师园长及教师园长及教师园长及教师园长及教师园长及教师</p>', '1421042690', null, '54b3640120339datd.png', '2', '教师1教师1教师1', '59', '', null);
+INSERT INTO `wh_article` VALUES ('78', '教师才艺1', '<p>精彩生活1精彩生活1精彩生活1</p>', '1421042690', null, '54b3640120339datd.png', '2', '精彩生活1精彩生活1精彩生活1', '60', 'ydfc_jscyzs_zd', null);
+INSERT INTO `wh_article` VALUES ('79', '教师才艺2', '<p>精彩生活2精彩生活2精彩生活2</p>', '1421042690', null, '54b3640120339datd.png', '2', '精彩生活2精彩生活2精彩生活2', '60', 'ydfc_jscyzs_zd', null);
+INSERT INTO `wh_article` VALUES ('80', '教师才艺3', '<p>精彩生活3精彩生活3精彩生活3精彩生活3</p>', '1421042690', null, '54b3640120339datd.png', '2', '精彩生活3精彩生活3精彩生活3', '60', 'ydfc_jscyzs_zd', null);
+INSERT INTO `wh_article` VALUES ('81', '教师才艺4', '<p>精彩生活4精彩生活4精彩生活4</p>', '1421042690', null, '54b3640120339datd.png', '2', '精彩生活4精彩生活4精彩生活4', '60', 'ydfc_jscyzs_zd', null);
+INSERT INTO `wh_article` VALUES ('82', '卫生保健1', '<p>卫生保健1卫生保健1卫生保健1</p>', '1421042690', null, '54b3640120339datd.png', '2', '卫生保健1卫生保健1卫生保健1卫生保健1', '67', 'wsbj_wsxzs_zd', null);
+INSERT INTO `wh_article` VALUES ('83', '卫生保健2', '<p>卫生保健1卫生保健1卫生保健1</p>', '1421042690', null, '54b3640120339datd.png', '2', '卫生保健1卫生保健1卫生保健1卫生保健1', '67', 'wsbj_wsxzs_zd', null);
+INSERT INTO `wh_article` VALUES ('84', '卫生保健3', '<p>卫生保健1卫生保健1卫生保健1</p>', '1421042690', null, '54b3640120339datd.png', '2', '卫生保健1卫生保健1卫生保健1卫生保健1', '67', 'wsbj_wsxzs_zd', null);
+INSERT INTO `wh_article` VALUES ('85', '卫生保健4', '<p>卫生保健1卫生保健1卫生保健1</p>', '1421042690', null, '54b3640120339datd.png', '2', '卫生保健1卫生保健1卫生保健1卫生保健1', '67', 'wsbj_wsxzs_zd', null);
+INSERT INTO `wh_article` VALUES ('86', '小班课程', '<p>小班课程</p>', '1421042690', null, '54b3640120339datd.png', '2', '小班课程', '63', 'jqsh_ktnr_zd', null);
+INSERT INTO `wh_article` VALUES ('87', '中班课程', '<p>中班课程中班课程中班课程中班课程</p>', '1421042690', null, '54b3640120339datd.png', '2', '中班课程中班课程中班课程', '63', 'jqsh_ktnr_zd', null);
+INSERT INTO `wh_article` VALUES ('88', '大班课程', '<p>大班课程大班课程大班课程</p>', '1421042690', null, '54b3640120339datd.png', '2', '大班课程大班课程大班课程', '63', 'jqsh_ktnr_zd', null);
+INSERT INTO `wh_article` VALUES ('89', '园长信箱1', '<p>园长信箱园长信箱园长信箱</p>', '1421042690', null, '54b3640120339datd.png', '2', '教育一', '61', 'ydfc_jscyzs_zd', null);
+INSERT INTO `wh_article` VALUES ('90', '园长信箱2', '<p>园长信箱园长信箱园长信箱</p>', '1421042690', null, '54b3640120339datd.png', '2', '教育一', '61', 'ydfc_jscyzs_zd', null);
+INSERT INTO `wh_article` VALUES ('91', '园长信箱3', '<p>园长信箱园长信箱园长信箱</p>', '1421042690', null, '54b3640120339datd.png', '2', '教育一', '61', 'ydfc_jscyzs_zd', null);
+INSERT INTO `wh_article` VALUES ('92', '卫生知识1', '<p>卫生知识1卫生知识1卫生知识1</p>', '1421042690', null, '54b3640120339datd.png', '1', '教育一', '68', 'wsbj_wsxzs_zd', null);
+INSERT INTO `wh_article` VALUES ('93', '联系我们', '<p>地址 address：银杏路527号新世纪花园小区内</p>\r\n                <p>电话 TEL：0312-3152998</p>\r\n                <p>邮箱 E-MAIL：54974514@qq.com</p>\r\n                <p>邮编 Zip Code：071000</p>', '1421042690', null, '54b3640120339datd.png', '1', '教育一', '57', 'information_zd', null);
+INSERT INTO `wh_article` VALUES ('94', '才艺展示', '<p>才艺展示</p>', '1421042690', null, '54b3640120339datd.png', '1', '教育一', '65', 'jqsh_ktnr_zd', null);
+INSERT INTO `wh_article` VALUES ('95', '剑桥学前班1剑桥学前班1剑桥学前班1剑桥学前班1', '<p>剑桥学前班1剑桥学前班1剑桥学前班1剑桥学前班1剑桥学前班1剑桥学前班1</p>', '1421042690', null, '54b3640120339datd.png', '2', '剑桥学前班一', '76', 'information_zd', null);
+INSERT INTO `wh_article` VALUES ('96', '剑桥学前班2', '<p>剑桥学前班1</p>', '1421042690', null, '54b3640120339datd.png', '2', '剑桥学前班一', '76', 'information_zd', null);
+INSERT INTO `wh_article` VALUES ('97', '剑桥学前班3', '<p>剑桥学前班1</p>', '1421042690', null, '54b3640120339datd.png', '2', '剑桥学前班一', '76', 'information_zd', null);
+INSERT INTO `wh_article` VALUES ('98', '剑桥学小班1', '<p>剑桥学前班1</p>', '1421042690', null, '54b3640120339datd.png', '2', '剑桥学前班一', '77', 'information_zd', null);
+INSERT INTO `wh_article` VALUES ('99', '剑桥学小班2', '<p>剑桥学前班1</p>', '1421042690', null, '54b3640120339datd.png', '2', '剑桥学前班一', '77', 'information_zd', null);
+INSERT INTO `wh_article` VALUES ('100', '剑桥学小班3', '<p>剑桥学前班1</p>', '1421042690', null, '54b3640120339datd.png', '2', '剑桥学前班一', '77', 'information_zd', null);
+INSERT INTO `wh_article` VALUES ('101', '剑桥学中班1', '<p>剑桥学前班1</p>', '1421042690', null, '54b3640120339datd.png', '2', '剑桥学前班一', '78', 'information_zd', null);
+INSERT INTO `wh_article` VALUES ('102', '剑桥学中班2', '<p>剑桥学前班1</p>', '1421042690', null, '54b3640120339datd.png', '2', '剑桥学前班一', '78', 'information_zd', null);
+INSERT INTO `wh_article` VALUES ('103', '剑桥学中班3', '<p>剑桥学前班1</p>', '1421042690', null, '54b3640120339datd.png', '2', '剑桥学前班一', '78', 'information_zd', null);
+INSERT INTO `wh_article` VALUES ('104', '剑桥学大班1', '<p>剑桥学前班1</p>', '1421042690', null, '54b3640120339datd.png', '2', '剑桥学前班一', '79', 'information_zd', null);
+INSERT INTO `wh_article` VALUES ('105', '剑桥学大班2', '<p>剑桥学前班1</p>', '1421042690', null, '54b3640120339datd.png', '2', '剑桥学前班一', '79', 'information_zd', null);
+INSERT INTO `wh_article` VALUES ('106', '剑桥学大班3', '<p>剑桥学前班1</p>', '1421042690', null, '54b3640120339datd.png', '2', '剑桥学前班一', '79', 'information_zd', null);
+INSERT INTO `wh_article` VALUES ('107', '放心食堂', '<p>放心食堂放心食堂放心食堂放心食堂</p>', '1421042690', null, '54b3640120339datd.png', '2', '剑桥学前班一', '70', 'information_zd', null);
+INSERT INTO `wh_article` VALUES ('108', '精彩活动测试', '<p>精彩活动测试精彩活动测试精彩活动测试精彩活动测试精彩活动测试<br/></p>', '1421652491', '[\"54bcb1d6f0bc4ggt6.png\",\"54bcb1f73c898jiaostp.png\",\"54bcb1fdf3b13to.png\"]', '54bcb209a4a60gywmtop.png', '1', '精彩活动测试精彩活动测试精彩活动测试', '62', 'jqsh_jcsh_zd', null);
 
 -- ----------------------------
 -- Table structure for `wh_attachments`
@@ -801,7 +850,7 @@ CREATE TABLE `wh_term` (
   `en_name` varchar(255) DEFAULT NULL,
   `nav` int(11) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wh_term
@@ -852,8 +901,39 @@ INSERT INTO `wh_term` VALUES ('44', '保定周边县', '2', '1421201847', '0', '
 INSERT INTO `wh_term` VALUES ('46', '课程体系', '4', '1421201847', '1', '1', null, null, null, 'page', 'Course System', '1');
 INSERT INTO `wh_term` VALUES ('47', '特色教学展示', '4', null, '1', '1', null, null, null, 'information_list', 'Featured teaching show', '1');
 INSERT INTO `wh_term` VALUES ('48', '教学成果', '4', null, '1', '1', null, null, null, 'information_list', 'Teaching Achievement', '1');
-INSERT INTO `wh_term` VALUES ('49', '社会招聘', '9', null, '0', '1', null, null, null, 'zhaopinxinx', 'Job Offers', '0');
-INSERT INTO `wh_term` VALUES ('50', '校园招聘', '9', null, '0', '1', null, null, null, 'zhaopinxinx', 'Job Offers', '0');
+INSERT INTO `wh_term` VALUES ('49', '关于我们', '0', null, '0', '2', 'gywmtop.png', '', null, 'gywm_fyjs', '', '1');
+INSERT INTO `wh_term` VALUES ('50', '园丁风采', '0', null, '0', '2', 'gywmtop.png', '', null, 'ydfc', '', '1');
+INSERT INTO `wh_term` VALUES ('51', '剑桥生活', '0', null, '0', '2', 'gywmtop.png', '', null, 'jqsh_jcsh', '', '1');
+INSERT INTO `wh_term` VALUES ('52', '卫生保健', '0', null, '0', '2', 'yuandfc.png', '', null, 'wsbj_wsxzs', '', '1');
+INSERT INTO `wh_term` VALUES ('53', '每周食谱', '0', null, '0', '2', 'yuandfc.png', '', null, 'mzsp_sp', '', '1');
+INSERT INTO `wh_term` VALUES ('54', '预约报名', '0', null, '0', '2', 'yuandfc.png', '', null, 'yybm_wybm', '', '1');
+INSERT INTO `wh_term` VALUES ('55', '班级直通车', '0', null, '0', '2', 'yuandfc.png', '', null, 'bjztc', '', '1');
+INSERT INTO `wh_term` VALUES ('56', '分园介绍', '49', null, '0', '2', '', '', null, 'gywm_fyjs', 'Branch introduction', '1');
+INSERT INTO `wh_term` VALUES ('57', '联系方式', '49', null, '0', '2', '', '', null, 'gywm_lxwm', 'Contact Information', '1');
+INSERT INTO `wh_term` VALUES ('58', '资讯信息', '49', null, '0', '2', '', '', null, 'gywm_zxxx', '', '1');
+INSERT INTO `wh_term` VALUES ('59', '园长及教师', '50', null, '0', '2', '', '', null, 'term_page', '', '1');
+INSERT INTO `wh_term` VALUES ('60', '教师才艺', '50', null, '0', '2', '', '', null, 'ydfc_jscyzs', '', '1');
+INSERT INTO `wh_term` VALUES ('61', '园长信箱', '50', null, '0', '2', '', '', null, 'ydfc_yzxx', '', '1');
+INSERT INTO `wh_term` VALUES ('62', '精彩活动', '51', null, '0', '2', '', '', null, 'jqsh_jcsh', '', '1');
+INSERT INTO `wh_term` VALUES ('63', '课程内容', '51', null, '0', '2', '', '', null, 'jqsh_ktnr', '', '1');
+INSERT INTO `wh_term` VALUES ('64', '欢乐课堂', '51', null, '0', '2', '', '', null, 'jqsh_ktnr', '', '1');
+INSERT INTO `wh_term` VALUES ('65', '才艺展示', '51', null, '0', '2', '', '', null, 'jqsh_ktnr', '', '1');
+INSERT INTO `wh_term` VALUES ('66', '家长寄语', '51', null, '0', '2', '', '', null, 'jqsh_jzjy', 'Teacher belles-lettres', '1');
+INSERT INTO `wh_term` VALUES ('67', '卫生保健', '52', null, '0', '2', '', '', null, 'wsbj_wsxzs', '', '1');
+INSERT INTO `wh_term` VALUES ('68', '卫生知识', '52', null, '0', '2', '', '', null, 'wsbj_wsxzs', '', '1');
+INSERT INTO `wh_term` VALUES ('69', '每周食谱', '53', null, '0', '2', '', '', null, 'mzsp_sp', '', '1');
+INSERT INTO `wh_term` VALUES ('70', '放心食堂', '53', null, '0', '2', '', '', null, 'gywm_fyjs', '', '1');
+INSERT INTO `wh_term` VALUES ('71', '我要报名', '54', null, '0', '2', '', '', null, 'yybm_wybm', '', '1');
+INSERT INTO `wh_term` VALUES ('72', '我要预约', '54', null, '0', '2', '', '', null, 'yybm_wyyy', '', '1');
+INSERT INTO `wh_term` VALUES ('73', '招生公告', '54', null, '0', '2', '', '', null, 'ydfc_yzxx', '', '1');
+INSERT INTO `wh_term` VALUES ('74', '通知公告', '58', null, '0', '2', '', '', null, 'gywm_zxxx', '', '1');
+INSERT INTO `wh_term` VALUES ('75', '新闻动态', '58', null, '0', '2', '', '', null, 'gywm_zxxx', 'News and information', '1');
+INSERT INTO `wh_term` VALUES ('76', '剑桥学前班', '55', null, '0', '2', '54b371c181bcbdatd.png', 'sdfsdf', null, 'bjztc', 'Cambridge Introduction', '1');
+INSERT INTO `wh_term` VALUES ('77', '剑桥小班', '55', null, '0', '2', '54b371c181bcbdatd.png', 'sdfsdf', null, 'bjztc', 'Cambridge Introduction', '1');
+INSERT INTO `wh_term` VALUES ('78', '剑桥中班', '55', null, '0', '2', '54b371c181bcbdatd.png', 'sdfsdf', null, 'bjztc', 'Cambridge Introduction', '1');
+INSERT INTO `wh_term` VALUES ('79', '剑桥大班', '55', null, '0', '2', '54b371c181bcbdatd.png', 'sdfsdf', null, 'bjztc', 'Cambridge Introduction', '1');
+INSERT INTO `wh_term` VALUES ('90', '社会招聘', '9', null, '0', '1', null, null, null, 'zhaopinxinx', 'Job Offers', '0');
+INSERT INTO `wh_term` VALUES ('91', '校园招聘', '9', null, '0', '1', null, null, null, 'zhaopinxinx', 'Job Offers', '0');
 
 -- ----------------------------
 -- Table structure for `wh_theme`
@@ -900,9 +980,9 @@ CREATE TABLE `wh_zhaopin` (
 -- ----------------------------
 -- Records of wh_zhaopin
 -- ----------------------------
-INSERT INTO `wh_zhaopin` VALUES ('1', '职位', '123', '人数', '学历aaa', '地点', '2015-1-15', '<h4>标题sss</h4>\r\n<p>一行内容</p>\r\n<p>一行sdf内容</p>', '1421477724', '1', '49', 'zhaopinxinx_zd');
-INSERT INTO `wh_zhaopin` VALUES ('4', 'aaa', 'aaa', 'aa', 'aaa', 'aaa', '2015-1-13', '<h4>标题aaa</h4>\r\n<p>一行内容aaa</p>\r\n<p>一行内容aaa</p>\r\n<h4>标题aaa</h4>\r\n<p>一行内容aaa</p>\r\n<p>一行内容aaa</p>', '1421479510', '1', '49', 'zhaopinxinx_zd');
-INSERT INTO `wh_zhaopin` VALUES ('5', 'bbb', 'bbbb', 'bbbb', 'bbbb', 'bbbbbb', '2015-1-29', '<h4>标题bbb</h4>\r\n<p>一行内容bb</p>\r\n<p>一行内容bb</p>\r\n<h4>标题bbb</h4>\r\n<p>一行内容bb</p>\r\n<p>一行内容bb</p>', '1421479532', '1', '50', 'zhaopinxinx_zd');
+INSERT INTO `wh_zhaopin` VALUES ('1', '职位', '123', '人数', '学历aaa', '地点', '2015-1-15', '<h4>标题sss</h4>\r\n<p>一行内容</p>\r\n<p>一行sdf内容</p>', '1421477724', '1', '90', 'zhaopinxinx_zd');
+INSERT INTO `wh_zhaopin` VALUES ('4', 'aaa', 'aaa', 'aa', 'aaa', 'aaa', '2015-1-13', '<h4>标题aaa</h4>\r\n<p>一行内容aaa</p>\r\n<p>一行内容aaa</p>\r\n<h4>标题aaa</h4>\r\n<p>一行内容aaa</p>\r\n<p>一行内容aaa</p>', '1421479510', '1', '91', 'zhaopinxinx_zd');
+INSERT INTO `wh_zhaopin` VALUES ('5', 'bbb', 'bbbb', 'bbbb', 'bbbb', 'bbbbbb', '2015-1-29', '<h4>标题bbb</h4>\r\n<p>一行内容bb</p>\r\n<p>一行内容bb</p>\r\n<h4>标题bbb</h4>\r\n<p>一行内容bb</p>\r\n<p>一行内容bb</p>', '1421479532', '1', '91', 'zhaopinxinx_zd');
 
 -- ----------------------------
 -- Table structure for `wh_zpjianli`

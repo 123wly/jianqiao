@@ -1,0 +1,341 @@
+@charset "utf-8";
+#content{
+	width:100%;
+}
+#content .imgtp{
+	width:100%;
+	z-index:-99999;
+}
+#content .imgtp .item{
+	position:relative;
+}
+#content .imgtp .item .tpd{
+	position:absolute;
+	background:url(../images/1.png) no-repeat;
+	height:170px;
+	top:45%;
+	left:0;
+}
+#content .imgtp .item p{
+	font-size:48px;
+	color:#005f73;
+    margin:33px 0 0 50px;
+	line-height:55px;
+}
+#content .imgtp .item p span{
+	display:block;
+	font-size:24px;
+}
+#content .lmkuai{
+	height:400px;
+}
+#content .lmkuai .hztk{
+	width:367px;
+	height:513px;
+	margin-top:-155px;
+	float:left;
+	z-index:9999;
+	position:relative;
+}
+#content .lmkuai .hztk .p35{
+	padding:35px;
+}
+#content .lmkuai .hztk h2{
+	font-size:30px;
+	color:#ffffff;
+	font-weight:600;
+	padding-bottom:15px;
+}
+#content .lmkuai .hztk h2 span{
+	display:block;
+	font-size:18px;
+}
+#content .lmkuai .hztk h3{
+	background:url(../images/fffgf.png) 0px 10px no-repeat;
+	font-size:18px;
+	height:48px;
+	line-height:48px;
+	padding-left:40px;
+	font-weight:600;
+	border-top:1px solid #ffffff;
+}
+#content .lmkuai .hztk h3 a{
+	color:#ffffff;
+}
+#content .lmkuai .hztk p{
+	line-height:24px;
+	color:#ffffff;
+}
+#content .lmkuai .hztk .genduo{
+	position:absolute;
+	bottom:35px;
+}
+#content .lmkuai .hztk .genduo a{
+	display:block;
+	background:url(../images/gengduo.png) no-repeat;
+	width:116px;
+	height:35px;
+	line-height:35px;
+}
+#content .lmkuai .xwzx{
+	background:url(../images/kuzi1.png) no-repeat;
+}
+#content .lmkuai .xwzx .xwzx_xian{
+	height:310px;
+	border-bottom:1px solid #ffffff;
+}
+#content .lmkuai .xwzx .xwzx_xian p{
+	padding: 0 0 18px 0;
+}
+#content .lmkuai .xwzx .xwzx_xian .qdbj{
+	background:none;
+	border:none;
+	padding:0;
+}
+#content .lmkuai .fyjs{
+	background:url(../images/kuai2.png) no-repeat;
+	margin-left:49px;
+}
+#content .lmkuai .fyjs .tupian{
+	width:290px;
+	height:192px;
+	border:7px solid #ffc45c;
+	overflow:hidden;
+	margin:0 auto;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border-radius: 15px;
+	behavior: url(pie.htc);
+	margin:0 0 10px 0;
+}
+#content .lmkuai .fyjs .tupian img{
+	width:100%;
+	height:100%;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+	behavior: url(pie.htc);
+}
+#content .lmkuai .jsmw{
+	background:url(../images/kuai3.png) no-repeat;
+	margin-left:49px;
+}
+#content .lmkuai .jsmw h3{
+	margin-top:10px;
+}
+#content .cyzs{
+	width:100%;
+	background:#15c1e5;
+	height:800px;
+	overflow:hidden;
+}
+#content .cyzs h2{
+	text-align:center;
+	margin:45px 0 25px 0;
+}
+#content .cyzs .tab_title {
+	height: 55px;
+	overflow: hidden;
+	left: 0;
+	top: 0;
+	clear: both;
+	overflow: hidden;
+	width: 593px;
+	margin:0 auto;
+	position: relative;
+}
+#content .cyzs .tab_title .u {
+	width: 549px;
+	overflow: hidden;
+	position: relative;
+	height: 55px;
+}
+#content .cyzs .tab_title ul {
+	position: absolute;
+	float: left;
+	border-bottom: 1px solid #eeeeee;
+}
+#content .cyzs .tab_title div {
+	float: left;
+	height: 50px;
+	line-height: 50px;
+	cursor: pointer;
+}
+#content .cyzs .tab_title span.vright {
+	top: 0;
+	right: 5px;
+	margin-left: 2px;
+}
+#content .cyzs .tab_title span.vleft {
+	top: 0;
+	left: 0px;
+	padding-left: 5px;
+}
+#content .cyzs .tab_title li {
+	display:block;
+	float: left;
+	width: 108px;
+	height: 55px;
+	line-height: 55px;
+	text-align: center;
+	cursor: pointer;
+	font-size: 18px;
+	text-align: center;
+	color:#ffffff;
+	background:url(../images/ffff.png) no-repeat;
+	margin-left:68px;
+}
+#content .cyzs .tab_title li:hover {
+	color: #15c1e5;
+	background:url(../images/ffffhover.png) no-repeat;
+}
+#content .cyzs .tab_title li.selected {
+	color: #15c1e5;
+	background:url(../images/ffffhover.png) no-repeat;
+}
+#content .cyzs .tab_content{
+	margin-top:35px;
+}
+#content .cyzs .tab_content .gengduo{
+	text-align:center;
+	margin-top:20px;
+}
+#content .cyzs .tab_content .none {
+	display: none;
+}
+#content .cyzs .tab_content .hui .hz{
+	width:250px;
+	height:190px;
+	overflow:hidden;
+	padding:12px;
+	float:left;
+	margin:15px 13px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border-radius: 15px;
+	background:#23cdf0;
+}
+#content .cyzs .tab_content .hui .hz:hover{
+	background:#ffffff;
+}
+#content .cyzs .tab_content .hui .hz:hover p{
+	color:#23cdf0;
+}
+#content .cyzs .tab_content .hui .hz a{
+	width:250px;
+	height:160px;
+	overflow:hidden;
+	display:block;
+}
+#content .cyzs .tab_content .hui .hz img{
+	width:100%;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border-radius: 15px;
+}
+#content .cyzs .tab_content .hui .hz p{
+	font-size:16px;
+	color:#ffffff;
+	text-align:center;
+}
+#content .yxjs{
+	width:100%;
+	background:#ffffff;
+	height:410px;
+	position:relative;
+}
+#content .yxjs ul li{
+	float:left;
+	width:234px;
+	height:231px;
+	overflow:hidden;
+	margin:100px 33px 76px;
+	position:relative;
+}
+#content .yxjs ul li img{
+	height:100%;
+}
+#content .yxjs ul li a span{
+	display:none;
+}
+#content .yxjs ul li:hover span{
+	display:block;
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+
+
+#content .bot_top{
+	padding:25px 0;
+}
+#content .bot_top .tpyj{
+	width:496px;
+	height:395px;
+	overflow:hidden;
+}
+#content .bot_top .left img{
+	width:100%;
+}
+#content .bot_top .biaog{
+	width:680px;
+}
+#content .bot_top .biaog p{
+	margin-top:20px;
+}
+#content .bot_top .biaog p input{
+	height:50px;
+	line-height:50px;
+	background:#ffffff;
+	border:none;
+}
+#content .bot_top .biaog p span{
+	display:block;
+	width:328px;
+	height:50px;
+	line-height:50px;
+	background:#ffffff;
+}
+#content .bot_top .biaog p span input{
+	width:328px;
+	color:#333333;
+	font-size:14px;
+	text-indent:1em;
+}
+#content .bot_top .biaog p.tijiao{
+	width:680px;
+}
+#content .bot_top .biaog p.tijiao input{
+	width:680px;
+	background:#1f9fba;
+	cursor:pointer;
+	font-size:19px;
+	color:#ffffff;
+	font-weight:600;
+}
+#content .bot_top .biaog p.zxnr{
+	padding:10px;
+	height:130px;
+	width:660px;
+	background:#ffffff;
+}
+#content .bot_top .biaog p textarea{
+	background:#ffffff;
+	width:660px;
+	height:130px;
+	border:none;
+	color:#333333;
+	font-size:14px;
+	text-indent:1em;
+	line-height:24px;
+	outline:none;
+}
+
+
+
+
+
+
+
+

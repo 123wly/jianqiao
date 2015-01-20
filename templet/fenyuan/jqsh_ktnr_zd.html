@@ -1,0 +1,23 @@
+{extends file='./templet/fenyuan/public/layout.html'}
+{block name=head}
+<link type="text/css" href="{$skin_path}css/zy_fy.css" rel="stylesheet" />
+{/block}
+{block name=content}
+<div id="content">
+	{include_php './templet/fenyuan/public/tptop.php'}
+	<div class="main jqsh">
+    	<div class="left gy_left">
+        	 {include_php './templet/fenyuan/public/gy_left.php'}
+        {include_php './templet/fenyuan/public/yuyue.php'}
+        </div>
+        <div class="right gy_right">
+        	<h2>{$page_show.title}</h2>
+            <div class="ktnr_nr">
+            	<img src="{$skin_path}images/qqqq.png" />
+             
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+{/block}

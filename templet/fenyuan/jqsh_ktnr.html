@@ -1,0 +1,33 @@
+{extends file='./templet/fenyuan/public/layout.html'}
+{block name=head}
+<link type="text/css" href="{$skin_path}css/zy_fy.css" rel="stylesheet" />
+{/block}
+{block name=content}
+<div id="content">
+	{include_php './templet/fenyuan/public/tptop.php'}
+	<div class="main jqsh">
+    	<div class="left gy_left">
+        {include_php './templet/fenyuan/public/gy_left.php'}
+        {include_php './templet/fenyuan/public/yuyue.php'}
+        </div>
+        <div class="right gy_right">
+        	<h2>{$term.name}</h2>
+            {foreach $articles as $vo}
+           	<div class="ktnr">
+            	<div class="left tp">
+                	<img src="{$vo.cover|upload_echo}" />
+                </div>
+                <div class="left wz">
+                	<h3>{$vo.title}</h3>
+                    <p>{$vo.content|msubstr:'0':'90'}</p>
+                    <p><a href="{spUrl c=$vo['tpl'] id=$vo['id']}">了解详情</a></p>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            {/foreach}
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+{/block}
