@@ -266,8 +266,8 @@ class blog extends top
 	//TODO
 	//后端改完了，就差添加收藏和取消收藏所记录的tid了，tid采用system tag 表的id来统一
 	function tag(){
-		$data = spClass('db_tag_system')->findTagByAttr($this->spArgs(),$this->uid);
-	
+		$data = spClass('db_tags')->findTagByAttr($this->spArgs(),$this->uid);
+		
 		if(is_array($data['blog'])){
 			foreach($data['blog'] as &$d){
 				$d['h_url'] =  goUserHome(array('uid'=>$d['uid'], 'domain'=>$d['domain']));
@@ -293,7 +293,35 @@ class blog extends top
 		}
 		
 	}
-	
+	//@@@ 调取单个博客的tag标签
+	public function tagForOne(){
+		$data = spClass('db_tags')->findTagByAttrUid($this->spArgs(), intval($_POST["tuid"]));
+		
+		if(is_array($data['blog'])){
+			foreach($data['blog'] as &$d){
+				$d['h_url'] =  goUserHome(array('uid'=>$d['uid'], 'domain'=>$d['domain']));
+				$d['h_img'] = avatar(array('uid'=>$d['uid'],'size'=>'middle'));
+				$d['b_url'] = goUserBlog(array('bid'=>$d['bid'],'domain'=>$d['domain'],'uid'=>$d['uid']));
+				$d['tag'] =  ($d['tag'] != '') ? explode(',',$d['tag']) : '';
+				
+				$d['time']  = ybtime(array('time'=>$d['time']));
+				$rs         = split_attribute($d['body']); 
+				$d['attr']  = $rs['attr'];
+				$d['repto'] = $rs['repto'];
+				if(!empty($d['repto'])){
+					$d['repto']['h_url'] = goUserHome(array('uid'=>$d['repto']['uid'], 'domain'=>$d['repto']['domain']));
+					$d['repto']['h_img'] = avatar(array('uid'=>$d['repto']['uid'],'size'=>'small'));
+				}else{
+					$d['repto'] = null;
+				}
+				$d['body'] = strip_tags($rs['body']);
+			}
+			$this->api_success($data);
+		}else{
+			$this->api_success(false);
+		}
+	}
+
 	/*获取tag页用来显示右侧 该标签的活跃用户*/
 	function tagHotuser(){
 		$data = spClass('db_tags')->findTagHotUser($this->spArgs('tag'));
@@ -505,6 +533,38 @@ class blog extends top
 			$d['show_reply'] = 1; //展开评论
 		}
 	}
-	
-	
+	//@@@获得单个博客的单独type 
+	public function typeForOne(){
+		if($this->spArgs('uid')){
+			$uid = (int) $this->spArgs('uid');
+			$cond = "and b.uid = '$uid'";
+		}
+		if($this->spArgs('type')){
+			$type = (int) $this->spArgs('type');
+			$tcond = "and b.type = '$type'";
+		}
+		if($this->spArgs('pagelimit')){
+			$pageLimit = ($this->spArgs('pagelimit') < 30) ? $this->spArgs('pagelimit') : 30 ;  //自定义分页
+		}else{
+			$pageLimit = $this->yb['show_page_num'];
+		}
+
+
+		//LEFT JOIN `".DBPRE."follow` AS f ON ( b.uid = f.touid and f.uid = '$uid' )
+		$sql = "SELECT b. * , k.id AS likeid  ,m.username,m.domain
+				FROM `".DBPRE."blog` AS b LEFT JOIN `".DBPRE."likes` AS k ON ( b.bid = k.bid AND k.uid ='$this->uid' )
+				LEFT JOIN `".DBPRE."member`  as m on b.uid = m.uid where b.open = 1 $tcond $cond ORDER BY b.time desc";
+			
+		$data['blog'] = spClass('db_blog')->spPager($this->spArgs('page',1),$pageLimit)->findSql($sql);
+		$data['page'] = spClass('db_blog')->spPager()->getPager();
+		unset($data['page']['all_pages']);
+		if(!empty($data['blog'])){
+			foreach($data['blog'] as &$d){
+				$this->foramt_feeds($d);
+			}
+			$this->api_success($data);
+		}else{
+			$this->api_success("");
+		}
+	}
 }

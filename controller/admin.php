@@ -1360,4 +1360,18 @@ class admin extends top
     }
     
     public function cook_day_post(){}
+
+
+    // 生成分园配置
+    public function fenyuan_c(){
+        $admins = spCLass("db_member")->findAll(array("admin"=>1),"","uid,theme,realm");
+        $data = array();
+        foreach ($admins as $key => $value) {
+            $data[$value['uid']] = $value;
+        }
+        $content = "<?php return '".json_encode($data)."';";
+        $f = fopen('theme.php', 'w+');
+        fwrite($f, $content);
+        fclose($f);
+    }
 }

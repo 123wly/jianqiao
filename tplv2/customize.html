@@ -90,12 +90,12 @@ $(document).ready(function(){
 	<div class="blog_theme b_common" id="b_theme_con" style="display:none">
 	    <div class="corner"></div>
 		<div class="theme_box">
-			{if $smarty.session.customize.theme  != ''}
+			<!-- {if $smarty.session.customize.theme  != ''}
 			<li><a href="javascript:void(0)" onclick="setThemeId('{spUrl c=customize a=preview skinid=default}',this)">
 			<div class="t_bg"><img src="{$syskin}/theme/default/cover.jpg"  width="200" height="120" /></div></a>
-			<h2>云边默认</h2>
+			<h2>默认</h2>
 			</li> 
-			{/if}
+			{/if} -->
 		
 			{foreach from=$skins item=d}
 				

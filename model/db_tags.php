@@ -88,8 +88,37 @@ $rs = $this->findSql($sql);
 		}
 		return $rs;
 	}
+
+	//@@@根据tagneme或者tag Id返回内容，限定uid
+	function findTagByAttrUid($args, $doUid, $uid){
+		$data = array();
+		if($args['tag'] && $args['tag'] != ''){ //根据参数为名称或id返回
+			$where = 't.`title` like '.$this->escape('%'.strreplaces(tagEncodeParse($args['tag'])).'%'); 
+			$group = 'group by t.bid';
+			$data['currtag'] = tagEncodeParse($args['tag']);
+			$data['topic_count']   = $this->findCount(array('title'=>$data['currtag'])); //有多少人话题
+		}else{
+			$where ='t.tid = '.$this->escape(intval($args['tid']));
+			$group = '';
+			$data['currtag'] = array_pop( $this->find(array('tid'=>$args['tid']),'','title'));
+			$data['topic_count']   = $this->findCount(array('title'=>$data['currtag']));
+		}
+		$colunm = 'b.*,t.title as tagtitle,u.username,u.domain,t.tid';
+		$sql = "SELECT $colunm FROM `".DBPRE."tags` as t 
+				left join `".DBPRE."blog` as b on t.bid=b.bid 
+				left join `".DBPRE."member` as u on t.uid=u.uid 
+				WHERE $where and t.uid = $doUid and b.open = 1 $group order by b.time desc"; 
+		$thispage = ($args['page']) ? $args['page'] : 1;
 	
-	
+		//if(spAccess)
+		$data['blog'] = $this->spPager($thispage,15)->findSql($sql,'tid desc');
+		// echo $this->dumpSql();
+		if($data['blog']) $data['currtid'] = $data['blog'][0]['tid'];
+		$data['isadd']   = (spClass('db_mytag')->find(array('tagid'=>$data['currtid'],'uid'=>$uid),'tagid desc')) ? 1:0; //是否添加
+		$data['page'] = $this->spPager()->getPager();
+		return $data;
+	}
+	//////////////
 	
 	//根据tagneme或者tag Id返回内容
 	function findTagByAttr($args,$uid){
@@ -111,9 +140,10 @@ $rs = $this->findSql($sql);
 				left join `".DBPRE."member` as u on t.uid=u.uid 
 				WHERE $where and b.open = 1 $group order by b.time desc"; 
 		$thispage = ($args['page']) ? $args['page'] : 1;
-	
+		
 		//if(spAccess)
 		$data['blog'] = $this->spPager($thispage,15)->findSql($sql,'tid desc');
+		// echo $this->dumpSql();
 		if($data['blog']) $data['currtid'] = $data['blog'][0]['tid'];
 		$data['isadd']   = (spClass('db_mytag')->find(array('tagid'=>$data['currtid'],'uid'=>$uid),'tagid desc')) ? 1:0; //是否添加
 		$data['page'] = $this->spPager()->getPager();

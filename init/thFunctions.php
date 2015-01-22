@@ -45,6 +45,26 @@ function goUserHome($params)
 }
 spAddViewFunction('goUserHome','goUserHome');
 
+/*处理domain uid bid 之间的关系*/
+/*去用户首页的链接*/
+function goUserHomeC($params)
+{
+	$domain = $params['domain']; //判断是否存在domain
+	$uid   = $params['uid'];     //判断是否存在uid
+	$a = $params['a'];
+	if(isset($params['a'])){
+		unset($params['a']);
+	}
+
+	if($domain != '' && $domain !='home')
+	{
+		return spUrl('userblog', $a, $params);
+	}else{
+		return spUrl('userblog', $a, $params);
+	}
+}
+spAddViewFunction('goUserHomeC','goUserHomeC');
+
 
 /*
 用户访问博客正文的链接 用户在模板内显示

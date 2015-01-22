@@ -1,1 +1,212 @@
-eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('(7($){m q={G:7(F,$p,$6,d,4){m o=d.o,u=1,v=0;9(4.14){o=1;u=3;v=4.v}9(F===1){$6.c(\'f.8-5:1B(\'+o+\')\').x(7(i){$(l).1m(s).t(\'k\',(4.J-v+i)*4.b*u+\'n\').1w($6)})}L{m $1v=$6.1c().1C(0);$6.c(\'f.8-5:1A(\'+(4.J-1-o)+\')\').x(7(i){$(l).1m(s).t(\'k\',-(o-i+v)*4.b*u+\'n\').1y($1v)})}$6.c(\'f.8-5\').x(7(i){m $5=$(l);$5.K().H({k:(F===1)?\'-=\'+(4.b*u*o)+\'n\':\'+=\'+(4.b*u*o)+\'n\'},d.1i,d.1e,7(){9((F===1&&$5.T().k<-v*4.b*u)||(F===-1&&$5.T().k>((4.J-1-v)*4.b*u))){$5.1z()}4.g=j})})},1n:7($6,$5,d,4){4.v=$5.I();4.Z=q.19($5.T().k,4);$6.c(\'f.8-5\').1l($5).12();$5.c(\'f.8-P-6\').t(\'k\',4.b+\'n\').K().H({N:4.b*2+\'n\',k:4.b+\'n\'},d.M,d.O).W().K().H({k:\'11\'},d.M,d.O,7(){4.g=j;4.14=s;q.1a($6,$5,d,4)})},1a:7($6,$C,d,4){m z=$C.I();$6.c(\'f.8-5\').x(7(i){m $5=$(l),y=$5.I();9(y!==z){$5.t(\'k\',-(z-y)*(4.b*3)+\'n\').E().c(\'f.8-P-6\').t({k:4.b+\'n\',N:4.b*2+\'n\'});q.R($5,j)}})},R:7($5,E){(E)?$5.c(\'a.8-15\').E():$5.c(\'a.8-15\').12()},1q:7($6,$C,d,4){m z=$C.I();$C.c(\'f.8-P-6\').K().H({N:\'11\'},d.M,d.O).W().K().H({k:4.b*(4.Z-1)+\'n\'},d.M,d.O,7(){4.g=j;4.14=j});q.R($C,s);$6.c(\'f.8-5\').x(7(i){m $5=$(l),y=$5.I();9(y!==z){$5.c(\'f.8-P-6\').t({N:\'11\'}).W().t(\'k\',((4.Z-1)-(z-y))*4.b+\'n\').E();q.R($5,s)}})},19:7(1b,4){1x(1b){16 0:h 1;13;16 4.b:h 2;13;16 4.b*2:h 3;13}}},S={17:7(X){9(l.18){m r={1i:1d,1e:\'1g\',M:1d,O:\'1g\',o:1};h l.x(7(){9(X){$.1T(r,X)}m $p=$(l),$6=$p.c(\'f.8-6\'),$Q=$6.1c(\'f.8-5\'),4={};4.b=$Q.N();4.J=$Q.18;9(4.J>3){$p.1S(\'<f 10="8-D"><A 10="8-D-1j">1R</A><A 10="8-D-1r">1Q</A></f>\')}9(r.o<1){r.o=1}L 9(r.o>3){r.o=3}m $1u=$p.c(\'A.8-D-1j\'),$1t=$p.c(\'A.8-D-1r\');$6.t(\'1D\',\'1U\');$Q.x(7(i){$(l).t({T:\'1V\',k:i*4.b+\'n\'})});$p.c(\'a.8-15\').1o(\'V.w\',7(U){9(4.g){h j}4.g=s;$(l).12();m $5=$(l).1k(\'f.8-5\');q.1n($6,$5,r,4);h j});$p.c(\'a.8-1O\').1o(\'V.w\',7(U){9(4.g){h j}4.g=s;m $5=$(l).1k(\'f.8-5\');q.1q($6,$5,r,4);h j});$1u.Y(\'V.w\',7(U){9(4.g){h j}4.g=s;q.G(-1,$p,$6,r,4)});$1t.Y(\'V.w\',7(U){9(4.g){h j}4.g=s;q.G(1,$p,$6,r,4)});$p.Y(\'1H.w\',7(e,1h){9(1h>0){9(4.g){h j}4.g=s;q.G(-1,$p,$6,r,4)}L{9(4.g){h j}4.g=s;q.G(1,$p,$6,r,4)}h j})})}}};$.1E.w=7(B){9(S[B]){h S[B].1s(l,1I.1J.1N.1M(1f,1))}L 9(1L B===\'1K\'||!B){h S.17.1s(l,1f)}L{$.1F(\'1G \'+B+\' 1P 1l 1W 1X 1p.w\')}}})(1p);',62,122,'||||cache|item|wrapper|function|ca|if||itemW|find|opts||div|isAnimating|return||false|left|this|var|px|scroll|el|aux|settings|true|css|factor|idxClicked|contentcarousel|each|idx|openedIdx|span|method|openedItem|nav|show|dir|navigate|animate|index|totalItems|stop|else|itemSpeed|width|itemEasing|content|items|toggleMore|methods|position|event|click|end|options|bind|winpos|class|0px|hide|break|expanded|more|case|init|length|getWinPos|openItems|val|children|500|sliderEasing|arguments|easeOutExpo|delta|sliderSpeed|prev|closest|not|clone|openItem|live|jQuery|closeItems|next|apply|navNext|navPrev|first|appendTo|switch|insertBefore|remove|gt|lt|eq|overflow|fn|error|Method|mousewheel|Array|prototype|object|typeof|call|slice|close|does|Next|Previous|prepend|extend|hidden|absolute|exist|on'.split('|'),0,{}))
+(function($) {
+    var aux = {
+        navigate: function(dir, $el, $wrapper, opts, cache) {
+            var scroll = opts.scroll,
+            factor = 1,
+            idxClicked = 0;
+            if (cache.expanded) {
+                scroll = 1;
+                factor = 3;
+                idxClicked = cache.idxClicked
+            }
+            if (dir === 1) {
+                $wrapper.find('div.ca-item:lt(' + scroll + ')').each(function(i) {
+                    $(this).clone(true).css('left', (cache.totalItems - idxClicked + i) * cache.itemW * factor + 'px').appendTo($wrapper)
+                })
+            } else {
+                var $first = $wrapper.children().eq(0);
+                $wrapper.find('div.ca-item:gt(' + (cache.totalItems - 1 - scroll) + ')').each(function(i) {
+                    $(this).clone(true).css('left', -(scroll - i + idxClicked) * cache.itemW * factor + 'px').insertBefore($first)
+                })
+            }
+            $wrapper.find('div.ca-item').each(function(i) {
+                var $item = $(this);
+                $item.stop().animate({
+                    left: (dir === 1) ? '-=' + (cache.itemW * factor * scroll) + 'px': '+=' + (cache.itemW * factor * scroll) + 'px'
+                },
+                opts.sliderSpeed, opts.sliderEasing,
+                function() {
+                    if ((dir === 1 && $item.position().left < -idxClicked * cache.itemW * factor) || (dir === -1 && $item.position().left > ((cache.totalItems - 1 - idxClicked) * cache.itemW * factor))) {
+                        $item.remove()
+                    }
+                    cache.isAnimating = false
+                })
+            })
+        },
+        openItem: function($wrapper, $item, opts, cache) {
+            cache.idxClicked = $item.index();
+            cache.winpos = aux.getWinPos($item.position().left, cache);
+            $wrapper.find('div.ca-item').not($item).hide();
+            $item.find('div.ca-content-wrapper').css('left', cache.itemW + 'px').stop().animate({
+                width: cache.itemW * 2 + 'px',
+                left: cache.itemW + 'px'
+            },
+            opts.itemSpeed, opts.itemEasing).end().stop().animate({
+                left: '0px'
+            },
+            opts.itemSpeed, opts.itemEasing,
+            function() {
+                cache.isAnimating = false;
+                cache.expanded = true;
+                aux.openItems($wrapper, $item, opts, cache)
+            })
+        },
+        openItems: function($wrapper, $openedItem, opts, cache) {
+            var openedIdx = $openedItem.index();
+            $wrapper.find('div.ca-item').each(function(i) {
+                var $item = $(this),
+                idx = $item.index();
+                if (idx !== openedIdx) {
+                    $item.css('left', -(openedIdx - idx) * (cache.itemW * 3) + 'px').show().find('div.ca-content-wrapper').css({
+                        left: cache.itemW + 'px',
+                        width: cache.itemW * 2 + 'px'
+                    });
+                    aux.toggleMore($item, false)
+                }
+            })
+        },
+        toggleMore: function($item, show) { (show) ? $item.find('a.ca-more').show() : $item.find('a.ca-more').hide()
+        },
+        closeItems: function($wrapper, $openedItem, opts, cache) {
+            var openedIdx = $openedItem.index();
+            $openedItem.find('div.ca-content-wrapper').stop().animate({
+                width: '0px'
+            },
+            opts.itemSpeed, opts.itemEasing).end().stop().animate({
+                left: cache.itemW * (cache.winpos - 1) + 'px'
+            },
+            opts.itemSpeed, opts.itemEasing,
+            function() {
+                cache.isAnimating = false;
+                cache.expanded = false
+            });
+            aux.toggleMore($openedItem, true);
+            $wrapper.find('div.ca-item').each(function(i) {
+                var $item = $(this),
+                idx = $item.index();
+                if (idx !== openedIdx) {
+                    $item.find('div.ca-content-wrapper').css({
+                        width: '0px'
+                    }).end().css('left', ((cache.winpos - 1) - (openedIdx - idx)) * cache.itemW + 'px').show();
+                    aux.toggleMore($item, true)
+                }
+            })
+        },
+        getWinPos: function(val, cache) {
+            switch (val) {
+            case 0:
+                return 1;
+                break;
+            case cache.itemW:
+                return 2;
+                break;
+            case cache.itemW * 2 : return 3;
+                break
+            }
+        }
+    },
+    methods = {
+        init: function(options) {
+            if (this.length) {
+                var settings = {
+                    sliderSpeed: 500,
+                    sliderEasing: 'easeOutExpo',
+                    itemSpeed: 500,
+                    itemEasing: 'easeOutExpo',
+                    scroll: 1
+                };
+                return this.each(function() {
+                    if (options) {
+                        $.extend(settings, options)
+                    }
+                    var $el = $(this),
+                    $wrapper = $el.find('div.ca-wrapper'),
+                    $items = $wrapper.children('div.ca-item'),
+                    cache = {};
+                    cache.itemW = $items.width();
+                    cache.totalItems = $items.length;
+                    if (cache.totalItems > 3) {
+                        $el.prepend('<div class="ca-nav"><span class="ca-nav-prev">Previous</span><span class="ca-nav-next">Next</span></div>')
+                    }
+                    if (settings.scroll < 1) {
+                        settings.scroll = 1
+                    } else if (settings.scroll > 3) {
+                        settings.scroll = 3
+                    }
+                    var $navPrev = $el.find('span.ca-nav-prev'),
+                    $navNext = $el.find('span.ca-nav-next');
+                    $wrapper.css('overflow', 'hidden');
+                    $items.each(function(i) {
+                        $(this).css({
+                            position: 'absolute',
+                            left: i * cache.itemW + 'px'
+                        })
+                    });
+                    $el.find('a.ca-more').live('click.contentcarousel',
+                    function(event) {
+                        if (cache.isAnimating) {
+                            return false
+                        }
+                        cache.isAnimating = true;
+                        $(this).hide();
+                        var $item = $(this).closest('div.ca-item');
+                        aux.openItem($wrapper, $item, settings, cache);
+                        return false
+                    });
+                    $el.find('a.ca-close').live('click.contentcarousel',
+                    function(event) {
+                        if (cache.isAnimating) {
+                            return false
+                        }
+                        cache.isAnimating = true;
+                        var $item = $(this).closest('div.ca-item');
+                        aux.closeItems($wrapper, $item, settings, cache);
+                        return false
+                    });
+                    $navPrev.bind('click.contentcarousel',
+                    function(event) {
+                        if (cache.isAnimating) {
+                            return false
+                        }
+                        cache.isAnimating = true;
+                        aux.navigate( - 1, $el, $wrapper, settings, cache)
+                    });
+                    $navNext.bind('click.contentcarousel',
+                    function(event) {
+                        if (cache.isAnimating) {
+                            return false
+                        }
+                        cache.isAnimating = true;
+                        aux.navigate(1, $el, $wrapper, settings, cache)
+                    });
+                    $el.bind('mousewheel.contentcarousel',
+                    function(e, delta) {
+                        if (delta > 0) {
+                            if (cache.isAnimating) {
+                                return false
+                            }
+                            cache.isAnimating = true;
+                            aux.navigate( - 1, $el, $wrapper, settings, cache)
+                        } else {
+                            if (cache.isAnimating) {
+                                return false
+                            }
+                            cache.isAnimating = true;
+                            aux.navigate(1, $el, $wrapper, settings, cache)
+                        }
+                        return false
+                    })
+                })
+            }
+        }
+    };
+    $.fn.contentcarousel = function(method) {
+        if (methods[method]) {
+            return methods[method].apply(this, Array.prototype.slice.call(arguments, 1))
+        } else if (typeof method === 'object' || !method) {
+            return methods.init.apply(this, arguments)
+        } else {
+            $.error('Method ' + method + ' does not exist on jQuery.contentcarousel')
+        }
+    }
+})(jQuery);

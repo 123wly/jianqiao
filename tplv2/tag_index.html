@@ -13,13 +13,17 @@ if(g.tagname != ''){
 
 $(document).ready(function(){ 
 	show_tags_view(args);
-	
 })
 </script>
 {literal}
 <script type="text/javascript">
 
 function show_tags_view(args){
+{/literal}
+	{if isset($smarty.get.tuid)}
+		args.tuid = {$smarty.get.tuid};
+	{/if}
+{literal}
 	getHotUser(args.tag);
 	$('#userpost').hide();
 	$('#rem_tag,#add_tag').hide();
@@ -124,10 +128,15 @@ function tmpl_tagHotUser(d){
 		
 		
 	    <div class="clear"></div>
+
 		<div id="feedArea">
+
 			<div id="feed_loading"></div>
-			<div id="feed_box"></div>
 			
+			<!-- @@@ -->
+			<div id="feed_box"></div>
+			<!-- @@@ -->
+
 			<!-- 内容为空  -->
 			<div class="feed_none" id="feed_none" style="display:none">
 			    <div class="follow_font">

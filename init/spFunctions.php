@@ -7,7 +7,7 @@
  */
 function spRun(){
 	//@@@ 设置root
-	getRoot();
+	// getRoot();
 	///
 	GLOBAL $__controller, $__action;
 	// 对路由进行自动执行相关操作

@@ -15,7 +15,7 @@ class emptyController extends top
     }
 
 	public function index(){
-		$c = $this->spArgs("c");
+		$c = isset($_GET["c"]) ? $this->spArgs("c") : "index";
 		$this->assignown("tid",$this->spArgs("tid"));
 		$this->assignown("id",$this->spArgs("id"));
 		

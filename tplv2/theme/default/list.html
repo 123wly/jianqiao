@@ -1,6 +1,8 @@
 {include file="theme/default/header.html" titles=$data.title}
 {include file="require_models_js.html"}
+
 <div id="wrap">
+
     <div id="main">
 	{include file="theme/default/userheader.html"}
 	
@@ -45,10 +47,7 @@
 			<div class="fava">
 			
 				{foreach from=$fava.rs item=d}
-				<a href="{goUserHome domain=$d.domain uid=$d.uid}" 
-					title="{$d.username} - {ybtime time=$d.time}">
-					<img src="{avatar uid=$d.uid size=small}" alt="{$d.username}"/>
-				</a>
+				<a href="{goUserHome domain=$d.domain uid=$d.uid}" title="{$d.username} - {ybtime time=$d.time}"><img src="{avatar uid=$d.uid size=small}" alt="{$d.username}"/></a>
 				{/foreach}  
 			    <div class="clear"></div>
 			</div>

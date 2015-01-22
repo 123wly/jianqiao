@@ -1,0 +1,38 @@
+{include file="$themes_include_path/header.html"}
+
+<div id="wrap">
+
+    <div id="main">
+        {include file="$themes_include_path/userheader.html"}
+        <div class="huamc">
+            <h3>老师</h3>
+            <ul>
+                {foreach from=$tofollow.2 item=da}
+                    <li>
+                        <a href="{goUserHome domain=$da.domain uid=$da.uid}" title="{$da.username}" target="_blank">
+                            <img src="{avatar uid=$da.uid size=big}" alt="{$da.username}" />
+                        </a>
+                        <span>{$da.username}</span>
+                    </li>
+                {/foreach}
+            </ul>
+            <h3>同班同学</h3>
+            <ul>
+                {foreach from=$tofollow.3 item=da}
+                    <li>
+                        <a href="{goUserHome domain=$da.domain uid=$da.uid}" title="{$da.username}" target="_blank">
+                            <img src="{avatar uid=$da.uid size=big}" alt="{$da.username}" />
+                        </a>
+                        <span>{$da.username}</span>
+                    </li>
+                {/foreach}
+            </ul>
+        </div>
+    </div>
+
+    <div id="aside">
+        {include file="$themes_include_path/aside.html"}
+    </div>
+
+</div>
+{include file="$themes_include_path/footer.html" top=yes}
