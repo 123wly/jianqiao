@@ -9,7 +9,19 @@ class login extends top
 	function __construct(){  
          parent::__construct(); 
     }
-
+    public function wechatLogin(){
+        if(isset($_GET["openid"])){
+            $rsa = spClass("db_member")->find(array("openid"=>$_GET["openid"]));
+            if(!empty($rsa)){
+                $user = spClass('db_member');
+                $rs = $user->findBy('email',$rsa['email']);
+                $user->userLogin($rs);
+                $this->api_success("绑定成功");
+            }else {
+                $this->api_error("绑定失败");
+            }
+        }
+    }
 	/*用户登录*/
 	function vary(){
 		if($this->spArgs('email') == '' || $this->spArgs('password') == '')  return $this->api_error('用户名密码不能为空');

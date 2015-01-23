@@ -132,3 +132,14 @@ function get_week($year) {
 function vstr_replace($str, $a, $b){
 	return str_replace($a, $b, $str);
 }
+function dump_log()
+{
+    return spClass("db_debug")->findAll("","id desc");
+}
+
+function console_log($var){
+    $var = json_encode($var);
+    return spClass("db_debug")->create(array(
+        "dump" => $var,
+    ));
+}
