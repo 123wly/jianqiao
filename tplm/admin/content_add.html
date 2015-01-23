@@ -1,0 +1,50 @@
+{include file='admin/header.html'}
+
+<div id="content">
+    <style type="text/css">
+        #iframe {
+            border: none;
+        }
+    </style>
+    <div class="artTabs">
+        <ul id="tabs">
+            <li><a href="{spUrl c=post a=add model=1}" class="current">添加文字</a></li>
+            <li><a href="{spUrl c=post a=add model=2}">添加音乐</a></li>
+            <li><a href="{spUrl c=post a=add model=3}">添加图片</a></li>
+            <li><a href="{spUrl c=post a=add model=4}">添加视频</a></li>
+            <div class="clear"></div>
+        </ul>
+    </div>
+    <iframe src="{spUrl c=post a=add model=1}" height='800' id="iframe" name="nihao"></iframe>
+    <script type="text/javascript">
+        function ready_do (){
+            $("#iframe").width($("#content").width());
+            $("#iframe").hide();
+            $("#iframe").load(function(){
+                var iframecontent = $('#iframe').contents();
+                iframecontent.find('#header').hide();
+                iframecontent.find('body').css( "background", 'none');
+                iframecontent.find('.aside_area').css("background-color", 'transparent');
+                iframecontent.find('#footer').hide();
+                var terms = '<div class="aside_item" id="terms" style="margin-top:10px;"><select id="savetype" name="term_id">{$terms}</select></div>';
+                console.log(iframecontent.find('#terms'));
+                
+                iframecontent.find('#post-privacy-holder').after(terms);
+                $("#iframe").fadeIn();
+            });
+        }
+        $(document).ready(function() {
+            ready_do();
+            $("#tabs li a").click(function(){
+                var src = $(this).attr("href");
+                ready_do();
+                $("#iframe").attr("src",src);
+                $("#tabs li a").removeClass('current');
+                $(this).addClass('current');
+                
+                return false;
+            });
+        });
+    </script>
+</div>
+{include file='admin/footer.html'}

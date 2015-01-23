@@ -22,7 +22,18 @@ class main extends top
 			$display ='index';
 		}
 		$this->CurrentModule = 'index';
-		$this->display($display.'.html');
+		
+		if(isset($_GET["openid"])){
+			$rs = spClass("login","","./api/login.php")->wechatLogin($_GET["openid"]);
+			if($rs){
+				$this->display('index.html');
+			}else {
+				$this->display('wechat_login.html');
+			}
+		}else {
+			///@@@@
+			$this->display($display.'.html');
+		}
 	}
 
 
@@ -40,6 +51,14 @@ class main extends top
 		$this->display('discover.html');
 	}
 
+	public function wechat_login(){
+		$rs = spClass("login","","./api/login.php")->wechatOAth();
+		if($rs){
+			$this->success("绑定成功",spUrl('main', 'index'));
+		}else {
+			$this->error("绑定失败");
+		}
+	}
 
 	/*用户登陆*/
 	public function login(){

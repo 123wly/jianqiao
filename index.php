@@ -9,7 +9,7 @@ define('URL_PATH',$_SERVER['SERVER_NAME'].'/yunbian');
 define('IN_APP',TRUE);
 define('SP_PATH',APP_PATH.'/init');
 
-
+include_once './wh_function.php';
 // define("THEME_NAME",'baoding');
 // define('THEME_UID', '1');
 
@@ -21,7 +21,11 @@ if(!is_file(APP_PATH.'/config.php')){header('Location:install/');}
 
 if(isset($_REQUEST['ssid'])){session_id($_REQUEST['ssid']);}
 require(APP_PATH.'/config.php');
-$spConfig["view"]["config"]["template_dir"] = 'tplv2';
+if(ismobile()){
+	$spConfig["view"]["config"]["template_dir"] = 'tplm';
+}else {
+	$spConfig["view"]["config"]["template_dir"] = 'tplv2';
+}
 
 //@@@
 if(file_exists("theme.php")){

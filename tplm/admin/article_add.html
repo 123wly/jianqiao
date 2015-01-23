@@ -1,0 +1,225 @@
+{include file='admin/header.html'}
+<script type="text/javascript" charset="utf-8" src="./statics/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="./statics/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="./statics/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript" src="{$syskin}/js/phpjs.js"></script>
+<script src="./statics/uploadify/jquery.uploadify.min.js"></script>
+<link href="./statics/uploadify/uploadify.css" rel="stylesheet" />
+
+<div id="content">
+    <style type="text/css" media="screen">
+        .t_title{
+            width : 80px;
+        }
+    </style>
+   <div class="con_system">
+        <form action="{spUrl c=admin a=article_save}" method="post" id="form">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" class="table_padding">
+                <tbody>
+                    <tr>
+                        <td class="t_title">栏目</td>
+                        <td class="c_input_small">
+                            <select name="term_id">
+                                {foreach $terms as $vo}
+                                    <option value="{$vo.id}">{$vo.name}</option>
+                                {/foreach}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="t_title">标题</td>
+                        <td class="c_input_small">
+                            <input type="text" name="title" value="" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="t_title">内容</td>
+                        <td class="c_input_small">
+                            <script id="editor" type="text/plain" style="width:90%;height:200px;"></script>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="t_title">简要</td>
+                        <td class="c_input_small">
+                            <div style="height: 10px;"></div>
+                            <textarea rows="3" cols="20" name="brief"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="t_title">模板文件</td>
+                        <td class="c_input_small">
+                            <div style="height: 10px;"></div>
+                            <input type="text" name="tpl" value="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="t_title">文章来源</td>
+                        <td class="c_input_small">
+                            <div style="height: 10px;"></div>
+                            <input type="text" name="from" value="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="t_title">文章图组</td>
+                        <td class="c_input_small">
+                            <div style="height: 10px;"></div>
+                            <style type="text/css">
+                                #ul_tuzu {
+                                    display: inline-block;
+                                }
+                                #ul_tuzu li{
+                                    display: inline-block;
+                                    width: 100%;
+                                }
+                                #ul_tuzu li span{
+                                    height: 100px;
+                                    line-height: 100px;
+                                    cursor: pointer;
+                                    display: inline-block;
+                                }
+                                #ul_tuzu li img {
+                                    float: left;
+                                    display: inline-block;
+                                }
+                            </style>
+                            <ul id="ul_tuzu">
+                                
+                            </ul>
+                            <div class="upload_avatar">
+                                <input id="f_tuzu" name="f_tuzu" type="file" multiple="true" value="" />
+                                <input id="imgs" name="imgs" value="" type='hidden' />
+                            </div>
+                        
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="t_title">封面</td>
+                        <td class="c_input_small">
+                            <div style="height: 10px;"></div>
+                            <a href='javascript:void(0);' onclick="javascript:$('#file_upload').uploadify('upload','*');">
+                                <img id="image" src="./statics/uploadify/upload-pic.png" width="135" height="113" border="0" />
+                                <div id="del_cover">删除</div>
+                            </a>
+
+                            <div class="upload_avatar">
+                                <input id="file_upload" name="file_upload" type="file" multiple="true" value="" />
+                                <input id="cover" name="cover" value="" type='hidden' />
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="btn_area">
+                {if $edit eq 1}
+                    <input name="edit" type="hidden" value="1" />
+                    <input name="id" type="hidden" value="{$smarty.get.id}" />
+                {/if}
+                <input name="submit" class="btn_save submit" type="submit" value="保存" />
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    
+    var root = '{$url}/uploads/'
+    
+    function imgs2val(){
+        var imgs = [];
+        $.each($("#ul_tuzu > li > img"), function(index, val) {
+            imgs.push($(this).attr("src").replace(root, ""));
+        });
+        $("#imgs").val(json_encode(imgs));
+    }
+
+    $(document).ready(function() {
+        var ue = UE.getEditor('editor');
+
+        $("#del_cover").live("click",function(){
+            $("#cover").val("");
+            $("#image").attr("src","./statics/uploadify/upload-pic.png");
+        });
+
+        $('#file_upload').uploadify({
+            'swf': './statics/uploadify/uploadify.swf',
+            'uploader': '{spUrl c=publicc a=uploadFile}',
+            'buttonText': '上传图片',
+            'onUploadSuccess': function(file, data, response) {
+                data = $.parseJSON(data);
+                if(data.status === 1){
+                    var info = '{$url}/uploads/' + data.info;
+                    $('#image').attr('src', '' + info);
+                    $('#cover').val(data.info);
+                }else {
+                    alert("上传失败！");
+                }
+                
+            },
+        });
+        //TODO 删除图片删除文件
+        $(".del_img").live("click",function(){
+            var filename = $(this).parent("li").find("img").attr("src").replace(root,"");
+            var obj = $(this).parent("li").remove();
+            imgs2val();
+        });
+
+        $('#f_tuzu').uploadify({
+            'swf': './statics/uploadify/uploadify.swf',
+            'uploader': '{spUrl c=publicc a=uploadFile}',
+            'buttonText': '上传图片',
+            'onUploadSuccess': function(file, data, response) {
+                data = $.parseJSON(data);
+                if(data.status === 1){
+                    var info =  root + data.info;
+                    var li = '<li><img src="' + info + '" height="100" /><span class="del_img">删除</span></li>';
+                    $("#ul_tuzu").append(li);
+                    imgs2val();
+                }else {
+                    alert("上传失败！");
+                }
+                
+            },
+        });
+
+
+
+        {if $edit eq 1}
+            $.post('{spUrl c=admin a=article_find}', { id : {$smarty.get.id} }, function(data) {
+                var obj = $.parseJSON(data);
+                var formin = $("#form input,#form textarea");
+                $.each(obj, function(index, val) {
+                    $.each(formin, function(key, vo) {
+                        if ($(this).attr("name") === index){
+                            $(this).val(val);
+                        }
+                    });
+                });
+                
+                ue.ready(function() {
+                    ue.setContent(obj.content);
+                });
+
+                $("select[name='term_id']").get(0).value = obj.term_id;
+
+                if(obj.imgs !== null){
+                    var imgs = $.parseJSON(obj.imgs);
+                    $.each(imgs, function(index, val) {
+                        var info =  root + val;
+                        var li = '<li><img src="' + info + '" height="100" /><span class="del_img">删除</span></li>';
+                        $("#ul_tuzu").append(li);
+                    });
+                    imgs2val();
+                }
+                if(obj.cover !== null && obj.cover.length !== 0 ){
+                    $("#image").attr("src", root + obj.cover);
+                }else {
+                    $("#image").attr("src", "./statics/uploadify/upload-pic.png");
+                }
+            });
+        {/if}
+
+    });
+</script>
+
+{include file='admin/footer.html'}

@@ -9,6 +9,36 @@ class login extends top
 	function __construct(){  
          parent::__construct(); 
     }
+   	function wechatLogin($openid){
+		$rs = spClass('db_member')->findBy('openid', $openid);
+		if(is_array($rs)){
+			spClass('db_member')->userLogin($rs);
+			return true;
+		}else {
+			return false;
+		}
+
+   	}
+
+   	function wechatOAth(){
+   		if($this->spArgs('email') == '' || $this->spArgs('password') == '')  return $this->api_error('用户名密码不能为空');
+   		if($this->spArgs('openid') == '') return $this->api_error("授权失败");
+
+   		$user = spClass('db_member');
+   		$rs = $user->findBy('email',$this->spArgs('email'));
+   		if(!is_array($rs))		$this->api_error('用户名不存在');
+   		if($rs['open'] == 0) 	$this->api_error('该帐号被限制登录');
+   		
+   		$password = password_encode($this->spArgs('password') ,$rs['salt']);
+   		if($rs['password'] == $password)
+   		{
+   			$user->userLogin($rs);
+   			$user->update(array("email"=>$this->spArgs('email')),array("openid"=>$this->spArgs('openid')));
+   			return true;
+   		}else{
+   			return false;
+   		}
+   	}
 
 	/*用户登录*/
 	function vary(){

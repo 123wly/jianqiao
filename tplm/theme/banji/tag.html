@@ -1,0 +1,34 @@
+{include file="$themes_include_path/header.html"}
+
+<div id="wrap">
+
+    <div id="main">
+        {include file="$themes_include_path/userheader.html"}
+
+        <div id="feedArea">
+            <script type="text/javascript">
+            $(document).ready(function() {
+                yb_load_feeds('blog', 'tagForOne', {
+                    tag	 : '{$smarty.get.tag}',
+                    tuid : '{$smarty.get.uid}',
+                },function(){
+                	$(".date").hide();
+                    if($("#feed_box").text() === "feed_template"){
+                        $("#feed_box").text("");
+                    }
+                });
+            })
+            </script>
+            <div id="feed_loading"></div>
+            <div id="feed_box"></div>
+        </div>
+
+        <div class="page" id="paging"></div>
+    </div>
+
+    <div id="aside">
+        {include file="$themes_include_path/aside.html"}
+    </div>
+
+</div>
+{include file="$themes_include_path/footer.html" top=yes}

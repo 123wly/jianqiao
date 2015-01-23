@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+	<meta charset="UTF-8">
+	<title>wechat_login</title>
+</head>
+<body>
+	<form action="{spUrl c=main a=wechat_login}" method="post">
+		<input type="text" name="email" />
+		<input type="text" name="password" />
+		<input type="text" name="openid" value="{$smarty.get.openid}" />
+		<input type="submit" />
+	</form>
+</body>
+</html>

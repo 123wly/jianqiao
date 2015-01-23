@@ -132,3 +132,4 @@ function get_week($year) {
 function vstr_replace($str, $a, $b){
 	return str_replace($a, $b, $str);
 }
+
