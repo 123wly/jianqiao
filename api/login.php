@@ -39,7 +39,6 @@ class login extends top
    			return false;
    		}
    	}
-
 	/*用户登录*/
 	function vary(){
 		if($this->spArgs('email') == '' || $this->spArgs('password') == '')  return $this->api_error('用户名密码不能为空');

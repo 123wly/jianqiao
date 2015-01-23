@@ -5,7 +5,7 @@
  
 class main extends top
 {
-    function __construct(){  
+    function __construct(){
         parent::__construct(); 
     }
 
