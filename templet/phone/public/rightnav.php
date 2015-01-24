@@ -18,7 +18,7 @@
                              		?>
                              		<?php foreach ($c_term as $key => $cvo): ?>
                              				<li>
-                             					<a href="<?php echo spUrl($cvo['ptpl'],'',array('tid'=>$cvo['id'])) ;?>" data-aiax="false">
+                             					<a href="<?php echo spUrl($cvo['ptpl'],'',array('tid'=>$cvo['id'])) ;?>" data-ajax="false">
                              					<?php echo $cvo['name']; ?>
                              					</a>
                              				</li>

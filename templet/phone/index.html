@@ -49,7 +49,7 @@
                         <ul class="life-ul clearFloat">
                             <li>
                                 <div class="banner_inner">
-                                    <a href="{spUrl c=$vo.ptpl  a=index id=$vo.id} data-aiax='false'" class="scroll-to">
+                                    <a href="{spUrl c=$vo.ptpl  a=index id=$vo.id} data-ajax='false'" class="scroll-to">
                                         <div class="txt1">{$vo.title|msubstr:'0':'10'}</div>
                                         <figure><img src="{$vo.cover|upload_echo}" alt="" class="img"><em></em>
                                         </figure>
@@ -86,7 +86,7 @@
                 {foreach $choose as $vo}
                 {if $vo@index <9}
                 <li>
-                    <span><img src="{$skin_path}images/choose-{$vo@index+1}.png" alt="{$vo.title}" /></span><a href="{spUrl c=$vo.ptpl id=$vo.id} data-aiax='false'" style="color: #FFF;">{$vo.title}</a>
+                    <span><img src="{$skin_path}images/choose-{$vo@index+1}.png" alt="{$vo.title}" /></span><a href="{spUrl c=$vo.ptpl id=$vo.id} data-ajax='false'" style="color: #FFF;">{$vo.title}</a>
                 </li>
                 {/if}
                 {/foreach}

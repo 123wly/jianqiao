@@ -39,7 +39,7 @@
                              ?>
                             <ul class="sub-menu" id="tab_kc<?php echo $key+1; ?>" style="display: <?php echo $display; ?>;">
                                 <?php foreach ($c_term as $key => $child): ?>
-                                <li><a href="<?php echo spUrl($child['ptpl'],'',array('tid'=>$child['id'])) ;?> " data-aiax="false"><?php echo $child['name'] ?></span></a>
+                                <li><a href="<?php echo spUrl($child['ptpl'],'',array('tid'=>$child['id'])) ;?> " data-ajax="false"><?php echo $child['name'] ?></span></a>
                                 </li>
                                 <?php endforeach ?>
                                 
