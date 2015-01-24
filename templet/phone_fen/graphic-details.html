@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>剑桥幼儿园</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="wrap">
+        <div id="header" class="header-page clearFlaot">
+            <div class="pagehead-box">
+               <a class="arrowLeft" data-ajax="false" href="javascript:history.go(-1);"><img width="35px;" height="35px;" src="images/page-back.png" alt="返回" /></a>
+               <h1 class="pagehead-title">精彩活动</h1>
+           </div>
+        </div>
+        <div id="main" class="main-page">
+            <div id="page-con" style="padding:15px;">
+                <p class="page-contitle"><b>精彩活动详情</b></p>
+                <p><span class="page-contime">2015-01-18</span><span class="page-conname">剑桥新世纪幼儿园</span></p>
+                <p><img style="border-radius:5px;" class="page-conimg" src="images/news-page.jpg" alt="公司简介" /></p>
+                <p class="page-conword">幼儿园举行迎元旦文艺汇演，数百名师生齐聚一堂，共同观看了演出。文艺汇演节目丰富，精彩纷呈，有舞蹈、诗朗诵、童话剧、联唱等。孩子们身着节目盛装，拿出精心准备的节目依次登台，在小小的舞台上展现着自我，张扬着个性，施展着才艺。</p>
+            </div>
+            <div class="det_handle">
+                 <p class="p_prev"><a href="javascript:void();">没有了</a></p> 
+                 <p class="p_next"><a href="javascript:void();">下一篇</a></p>
+            </div>
+       </div>
+        <div id="footer" class="footer-page">
+            <p class="footer-p">&copy;保定剑桥英语 技术支持：万虎网络</p>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    $(document).ready(function($) {
+        $("#page-con").css("min-height",($(window).height()-130));
+        $(".ui-panel").css("min-height",($(window).height()-90));
+    });
+</script>
+</html>

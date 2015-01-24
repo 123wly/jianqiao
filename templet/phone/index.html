@@ -1,0 +1,166 @@
+{extends file='./templet/phone/public/layout.html'}
+{block name=content}
+<body>
+    <div id="wrap">
+  {include_php './templet/phone/public/wrap.php'} 
+    <div id="main" style="padding:50px 0 0;">
+        <div class="container">
+            <img class="db" width="100%;" src="{$skin_path}images/banner1.jpg" alt="剑桥" />
+            <a id="the-anchor" data-ajax="false" href="#news" class="arrow-b">
+                <img src="{$skin_path}images/bottom-arrow.png" alt="向下" />
+            </a>
+        </div>
+        <div id="news">
+            <p class="main-title">剑桥资讯&nbsp;News</p>
+            <ul class="new-main clearFloat">
+                <li class="new-m m-3">
+                    <a class="clearFloat" href="{spUrl c=$new.ptpl  a=index tid=$new.id}" data-ajax="false">
+                        <img width="100%" src="{$skin_path}images/new-1.png" />
+                    </a>
+                    <a class="m-word" href="{spUrl c=$new.ptpl  a=index tid=$new.id}" data-ajax="false">
+                        <p>{$new.name|msubstr:'0':'10'}</p>
+                    </a>
+                </li>
+                <li class="new-m m-2">
+                    <a class="clearFloat" href="{spUrl c=$notice.ptpl  a=index tid=$notice.id}" data-ajax="false">
+                        <img width="100%" src="{$skin_path}images/new-2.png" />
+                    </a>
+                    <a class="m-word" href="{spUrl c=$notice.ptpl  a=index tid=$notice.id} " data-ajax="false">
+                        <p>{$notice.name|msubstr:'0':'10'}</p>
+                    </a>
+                </li>
+                <li class="new-m m-4">
+                    <a class="clearFloat" href="{spUrl c=$s_notice.ptpl  a=index tid=$s_notice.id} " data-ajax="false">
+                        <img width="100%" src="{$skin_path}images/new-3.png" />
+                    </a>
+                    <a class="m-word" href="{spUrl c=$s_notice.ptpl  a=index tid=$s_notice.id}" data-ajax="false">
+                        <p>{$s_notice.name|msubstr:'0':'10'}</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="life">
+            <p class="main-title">剑桥生活&nbsp;Life</p>
+            <!-- 本例主要代码 Start ================================ -->
+            <script src="{$skin_path}js/TouchSlide.1.1.js"></script>
+            <div id="picScroll" class="picScroll">
+                <div class="bd">
+                    {foreach $life as $vo}
+                        <ul class="life-ul clearFloat">
+                            <li>
+                                <div class="banner_inner">
+                                    <a href="{spUrl c=$vo.ptpl  a=index id=$vo.id} data-aiax='false'" class="scroll-to">
+                                        <div class="txt1">{$vo.title|msubstr:'0':'10'}</div>
+                                        <figure><img src="{$vo.cover|upload_echo}" alt="" class="img"><em></em>
+                                        </figure>
+                                        <div class="caption">
+                                            <div class="txt2">{$vo.content|msubstr:'0':'50'}</div>
+                                            <div class="txt3">more</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                        {/foreach}
+                </div>
+                <div class="hd">
+                        <span class="prev"></span>
+                        <ul></ul>
+                        <span class="next"></span>
+                </div>
+            </div>
+            <script type="text/javascript">
+                TouchSlide({ 
+                    slideCell:"#picScroll",
+                    titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+                    autoPage:true, //自动分页
+                    pnLoop:"false", // 前后按钮不循环
+                    switchLoad:"_src" //切换加载，真实图片路径为"_src" 
+                });
+            </script>
+            <!-- 本例主要代码 End ================================ -->
+        </div>
+        <div id="choose">
+            <p class="main-title">为什么选择剑桥&nbsp;Choose</p>
+            <ul class="choose-ul">
+                {foreach $choose as $vo}
+                {if $vo@index <9}
+                <li>
+                    <span><img src="{$skin_path}images/choose-{$vo@index+1}.png" alt="{$vo.title}" /></span><a href="{spUrl c=$vo.ptpl id=$vo.id} data-aiax='false'" style="color: #FFF;">{$vo.title}</a>
+                </li>
+                {/if}
+                {/foreach}
+                
+            </ul>
+        </div>
+        <div id="Contacts">
+            <p class="main-title">联系我们&nbsp;Contacts</p>
+            <ul class="contact-ul">
+                <li>
+                    <a data-ajax="false" href="tel:010-51956070"><span><img src="{$skin_path}images/phone.png" alt="幼教品牌" /></span>报名电话：0312-3122001</a>
+                </li>
+                <li>
+                    <a data-ajax="false" href="http://api.map.baidu.com/marker?location=38.886565,115.49481&title=我的位置&content=保定剑桥幼儿园&output=html"><span><img src="{$skin_path}images/map.png" alt="幼教品牌" /></span>总部地址：保定高开区盛兴中路369号</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+	<div class="m-page-right">
+        <a class="m-page-top" href="#header" style="display: block;">
+            <img src="{$skin_path}images/arrow-top.png" alt="回到头部">
+        </a>
+    </div>
+
+
+
+    <div id="footer">
+        <p class="footer-p">&copy;保定剑桥英语 技术支持：万虎网络</p>
+    </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+$(document).ready(function() {
+    $(function(){
+        $("#the-anchor").click(function(){
+            var hr = $(this).attr("href");
+            var anh = $(hr).offset().top-50;
+            $("html,body").stop().animate({
+                scrollTop:anh
+            },1000);
+        })
+    });
+    $("#nav-button").click(function() {
+        $(".collapse").slideToggle("slow");
+    });
+    $(".sub-menua > .linka").each(function(j) {
+        var num = j + 1;
+        $(this).click(function() {
+            $(".sub-menua > .linka > a").attr("class", "");
+            $(this).attr("class", "active");
+            for (var i = 1; i <= 5; i++) {
+                $("#tab_kc" + i).css("display", "none");
+            }
+            $("#tab_kc" + num).slideDown("slow");;
+        });
+    });
+    $(".m-page-top").hide();
+    $(window).scroll(function() {
+        if ($(this).scrollTop() != 0) {
+            $(".m-page-top").slideDown();
+        } else {
+            $(".m-page-top").slideUp();
+        };
+    });
+    $(".m-page-top").click(function() {
+        $("body,html").animate({
+            scrollTop: 0
+        }, 500)
+    });
+
+});
+</script>
+
+</html>
+{/block}

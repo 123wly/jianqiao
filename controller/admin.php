@@ -1320,7 +1320,6 @@ class admin extends top
     public function cook_week(){
         $this->curr_cook_week = ' id="acurrent"';
 
-
         $weeks = get_week($this->spArgs("year"));
         $this_week = $weeks[$this->spArgs("week") - 1];
         $week_days = array();
@@ -1364,14 +1363,15 @@ class admin extends top
 
     // 生成分园配置
     public function fenyuan_c(){
-        $admins = spCLass("db_member")->findAll(array("admin"=>1),"","uid,theme,realm");
+        $admins = spCLass("db_member")->findAll(array("admin"=>1),"","uid,theme,realm,mtheme");
         $data = array();
         foreach ($admins as $key => $value) {
-            $data[$value['uid']] = $value;
+            $data[$value['realm']] = $value;
         }
         $content = "<?php return '".json_encode($data)."';";
         $f = fopen('theme.php', 'w+');
         fwrite($f, $content);
         fclose($f);
+        $this->success("保存成功");
     }
 }

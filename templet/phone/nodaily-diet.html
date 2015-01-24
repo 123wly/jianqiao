@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)http://crmminisite.verystar.cn/baodao/store -->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>剑桥幼儿园</title>
+    <meta charset="utf-8">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta content="telephone=no" name="format-detection">
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.3.min.css" />    
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.mobile-1.4.3.min.js"></script>
+
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="header" class="header-page clearFlaot">
+        	<div class="pagehead-box">
+	           <a class="arrowLeft" data-ajax="false" href="javascript:history.go(-1);"><img width="35px;" height="35px;" src="images/page-back.png" alt="返回" /></a>
+	           <h1 class="pagehead-title">剑桥简介</h1>
+	           <a class="arrowRight" href="#defaultpanel"  data-role="button"><img width="35px;" height="35px;" src="images/page-menu.png" alt="菜单" /></a>
+           </div>
+        </div>
+        <div id="main" class="main-page">
+        	<div id="page-con" style="padding:15px;">
+			<div id="no-food">
+				<div id="food-wordtop">
+					<p class="food-title">当日食谱</p>
+					<p class="food-time">2015-01-20</p>
+				</div>
+				<p class="food-no"><img src="images/nofood.png" alt="还没更新食谱"></p>
+
+			</div>
+		</div>
+        <div id="footer" class="footer-page">
+            <p class="footer-p">&copy;保定剑桥英语 技术支持：万虎网络</p>
+        </div>
+        <!--右侧导航开始-->
+        <div data-role="panel" id="defaultpanel" data-prosition="right"> 
+            <div class="panel-content"> 
+                <div class="status_bar"></div>
+					<ul id="accordion" class="accordion">
+						<li>
+							<div class="link">关于剑桥</div>
+								<ul class="submenu">
+									<li><a href="#">剑桥简介</a></li>
+									<li><a href="#">剑桥资讯</a></li>
+									<li><a href="#">放心食堂</a></li>
+								</ul>
+						</li>
+						<li>
+							<div class="link">剑桥教育</div>
+							<ul class="submenu">
+								<li><a href="#">教育体系</a></li>
+								<li><a href="#">特色教学</a></li>
+							</ul>
+						</li>
+						<li>
+							<div class="link">剑桥生活</div>
+							<ul class="submenu">
+								<li><a href="#">保教天地</a></li>
+								<li><a href="#">每周食谱</a></li>
+								<li><a href="#">我们的才艺</a></li>
+							</ul>
+						</li>
+						<li><div class="link">家园共育</div>
+							<ul class="submenu">
+								<li><a href="#">育儿知识</a></li>
+								<li><a href="#">保健天地</a></li>
+								<li><a href="#">家园活动</a></li>
+							</ul>
+						</li>
+						<li><div class="link"><a style="color:#fff;" data-ajax="false" href="index.html">选择剑桥</a></div>
+						<li><div class="link"><a style="color:#fff;" data-ajax="false" href="#">进入分园</a></div>
+					</ul>
+            </div>
+        </div> 
+        <!-- 右侧导航结束--> 
+    </div>
+</body>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#page-con").css("min-height",($(window).height()-130));
+		$(".ui-panel").css("min-height",($(window).height()-90));
+		//头部右按钮弹出面板代码开始
+		$(function() {
+			var Accordion = function(el, multiple) {
+				this.el = el || {};
+				this.multiple = multiple || false;
+
+				// Variables privadas
+				var links = this.el.find('.link');
+				// Evento
+				links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
+			}
+			Accordion.prototype.dropdown = function(e) {
+				var $el = e.data.el;
+					$this = $(this),
+					$next = $this.next();
+
+				$next.slideToggle();
+				$this.parent().toggleClass('open');
+
+				if (!e.data.multiple) {
+					$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+				};
+			}	
+
+			var accordion = new Accordion($('#accordion'), false);
+		});//头部右按钮弹出面板代码结束
+	});
+</script>
+</html>

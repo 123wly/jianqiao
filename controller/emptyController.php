@@ -36,7 +36,13 @@ class emptyController extends top
 				call_user_func_array(array($this,"__f_".$c), array());
 				
 		}
-		
+		if(method_exists($this,"__p_".$c)){
+				call_user_func_array(array($this,"__p_".$c), array());
+		}
+		if(method_exists($this,"__c_".$c)){
+				call_user_func_array(array($this,"__c_".$c), array());
+				
+		}
 
 		$this->assignown("root",__ROOT__);
 		$this->assignown('skin_path',"".__ROOT__.'/templet/' . THEME_NAME .'/');
@@ -65,6 +71,12 @@ class emptyController extends top
         	}
         }
         $this->assignown("week_data", $data);
+
+        $begin_time=strtr(substr($this_week['0'],5),"-","/");
+        $end_time=strtr(substr($this_week['1'],5),"-","/");
+
+        $this->assignown("begin_time",$begin_time);
+        $this->assignown("end_time",$end_time);
 
         $upweek = (intval($this_week) - 1 < 2 ) ? 2 : (intval($this_week) - 1) ;
         $nextweek = ($week_num + 1 > count($weeks) ) ? count($weeks) : ($week_num + 1 );
@@ -361,6 +373,39 @@ class emptyController extends top
 		$this->assignown("pager",$pager);
 	}
 
+	public function __f_mzsp(){
+		$weeks = get_week(intval(date("Y")));
+
+		$week_num = isset($_GET['week']) ? intval($_GET['week']) : intval(date("W"));
+        $this_week = $weeks[$week_num - 1];
+
+        $sql = " `date` >= ".$this_week[2]." and `date` <= ".$this_week[3];
+        
+        $week_data = spClass("db_cook")->findAll($sql,"","zao,zaodian,wu,wudian,wan");
+        $data = array();
+        foreach ($week_data as $key => $value) {
+        	foreach ($value as $k => $vo) {
+        		$data[$k][] = $vo;
+        	}
+        }
+        $this->assignown("week_data", $data);
+
+        $begin_time=strtr(substr($this_week['0'],5),"-","/");
+        $end_time=strtr(substr($this_week['1'],5),"-","/");
+
+        $this->assignown("begin_time",$begin_time);
+        $this->assignown("end_time",$end_time);
+        $upweek = (intval($this_week) - 1 < 2 ) ? 2 : (intval($this_week) - 1) ;
+        $nextweek = ($week_num + 1 > count($weeks) ) ? count($weeks) : ($week_num + 1 );
+
+        $this->assignown("upweek", $upweek);
+        $this->assignown("nextweek", $nextweek);
+
+        $time=strtotime(date('Y-m-d'));
+        $day_food=spClass("db_cook")->find(array("date"=>$time),"","zao,zaodian,wu,wudian,wan");
+        $this->assignown("day_food",$day_food);
+	}
+
 	public function __f_gywm_fyjs(){
 
 		$this->__f_term();	
@@ -423,6 +468,7 @@ class emptyController extends top
 	}
 	public function __f_mzsp_sp(){
 		$this->__f_term();
+		$this->__f_mzsp();
 	}
 
 	public function __f_yybm_wybm(){
@@ -468,6 +514,234 @@ class emptyController extends top
 
 	public function __f_bjztc(){
 		$this->__f_term();
+	}
+
+
+
+	///////////////////////////////////////////
+	public function __p_index(){
+	//新闻资讯
+		$new=spClass("db_term")->find(array("id"=>"31","uid"=>"1"));
+		$this->assignown("new",$new);
+	//通知公告
+		$notice=spClass("db_term")->find(array("id"=>"32","uid"=>"1"));
+		$this->assignown("notice",$notice);
+	//招生公告
+		$s_notice=spClass("db_term")->find(array("id"=>"26","uid"=>"1"));
+		$this->assignown("s_notice",$s_notice);
+	//剑桥生活
+		$life=spClass("db_article")->findAll(array("term_id"=>"20","uid"=>"1"));
+		$this->assignown("life",$life);
+	//选择剑桥
+		$choose=spClass("db_article")->findAll(array("term_id"=>"29","uid"=>"1"));
+		$this->assignown("choose",$choose);
+
+	}
+	public function __p_term($pagenum=1,$order="id desc"){
+
+		$term = spClass("db_term")->find(array("id"=>$_GET['tid']));
+		if(!$term['parent_id']){
+			$term = spClass("db_term")->find(array("parent_id"=>$_GET['tid']));
+		}
+
+		$articles=spClass("db_article")->spPager($this->spArgs('page', 1),$pagenum)->findAll(array("term_id"=>$term['id']),$order);
+
+		$article=spClass("db_article")->find(array("term_id"=>$term['id']));
+
+		$pager = spClass("db_article")->spPager()->getPager();
+		$this->assignown("term",$term);
+		$this->assignown("articles",$articles);
+		$this->assignown("article",$article);
+		$this->assignown("pager",$pager);
+	}
+
+	public function __p_pageshow(){
+		$flag="1";
+		if($_GET['tid']){
+			$article=$this->dArticle->find(array("term_id"=>$_GET['tid']));
+			$flag="0";
+		}elseif($_GET['id']){
+			$article=$this->dArticle->find(array("id"=>$_GET['id']));
+		}
+		$this->assignown("article",$article);
+		$this->assignown("flag",$flag);
+		// 上一篇
+		$upArticle = $this->dArticle->next($_GET['id'], true);
+		if(empty($upArticle)){
+			$up['href'] = "javascript:;";
+			$up['title'] = "没有了";
+		}else {
+			$up['href'] = spUrl($upArticle['ptpl'],"",array("id"=>$upArticle['id']));
+			$up['title'] = $upArticle['title'];
+		}
+
+		// 下一篇
+		$nextArticle = $this->dArticle->next($_GET['id']);
+		if(empty($nextArticle)){
+			$next['href'] = "javascript:;";
+			$next['title'] = "没有了";
+		}else {
+			$next['href'] = spUrl($nextArticle['ptpl'],"",array("id"=>$nextArticle['id']));
+			$next['title'] = $nextArticle['title'];
+		}
+		// 赋值
+		$this->assignown("up",$up);
+		$this->assignown("next",$next);
+	}
+
+	public function __p_news(){
+		$this->__p_term();
+	}
+
+	public function __p_notice(){
+		$this->__p_term();
+	}
+
+	public function __p_introduction(){
+		$this->__p_pageshow();
+	}
+
+	public function __p_dailydiet(){
+		$datearr = getdate();
+		$year = strtotime($datearr['year'].'-1-1');
+		$startdate = getdate($year);
+		$firstweekday = 7-$startdate['wday'];//获得第一周几天
+
+		$yday = $datearr['yday']+1-$firstweekday;//今年的第几天
+		$week=  ceil($yday/7)+1;//取到第几周
+	
+		$weeks = get_week(intval(date("Y")));
+		$week_num = $week;
+        $this_week = $weeks[$week_num - 1];
+
+        $sql = " `date` >= ".$this_week[2]." and `date` <= ".$this_week[3];
+        
+        $week_data = spClass("db_cook")->findAll($sql,"","zao,zaodian,wu,wudian,wan");
+        $this->assignown("week_data", $week_data);
+        //var_dump($week_data);
+
+        $begin_time=strtr(substr($this_week['0'],5),"-","/");
+        $end_time=strtr(substr($this_week['1'],5),"-","/");
+
+        $this->assignown("begin_time",$begin_time);
+        $this->assignown("end_time",$end_time);
+
+        $weekarray=array("周一","周二","周三","周四","周五");
+
+        $num=date("w")-1;
+
+        $this->assignown("num",$num);
+        $this->assignown("weekarray",$weekarray);
+
+	}
+	public function __p_garden(){
+		
+	}
+
+	/////////////////////////
+	public function __c_index(){
+		//分园简介
+		$jieshao=spClass("db_article")->find(array("term_id"=>"56"));
+		$this->assignown("jieshao",$jieshao);
+		//资讯信息
+		$news=spClass("db_term")->find(array("id"=>"58"));
+		$this->assignown("news",$news);
+		//设施环境
+		$sheshi=spClass("db_article")->find(array("term_id"=>"15"));
+		$this->assignown("sheshi",$sheshi);
+		//园长介绍
+		$yuanzhang=spClass("db_article")->find(array("term_id"=>"59"));
+		$this->assignown("yuanzhang",$yuanzhang);
+		//剑桥生活
+		$huo=spClass("db_term")->findAll(array("parent_id"=>"51","phone"=>"1"));
+		$this->assignown("huo",$huo);
+		//预约报名
+		$baoming=spClass("db_article")->find(array("term_id"=>"54"));
+		$this->assignown("baoming",$baoming);
+
+	}
+
+	public function __c_profile(){
+		$flag="1";
+		if($_GET['tid']){
+			$article=$this->dArticle->find(array("term_id"=>$_GET['tid']));
+			$flag="0";
+		}elseif($_GET['id']){
+			$article=$this->dArticle->find(array("id"=>$_GET['id']));
+		}
+		$this->assignown("article",$article);
+		$this->assignown("flag",$flag);
+		// 上一篇
+		$upArticle = $this->dArticle->next($_GET['id'], true);
+		if(empty($upArticle)){
+			$up['href'] = "javascript:;";
+			$up['title'] = "没有了";
+		}else {
+			$up['href'] = spUrl($upArticle['ptpl'],"",array("id"=>$upArticle['id']));
+			$up['title'] = $upArticle['title'];
+		}
+
+		// 下一篇
+		$nextArticle = $this->dArticle->next($_GET['id']);
+		if(empty($nextArticle)){
+			$next['href'] = "javascript:;";
+			$next['title'] = "没有了";
+		}else {
+			$next['href'] = spUrl($nextArticle['ptpl'],"",array("id"=>$nextArticle['id']));
+			$next['title'] = $nextArticle['title'];
+		}
+		// 赋值
+		$this->assignown("up",$up);
+		$this->assignown("next",$next);
+	}
+	public function __c_newslist(){
+		$flag_new="class='on'";
+		$flag_new2="display:block";
+		$flag_tz="";
+		$flag_tz2="display:none";
+		if($_GET['pagetz']){
+			$flag_tz="class='on'";
+			$flag_tz2="display:block";
+
+			$flag_new="";
+			$flag_new2="display:none";
+		}
+		$this->assignown("flag_new",$flag_new);
+		$this->assignown("flag_new2",$flag_new2);
+		$this->assignown("flag_tz",$flag_tz);
+		$this->assignown("flag_tz2",$flag_tz2);
+		$term=spClass("db_term")->find(array("id"=>$_GET['tid']));
+		$this->assignown("term",$term);
+		//新闻动态
+		$news_term=spClass("db_term")->find(array("id"=>"75"));
+		$news=spClass("db_article")->spPager($this->spArgs('page', 1), 2)->findAll(array("term_id"=>"75"),"`create_time` asc");
+		$pager = spClass("db_article")->spPager()->getPager();
+		$this->assignown("pager",$pager);
+		$this->assignown("news_term",$news_term);
+		$this->assignown("news",$news);
+		//通知通告
+		$notices_term=spClass("db_term")->find(array("id"=>"74"));
+		$notices=spClass("db_article")->spPager($this->spArgs('pagetz', 1), 2)->findAll(array("term_id"=>"74"));
+		$pager_tz = spClass("db_article")->spPager()->getPager();
+		$this->assignown("pager_tz",$pager_tz);
+		$this->assignown("notices_term",$notices_term);
+		$this->assignown("notices",$notices);
+
+
+	}
+	public function __c_list(){
+
+		$term=spClass("db_term")->find(array("id"=>$_GET['tid']));
+		$this->assignown("term",$term);
+
+		$articles=spClass("db_article")->spPager($this->spArgs('page', 1), 1)->findAll(array("term_id"=>$_GET['tid']));
+		$pager = spClass("db_article")->spPager()->getPager();
+		$this->assignown("pager",$pager);
+		$this->assignown("articles",$articles);
+	}
+	public function __c_wlist(){
+		$this->__c_list();
+
 	}
 
 }

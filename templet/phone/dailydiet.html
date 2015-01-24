@@ -1,0 +1,120 @@
+{extends file='./templet/phone/public/layout.html'}
+{block name=content}
+<body>
+    <div id="wrap">
+        <div id="header" class="header-page clearFlaot">
+        	<div class="pagehead-box">
+	           <a class="arrowLeft" data-ajax="false" href="javascript:history.go(-1);">
+	           	<img width="35px;" height="35px;" src="{$skin_path}images/page-back.png" alt="返回" /></a>
+	           <h1 class="pagehead-title">每周食谱</h1>
+	           <a class="arrowRight" href="#defaultpanel"  data-role="button">
+	           	<img width="35px;" height="35px;" src="{$skin_path}images/page-menu.png" alt="菜单" /></a>
+           </div>
+        </div>
+        <div id="main" class="main-page">
+        	<div id="page-con">
+			<!-- 本例主要代码 Start ================================ -->
+			<div id="food-show" style="overflow:hidden;">
+				<div id="foods-box" class="clearFloat">
+					{if $week_data}
+					{foreach $week_data as $week}
+					<div class="food-box">
+						<p class="food-title">{$weekarray.$week@index}食谱</p>
+		                <table class="food">
+		                	{foreach $week as $day}
+		                	<tr>
+		                		<td class="first-food"><span  class="food{$day@index+1}"><img src="{$skin_path}images/food{$day@index+1}.png" /></span></td>
+		                		<td class="last-food"><p><span>{$day}</span></p></td>
+		                	</tr>
+		                	{/foreach} 		                	
+		                </table>
+		            </div>
+		            {/foreach}
+		            <div class="food-box">
+						<p class="food-title">周六休息</p>
+		                 <p class="food-no"><img src="{$skin_path}images/nofood.png" alt="还没更新食谱"></p>
+		            </div>
+		            <div class="food-box">
+						<p class="food-title">周日休息</p>
+		                <p class="food-no"><img src="{$skin_path}images/nofood.png" alt="还没更新食谱"></p>
+		            </div>
+					{/if}
+				
+				
+				
+				</div>
+			</div>
+            <p class="tips">tips：左右滑动，查看上一天后一天食谱,可查看一周食谱</p>
+        	</div>
+        </div>
+         {include_php './templet/phone/public/rightnav.php'}
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		//食谱左右滑动开始
+		$(function(){
+			var food_show=$("#food-show"),
+			    foods_box=$("#foods-box"),
+			    food_box=$(".food-box"),
+                swipeLeft = parseFloat(foods_box.css("left"));
+	    	food_show.width($(window).width());
+	    	food_box.width($(window).width());
+	    	var foods_boxwidth=food_show.width()*food_box.length;
+	    	var y=food_box.width();
+	        var swipeLeft = parseFloat(foods_box.css("left"));
+	    	foods_box.width(foods_boxwidth);
+	    	foods_box.height(food_box.height());
+	    	food_show.height(food_box.height());
+	    	var day_w=-(food_box.width());    
+
+	    	$("#foods-box").css("left",(day_w*{$num}));
+	    	var x=1;
+	    	$("#foods-box").on("swipeleft",function(){
+	            swipeLeft = parseInt(foods_box.css("left"));
+	            if(x==1){
+	            	x=0;
+					if (swipeLeft === -($("#food-show").width() * (food_box.length - 1))) {
+		                $("#foods-box").animate({
+		                    
+		                },function(){
+						 x=1;
+						});
+		            } else {
+		                $("#foods-box").animate({
+		                    left: (swipeLeft - y),
+		                },function(){
+						 x=1;
+						});
+		            };
+		            swipeLeft = parseInt(foods_box.css("left"));
+		           
+		        };
+		    });    
+		    
+	        $("#foods-box").on("swiperight",function(){
+	            swipeLeft = parseInt(foods_box.css("left"));
+	            if(x==1){
+	            	x=0;
+					if (swipeLeft >=0) {
+		                $("#foods-box").animate({
+		                    
+		                },function(){
+						 x=1;
+						});
+		            } else {
+		                $("#foods-box").animate({
+		                    left: (swipeLeft + y),
+		                },function(){
+						 x=1;
+						});
+		            };
+		            swipeLeft = parseInt(foods_box.css("left"));
+	           }
+		    }); 
+		});
+		//食谱左右滑动结束
+	
+	});
+</script>
+</html>
+{/block}

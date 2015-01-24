@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>剑桥幼儿园</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="{$skin_path}css/reset.css">
+    <link rel="stylesheet" href="{$skin_path}css/style.css">
+    <script src="{$skin_path}js/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="wrap">
+        <div id="header" class="header-page clearFlaot">
+            <div class="pagehead-box">
+               <a class="arrowLeft" data-ajax="false" href="javascript:history.go(-1);">
+                <img width="35px;" height="35px;" src="{$skin_path}images/page-back.png" alt="返回" /></a>
+               <h1 class="pagehead-title">{$article.title}</h1>
+           </div>
+        </div>
+        <div id="main" class="main-page">
+            <div id="page-con" style="padding:15px;">
+                <p class="page-contitle"><b>{$article.title}</b></p>
+                {if $article.cover}
+                <p>
+                    <img style="border-radius:5px;" class="page-conimg" src="{$article.cover|upload_echo}" alt="{$article.title}" />
+                </p>
+                {/if}
+                <p class="page-conword">{$article.content}</p>
+            </div>
+             {if $flag}
+             <div class="det_handle">
+                 <p class="p_prev"><a href="{$up.href}" data-aiax='false'>上一篇：{$up.title|msubstr:'0':'6'}</a></p> 
+                 <p class="p_next"><a href="{$next.href}" data-aiax='false'>下一篇：{$next.title|msubstr:'0':'6'}</a></p>
+            </div>
+            {/if}
+       </div>
+        <div id="footer" class="footer-page">
+            <p class="footer-p">&copy;保定剑桥英语 技术支持：万虎网络</p>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    $(document).ready(function($) {
+        $("#page-con").css("min-height",($(window).height()-130));
+        $(".ui-panel").css("min-height",($(window).height()-90));
+    });
+</script>
+</html>

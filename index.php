@@ -9,34 +9,37 @@ define('URL_PATH',$_SERVER['SERVER_NAME'].'/yunbian');
 define('IN_APP',TRUE);
 define('SP_PATH',APP_PATH.'/init');
 
+//@@@@
 include_once './wh_function.php';
-// define("THEME_NAME",'baoding');
-// define('THEME_UID', '1');
-
-// define("THEME_NAME",'fenyuan');
-// define('THEME_UID', '2');
-
+/////
 
 if(!is_file(APP_PATH.'/config.php')){header('Location:install/');}
 
 if(isset($_REQUEST['ssid'])){session_id($_REQUEST['ssid']);}
 require(APP_PATH.'/config.php');
-if(ismobile()){
-	$spConfig["view"]["config"]["template_dir"] = 'tplm';
-}else {
-	$spConfig["view"]["config"]["template_dir"] = 'tplv2';
-}
+
 
 //@@@
+$spConfig["view"]["config"]["template_dir"] = ismobile() ? 'tplm' : 'tplv2';
+
 if(file_exists("theme.php")){
 	$wanhu_data = include_once 'theme.php';
 	$wanhu_data = json_decode($wanhu_data, true);
-	if(isset($_GET["uid"])){
-		if(isset($wanhu_data[$_GET['uid']])){
-			define("THEME_NAME", $wanhu_data[$_GET['uid']]['theme']);
-			define('THEME_UID', $wanhu_data[$_GET['uid']]['uid']);
-			$spConfig["default_controller"] = "index";
+	if(isset($_SERVER["SERVER_NAME"])){
+		$server_name = explode(".",$_SERVER["SERVER_NAME"]);
+	}
+	if(isset($_SERVER["HTTP_HOST"])){
+		$server_name = explode(".",$_SERVER["HTTP_HOST"]);
+	}
+	$server_name = "www";
+	if(isset($wanhu_data[$server_name])){
+		if(ismobile()){
+			define("THEME_NAME", $wanhu_data[$server_name]['mtheme']);
+		}else {
+			define("THEME_NAME", $wanhu_data[$server_name]['theme']);
 		}
+		define('THEME_UID', $wanhu_data[$server_name]['uid']);
+		$spConfig["default_controller"] = "index";
 	}
 }
 /////

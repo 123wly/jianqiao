@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .wrapper {
 	width: 1200px;
 	margin: 0 auto;
@@ -22,36 +21,34 @@
 	width: 100%;
 	height: 615px;
 	background-position: center;
-	background-size: cover;
+	/*background-size: cover;*/
 	display: none;
 }
-/*ñͼƬ-------ʼ*/
 #banner_img li.item1 {
-	background-image:url(../images/dabeij.png);
+	background-image:url('../images/dabeij.png');
 	display: block;
 }
 #banner_img li.item2 {
-	background-image:url(../images/dabeij.png);
+	background-image:url('../images/dabeij.png');
 }
 #banner_img li.item3 {
-	background-image:url(../images/dabeij.png);
+	background-image:url('../images/dabeij.png');
 }
 #banner_img li.item4 {
-	background-image:url(../images/dabeij.png);
+	background-image:url('../images/dabeij.png');
 }
 #banner_img li.item5 {
-	background-image:url(../images/dabeij.png);
+	background-image:url('../images/dabeij.png');
 }
 #banner_img li.item6 {
-	background-image:url(../images/dabeij.png);
+	background-image:url('../images/dabeij.png');
 }
 #banner_img li.item7 {
-	background-image:url(../images/dabeij.png);
+	background-image:url('../images/dabeij.png');
 }
 #banner_img li.item8 {
-	background-image:url(../images/dabeij.png);
+	background-image:url('../images/dabeij.png');
 }
-/*ñͼƬ--------*/
 #banner_img .ad_img {
 	position: absolute;
 	right: 130px;

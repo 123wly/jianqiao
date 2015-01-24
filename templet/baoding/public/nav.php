@@ -29,18 +29,38 @@
                             <div class="jiant">
                                 <img src="<?php echo $skin_path;?>images/jiantou.png" />
                             </div>
-                            <div class="left">
-                                <ul>
-                                    <?php foreach ($vo['children'] as $k => $v): ?>
-                                        <li><a href="<?php echo spUrl($v['tpl'],"",array('tid'=>$v['id'])); ?>"><?php echo $v['name'] ?></a></li>
-                                    <?php endforeach ?>
-                                </ul>
-                            </div>
-                            <div class="sxian"></div>
-                            <div class="right">
-                                <img src="<?php echo __ROOT__;?>/uploads/<?php echo $vo['cover']; ?>" />
-                                <p><?php echo $vo['brief']; ?></p>
-                            </div>
+                            <?php if ($vo["name"] == "剑桥分园"): ?>
+                                <?php foreach ($vo["children"] as $k => $v): ?>
+                                    <div class="left">
+                                        <ul>
+                                            <h3><?php echo $v["name"]; ?></h3>
+                                            <?php $ars = spClass("db_article")->findAll(array("term_id"=>$v["id"])); ?>
+                                            <?php foreach ($ars as $k1 => $v1): ?>
+                                                <li>
+                                                    <a href="<?php echo spUrl($v['tpl'],'',array('tid'=>$v['id'])) ?>"><?php echo $v1["title"]; ?></a>
+                                                </li>
+                                            <?php endforeach ?>
+                                            <p>
+                                                <a href="<?php echo spUrl($v['tpl'],'',array('tid'=>$v['id'])) ?>">更多...</a>
+                                            </p>
+                                        </ul>
+                                    </div>
+                                    <div class="sxian"></div>
+                                <?php endforeach ?>
+                            <?php else: ?>
+                                <div class="left">
+                                    <ul>
+                                        <?php foreach ($vo['children'] as $k => $v): ?>
+                                            <li><a href="<?php echo spUrl($v['tpl'],"",array('tid'=>$v['id'])); ?>"><?php echo $v['name'] ?></a></li>
+                                        <?php endforeach ?>
+                                    </ul>
+                                </div>
+                                <div class="sxian"></div>
+                                <div class="right">
+                                    <img src="<?php echo __ROOT__;?>/uploads/<?php echo $vo['cover']; ?>" />
+                                    <p><?php echo $vo['brief']; ?></p>
+                                </div>
+                            <?php endif ?>
                         </ul>
                         <div class="clear"></div>
                     <?php endif ?>

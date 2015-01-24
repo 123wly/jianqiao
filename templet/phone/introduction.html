@@ -1,0 +1,39 @@
+{extends file='./templet/phone/public/layout.html'}
+{block name=head}   
+
+{/block}
+{block name=content}
+
+<body>
+    <div id="wrap">
+        <div id="header" class="header-page clearFlaot">
+        	<div class="pagehead-box">
+	           <a class="arrowLeft" data-ajax="false" href="javascript:history.go(-1);">
+	           	<img width="35px;" height="35px;" src="{$skin_path}images/page-back.png" alt="返回" /></a>
+	           <h1 class="pagehead-title">{$article.title}</h1>
+	           <a class="arrowRight" href="#defaultpanel"  data-role="button">
+	           	<img width="35px;" height="35px;" src="{$skin_path}images/page-menu.png" alt="菜单" /></a>
+           </div>
+        </div>
+        <div id="main" class="main-page">
+        	<div id="page-con" style="padding:15px;">
+        		<p class="page-contitle"><b>{$article.title}</b></p>
+        		<p><span class="page-contime">{$article.create_time|date_format:'%Y-%m-%d'}</span><span class="page-conname">{$article.from}</span></p>
+        		<p>
+        			{if $article.cover}
+        			<img class="page-conimg" src="{$article.cover|upload_echo}" alt="简介" />
+        			{/if}
+        		</p>
+        		<p class="page-conword">{$article.content}</p>
+        	</div>
+			<div class="det_handle">
+				{if $flag}
+		    	 <p class="p_prev"><a href="{$up.href} data-aiax='false'">上一篇：{$up.title|msubstr:'0':'6'}</a></p> 
+		         <p class="p_next"><a href="{$next.href} data-aiax='false'">下一篇：{$next.title|msubstr:'0':'6'}</a></p>
+		        {/if}
+
+		    </div>
+       </div>
+ 			{include_php './templet/phone/public/rightnav.php'}
+</html>
+{/block}
