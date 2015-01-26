@@ -52,10 +52,10 @@
 					</div>
 				    
 					<div class="forget_pw in_put">
-					    <a href="{spUrl c=main a=resetpwd}">忘记密码?</a>
+					    <!-- <a href="{spUrl c=main a=resetpwd}">忘记密码?</a> -->
 					</div>
 					<div class="invite_code in_put">
-					    <a href="{spUrl c=main a=reg invitemode=1}">使用邀请码注册</a>
+					    <!-- <a href="{spUrl c=main a=reg invitemode=1}">使用邀请码注册</a> -->
 					</div>
 					
 					<div class="clear"></div>
@@ -81,15 +81,15 @@
 		<script type="text/javascript" src="{$syskin}/js/jquery.contentcarousel.js"></script>
 		{literal}
 		<script>
-		$(document).ready(function(){
-			$.ybAPI('blog','loginUserHot','',function(data){
-				$('#ca-container .ca-wrapper').html('');
-				for(var i=0;i<data.body.length;i++){
-					$('#ca-container .ca-wrapper').append(tmpl_login_user_hot(data.body[i]));
-				}
-				$('#ca-container').contentcarousel();
-			});
-		});
+		// $(document).ready(function(){
+		// 	$.ybAPI('blog','loginUserHot','',function(data){
+		// 		$('#ca-container .ca-wrapper').html('');
+		// 		for(var i=0;i<data.body.length;i++){
+		// 			$('#ca-container .ca-wrapper').append(tmpl_login_user_hot(data.body[i]));
+		// 		}
+		// 		$('#ca-container').contentcarousel();
+		// 	});
+		// });
 		</script>
 		{/literal}
 		{/if}
