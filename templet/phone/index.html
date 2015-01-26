@@ -25,12 +25,12 @@
                     <a class="clearFloat" href="{spUrl c=$notice.ptpl  a=index tid=$notice.id}" data-ajax="false">
                         <img width="100%" src="{$skin_path}images/new-2.png" />
                     </a>
-                    <a class="m-word" href="{spUrl c=$notice.ptpl  a=index tid=$notice.id} " data-ajax="false">
+                    <a class="m-word" href="{spUrl c=$notice.ptpl  a=index tid=$notice.id}" data-ajax="false">
                         <p>{$notice.name|msubstr:'0':'10'}</p>
                     </a>
                 </li>
                 <li class="new-m m-4">
-                    <a class="clearFloat" href="{spUrl c=$s_notice.ptpl  a=index tid=$s_notice.id} " data-ajax="false">
+                    <a class="clearFloat" href="{spUrl c=$s_notice.ptpl  a=index tid=$s_notice.id}" data-ajax="false">
                         <img width="100%" src="{$skin_path}images/new-3.png" />
                     </a>
                     <a class="m-word" href="{spUrl c=$s_notice.ptpl  a=index tid=$s_notice.id}" data-ajax="false">
@@ -86,7 +86,7 @@
                 {foreach $choose as $vo}
                 {if $vo@index <9}
                 <li>
-                    <span><img src="{$skin_path}images/choose-{$vo@index+1}.png" alt="{$vo.title}" /></span><a href="{spUrl c=$vo.ptpl id=$vo.id} data-ajax='false'" style="color: #FFF;">{$vo.title}</a>
+                    <span><img src="{$skin_path}images/choose-{$vo@index+1}.png" alt="{$vo.title}" /></span><a href="{spUrl c=$vo.ptpl id=$vo.id}" data-ajax='false' style="color: #FFF;">{$vo.title}</a>
                 </li>
                 {/if}
                 {/foreach}

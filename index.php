@@ -31,7 +31,7 @@ if(file_exists("theme.php")){
 	if(isset($_SERVER["HTTP_HOST"])){
 		$server_name = explode(".",$_SERVER["HTTP_HOST"]);
 	}
-	$server_name = "www";
+	$server_name = $server_name[0];
 	if(isset($wanhu_data[$server_name])){
 		if(ismobile()){
 			define("THEME_NAME", $wanhu_data[$server_name]['mtheme']);

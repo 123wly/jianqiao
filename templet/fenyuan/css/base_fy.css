@@ -9,7 +9,7 @@ body{
 	font-family:"微软雅黑","宋体";
 	font-size:14px;
 	background:#fafafa;
-	background:#FF9;
+	/*background:#FF9;*/
 }
 @media screen and (max-width:1000px) { /*当屏幕尺寸小于1000px时，应用下面的CSS样式*/
 	body{

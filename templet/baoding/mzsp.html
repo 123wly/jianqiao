@@ -54,16 +54,18 @@
                             </li>
                         </ul>
                         <ul class="left ysb_right">
-                            {foreach $week_data as $vo}
-                                {foreach $vo as $v}
+                            {if !empty($week_data)}
+                                {foreach $week_data as $vo}
+                                    {foreach $vo as $v}
                                     <li title="{$v}">
                                         <img src="{$skin_path}images/beij.jpg" />
                                         <span>{$v|vstr_replace:"\n":"<br />"}</span>
                                     </li>
+                                    {/foreach}
                                 {/foreach}
-                            {/foreach}
-                            
-                            
+                            {else}
+                                <p><img src="{$skin_path}images/shipu-1.png" /></p>
+                            {/if}
                         </ul>
                         <div class="clear"></div>
                     </div>

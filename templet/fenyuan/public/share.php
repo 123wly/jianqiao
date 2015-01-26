@@ -1,6 +1,6 @@
         <ul class="left bdsharebuttonbox">
         <li><span>分享 Share：</span></li>
-        <li class="wx"><a class="weix1" href="javascript:;"></a></li>
+        <!-- <li class="wx"><a class="weix1" href="javascript:;"></a></li> -->
         <li class="qq"><a class="popup_sqq" data-cmd="sqq" href=""></a></li>
         <li class="wb"><a class="bds_tsina" data-cmd="tsina" href=""></a></li>
         <li class="kj"><a class="bds_qzone" data-cmd="qzone" href=""></a></li>

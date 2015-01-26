@@ -1,7 +1,5 @@
 <?php $skin_path = $_smarty_tpl->getVariable('skin_path')->value; ?>
-<?php   $p_term=spClass("db_term")->findAll(array('phone'=>'1',"parent_id"=>'0'));
-             
-?>
+<?php $p_term = spClass("db_term")->findAll(array('phone'=>'1',"parent_id"=>'0'));?>
    <div id="footer" class="footer-page">
             <p class="footer-p">&copy;保定剑桥英语 技术支持：<a style="color: #FFF;" href="">万虎网络</a></p>
     </div>
@@ -9,6 +7,7 @@
             <div class="panel-content"> 
                 <div class="status_bar"></div>
 					<ul id="accordion" class="accordion">
+						<li><div class="link"><a style="color:#fff;" data-ajax="false" href="<?php echo spUrl('index','index'); ?>">首页</a></div>
 			          	<?php foreach ($p_term	as $key => $vo): ?>
 						<li>
 							<div class="link"><?php echo $vo['name'];?></div>
@@ -18,7 +17,7 @@
                              		?>
                              		<?php foreach ($c_term as $key => $cvo): ?>
                              				<li>
-                             					<a href="<?php echo spUrl($cvo['ptpl'],'',array('tid'=>$cvo['id'])) ;?>" data-ajax="false">
+                             					<a href="<?php echo spUrl($cvo['ptpl'],'',array('tid'=>$cvo['id']));?>" data-ajax="false">
                              					<?php echo $cvo['name']; ?>
                              					</a>
                              				</li>
@@ -28,7 +27,7 @@
 						<?php endforeach ?>
 					
 						<li><div class="link"><a style="color:#fff;" href="<?php echo spUrl("notice","",array('tid'=>'29')) ?>" data-ajax="false">选择剑桥</a></div>
-						<li><div class="link"><a style="color:#fff;" data-ajax="false" href="#">进入分园</a></div>
+						<li><div class="link"><a style="color:#fff;" data-ajax="false" href="<?php echo spUrl('garden',"",array('tid'=>'2')) ?>">进入分园</a></div>
 					</ul>
             </div>
         </div> 

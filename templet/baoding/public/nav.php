@@ -3,7 +3,7 @@
 <div class="right rnav">
     <form action="<?php echo spUrl('search',''); ?>" method="get">
         <div class="sousuo">
-            <p class="wpd left"><a href="">用户登录</a><a href="">注册</a>
+            <p class="wpd left"><a href="http://blog.a.com/yunbian">用户登录</a><a href="http://blog.a.com/yunbian">注册</a>
             </p>
             <p class="sous left">
                 <input type="hidden" name="c" value="search" />

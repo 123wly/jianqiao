@@ -1,18 +1,18 @@
 <?php $skin_path = $_smarty_tpl->getVariable('skin_path')->value; ?>
+<?php $articles  = spClass('db_article')->findAll(array('term_id'=>'29',"uid"=>"1"),'id desc','id,tpl,title','8');?>
+<style>
+    .foot_top ul li a {
+        color: #FFF;
+    }
+</style>
 <div id="footer">
     <div class="main">
         <div class="foot_top">
             <ul>
                 <h3>为什么选择剑桥<span>Why Choose Jianqiao</span></h3>
-                <li>家长最信赖的幼教品牌</li>
-                <li>权威科学的课程设置</li>
-                <li>国际认证的标准化管理</li>
-                <li>专业敬业富有爱心的教师</li>
-                <li>科学安全的营养膳食</li>
-                <li>安全环保舒适快乐的环境</li>
-                <li>丰富多彩的幼儿园生活</li>
-                <li>优秀宝宝见证剑桥</li>
-                <li>宝宝家长的赞誉与认可</li>
+                <?php foreach ($articles as $key => $vo): ?>
+                    <li><a href="<?php echo spUrl($vo['tpl'],'',array('id'=>$vo['id'])); ?>"><?php echo $vo['title']; ?></a></li>
+                <?php endforeach ?>
             </ul>
             <div class="kongge"></div>
 

@@ -1,51 +1,75 @@
-{extends file='./templet/fenyuan/public/layout.html'}
-{block name=head}
+{extends file='./templet/fenyuan/public/layout.html'} {block name=head}
 <link type="text/css" href="{$skin_path}css/zy_fy.css" rel="stylesheet" />
-{/block}
-{block name=content}
+<script src="./statics/showdate.js"></script>
+{/block} {block name=content}
 <div id="content">
-	<div class="tptop">
-    {include_php './templet/fenyuan/public/tptop.php'}
+    <div class="tptop">
+        {include_php './templet/fenyuan/public/tptop.php'}
     </div>
-	<div class="main yjfc">
-    	<div class="left gy_left">
-        	   {include_php './templet/fenyuan/public/gy_left.php'}
-          {include_php './templet/fenyuan/public/yuyue.php'}
+    <div class="main yjfc">
+        <div class="left gy_left">
+            {include_php './templet/fenyuan/public/gy_left.php'} {include_php './templet/fenyuan/public/yuyue.php'}
         </div>
         <div class="right gy_right">
-        	<h2>
+            <h2>
                 {$term.name}
             </h2>
             <div class="wybm">
-            	<p class="bdrx">拨打在线服务电话：<span>0312-3152998</span></p>
-                <table>
-                  <tr>
-                    <td class="tex left">宝  宝  姓  名 ：</td>
-                    <td class="text left"><input name="" value="" type="text" /></td>
-                    <td class="left xbxz"><input type="radio" name="gender" value="男" checked="checked" />男</td>
-                    <td class="left xbxz"><input type="radio" name="gender" value="女" checked="checked" />女</td>
-                  </tr>
-                  <tr>
-                    <td class="tex left">期待试听日期：</td>
-                    <td class="text left"><input name="" value="" type="text" /></td>
-                    <td class="left"><img src="images/rl.png" /></td>
-                  </tr>
-                  <tr>
-                    <td class="tex left">联  系  电  话 ：</td>
-                    <td class="text left"><input name="" value="" type="text" /></td>
-                  </tr>
-                  <tr>
-                    <td class="tex left">家庭住址/小区 ：</td>
-                    <td class="text left"><input name="" value="" type="text" /></td>
-                  </tr>
-                  <tr class="wtly">
-                    <td class="tex left">意 见 和 问 题：</td>
-                    <td class="left">
-                    	<textarea name="" cols="55" rows="12"></textarea>
-                    </td>
-                  </tr>
-                </table>
-                <p><input name="" type="button" value="提 交" /></p>
+                <p class="bdrx">拨打在线服务电话：<span>0312-3152998</span>
+                </p>
+                <form action="{spUrl c=publicc a=bmorder}" method="post">
+                    <table>
+                        <tr>
+                            <td class="tex left">宝 宝 姓 名 ：</td>
+                            <td class="text left">
+                                <input name="bbname" value="" type="text" />
+                            </td>
+                            <td class="left xbxz">
+                                <input type="radio" name="gender" value="男" checked="checked" />男</td>
+                            <td class="left xbxz">
+                                <input type="radio" name="gender" value="女" checked="checked" />女</td>
+                        </tr>
+                        <tr>
+                            <td class="tex left">期待试听日期：</td>
+                            <td class="text left">
+                                <input name="ruyuan" id="ruyuan" value="" type="text" />
+                            </td>
+                            <td class="left"><img src="{$skin_path}images/rl.png" onclick="return Calendar('ruyuan');" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tex left">联 系 电 话 ：</td>
+                            <td class="text left">
+                                <input name="tel" value="" type="text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tex left">家庭住址/小区 ：</td>
+                            <td class="text left">
+                                <input name="address" value="" type="text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tex xzxx left">选 择 学 校</td>
+                            <td class="text left">
+                                <select name="xuexiao">
+                                    {foreach $schools as $vo}
+                                    <option value="{$vo.username}">{$vo.username}</option>
+                                    {/foreach}
+                                </select>
+                            </td>
+                        </tr>
+                        <tr class="wtly">
+                            <td class="tex left">意 见 和 问 题：</td>
+                            <td class="left">
+                                <textarea name="yijian" cols="55" rows="12"></textarea>
+                            </td>
+                        </tr>
+                    </table>
+                    <p>
+                        <input name="" type="button" value="提 交" />
+                    </p>
+                </form>
             </div>
         </div>
         <div class="clear"></div>

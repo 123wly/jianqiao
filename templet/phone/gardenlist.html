@@ -1,0 +1,38 @@
+{extends file='./templet/phone/public/layout.html'}
+{block name=head}   
+
+{/block}
+{block name=content}
+<body>
+    <div id="wrap">
+        <div id="header" class="header-page clearFlaot">
+            <div class="pagehead-box">
+                <a class="arrowLeft" data-ajax="false" href="javascript:history.go(-1);"><img width="35px;" height="35px;" src="{$skin_path}images/page-back.png" alt="返回" />
+                </a>
+                <h1 class="pagehead-title">新市区分园列表</h1>
+                <a class="arrowRight" href="#defaultpanel" data-role="button"><img width="35px;" height="35px;" src="{$skin_path}images/page-menu.png" alt="菜单" />
+                </a>
+            </div>
+        </div>
+        <div id="main" class="main-page hui-page">
+            <div id="page-con">
+                <ul class="garden-list">
+                    {foreach $list as $vo}
+                    <li>
+                        <a class="clearFloat" href="#">
+                            <span class="imag">
+                                <img src="{$vo.cover|upload_echo}" alt="{$vo.title}">
+                            </span>
+                            <p>{$vo.title}</p>
+                            <p>{$vo.brief}</p>
+                            <p class="right-alink"><span>进入分园</span>
+                            </p>
+                        </a>
+                    </li>
+                    {/foreach}
+                </ul>
+            </div>
+        </div>
+        {include_php './templet/phone/public/rightnav.php'}
+</html>
+{/block}

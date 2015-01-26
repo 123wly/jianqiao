@@ -12,13 +12,14 @@ class emptyController extends top
         parent::__construct();
         $this->dTerm = spClass("db_term");
         $this->dArticle = spClass("db_article");
+        $this->schools = spClass("db_member")->findAll(" role in ('0','1')");
     }
 
 	public function index(){
 		$c = isset($_GET["c"]) ? $this->spArgs("c") : "index";
 		$this->assignown("tid",$this->spArgs("tid"));
 		$this->assignown("id",$this->spArgs("id"));
-		
+
 		if(isset($_GET['tid'])){
 			$termInfo = $this->dTerm->find(array("id"=>intval($_GET['tid'])));
 			$this->assignown("cTerm",$termInfo);
@@ -29,20 +30,28 @@ class emptyController extends top
 			$this->assignown("cArticle",$articleInfo);
 		}
 
-		if(method_exists($this,"__".$c)){
-			call_user_func_array(array($this,"__".$c), array());
+		$tpldata = array(
+				"baoding"=>"__",
+				"fenyuan"=>"__f_",
+				"phone"=>"__p_",
+				"phone_fen"=>"__c_"
+			);
+
+		if(method_exists($this,$tpldata[THEME_NAME].$c)){
+			call_user_func_array(array($this,$tpldata[THEME_NAME].$c), array());
 		}
-		if(method_exists($this,"__f_".$c)){
-				call_user_func_array(array($this,"__f_".$c), array());
+		// if(method_exists($this,"__f_".$c)){
+		// 	call_user_func_array(array($this,"__f_".$c), array());
 				
-		}
-		if(method_exists($this,"__p_".$c)){
-				call_user_func_array(array($this,"__p_".$c), array());
-		}
-		if(method_exists($this,"__c_".$c)){
-				call_user_func_array(array($this,"__c_".$c), array());
+		// }
+
+		// if(method_exists($this,"__p_".$c)){
+		// 		call_user_func_array(array($this,"__p_".$c), array());
+		// }
+		// if(method_exists($this,"__c_".$c)){
+		// 		call_user_func_array(array($this,"__c_".$c), array());
 				
-		}
+		// }
 
 		$this->assignown("root",__ROOT__);
 		$this->assignown('skin_path',"".__ROOT__.'/templet/' . THEME_NAME .'/');
@@ -78,7 +87,7 @@ class emptyController extends top
         $this->assignown("begin_time",$begin_time);
         $this->assignown("end_time",$end_time);
 
-        $upweek = (intval($this_week) - 1 < 2 ) ? 2 : (intval($this_week) - 1) ;
+        $upweek = (intval($week_num) - 1 < 2 ) ? 2 : (intval($week_num) - 1) ;
         $nextweek = ($week_num + 1 > count($weeks) ) ? count($weeks) : ($week_num + 1 );
 
         $this->assignown("upweek", $upweek);
@@ -107,7 +116,7 @@ class emptyController extends top
 	
 	public function __education_jqzk(){
 
-		$results = spClass("db_article")->spPager($this->spArgs('page', 1), 4)->findAll(array("term_id"=>$_GET['tid']),"id desc","term_id,id,title,brief,cover,create_time,tpl"); 
+		$results = spClass("db_article")->spPager($this->spArgs('page', 1), 10)->findAll(array("term_id"=>$_GET['tid']),"id desc","term_id,id,title,brief,cover,create_time,tpl"); 
 		$pager = spClass("db_article")->spPager()->getPager();
 		// print_r($results);
 
@@ -120,7 +129,7 @@ class emptyController extends top
 		$term_info = spClass("db_term")->find(array("id"=>$_GET['tid']));
 		$this->assignown("term_info",$term_info);
 
-		$results = spClass("db_article")->spPager($this->spArgs('page', 1), 1)->findAll(array("term_id"=>$_GET['tid'])); 
+		$results = spClass("db_article")->spPager($this->spArgs('page', 1), 10)->findAll(array("term_id"=>$_GET['tid'])); 
 		$pager = spClass("db_article")->spPager()->getPager();
 
 		$this->assignown("results",$results);
@@ -166,7 +175,7 @@ class emptyController extends top
 	}
 	
 	public function __wsmxzjq(){
-		$results = spClass("db_article")->spPager($this->spArgs('page', 1), 4)->findAll(array("term_id"=>$_GET['tid']),"id desc","term_id,id,title,brief,cover,create_time,tpl"); 
+		$results = spClass("db_article")->spPager($this->spArgs('page', 1), 10)->findAll(array("term_id"=>$_GET['tid']),"id desc","term_id,id,title,brief,cover,create_time,tpl"); 
 		$pager = spClass("db_article")->spPager()->getPager();
 		
 		$this->assignown("results",$results);
@@ -182,12 +191,12 @@ class emptyController extends top
 			}
 			$whereTid = "'".implode("','", $terms)."'";
 			$where = "`term_id` IN (".$whereTid.")";
-			$results = spClass("db_article")->spPager($this->spArgs('page', 1), 6)->findAll($where ,"id desc","term_id,id,title,brief,cover,create_time,tpl"); 
+			$results = spClass("db_article")->spPager($this->spArgs('page', 1), 10)->findAll($where ,"id desc","term_id,id,title,brief,cover,create_time,tpl"); 
 			$pager = spClass("db_article")->spPager()->getPager();
 			$this->assignown("results",$results);
 			$this->assignown("pager",$pager);
 		}else {
-			$results = spClass("db_article")->spPager($this->spArgs('page', 1), 4)->findAll(array("term_id"=>$_GET['tid']),"id desc","term_id,id,title,brief,cover,create_time,tpl"); 
+			$results = spClass("db_article")->spPager($this->spArgs('page', 1), 10)->findAll(array("term_id"=>$_GET['tid']),"id desc","term_id,id,title,brief,cover,create_time,tpl"); 
 			$pager = spClass("db_article")->spPager()->getPager();
 			
 			$this->assignown("results",$results);
@@ -197,7 +206,7 @@ class emptyController extends top
 
 	public function __bjtd(){
 
-		$results = spClass("db_article")->spPager($this->spArgs('page', 1), 2)->findAll(array("term_id"=>$_GET['tid']),"id desc","term_id,id,title,brief,cover,create_time,tpl"); 
+		$results = spClass("db_article")->spPager($this->spArgs('page', 1), 10)->findAll(array("term_id"=>$_GET['tid']),"id desc","term_id,id,title,brief,cover,create_time,tpl"); 
 		$pager = spClass("db_article")->spPager()->getPager();
 		// print_r($results);
 		
@@ -210,15 +219,15 @@ class emptyController extends top
 	public function __index(){
 
 		//新闻
-		$news = spClass("db_article")->findAll(array("term_id"=>31),"id desc","id,title,brief,cover,create_time","8");
+		$news = spClass("db_article")->findAll(array("term_id"=>31),"id desc","id,title,brief,cover,create_time,tpl","8");
 		$this->assignown("news",$news);
-
+		// print_r($news);
 		// 宝贝动态
-		$baobeidongtai = spClass("db_article")->findAll(array("term_id"=>33),"id desc","id,title,brief,cover,create_time","8");
+		$baobeidongtai = spClass("db_article")->findAll(array("term_id"=>33),"id desc","id,title,brief,cover,create_time,tpl","8");
 		$this->assignown("bbdt",$baobeidongtai);
 
 		// 渗透教育
-		$jiaoyu = spClass("db_article")->findAll(array("term_id"=>4),"id desc","id,title,brief,cover,create_time","4");
+		$jiaoyu = spClass("db_article")->findAll(array("term_id"=>4),"id desc","id,title,brief,cover,create_time,tpl","4");
 		$this->assignown("jiaoyu",$jiaoyu);
 
 		// 家园共育
@@ -265,7 +274,7 @@ class emptyController extends top
 		}else {
 			$whereTid = array("term_id"=>$_GET['tid']);
 		}
-		$results = spClass("db_zhaopin")->spPager($this->spArgs('page', 1), 1)->findAll($whereTid, "id desc");
+		$results = spClass("db_zhaopin")->spPager($this->spArgs('page', 1), 10)->findAll($whereTid, "id desc");
 		$pager = spClass("db_zhaopin")->spPager()->getPager();
 		$this->assignown("results",$results);
 		$this->assignown("pager",$pager);
@@ -277,7 +286,7 @@ class emptyController extends top
 	public function __search(){
 		$obj = spClass('db_article');
 		$keyword = urldecode($this->spArgs('keyword'));
-		$condition = ' title like '.$obj->escape('%'.$keyword.'%');
+		$condition = ' uid = ' . THEME_UID . ' and title like '.$obj->escape('%'.$keyword.'%');
 		$result = $obj->spPager($this->spArgs('page', 1), 10)->findAll($condition);
 		$pager     = $this->dArticle->spPager()->getPager();
 		$this->assignown("results",$result);
@@ -362,7 +371,7 @@ class emptyController extends top
 			$term = spClass("db_term")->find(array("parent_id"=>$_GET['tid']));
 		}
 
-		$articles=spClass("db_article")->spPager($this->spArgs('page', 1),$pagenum)->findAll(array("term_id"=>$term['id']),$order);
+		$articles=spClass("db_article")->spPager($this->spArgs('page', 10),$pagenum)->findAll(array("term_id"=>$term['id']),$order);
 
 		$article=spClass("db_article")->find(array("term_id"=>$term['id']));
 
@@ -395,7 +404,7 @@ class emptyController extends top
 
         $this->assignown("begin_time",$begin_time);
         $this->assignown("end_time",$end_time);
-        $upweek = (intval($this_week) - 1 < 2 ) ? 2 : (intval($this_week) - 1) ;
+        $upweek = (intval($week_num) - 1 < 2 ) ? 2 : (intval($week_num) - 1) ;
         $nextweek = ($week_num + 1 > count($weeks) ) ? count($weeks) : ($week_num + 1 );
 
         $this->assignown("upweek", $upweek);
@@ -433,7 +442,7 @@ class emptyController extends top
 
 		//分园新闻
 		$term_new=spClass("db_term")->find(array("id"=>75));
-		$f_news = spClass("db_article")->spPager($this->spArgs('page', 1), 2)->findAll(array("term_id"=>75),"id desc");
+		$f_news = spClass("db_article")->spPager($this->spArgs('page', 1), 10)->findAll(array("term_id"=>75),"id desc");
 		$pager = spClass("db_article")->spPager()->getPager();
 		$this->assignown("term_new",$term_new);
 		$this->assignown("pager",$pager);
@@ -441,7 +450,7 @@ class emptyController extends top
 
 		//分园通知
 		$term_tz=spClass("db_term")->find(array("id"=>74));
-		$f_tz = spClass("db_article")->spPager($this->spArgs('pagetz', 1), 2)->findAll(array("term_id"=>74),"id desc");
+		$f_tz = spClass("db_article")->spPager($this->spArgs('pagetz', 1), 10)->findAll(array("term_id"=>74),"id desc");
 		$pager_tz = spClass("db_article")->spPager()->getPager();
 		$this->assignown("term_tz",$term_tz);
 		$this->assignown("pager_tz",$pager_tz);
@@ -544,7 +553,7 @@ class emptyController extends top
 			$term = spClass("db_term")->find(array("parent_id"=>$_GET['tid']));
 		}
 
-		$articles=spClass("db_article")->spPager($this->spArgs('page', 1),$pagenum)->findAll(array("term_id"=>$term['id']),$order);
+		$articles=spClass("db_article")->spPager($this->spArgs('page', 10),$pagenum)->findAll(array("term_id"=>$term['id']),$order);
 
 		$article=spClass("db_article")->find(array("term_id"=>$term['id']));
 
@@ -594,10 +603,31 @@ class emptyController extends top
 	}
 
 	public function __p_notice(){
+
 		$this->__p_term();
 	}
+	public function __p_notices(){
+		
+		$term = spClass("db_term")->find(array("id"=>$_GET['tid']));
+		if(!$term['parent_id']){
+			$term = spClass("db_term")->find(array("parent_id"=>$_GET['tid']));
+		}
+		$this->assignown("term",$term);
 
+		$childNode = $this->dTerm->findAll(array("parent_id"=>$_GET['tid']),"","id");
+		$terms = array();
+		foreach ($childNode as $key => $value) {
+			$terms[] = $value['id'];
+		}
+		$whereTid = "'".implode("','", $terms)."'";
+		$where = "`term_id` IN (".$whereTid.")";
+		$results = spClass("db_article")->spPager($this->spArgs('page', 1), 10)->findAll($where ,"id desc","term_id,id,title,brief,cover,create_time,tpl,ptpl"); 
+		$pager = spClass("db_article")->spPager()->getPager();
+		$this->assignown("articles",$results);
+		$this->assignown("pager",$pager);
+	}
 	public function __p_introduction(){
+
 		$this->__p_pageshow();
 	}
 
@@ -635,9 +665,13 @@ class emptyController extends top
 
 	}
 	public function __p_garden(){
-		
+		$data = $this->dTerm->findAll(array("parent_id"=>$_GET["tid"]));
+		$this->assignown("list", $data);
 	}
-
+	public function __p_gardenlist(){
+		$data = $this->dArticle->findAll(array("term_id"=>$_GET["tid"]));
+		$this->assignown("list", $data);
+	}
 	/////////////////////////
 	public function __c_index(){
 		//分园简介
@@ -714,14 +748,14 @@ class emptyController extends top
 		$this->assignown("term",$term);
 		//新闻动态
 		$news_term=spClass("db_term")->find(array("id"=>"75"));
-		$news=spClass("db_article")->spPager($this->spArgs('page', 1), 2)->findAll(array("term_id"=>"75"),"`create_time` asc");
+		$news=spClass("db_article")->spPager($this->spArgs('page', 1), 10)->findAll(array("term_id"=>"75"),"`create_time` asc");
 		$pager = spClass("db_article")->spPager()->getPager();
 		$this->assignown("pager",$pager);
 		$this->assignown("news_term",$news_term);
 		$this->assignown("news",$news);
 		//通知通告
 		$notices_term=spClass("db_term")->find(array("id"=>"74"));
-		$notices=spClass("db_article")->spPager($this->spArgs('pagetz', 1), 2)->findAll(array("term_id"=>"74"));
+		$notices=spClass("db_article")->spPager($this->spArgs('pagetz', 1), 10)->findAll(array("term_id"=>"74"));
 		$pager_tz = spClass("db_article")->spPager()->getPager();
 		$this->assignown("pager_tz",$pager_tz);
 		$this->assignown("notices_term",$notices_term);
@@ -734,7 +768,7 @@ class emptyController extends top
 		$term=spClass("db_term")->find(array("id"=>$_GET['tid']));
 		$this->assignown("term",$term);
 
-		$articles=spClass("db_article")->spPager($this->spArgs('page', 1), 1)->findAll(array("term_id"=>$_GET['tid']));
+		$articles=spClass("db_article")->spPager($this->spArgs('page', 1), 10)->findAll(array("term_id"=>$_GET['tid']));
 		$pager = spClass("db_article")->spPager()->getPager();
 		$this->assignown("pager",$pager);
 		$this->assignown("articles",$articles);

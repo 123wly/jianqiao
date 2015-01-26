@@ -90,12 +90,12 @@
                     {foreach $news as $vo}
                         {if $vo@index eq 0}
                             <div class="jiane">
-                                <p class="left"><img src="{$skin_path}images/ggt1.png" /></p>
+                                <p class="left"><img src="{$vo.cover|upload_echo}" /></p>
                                 <div class="jianr">
                                     <ul>
                                         <li>
                                             <span>{$vo.create_time|date_format:'%m-%d'}</span>
-                                            <a href=""><b>{$vo@index + 1}.</b>{$vo.title|msubstr:"0":'10'}</a>
+                                            <a href="{spUrl c=$vo.tpl id=$vo.id}"><b>{$vo@index + 1}.</b></a>
                                         </li>
                                         <div class="clear"></div>
                                     </ul>
@@ -106,13 +106,13 @@
                         {else}
                             <li>
                                 <span>{$vo.create_time|date_format:'%m-%d'}</span>
-                                <a href=""><b>{$vo@index + 1}.</b>{$vo.title|msubstr:"0":'10'}</a>
+                                <a href="{spUrl c=$vo.tpl id=$vo.id}"><b>{$vo@index + 1}.</b>{$vo.title|msubstr:"0":'10'}</a>
                             </li>
                         {/if}
                     {/foreach}
                     <div class="clear"></div>
                 </ul>
-                <p class="gd"><a href="{spUrl c=information a=index tid=31}">READ MOER</a>
+                <p class="gd"><a href="{spUrl c=information_list a=index tid=31}">READ MOER</a>
                 </p>
             </div>
             <div class="kz">
@@ -121,13 +121,13 @@
                     {foreach $bbdt as $vo}
                         {if $vo@index eq 0}
                             <div class="jiane">
-                                <p class="left"><img src="{$skin_path}images/ggt1.png" />
+                                <p class="left"><img src="{$vo.cover|upload_echo}" />
                                 </p>
                                 <div class="jianr">
                                     <ul>
                                         <li>
                                             <span>{$vo.create_time|date_format:'%m-%d'}</span>
-                                            <a href=""><b>{$vo@index + 1}.</b>{$vo.title|msubstr:"0":'10'}</a>
+                                            <a href="{spUrl c=$vo.tpl id=$vo.id}"><b>{$vo@index + 1}.</b>{$vo.title|msubstr:"0":'10'}</a>
                                         </li>
                                         <div class="clear"></div>
                                     </ul>
@@ -138,13 +138,13 @@
                         {else}
                             <li>
                                 <span>{$vo.create_time|date_format:'%m-%d'}</span>
-                                <a href=""><b>{$vo@index + 1}.</b>{$vo.title|msubstr:"0":'10'}</a>
+                                <a href="{spUrl c=$vo.tpl tid=$vo.id}"><b>{$vo@index + 1}.</b>{$vo.title|msubstr:"0":'10'}</a>
                             </li>
                         {/if}
                     {/foreach}
                     <div class="clear"></div>
                 </ul>
-                <p class="gd gd1"><a href="">READ MOER</a>
+                <p class="gd gd1"><a href="{spUrl c=information_list tid=33}">READ MOER</a>
                 </p>
             </div>
             <div class="kz">
@@ -253,7 +253,7 @@
                         </div>
                         <div class="clear"></div>
                     </div>
-                    <p><a class="ys1" href="">READ MORE</a>
+                    <p><a class="ys1" href="{spUrl c=education_jqzk tid=39}">READ MORE</a>
                     </p>
                 </div>
                 <div class="suxa"></div>
@@ -273,7 +273,7 @@
                         </div>
                         <div class="clear"></div>
                     </div>
-                    <p><a class="ys2" href="">READ MORE</a>
+                    <p><a class="ys2" href="{spUrl c=mzsp tid=24}">READ MORE</a>
                     </p>
                 </div>
                 <div class="suxa"></div>
@@ -290,7 +290,7 @@
                         </div>
                         <div class="clear"></div>
                     </div>
-                    <p><a class="ys3" href="">READ MORE</a>
+                    <p><a class="ys3" href="{spUrl c=life tid=20}">READ MORE</a>
                     </p>
                 </div>
                 <div class="suxa"></div>
@@ -305,12 +305,12 @@
                             <img src="{$skin_path}images/ggt7.png" />
                         </div>
                         <div class="right">
-                            <h4>剑桥周刊第二十三期</h4>
-                            <p>剑桥周刊剑桥周刊剑桥周刊剑桥剑桥周刊剑桥周刊剑桥周刊剑桥剑桥周刊剑...</p>
+                            <h4>意见和建议</h4>
+                            <p>意见和建议意见和建议意见和建议意见和建议意见和建议...</p>
                         </div>
                         <div class="clear"></div>
                     </div>
-                    <p><a class="ys4" href="">READ MORE</a>
+                    <p><a class="ys4" href="{spUrl c=wyyy tid=28}">READ MORE</a>
                     </p>
                 </div>
 

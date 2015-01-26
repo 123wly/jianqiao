@@ -144,3 +144,6 @@ function console_log($var){
         "dump" => $var,
     ));
 }
+function dump_echo ($nihao){
+	var_dump($nihao);
+}

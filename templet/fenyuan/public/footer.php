@@ -1,5 +1,5 @@
 <?php $skin_path = $_smarty_tpl->getVariable('skin_path')->value; ?>
-<?php $articles  = spClass('db_article')->findAll(array('term_id'=>'29'),'id desc','id,tpl,title','8');?>
+<?php $articles  = spClass('db_article')->findAll(array('term_id'=>'29',"uid"=>"1"),'id desc','id,tpl,title','8');?>
 <style>
     .foot_top ul li a {
         color: #FFF;
@@ -33,11 +33,11 @@
             <div class="kongge"></div>
             <ul>
             	<h3>欢迎关注<span>Welcome Attention</span></h3>
-                <li class="weix"><img src="images/wx.png" /></li>
+                <li class="weix"><img src="<?php echo $skin_path; ?>images/wx.png" /></li>
             </ul>
         </div>
         <div class="foot_bottom">
-        	<p>北京万虎时代网络科技有限公司版权所有 | Copyright 2014-2015 All rights reserved | <span>技术支持：<a href="">万虎网络</a></span> </p>
+        	<p>北京万虎时代网络科技有限公司版权所有 | Copyright 2014-2015 All rights reserved | <span>技术支持：<a href="http://www.wanhunet.com">万虎网络</a></span> </p>
         </div>
     </div>
 </div>
