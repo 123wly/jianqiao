@@ -1,9 +1,7 @@
 +@charset "utf-8";
 /* CSS Document */
 /*集体样式*/
-#header{
-    z-index: 100;
-}
+
 .ui-loader {
     display: none;
 }
@@ -18,8 +16,12 @@ a {
 .collapse {
     display: none;
 }
+.right-arrow {
+    display: block;
+    background: url(../images/pager-right.png) no-repeat right center;
+    background-size: 16px 24px;
+}
 /*页面样式*/
-
 .header-top {
     width: 100%;
     position: fixed;
@@ -702,6 +704,47 @@ a {
 }
 .last-food p span{
     margin-right: 10px;
+}
+/*园所分布页面样式*/
+.garden li a p {
+    color: #0d80ab;
+}
+/*分园列表页面样式*/
+.garden-list{
+    padding: 10px;
+}
+.garden-list li{
+    margin-bottom: 15px;
+    background: #2d9cb5;
+    padding: 6px;
+    color: #fff;
+    font-size: 12px;
+    -moz-box-shadow: 4px 4px 5px #ccc;
+    -webkit-box-shadow: 4px 4px 5px #ccc;
+    box-shadow: 4px 4px 5px #ccc;
+}
+.garden-list li a{
+    display: block;
+    color: #fff;
+}
+.garden-list li .imag{
+    float: left;
+    display: block;
+    margin-right: 6px;
+}
+.garden-list li .imag img{
+    display: block;
+    width: 115px;
+    height: 83px;
+}
+.garden-list li a .right-alink{
+    padding: 2px 0;
+}
+.garden-list li a .right-alink span{
+    background: #fff;
+    padding: 3px 5px;
+    color: #397897;
+    float: right;
 }
 /*多图滚动附加样式*/
 .bd > ul{  

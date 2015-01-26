@@ -85,5 +85,3 @@ class db_ad_list extends ybModel
     }
 
 }
-
-?>

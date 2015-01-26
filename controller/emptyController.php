@@ -364,14 +364,14 @@ class emptyController extends top
 		$this->assignown("next",$next);
 	}
 
-	public function __f_term($pagenum=2,$order="id desc"){
+	public function __f_term($pagenum = 10, $order="id desc"){
 
 		$term = spClass("db_term")->find(array("id"=>$_GET['tid']));
 		if(!$term['parent_id']){
 			$term = spClass("db_term")->find(array("parent_id"=>$_GET['tid']));
 		}
 
-		$articles=spClass("db_article")->spPager($this->spArgs('page', 10),$pagenum)->findAll(array("term_id"=>$term['id']),$order);
+		$articles=spClass("db_article")->spPager($this->spArgs('page', 1),$pagenum)->findAll(array("term_id"=>$term['id']),$order);
 
 		$article=spClass("db_article")->find(array("term_id"=>$term['id']));
 
@@ -461,7 +461,7 @@ class emptyController extends top
 		
 	}
 	public function __f_gywm_lxwm(){
-		$this->__f_term($pagenum=1);
+		$this->__f_term(10);
 		
 	}
 	public function __f_ydfc(){
@@ -469,7 +469,7 @@ class emptyController extends top
 	}
 
 	public function __f_jqsh_jcsh(){
-		$this->__f_term($pagenum=3);
+		$this->__f_term(10);
 	}
 
 	public function __f_wsbj_wsxzs(){
@@ -485,7 +485,7 @@ class emptyController extends top
 	}
 
 	public function __f_ydfc_jscyzs(){
-		$this->__f_term($pagenum=2);
+		$this->__f_term(10);
 
 	}
 	
@@ -498,7 +498,7 @@ class emptyController extends top
 	}
 
 	public function __f_jqsh_jzjy(){
-		$this->__f_term($pagenum=1);
+		$this->__f_term(10);
 	}
 
 	public function __f_jqsh_jzjy_zd(){
@@ -510,7 +510,7 @@ class emptyController extends top
 	}
 
 	public function __f_ydfc_yzxx(){
-		$this->__f_term($pagenum=1);
+		$this->__f_term(10);
 	}
 
 	public function __f_ydfc_jscyzs_zd(){
@@ -518,7 +518,7 @@ class emptyController extends top
 	}
 
 	public function __f_yybm_wyyy(){
-		$this->__f_term($pagenum=1);
+		$this->__f_term(10);
 	}
 
 	public function __f_bjztc(){
@@ -672,6 +672,13 @@ class emptyController extends top
 		$data = $this->dArticle->findAll(array("term_id"=>$_GET["tid"]));
 		$this->assignown("list", $data);
 	}
+
+
+
+
+
+
+
 	/////////////////////////
 	public function __c_index(){
 		//分园简介
@@ -692,6 +699,16 @@ class emptyController extends top
 		//预约报名
 		$baoming=spClass("db_article")->find(array("term_id"=>"54"));
 		$this->assignown("baoming",$baoming);
+
+		$banjis = $this->dTerm->findAll(array("parent_id"=>55),"","id");
+		$whereIn = array();
+		foreach ($banjis as $key => $value) {
+			$whereIn[] = $value["id"];
+		}
+		$strwherein = " term_id in ('".implode("','",$whereIn)."')";
+		$banjis = $this->dArticle->findAll($strwherein,"","tpl,title");
+		// print_r($banjis);
+		$this->assignown("banji",$banjis);
 
 	}
 

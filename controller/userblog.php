@@ -130,7 +130,7 @@ class userblog extends top
 	
 	/*谁关注我*/
 	private function getMyLook(){
-		$this->myLook = spClass('db_follow')->findCount(array('touid'=>$this->user_data['uid']));
+		$this->myLook = spClass('db_follow')->findCount(array('touid'=>$this->user_data['uid'])) - 1;
 	}
 	
 	/*我是否关注*/

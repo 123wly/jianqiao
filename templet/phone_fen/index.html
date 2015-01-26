@@ -93,22 +93,13 @@
                 <div class="center-div">
                     <h1>班级直通车</h1>
                     <ul class="wx-div se-div ca-div clearFloat">
-                        <li><a href="#"><img src="{$skin_path}images/class1.png" alt="班 级"></a>
-                        </li>
-                        <li><a href="#"><img src="{$skin_path}images/class2.png" alt="班 级"></a>
-                        </li>
-                        <li><a href="#"><img src="{$skin_path}images/class3.png" alt="班 级"></a>
-                        </li>
-                        <li><a href="#"><img src="{$skin_path}images/class4.png" alt="班 级"></a>
-                        </li>
-                        <li><a href="#"><img src="{$skin_path}images/class5.png" alt="班 级"></a>
-                        </li>
-                        <li><a href="#"><img src="{$skin_path}images/class6.png" alt="班 级"></a>
-                        </li>
-                        <li><a href="#"><img src="{$skin_path}images/class7.png" alt="班 级"></a>
-                        </li>
-                        <li><a href="#"><img src="{$skin_path}images/class8.png" alt="班 级"></a>
-                        </li>
+                        {foreach $banji as $vo}
+                            <li>
+                                <a href="{$vo.tpl}">
+                                    <img src="{$skin_path}images/class1.png" alt="班 级">
+                                </a>
+                            </li>
+                        {/foreach}
                     </ul>
                 </div>
             </div>

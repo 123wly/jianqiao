@@ -148,7 +148,7 @@ address, caption, cite, code, dfn, em, th, var {
     box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
 }
 /*font*/
-.bhui2 { background: #ebebeb;}
+.bwrite { background: #fff;}
 .qhui4{ color: #444; }
 .hui4{ color: #4a4a4a; }
 .hui3{ color: #8a8a8a; }

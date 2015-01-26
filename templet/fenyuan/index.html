@@ -98,12 +98,12 @@ $(function() {
                     <h2>{$f_n.name}<span>{$f_n.en_name}</span></h2>
                     <div class="xwzx_xian">
                         {foreach $f_news as $vo} 
-                        {if $vo@index eq 0}
-                        <h3 class="qdbj"><a href="{spUrl c=$vo.tpl id=$vo.id}">{$vo.title}</a></h3>
-                        <p>{$vo.content|msubstr:'0':'70'}</p>
-                        {else}
-                        <h3><a href="">{$vo.title}</a></h3> 
-                        {/if}
+                            {if $vo@index eq 0}
+                            <h3 class="qdbj"><a href="{spUrl c=$vo.tpl id=$vo.id}">{$vo.title}</a></h3>
+                            <p>{$vo.content|msubstr:'0':'70'}</p>
+                            {else}
+                            <h3><a href="{spUrl c=$vo.tpl id=$vo.id}">{$vo.title}</a></h3> 
+                            {/if}
                         {/foreach}
                     </div>
                     <div class="genduo">
@@ -128,8 +128,8 @@ $(function() {
                 <div class="p35">
                     <h2>{$f_ju.name}<span>{$f_ju.en_name}</span></h2> 
                     {foreach $f_jiyu as $vo}
-                    <h3><a href="{spUrl c=$vo.tpl id=$vo.id}">{$vo.title}</a></h3>
-                    <p>{$vo.content|msubstr:'0':'80'}</p>
+                        <h3><a href="{spUrl c=$vo.tpl id=$vo.id}">{$vo.title}</a></h3>
+                        <p>{$vo.content|msubstr:'0':'80'}</p>
                     {/foreach}
                     <div class="genduo">
                         <a href="{spUrl c=$f_ju.tpl tid=$f_ju.id}"></a>
@@ -143,12 +143,9 @@ $(function() {
                 <div class="tab_title">
                     <div class="u">
                         <ul class="scrol">
-                            <li class="selected"><a>全 部</a>
-                            </li>
-                            <li><a>{$f_hd_term.name}</a>
-                            </li>
-                            <li><a>{$f_kt_term.name}</a>
-                            </li>
+                            <li class="selected"><a>全 部</a></li>
+                            <li><a>{$f_hd_term.name}</a></li>
+                            <li><a>{$f_kt_term.name}</a></li>
                             <div class="clear"></div>
                         </ul>
                     </div>
@@ -156,19 +153,20 @@ $(function() {
                 <div class="tab_content">
                     <div class="hui">
                         {foreach $f_hd as $vo}
-
-                        <div class="hz">
-                            <a href="{spUrl c=$vo.tpl id=$vo.id}"><img src="{$vo.cover|upload_echo}" />
-                            </a>
-                            <p>{$vo.title}</p>
-                        </div>
-                        {if $vo@index eq 3} {break} {/if} {/foreach} {foreach $f_kt as $vo}
-                        <div class="hz">
-                            <a href="{spUrl c=$vo.tpl id=$vo.id}"><img src="{$vo.cover|upload_echo}" />
-                            </a>
-                            <p>{$vo.title}</p>
-                        </div>
-                        {if $vo@index eq 3} {break} {/if} {/foreach}
+                            <div class="hz">
+                                <a href="{spUrl c=$vo.tpl id=$vo.id}"><img src="{$vo.cover|upload_echo}" /></a>
+                                <p>{$vo.title}</p>
+                            </div>
+                            {if $vo@index eq 3} {break} {/if} 
+                        {/foreach} 
+                        {foreach $f_kt as $vo}
+                            <div class="hz">
+                                <a href="{spUrl c=$vo.tpl id=$vo.id}"><img src="{$vo.cover|upload_echo}" />
+                                </a>
+                                <p>{$vo.title}</p>
+                            </div>
+                            {if $vo@index eq 3} {break} {/if} 
+                        {/foreach}
                         <div class="clear"></div>
                         <div class="gengduo">
                             <a href="{spUrl c=$f_sh.tpl tid=$f_sh.id}"><img src="{$skin_path}images/gengduo.png" />
@@ -178,7 +176,6 @@ $(function() {
 
                     <div class="none hui">
                         {foreach $f_hd as $vo}
-
                         <div class="hz">
                             <a href="{spUrl c=$vo.tpl id=$vo.id}"><img src="{$vo.cover|upload_echo}" />
                             </a>

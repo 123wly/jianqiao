@@ -1,0 +1,33 @@
+{include file="$themes_include_path/header.html"}
+
+<div id="wrap">
+
+    <div id="main">
+       {include file="$themes_include_path/userheader.html"}
+
+        <div id="mytag">
+            <ul>
+                <li><a href="">首页</a></li>
+                <!-- <li><a href="">家园联系册</a></li> -->
+                <li><a href="{goUserHomeC domain=$domain uid=$touid a=type type=3}">相册</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+
+        <div id="feedArea">
+            <script type="text/javascript">
+            $(document).ready(function(){  yb_load_feeds('blog','typeForOne',{ uid:{$touid} , type:{$smarty.get.type}, pagelimit:{$page_init} }); })
+            </script>
+            <div id="feed_loading"></div>
+            <div id="feed_box"></div>
+        </div>
+
+        <div class="page" id="paging"></div>
+    </div>
+    
+    <div id="aside">
+    {include file="$themes_include_path/aside.html"}
+    </div>
+
+</div>
+{include file="$themes_include_path/footer.html" top=yes}

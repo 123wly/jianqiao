@@ -9,7 +9,7 @@
             <div class="pagehead-box">
                 <a class="arrowLeft" data-ajax="false" href="javascript:history.go(-1);"><img width="35px;" height="35px;" src="{$skin_path}images/page-back.png" alt="返回" />
                 </a>
-                <h1 class="pagehead-title">新市区分园列表</h1>
+                <h1 class="pagehead-title">分园列表</h1>
                 <a class="arrowRight" href="#defaultpanel" data-role="button"><img width="35px;" height="35px;" src="{$skin_path}images/page-menu.png" alt="菜单" />
                 </a>
             </div>
@@ -19,7 +19,7 @@
                 <ul class="garden-list">
                     {foreach $list as $vo}
                     <li>
-                        <a class="clearFloat" href="#">
+                        <a class="clearFloat" href="{$vo.tpl}">
                             <span class="imag">
                                 <img src="{$vo.cover|upload_echo}" alt="{$vo.title}">
                             </span>
