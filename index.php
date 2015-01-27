@@ -20,8 +20,8 @@ require(APP_PATH.'/config.php');
 
 
 //@@@
-$spConfig["view"]["config"]["template_dir"] = ismobile() ? 'tplm' : 'tplv2';
-
+//$spConfig["view"]["config"]["template_dir"] = ismobile() ? 'tplm' : 'tplv2';
+$spConfig["view"]["config"]["template_dir"] = ismobile() ? 'tplv2' : 'tplv2';
 if(file_exists("theme.php")){
 	$wanhu_data = include_once 'theme.php';
 	$wanhu_data = json_decode($wanhu_data, true);
