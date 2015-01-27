@@ -121,6 +121,9 @@
 </div>
 </body>
 <script type="text/javascript">
+$(document).on("pagebeforeshow","body",function(){ // 当进入页面二时
+    $(".ui-loader").hide();
+});
 $(document).ready(function() {
     $(function(){
         $("#the-anchor").click(function(){
