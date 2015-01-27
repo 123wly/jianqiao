@@ -462,7 +462,7 @@ a {
 #defaultpanel{ 
 	margin-top: 45px; 
 	background: url(../images/paenl-onebg.jpg) repeat;
-	position: fixed;
+	position: absolute;
 	}
 .ui-panel-inner{ 
 	padding: 0;

@@ -96,6 +96,7 @@
 }
 #content .jscyzs .kez p img{
 	width:100%;
+	height: 100%;
 }
 #content .jscyzs .kez h3{
 	_zoom:1;
@@ -671,6 +672,7 @@
 	color:#444444;
 	margin:35px 0;
 	background:#ffffff;
+	position: relative;
 }
 #content .jqsh .gy_right .ktnr:hover{
 	background:#ca3535;
@@ -682,6 +684,7 @@
 }
 #content .jqsh .gy_right .ktnr .tp img{
 	width:100%;
+	height: 100%;
 }
 #content .jqsh .gy_right .ktnr .wz{
 	width:460px;
@@ -705,7 +708,6 @@
 }
 #content .jqsh .gy_right .ktnr .wz p a{
 	display:block;
-	float:right;
 	width:110px;
 	height:40px;
 	line-height:40px;
@@ -713,6 +715,9 @@
 	color:#ffffff;
 	text-align:center;
 	font-size:18px;
+	position: absolute;
+	right: 35px;
+	bottom: 35px;
 }
 #content .jqsh .gy_right .ktnr:hover .wz p a{
 	background:#ffffff;
@@ -805,6 +810,7 @@
 }
 #content .bjztc .kzz .toptp img{
 	width:100%;
+	height: 100%;
 }
 #content .bjztc .kzz h4{
 	font-size:18px;
@@ -873,6 +879,13 @@
 	width:215px;
 	height:24px;
 	line-height:24px;
+	border:1px solid #d0d0d0;
+	background:#ffffff;
+}
+#content .wybm table .text select{
+	width:220px;
+	height:26px;
+	line-height:26px;
 	border:1px solid #d0d0d0;
 	background:#ffffff;
 }

@@ -11,8 +11,8 @@
                   <tr>
                     <td class="left wenz">&nbsp;</td>
                     <td class="left">
-                    	<input type="radio" name="gender" value="男" checked="checked" />男
-                    	<input type="radio" name="gender" value="女" checked="checked" />女
+                    	<input type="radio" name="gender" value="男" checked="checked" />&nbsp;男 &nbsp;&nbsp;
+                    	<input type="radio" name="gender" value="女" checked="checked" />&nbsp;女
                     </td>
                   </tr>
                   <tr>

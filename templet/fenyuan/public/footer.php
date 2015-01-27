@@ -44,18 +44,34 @@
 </body>
 </html>
 <script type="text/javascript">
-    $(function() {
-        $('.orgin_input').bind({
-            focus: function() {
+$(function() {
+    $('.orgin_input').bind({
+        focus: function() {
             if (this.value == this.defaultValue) {
-            this.value = "";
-        }
-         },
+                this.value = "";
+            }
+        },
         blur: function() {
-           if (this.value == "") {
-              this.value = this.defaultValue;
+            if (this.value == "") {
+                  this.value = this.defaultValue;
+            }
         }
+    });
+});
+$(document).ready(function() {
+    var firstLia = $(".nav > ul > li:first > a").attr("class");
+    if(firstLia === "hover"){
+        $(".nav > ul > li:first").addClass("hoverd");
+        $(".nav > ul > li:first > a").addClass("gywmdj");
     }
-  });
-})
+    $(".nav > ul > li:first > a").hover(function() {
+        $(".nav > ul > li:first").addClass("hoverd");
+        $(".nav > ul > li:first > a").addClass("gywmdj");
+    }, function() {
+        if(firstLia !== "hover"){
+            $(".nav > ul > li:first").removeClass("hoverd");
+            $(".nav > ul > li:first > a").removeClass("gywmdj");
+        }
+    });
+});
 </script>
