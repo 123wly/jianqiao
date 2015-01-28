@@ -6,7 +6,7 @@ $(function() {
     $(".tab_title ul li").click(function() {
         index = $(".tab_title ul li").index(this);
         $(this).addClass("selected").siblings().removeClass("selected");
-        $(".tab_content .hui").eq(index).show().siblings().hide();
+        $(".tab_content .hui").eq(index).fadeIn().siblings().fadeOut();
     });
     var i = 4; //定义每个面板显示8个菜单
     var len = $(".u .scrol li").length; //获得LI元素的个数

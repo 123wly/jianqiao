@@ -1,54 +1,24 @@
-{extends file='./templet/fenyuan/public/layout.html'}
-{block name=head}
-<link type="text/css" href="{$skin_path}css/zy_fy.css" rel="stylesheet" />
-{/block}
-{block name=content}
+{extends file='./templet/fenyuan/public/layout.html'} {block name=head}
+<link type="text/css" href="{$skin_path}css/zy_fy.css" rel="stylesheet" /> {/block} {block name=content}
 <div id="content">
-  {include_php './templet/fenyuan/public/tptop.php'}
-	<div class="main yjfc">
-    	<div class="left gy_left">
-        	 {include_php './templet/fenyuan/public/gy_left.php'}
-          {include_php './templet/fenyuan/public/yuyue.php'}
+    {include_php './templet/fenyuan/public/tptop.php'}
+    <div class="main yjfc">
+        <div class="left gy_left">
+            {include_php './templet/fenyuan/public/gy_left.php'} {include_php './templet/fenyuan/public/yuyue.php'}
         </div>
         <div class="right gy_right">
-        	<h2>{$term.name}</h2>
-            <ul class="yzxx">
-              {foreach $articles as $vo}
-                <li><span>{$vo.create_time|date_format:'%Y-%m-%d'}</span><a href="{spUrl c=$vo.tpl  a=index id=$vo.id}">{$vo.title|msubstr:'0':'10'}</a></li>
-              {/foreach}
-            </ul>
-           		 <div class="ym">
-                       <ul>
-                         {if $pager}
-                                <!--在当前页不是第一页的时候，显示前页和上一页-->
-                                {if $pager.current_page != $pager.first_page}
-                                    <li class="syy">
-                                        <a href="{spUrl c=$term['tpl'] tid=$tid a=index page=$pager.prev_page}"> &lt; </a>
-                                    </li>
-                                {/if}
-                                <!--开始循环页码，同时如果循环到当前页则不显示链接-->
-                                {foreach from=$pager.all_pages item=thepage}
-                                    {if $thepage eq $pager.current_page -1 or $thepage eq $pager.current_page or $thepage eq $pager.current_page + 1}
-                                        {if $thepage != $pager.current_page}
-                                            <li class="sz">
-                                                <a href="{spUrl c=$term['tpl'] tid=$tid a=index page=$thepage}">{$thepage}</a>
-                                            </li>
-                                        {else}
-                                            <li class="sz hover">
-                                                <a href="javascript:;">{$thepage}</a>
-                                            </li>
-                                        {/if}
-                                    {/if}
-                                {/foreach}
-                                <!--在当前页不是最后一页的时候，显示下一页和后页-->
-                                {if $pager.current_page != $pager.last_page}
-                                    <li class="syy">
-                                        <a href="{spUrl c=$term['tpl'] tid=$tid a=index page=$pager.next_page}"> &gt; </a>
-                                    </li>
-                                {/if}
-                            {/if}            
-                      </ul>
-               	 </div>
+            <h2>{$cTerm.name}</h2>
+            <div>
+                <span>用户姓名 ：</span>
+                <div><input type="text" name="username" /></div>
+            </div>
+            <div>
+                <span>电子邮件 ：</span>
+                <div></div>
+            </div>
+            <div>
+                <span>正文内容 ：</span>
+            </div>
         </div>
         <div class="clear"></div>
     </div>

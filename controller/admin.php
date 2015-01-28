@@ -1375,4 +1375,12 @@ class admin extends top
         fclose($f);
         $this->success("保存成功");
     }
+
+
+
+    ////////留言列表
+    public function guestbook(){
+        $this->list = spClass("db_guestbook")->findAll(array("uid"=>$_SESSION["uid"]));
+        $this->display("admin/guestbook.html");
+    }
 }
