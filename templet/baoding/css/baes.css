@@ -298,18 +298,34 @@ input{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#right_xf{
+	position:fixed;
+	bottom:10%;
+	right:5px;
+	width:60px;
+	height:386px;
+	z-index:9999999;
+}
+#right_xf ul li a{
+	display:block;
+	width:60px;
+	height:63px;
+	line-height:63px;
+	background:url(../images/cdaoh.png);
+}
+#right_xf ul li.kf a{
+	background-position:0 -62px;
+}
+#right_xf ul li.hdzs a{
+	background-position:0 -124px;
+}
+#right_xf ul li.ysfb a{
+	background-position:0 -188px;
+}
+#right_xf ul li.jrwm a{
+	background-position:0 -250px;
+}
+#right_xf ul li.fhdb a{
+	background:url(../images/fanhui.png) no-repeat;
+	margin-top:10px;
+}
