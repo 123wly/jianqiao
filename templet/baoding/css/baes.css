@@ -62,9 +62,9 @@ input{
     behavior:url(pie.htc);
 }
 #header .logo{
-	width:220px;
+	width:260px;
 	height:84px;
-	margin:10px 0 0 5px;
+	margin:8px 0 0 5px;
 }
 #header .logo img{
 	width:100%;
@@ -219,7 +219,7 @@ input{
 #header .nav .submenu .right img {
 	width: 240px;
 	height: 127px;
-	padding: 10px;
+	padding:30px 10px 10px;
 }
 #header .nav .submenu .right h3 {
 	font-size: 14px;
@@ -295,8 +295,6 @@ input{
 #footer .foot_bottom p a{
 	color:#fff;
 }
-
-
 
 #right_xf{
 	position:fixed;

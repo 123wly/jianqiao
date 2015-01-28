@@ -237,6 +237,8 @@
 #content .cyzs .tab_content .hui .hz p{
 	font-size:16px;
 	color:#ffffff;
+	padding-top: 3px;
+	line-height: 35px;
 	text-align:center;
 }
 #content .yxjs{
