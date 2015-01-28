@@ -1123,6 +1123,7 @@ class admin extends top
         $_POST["content"] = $_POST['editorValue'];
         if(isset($_POST['edit'])){
             $rs = spClass("db_article")->update(array("id"=>$_POST['id'],"uid"=>$_SESSION['uid']), $_POST);
+            // echo spClass("db_article")->dumpSql();die;
         }else {
             $rs = spClass("db_article")->create($_POST);
         }

@@ -3,7 +3,9 @@
 <div class="right rnav">
     <form action="<?php echo spUrl('search',''); ?>" method="get">
         <div class="sousuo">
-            <p class="wpd left"><a href="http://blog.a.com/yunbian">用户登录</a><a href="http://blog.a.com/yunbian">注册</a>
+            <p class="wpd left">
+                <a href="http://0032.jiaoyinet.com">用户登录</a>
+                <a href="http://0032.jiaoyinet.com">注册</a>
             </p>
             <p class="sous left">
                 <input type="hidden" name="c" value="search" />
@@ -37,7 +39,7 @@
                                             <?php $ars = spClass("db_article")->findAll(array("term_id"=>$v["id"])); ?>
                                             <?php foreach ($ars as $k1 => $v1): ?>
                                                 <li>
-                                                    <a href="<?php echo spUrl($v['tpl'],'',array('tid'=>$v['id'])) ?>"><?php echo $v1["title"]; ?></a>
+                                                    <a href="<?php echo $v1['tpl'] ?>"><?php echo $v1["title"]; ?></a>
                                                 </li>
                                             <?php endforeach ?>
                                             <p>

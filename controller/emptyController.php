@@ -305,7 +305,7 @@ class emptyController extends top
 	public function __f_index(){
 		//分园新闻
 		$f_n=sPclass("db_term")->find(array("id"=>75));
-		$f_news = spClass("db_article")->findAll(array("term_id"=>75),"id desc","id,title,content,create_time,tpl","4");
+		$f_news = spClass("db_article")->findAll(array("term_id"=>75),"id desc","id,title,content,create_time,tpl,brief","4");
 		$this->assignown("f_n",$f_n);
 		$this->assignown("f_news",$f_news);
 		//分园介绍
@@ -315,7 +315,7 @@ class emptyController extends top
 		$this->assignown("f_jieshao",$f_jieshao);
 		//家长寄语
 		$f_ju=spClass("db_term")->find(array("id"=>66));
-		$f_jiyu=spClass("db_article")->findAll(array("term_id"=>66),"id desc","id,title,content,tpl","2");
+		$f_jiyu=spClass("db_article")->findAll(array("term_id"=>66),"id desc","id,title,content,tpl,brief","2");
 		$this->assignown("f_ju",$f_ju);
 		$this->assignown("f_jiyu",$f_jiyu);
 		//剑桥生活
@@ -323,12 +323,12 @@ class emptyController extends top
 		$this->assignown("f_sh",$f_sh);
 		//精彩活动
 		$f_hd_term=sPclass("db_term")->find(array("id"=>62));
-		$f_hd=spClass("db_article")->findAll(array("term_id"=>62),"id desc","id,title,cover,tpl","8");
+		$f_hd=spClass("db_article")->findAll(array("term_id"=>62),"id desc","id,title,cover,tpl,brief","8");
 		$this->assignown("f_hd_term",$f_hd_term);
 		$this->assignown("f_hd",$f_hd);
 		//欢乐课堂
 		$f_kt_term=sPclass("db_term")->find(array("id"=>64));
-		$f_kt=spClass("db_article")->findAll(array("term_id"=>64),"id desc","id,title,cover,tpl","8");
+		$f_kt=spClass("db_article")->findAll(array("term_id"=>64),"id desc","id,title,cover,tpl,brief","8");
 		$this->assignown("f_kt_term",$f_kt_term);
 		$this->assignown("f_kt",$f_kt);
 	}
@@ -459,6 +459,9 @@ class emptyController extends top
 	public function __f_gywm_zxxx_zd(){
 		$this->__f_page_show();
 		
+	}
+	public function __f_jqsh_ktnr_zd(){
+		$this->__f_page_show();
 	}
 	public function __f_gywm_lxwm(){
 		$this->__f_term(10);

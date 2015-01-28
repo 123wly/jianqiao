@@ -1,6 +1,6 @@
 <?php
 defined('IN_APP') or die('Access Denied.');
-define('APP_NAME','/yunbian/');
+define('APP_NAME','/');
 
 
 ///需要设置是否为2级目录， 头像 和上传flash 需要调用那2个地址
@@ -15,8 +15,8 @@ $spConfig = array(
 	  "db" => array(
 		  'host' => 'localhost', // 数据库地址
 		  'login' => 'root',
-		  'password' => 'root',
-		  'database' => 'yunbian',
+		  'password' => 'wanhunet123!',
+		  'database' => 'jianqiao',
 		  'prefix'  => 'wh_',
 		  'db_driver_path' => SP_PATH.'/Drivers/mysql.php',
  	 ),

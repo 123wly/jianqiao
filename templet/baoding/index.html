@@ -95,11 +95,11 @@
                                     <ul>
                                         <li>
                                             <span>{$vo.create_time|date_format:'%m-%d'}</span>
-                                            <a href="{spUrl c=$vo.tpl id=$vo.id}"><b>{$vo@index + 1}.</b></a>
+                                            <a href="{spUrl c=$vo.tpl id=$vo.id}"><b>{$vo@index + 1}.</b>{$vo.title|msubstr:"0":'10'}</a>
                                         </li>
                                         <div class="clear"></div>
                                     </ul>
-                                    <p>{$vo.brief|msubstr:"0":'100'}</p>
+                                    <p>{$vo.brief|msubstr:"0":'25'}</p>
                                 </div>
                                 <div class="clear"></div>
                             </div>
@@ -131,7 +131,7 @@
                                         </li>
                                         <div class="clear"></div>
                                     </ul>
-                                    <p>{$vo.brief|msubstr:"0":'100'}</p>
+                                    <p>{$vo.brief|msubstr:"0":'25'}</p>
                                 </div>
                                 <div class="clear"></div>
                             </div>
@@ -225,7 +225,7 @@
                                     <div class="core_text">
                                         <span class="f16">{$v.name}</span>
                                         <div class="hide" data-role="j_hover_show" style="display: none;">
-                                            <p>{$v.brief|msubstr:"0":'100'}</p>
+                                            <p>{$v.brief|msubstr:"0":'35'}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -249,7 +249,7 @@
                         </div>
                         <div class="right">
                             <h4>{$zhoukan.title|msubstr:"0":'10'}</h4>
-                            <p>{$zhoukan.brief|msubstr:"0":'100'}</p>
+                            <p>{$zhoukan.brief|msubstr:"0":'35'}</p>
                         </div>
                         <div class="clear"></div>
                     </div>
@@ -269,7 +269,7 @@
                         </div>
                         <div class="right">
                             <h4>{$shipu.title|msubstr:"0":'10'}</h4>
-                            <p>{$shipu.brief|msubstr:"0":'100'}</p>
+                            <p>{$shipu.brief|msubstr:"0":'35'}</p>
                         </div>
                         <div class="clear"></div>
                     </div>
@@ -286,7 +286,7 @@
                         </div>
                         <div class="right">
                             <h4>{$zuopin.title|msubstr:"0":'10'}</h4>
-                            <p>{$zuopin.brief|msubstr:"0":'100'}</p>
+                            <p>{$zuopin.brief|msubstr:"0":'35'}</p>
                         </div>
                         <div class="clear"></div>
                     </div>

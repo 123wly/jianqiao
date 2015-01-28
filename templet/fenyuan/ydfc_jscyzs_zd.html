@@ -1,6 +1,8 @@
 {extends file='./templet/fenyuan/public/layout.html'}
 {block name=head}
 <link type="text/css" href="{$skin_path}css/zy_fy.css" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" href="{$skin_path}css/jquery.galleryview-3.0-dev.css" />
+<script type="text/javascript" src="{$skin_path}js/jquery.galleryview-3.0-dev.js"></script>
 {/block}
 {block name=content}
 <div id="content">
@@ -20,7 +22,9 @@
                 <!-- 代码 开始 -->
                 <div class="jstx">
                     <ul id="myGallery">
-                        <li><img src="{$page_show.cover|upload_echo}" /></li>
+                       {foreach $imgs as $img}
+                        <li><img src="{$img|upload_echo}" /></li>
+                        {/foreach}
                     </ul>
                 </div>
                 <script type="text/javascript">

@@ -5,7 +5,7 @@
 
 
 define('APP_PATH',dirname(__FILE__));
-define('URL_PATH',$_SERVER['SERVER_NAME'].'/yunbian');
+define('URL_PATH',$_SERVER['SERVER_NAME'].'/');
 define('IN_APP',TRUE);
 define('SP_PATH',APP_PATH.'/init');
 
