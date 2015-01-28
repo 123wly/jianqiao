@@ -18,8 +18,8 @@ a, a:hover { outline:none; cursor:pointer; }
 body{ background:url(../image/comm/background.gif) repeat #DCDDE2; font-family:'Microsoft Yahei','Arail'; font-size:12px;}
 #wrap{width:100%;}
 #main{ width:960px; margin:0 auto; position:relative;}
-#main .logo{ width:420px; height:103px; margin:80px auto;}
-
+#main .logo{ width:294px; height:103px; margin:80px auto;}
+#main .logo a img{ width: 100%;}
 #titlep { padding:0 10px; height:30px; line-height:30px; position:absolute;  background-color:#FFFF99; color:#666; -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px; margin-top:-10px; -moz-box-shadow:0px 1px 3px #bbb; -webkit-box-shadow:0px 1px 3px #bbb; box-shadow:0px 1px 3px #bbb; display:none; border:1px #ccc solid\9;}
 
 #rbtn, #lbtn{ position:absolute; top:20px; right:20px;}

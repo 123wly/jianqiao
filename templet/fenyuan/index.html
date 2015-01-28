@@ -153,20 +153,17 @@ $(function() {
                 <div class="tab_content">
                     <div class="hui">
                         <div style="height: 500px;">
-                            {foreach $f_hd as $vo}
+                            {foreach $f_all_index as $vo}
+                            {if count($f_all_index) >= 4}
+                            {$break_num=3}
+                            {else}
+                            {$break_num=5}
+                            {/if}
                                 <div class="hz">
                                     <a href="{spUrl c=$vo.tpl id=$vo.id}"><img src="{$vo.cover|upload_echo}" /></a>
                                     <p>{$vo.title}</p>
                                 </div>
-                                {if $vo@index eq 3} {break} {/if} 
-                            {/foreach} 
-                            {foreach $f_kt as $vo}
-                                <div class="hz">
-                                    <a href="{spUrl c=$vo.tpl id=$vo.id}"><img src="{$vo.cover|upload_echo}" />
-                                    </a>
-                                    <p>{$vo.title}</p>
-                                </div>
-                                {if $vo@index eq 3} {break} {/if} 
+                                {if $vo@index eq $break_num} {break} {/if} 
                             {/foreach}
                             <div class="clear"></div>
                         </div>
@@ -179,11 +176,17 @@ $(function() {
                     <div class="none hui">
                         <div style="height: 500px;">
                             {foreach $f_hd as $vo}
+                            {if count($f_hd) >= 4}
+                            {$break_num=3}
+                            {else}
+                            {$break_num=5}
+                            {/if}
                             <div class="hz">
                                 <a href="{spUrl c=$vo.tpl id=$vo.id}"><img src="{$vo.cover|upload_echo}" />
                                 </a>
                                 <p>{$vo.title}</p>
                             </div>
+                            {if $vo@index eq $break_num} {break} {/if} 
                             {/foreach}
                             <div class="clear"></div>
                         </div>
@@ -197,11 +200,17 @@ $(function() {
                     <div class="none hui">
                         <div style="height: 500px;">
                             {foreach $f_kt as $vo}
+                            {if count($f_kt) >= 4}
+                            {$break_num=3}
+                            {else}
+                            {$break_num=5}
+                            {/if}
                             <div class="hz">
                                 <a href="{spUrl c=$vo.tpl id=$vo.id}"><img src="{$vo.cover|upload_echo}" />
                                 </a>
                                 <p>{$vo.title}</p>
                             </div>
+                            {if $vo@index eq $break_num} {break} {/if} 
                             {/foreach}
                             <div class="clear"></div>
                         </div>
