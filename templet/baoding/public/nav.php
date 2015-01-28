@@ -9,7 +9,7 @@
             </p>
             <p class="sous left">
                 <input type="hidden" name="c" value="search" />
-                <input class="text left orgin_input" type="text" name="keyword" value="查找您附近的幼儿园" />
+                <input class="text left orgin_input" type="text" name="keyword" value="搜索本站" />
                 <input class="tij right" type="submit" value="" />
             </p>
             <div class="clear"></div>
