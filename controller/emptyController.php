@@ -518,7 +518,7 @@ class emptyController extends top
 	}
 
 	public function __f_ydfc_yzxx(){
-		$this->__f_term(10);
+		// $this->__f_term(10);
 	}
 
 	public function __f_ydfc_jscyzs_zd(){
