@@ -11,18 +11,25 @@
                 <h1>{$cTerm.name}<span>{$cTerm.en_name}</span></h1>
                 <div class="bjtd_nr">
                     <ul class="bjtdul">
-                        {foreach $results as $key => $vo}
+                        {if !empty($results)}
+                            {foreach $results as $key => $vo}
+                                <li>
+                                    <span>{$vo.create_time|date_format:'%Y-%m-%d'}</span>
+                                    {if !stristr($vo.tpl,"http")}
+                                        <a href="{spUrl c=$vo.tpl id=$vo.id}">
+                                    {else}
+                                        <a href="{$vo.tpl}">
+                                    {/if}
+                                        {$vo.title|msubstr:"0":'10'}
+                                    </a>
+                                </li>
+                            {/foreach}
+                        {else}
                             <li>
-                                <span>{$vo.create_time|date_format:'%Y-%m-%d'}</span>
-                                {if !stristr($vo.tpl,"http")}
-                                    <a href="{spUrl c=$vo.tpl id=$vo.id}">
-                                {else}
-                                    <a href="{$vo.tpl}">
-                                {/if}
-                                    {$vo.title|msubstr:"0":'10'}
-                                </a>
+                                没有查到有关信息
                             </li>
-                        {/foreach}
+                        {/if}
+                        
                     </ul>
                     <div class="clear"></div>
                     <div class="ym">
