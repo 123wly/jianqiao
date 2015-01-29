@@ -78,7 +78,7 @@ function queryVersion()
 	// 			if(rs.state ==99){$('#checkVersion').html('暂时无法检查,或检查出错'); return false;}
 	// 			if(rs.state ==98){$('#checkVersion').html('您使用的已是最新版本'); return false;}
 	// 			if(rs.state ==3) { alert('可用更新有漏洞补丁，请尽快升级，否则系统不再安全。') }
-	// 		   $('#checkVersion').html('<a href="http://www.thinksaas.cn/index.php/group/group/groupid-129" target="_blank">更新可用：'+rs.version +' '+rs.type +' ' + rs.info+'</a>');    			
+	// 		   $('#checkVersion').html('<a href="http://www.wanhunet.com" target="_blank">更新可用：'+rs.version +' '+rs.type +' ' + rs.info+'</a>');    			
 	// })
 }
 

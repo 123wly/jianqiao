@@ -19,6 +19,7 @@ if($root){
 }
  $term=spClass("db_term")->find(array('id'=>$root));
  ?>
+
 <div class="tptop">
     	<img src="<?php echo $skin_path;?>images/<?php echo $term['cover']; ?>" />
 </div>

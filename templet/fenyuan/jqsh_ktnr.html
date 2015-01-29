@@ -18,7 +18,7 @@
                 	<img src="{$vo.cover|upload_echo}" />
                 </div>
                 <div class="left wz">
-                	<h3>{$vo.title}</h3>
+                	<h3>{$vo.title|msubstr:'0':'15'}</h3>
                     <p>{$vo.brief|msubstr:'0':'80'}</p>
                     <p><a href="{spUrl c=$vo['tpl'] id=$vo['id']}">了解详情</a></p>
                     <div class="clear"></div>

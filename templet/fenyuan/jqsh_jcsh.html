@@ -16,7 +16,7 @@
                 {foreach $articles as $vo}
             	<div class="kez">
                 	<p><a href="{spUrl c=$vo['tpl'] id=$vo['id']}"><img src="{$vo.cover|upload_echo}" /></a></p>
-                    <h3><span>{$vo.title}</span><a href="{spUrl c=$vo['tpl'] id=$vo['id']}">更多 &gt; </a></h3>
+                    <h3><span>{$vo.title|msubstr:'0':'8'}</span><a href="{spUrl c=$vo['tpl'] id=$vo['id']}">更多 &gt; </a></h3>
                     <div class="diyn">
                     	<a href="{spUrl c=$vo['tpl'] id=$vo['id']}"></a>	
                     </div>

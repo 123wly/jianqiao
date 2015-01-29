@@ -152,7 +152,6 @@ $(function() {
                 </div>
                 <div class="tab_content">
                     <div class="hui">
-                        <div style="height: 500px;">
                             {foreach $f_all_index as $vo}
                             {if count($f_all_index) >= 4}
                             {$break_num=3}
@@ -166,7 +165,7 @@ $(function() {
                                 {if $vo@index eq $break_num} {break} {/if} 
                             {/foreach}
                             <div class="clear"></div>
-                        </div>
+                        
                         <div class="gengduo">
                             <a href="{spUrl c=$f_sh.tpl tid=$f_sh.id}"><img src="{$skin_path}images/gengduo.png" />
                             </a>
@@ -174,7 +173,7 @@ $(function() {
                     </div>
 
                     <div class="none hui">
-                        <div style="height: 500px;">
+                        
                             {foreach $f_hd as $vo}
                             {if count($f_hd) >= 4}
                             {$break_num=3}
@@ -189,7 +188,7 @@ $(function() {
                             {if $vo@index eq $break_num} {break} {/if} 
                             {/foreach}
                             <div class="clear"></div>
-                        </div>
+                        
                         <div class="gengduo">
                             <a href="{spUrl c=$f_hd_term.tpl tid=$f_hd_term.id}"><img src="{$skin_path}images/gengduo.png" />
                             </a>
@@ -198,7 +197,7 @@ $(function() {
 
 
                     <div class="none hui">
-                        <div style="height: 500px;">
+                        
                             {foreach $f_kt as $vo}
                             {if count($f_kt) >= 4}
                             {$break_num=3}
@@ -213,7 +212,7 @@ $(function() {
                             {if $vo@index eq $break_num} {break} {/if} 
                             {/foreach}
                             <div class="clear"></div>
-                        </div>
+                        
                         <div class="gengduo">
                             <a href="{spUrl c=$f_kt_term.tpl tid=$f_kt_term.id}"><img src="{$skin_path}images/gengduo.png" />
                             </a>
