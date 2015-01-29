@@ -95,7 +95,7 @@
                                     <ul>
                                         <li>
                                             <span>{$vo.create_time|date_format:'%m-%d'}</span>
-                                            <a href="{spUrl c=$vo.tpl id=$vo.id}"><b>{$vo@index + 1}.</b>{$vo.title|msubstr:"0":'10'}</a>
+                                            <a href="{spUrl c=$vo.tpl id=$vo.id}"><b>{$vo@index + 1}.</b>{$vo.title|msubstr:"0":'8'}</a>
                                         </li>
                                         <div class="clear"></div>
                                     </ul>
@@ -106,7 +106,7 @@
                         {else}
                             <li>
                                 <span>{$vo.create_time|date_format:'%m-%d'}</span>
-                                <a href="{spUrl c=$vo.tpl id=$vo.id}"><b>{$vo@index + 1}.</b>{$vo.title|msubstr:"0":'10'}</a>
+                                <a href="{spUrl c=$vo.tpl id=$vo.id}"><b>{$vo@index + 1}.</b>{$vo.title|msubstr:"0":'15'}</a>
                             </li>
                         {/if}
                     {/foreach}
@@ -127,7 +127,7 @@
                                     <ul>
                                         <li>
                                             <span>{$vo.create_time|date_format:'%m-%d'}</span>
-                                            <a href="{spUrl c=$vo.tpl id=$vo.id}"><b>{$vo@index + 1}.</b>{$vo.title|msubstr:"0":'10'}</a>
+                                            <a href="{spUrl c=$vo.tpl id=$vo.id}"><b>{$vo@index + 1}.</b>{$vo.title|msubstr:"0":'8'}</a>
                                         </li>
                                         <div class="clear"></div>
                                     </ul>
@@ -138,7 +138,7 @@
                         {else}
                             <li>
                                 <span>{$vo.create_time|date_format:'%m-%d'}</span>
-                                <a href="{spUrl c=$vo.tpl tid=$vo.id}"><b>{$vo@index + 1}.</b>{$vo.title|msubstr:"0":'10'}</a>
+                                <a href="{spUrl c=$vo.tpl tid=$vo.id}"><b>{$vo@index + 1}.</b>{$vo.title|msubstr:"0":'15'}</a>
                             </li>
                         {/if}
                     {/foreach}

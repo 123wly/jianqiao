@@ -20,11 +20,11 @@
                                 <ul>
                                     <li>
                                         <span>[{$vo.create_time|date_format:'%Y-%m-%d'}]</span>
-                                        <a href="{spUrl c=$vo.tpl id=$vo.id}">{$vo.title|msubstr:"0":'10'}</a>
+                                        <a href="{spUrl c=$vo.tpl id=$vo.id}">{$vo.title|msubstr:"0":'15'}</a>
                                     </li>
                                     <div class="clear"></div>
                                 </ul>
-                                <p style="height:70px;display:block;">{$vo.brief|msubstr:"0":'86'}</p>
+                                <p style="height:70px;display:block;">{$vo.brief|msubstr:"0":'80'}</p>
                                 <p class="gengd">
                                     <a href="{spUrl c=$vo.tpl id=$vo.id}">READ MORE</a>
                                 </p>

@@ -12,7 +12,12 @@ class emptyController extends top
         parent::__construct();
         $this->dTerm = spClass("db_term");
         $this->dArticle = spClass("db_article");
-        $this->schools = spClass("db_member")->findAll(" role in ('0','1')");
+        $this->schools = spClass("db_member")->findAll(" role in ('0','1')","","username");
+        $schools = array();
+        foreach ($this->schools as $key => $value) {
+        	$schools[] = $value["username"];
+        }
+        $this->schools = $schools;
     }
 
 	public function index(){
@@ -76,9 +81,18 @@ class emptyController extends top
         $data = array();
         foreach ($week_data as $key => $value) {
         	foreach ($value as $k => $vo) {
-        		$data[$k][] = $vo;
+        		if(strstr($vo, "{")){
+        			$strA = explode("{",$vo);
+        			$title = substr($strA[1],0,strlen($strA[1])-1);
+        			$data[$k][] = array("title"=>$title, "cook"=>$strA[0]);
+        		}else {
+        			$data[$k][] = array("title"=>$vo, "cook"=>$vo);
+        		}
+        		
         	}
         }
+        // var_dump($data);die;
+
         $this->assignown("week_data", $data);
 
         $begin_time=strtr(substr($this_week['0'],5),"-","/");
@@ -92,6 +106,11 @@ class emptyController extends top
 
         $this->assignown("upweek", $upweek);
         $this->assignown("nextweek", $nextweek);
+
+
+        $daytime = strtotime(date('Y-m-d',time()));
+        $dayData = spClass("db_cook")->find(array("date"=>$daytime));
+        $this->assignown("dayData", $dayData);
 	}
 
 	public function __page(){

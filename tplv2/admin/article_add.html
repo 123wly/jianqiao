@@ -54,6 +54,14 @@
                         </td>
                     </tr>
                     <tr>
+                        <td class="t_title">推荐</td>
+                        <td class="c_input_small">
+                            <div style="height: 10px;"></div>
+                            <input type="radio" class="recommend" name="recommend" value="0" style="height:auto;width:auto;">否
+                            <input type="radio" class="recommend" name="recommend" value="1" style="height:auto;width:auto;">是
+                        </td>
+                    </tr>
+                    <tr>
                         <td class="t_title">文章来源</td>
                         <td class="c_input_small">
                             <div style="height: 10px;"></div>
@@ -187,7 +195,7 @@
         {if $edit eq 1}
             $.post('{spUrl c=admin a=article_find}', { id : {$smarty.get.id} }, function(data) {
                 var obj = $.parseJSON(data);
-                var formin = $("#form input,#form textarea");
+                var formin = $("#form input[type!=radio],#form textarea");
                 $.each(obj, function(index, val) {
                     $.each(formin, function(key, vo) {
                         if ($(this).attr("name") === index){
@@ -201,7 +209,7 @@
                 });
 
                 $("select[name='term_id']").get(0).value = obj.term_id;
-
+                $('.recommend').eq(obj.recommend).attr('checked', 'true');
                 if(obj.imgs !== null){
                     var imgs = $.parseJSON(obj.imgs);
                     $.each(imgs, function(index, val) {

@@ -52,11 +52,7 @@
                             <tr>
                                 <td class="tex left">选择园所：</td>
                                 <td class="text left">
-                                    <select name="xuexiao">
-                                        {foreach $schools as $vo}
-                                            <option value="{$vo.username}">{$vo.username}</option>
-                                        {/foreach}
-                                    </select>
+                                    <input id="input_schoolss" type="text" name="xuexiao" class="txt">
                                 </td>
                             </tr>
                             <tr class="wtly">

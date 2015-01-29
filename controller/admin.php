@@ -1340,7 +1340,6 @@ class admin extends top
     public function cook_week_post(){
         $db = spClass("db_cook");
         $status = 1;
-        var_dump($_POST);die;
         foreach ($_POST as $key => $vo) {
             $vo["date"] = strtotime($vo['date']);
             $rs = $db->save($vo);

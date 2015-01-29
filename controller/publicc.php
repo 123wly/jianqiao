@@ -40,5 +40,15 @@ class publicc extends spController
             $this->error("保存失败", spUrl("index","index"));
         }
     }
+    public function guestbook(){
+        if(!spClass('spVerifyCode')->verify( $this->spArgs('vericode'))){
+            $this->error('验证码不正确');
+        } 
+        $rs = spClass("db_guestbook")->create($_POST);
+        if ($rs) {
+            $this->success("保存成功", spUrl("index","index"));
+        } else {
+            $this->error("保存失败", spUrl("index","index"));
+        }
+    }
 }
-?>
