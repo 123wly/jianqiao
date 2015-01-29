@@ -1379,6 +1379,10 @@ class admin extends top
 
     ////////留言列表
     public function guestbook(){
+        $this->curr_guestbook = ' id="current"';
+        $this->curr_guestbook_div = $this->showclan;
+        $this->curr_guestbook_list = ' id="acurrent"';
+
         $this->list = spClass("db_guestbook")->findAll(array("uid"=>$_SESSION["uid"]));
         $this->display("admin/guestbook.html");
     }

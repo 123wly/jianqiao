@@ -71,6 +71,8 @@ class main extends top
 	public function reg(){
 		$this->invitemode = $this->spArgs('invitemode');
 		$this->invitecode = $this->spArgs('invitecode');
+		$this->schools = spClass("db_member")->findAll(" role in (0,1)","","username,uid");
+		// print_r($this->schools);
 		$this->display('reg.html');
 	}
 	

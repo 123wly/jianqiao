@@ -11,6 +11,37 @@
 <link rel="shortcut icon" href="{$syskin}/image/favicon.ico" type="image/x-icon">
 </head>
 <body>
+	<style type="text/css">
+	#main .loginarea .in_put{
+		float: none;
+		margin-top: 15px;
+	}
+	#main .logo {
+	    height: 103px;
+	    margin: 80px auto 30px auto;
+	    width: 294px;
+	}
+	.school{
+		background: red;
+	}
+	ul {
+		background-color: #FAFAFA;
+		width: 200px;
+		overflow-x: hidden;
+	}
+	ul li {
+		width: 100%;
+		list-style: none;
+		height: 25px;
+		line-height: 25px;
+		padding-left: 10px;
+		text-align: left;
+
+	}
+	ul li:hover{
+		background-color: #CCCCCC;
+	}
+	</style>
 <div id="wrap">
     <div id="lbtn"><a href="{spUrl c=main a=login}"><span>登录</span></a></div>
     <div id="main">
@@ -27,6 +58,24 @@
 					</div>
 					<div class="login_name in_put">
 					    <input type="text" id="username" name="username" class="input tip" tabindex="3" value="{$smarty.post.username}" title="请输入昵称" />
+					</div>
+					<div class="login_name in_put">
+				        <input style="background-image:url({$syskin}/image/login/input_other.png)" type="text" id="school" class="input tip"  tabindex="4" value="{$smarty.post.school}" title="选择您的园区" />
+				        <input type="hidden" name="school" value="" />
+				        <ul style="position: absolute;display: none;" id="list_school">
+				        	{foreach $schools as $vo}
+				        		<li value="{$vo.uid}">{$vo.username}</li>
+				        	{/foreach}
+				        </ul>
+					</div>
+					<div class="login_name in_put">
+				        <input style="background-image:url({$syskin}/image/login/input_other.png)" type="text" id="class" class="input tip"  tabindex="5" value="{$smarty.post.class}" title="选择您的班级" />
+				        <input type="hidden" value="" name="class" />
+				        <ul style="position: absolute;display: none;" id="list_class">
+				        	<li><a href="javascript:;">1</a></li>
+				        	<li><a href="javascript:;">2</a></li>
+				        	<li><a href="javascript:;">3</a></li>
+				        </ul>
 					</div>
 									
 					{if $yb.invite_switch == 1 || $invitemode}
@@ -85,7 +134,29 @@
 	
 	{include file="require_footer.html"}
     
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("#school").focusin(function(){
+			$("#list_school").show();
+		});
 
+		$("#list_school > li").click(function(){
+			$("#school").val($(this).text());
+			$("input[name='school']").val($(this).attr("value"));
+			$("#list_school").fadeOut();
+		});
+		$("#school").focusout(function(){
+			$("#list_school").fadeOut();
+		});
+
+		$("#class").focusin(function(){
+			var schoolId = $("input[name='school']").val();
+			if(schoolId !== ""){
+				
+			}
+		});
+	});
+	</script>
 </div>
 </body>
 </html>
