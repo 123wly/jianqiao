@@ -3,43 +3,43 @@
 <div id="content">
 
     <div class="t_con">
-	    <h3>广告位信息</h3>
+	    <h3>图片位信息</h3>
 		
 		<table width="100%" cellpadding="0" cellspacing="0" border="0" class="table_padding">
 			       <tr>
-				       <td width="90" class="t_title">广告位ID</td>
+				       <td width="90" class="t_title">图片位ID</td>
 					   <td class="c_font">{$rs.id}</td>
 				   </tr>
 				   <tr>
-				       <td class="t_title">广告位标题</td>
+				       <td class="t_title">图片位标题</td>
 					   <td class="c_font">{$rs.title}</td>
 				   </tr>
 				   <tr>
-				       <td class="t_title">广告描述</td>
+				       <td class="t_title">图片描述</td>
 					   <td class="c_font">{$rs.adesc}</td>
 				   </tr>    
-				   <tr>
-				       <td class="t_title">广告位置截图</td>
+				   <!-- <tr>
+				       <td class="t_title">图片位置截图</td>
 					   <td class="co_img"><img src="{$syskin}/admin/style/ad_unit/{$rs.img}" alt="#" /></td>
-				   </tr>    
+				   </tr>   -->  
 				   <tr>
-                       <td class="t_title">排序:</td>
+                       <td class="t_title">所属用户:</td>
                        <td class="c_font">{$rs.orders}</td>
 				   </tr>
-				   <tr>
+				  <!--  <tr>
                        <td class="t_title">是否显示:</td>
                        <td>{if $rs.is_show == 1}<div class="fun_yes" title="显示"></div>{else}<div class="fun_no" title="隐藏"></div>{/if}</td>
-                   </tr>
+                   </tr> -->
 				   {if $rs.system != 1}
-				   <tr>
+				  <!--  <tr>
                        <td class="t_title">调用脚本</td>
                        <td>
 					       <table class="table_code" cellpadding="0" cellspacing="0">
 						       <tr>
 								   <td colspan="3" class="table_tip">
 								       <p>请把如下代码的：UNITID 替换成: {$rs.id}</p>
-									   <p>请把如下代码的：#DOM_ID 替换成你要展示广告的div</p>
-									   <p>请把如下代码的：TIMELIMIT 替换成你需要刷新广告位的时间（3000为30秒）</p>
+									   <p>请把如下代码的：#DOM_ID 替换成你要展示图片的div</p>
+									   <p>请把如下代码的：TIMELIMIT 替换成你需要刷新图片位的时间（3000为30秒）</p>
 								   </td>
 							   </tr>
 							   <pre>
@@ -103,7 +103,7 @@
 							   </pre>
 						   </table>
 					   </td>
-                   </tr>
+                   </tr> -->
 				   {/if}
 				   
 				   
@@ -122,19 +122,19 @@
 <div id="content">
 <form action="" method="post"  name="form1" id="form1">
     <div class="t_con">
-	    <h3>编辑广告位</h3>
+	    <h3>编辑图片位</h3>
 		
 		<table width="100%" cellpadding="0" cellspacing="0" border="0" class="table_padding">
 			       <tr>
-				       <td width="90" class="t_title">广告位标题</td>
+				       <td width="90" class="t_title">图片位标题</td>
 					   <td class="c_input"><input type="text" value="{$rs.title}" name="title" /></td>
 				   </tr>
 				   <tr>
-				       <td class="t_title">广告描述:</td>
+				       <td class="t_title">图片描述:</td>
                        <td class="c_input"><input type="text" value="{$rs.adesc}" name="adesc" /></td>
 				   </tr>
 				   <tr>
-				       <td class="t_title">广告位置截图:</td>
+				       <td class="t_title">图片位置截图:</td>
                        <td class="co_img c_input">
 					       <img src="{$rs.img}" alt="#" /><br />
 						   <input type="text" name="img" value="{$rs.img}" />
