@@ -126,7 +126,6 @@
 #content .cyzs{
 	width:100%;
 	background:#15c1e5;
-	height:800px;
 	overflow:hidden;
 }
 #content .cyzs h2{
@@ -198,7 +197,7 @@
 }
 #content .cyzs .tab_content .gengduo{
 	text-align:center;
-	margin-top:20px;
+	margin:20px 0;
 }
 #content .cyzs .tab_content .none {
 	display: none;

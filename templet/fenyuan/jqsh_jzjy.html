@@ -15,7 +15,7 @@
             <div class="jzjynr">
             	<ul>
                     {foreach $articles as $vo}
-                    <li><span>{$vo.create_time|date_format:'%Y-%m-%d'}</span><a href="{spUrl c=$vo['tpl'] id=$vo['id']}">{$vo.title}</a></li> 
+                    <li><span>{$vo.create_time|date_format:'%Y-%m-%d'}</span><a href="{spUrl c=$vo['tpl'] id=$vo['id']}">{$vo.title|msubstr:'0':'35'}</a></li> 
                     {/foreach}
                 </ul>
             </div>
