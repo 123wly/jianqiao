@@ -11,67 +11,169 @@
             <div class="left chzsp">
                 <h1>每周食谱<span>Recipe of the week</span></h1>
                 <div class="mzsp_nr">
-                    <div class="txtx_top">
-                        <p class="shangz">
-                            <a href="{spUrl c=mzsp week=$upweek tid=$cTerm.id}">
-                                << 上一周 
-                            </a>
-                        </p>
-                        <p class="xiaox">
-                            <img src="{$skin_path}images/xiaox.png" />
-                        </p>
-                        <p class="riqi">01/05 - 01/09</p>
-                        <p class="xiaz"><a href="{spUrl c=mzsp week=$nextweek tid=$cTerm.id}"> 下一周  >> </a>
-                        </p>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="ysb">
-                        <ul class="ysb_top">
-                            <li><img src="{$skin_path}images/shijianb.jpg" />
-                            </li>
-                            <li><img src="{$skin_path}images/zhouyi.jpg" />
-                            </li>
-                            <li><img src="{$skin_path}images/zhouer.jpg" />
-                            </li>
-                            <li><img src="{$skin_path}images/zhousan.jpg" />
-                            </li>
-                            <li><img src="{$skin_path}images/zhousi.jpg" />
-                            </li>
-                            <li><img src="{$skin_path}images/zhouwu.jpg" />
-                            </li>
-                            <div class="clear"></div>
-                        </ul>
-                        <ul class="left ysb_left">
-                            <li><img src="{$skin_path}images/zhaoc.jpg" />
-                            </li>
-                            <li><img src="{$skin_path}images/zhongcan.jpg" />
-                            </li>
-                            <li><img src="{$skin_path}images/wuchan.jpg" />
-                            </li>
-                            <li><img src="{$skin_path}images/wudian.jpg" />
-                            </li>
-                            <li><img src="{$skin_path}images/wandian.jpg" />
-                            </li>
-                        </ul>
-                        <ul class="left ysb_right">
-                            {if !empty($week_data)}
-                                {foreach $week_data as $vo}
-                                    {foreach $vo as $v}
-                                    <li title="{$v}">
-                                        <img src="{$skin_path}images/beij.jpg" />
-                                        <span>{$v|vstr_replace:"\n":"<br />"}</span>
-                                    </li>
-                                    {/foreach}
-                                {/foreach}
-                            {else}
-                                <p><img src="{$skin_path}images/shipu-1.png" /></p>
-                            {/if}
-                        </ul>
-                        <div class="clear"></div>
+                    <div class="fxst">
+                        <div class="tab_title">
+                            <div class="u">
+                               <ul class="scrol">
+                                   <li class="selected"><a>每周食谱</a></li>
+                                   <li><a>今日食谱</a></li>
+                                   <div class="clear"></div>
+                               </ul>
+                            </div>
+                        </div>
+                        <div class="tab_content">
+                           <div class="hui">
+                                <div class="txtx_top">
+                                    <p class="shangz"><a href="{spUrl c=mzsp week=$upweek tid=$cTerm.id}"> &lt;&lt; 上一周  </a> </p>
+                                    <p class="xiaox"><img src="{$skin_path}images/xiaox.png" /></p>
+                                    <p class="riqi">{$begin_time} - {$end_time}</p>
+                                    <p class="xiaz"><a href="{spUrl c=mzsp week=$nextweek tid=$cTerm.id}"> 下一周 &gt;&gt; </a></p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="ysb">
+                                    <ul class="ysb_top">
+                                        <li><img src="{$skin_path}images/shijianb.jpg" /></li>
+                                        <li><img src="{$skin_path}images/zhouyi.jpg" /></li>
+                                        <li><img src="{$skin_path}images/zhouer.jpg" /></li>
+                                        <li><img src="{$skin_path}images/zhousan.jpg" /></li>
+                                        <li><img src="{$skin_path}images/zhousi.jpg" /></li>
+                                        <li><img src="{$skin_path}images/zhouwu.jpg" /></li>
+                                        <div class="clear"></div>
+                                    </ul>
+                                    <ul class="left ysb_left">
+                                        <li><img src="{$skin_path}images/zaodian .png" /></li>
+                                        <li><img src="{$skin_path}images/zaodian.png" /></li>
+                                        <li><img src="{$skin_path}images/wucan.png" /></li>
+                                        <li><img src="{$skin_path}images/zhongdian.png" /></li>
+                                        <li><img src="{$skin_path}images/wanchan.png" /></li>
+                                    </ul>
+                                    <ul class="left ysb_right">
+                                        {if !empty($week_data)}
+                                            {foreach $week_data as $vo}
+                                                {foreach $vo as $v}
+                                                <li title="{$v.title}">
+                                                    {$v.cook|vstr_replace:"\n":"<br />"}
+                                                </li>
+                                                {/foreach}
+                                            {/foreach}
+                                        {else}
+                                            <p><img src="{$skin_path}images/shipu-1.png" /></p>
+                                        {/if}
+                                    </ul>
+                                    <div class="clear"></div>
+                                </div>
+                           </div>
+                           <div class="hui none">
+                                <h4>今日早餐</h4>
+                                <table width="800">
+                                  <tr>
+                                    <td class="w365">
+                                        <ul>
+                                            <li>{$dayData.zao|vstr_replace:"\n":"<br />"}</li>
+                                        </ul>
+                                    </td>
+                                    <td class="430"><p><img src="{$skin_path}images/06.png" /></p></td>
+                                  </tr>
+                                </table>
+                                <h4>今日早点</h4>
+                                <table width="800">
+                                  <tr>
+                                    <td class="w365">
+                                        <p><img src="{$skin_path}images/10.png" /></p>
+                                    </td>
+                                    <td class="430">
+                                        <ul>
+                                            <li>{$dayData.zaodian|vstr_replace:"\n":"<br />"}</li>
+                                        </ul>
+                                    </td>
+                                  </tr>
+                                </table>
+                                <h4>今日午餐</h4>
+                                <table width="800">
+                                  <tr>
+                                    <td class="w365">
+                                        <ul>
+                                            <li>{$dayData.wu|vstr_replace:"\n":"<br />"}</li>
+                                        </ul>
+                                    </td>
+                                    <td class="430"><p><img src="{$skin_path}images/16.png" /></p></td>
+                                  </tr>
+                                </table>
+                                <h4>今日午点</h4>
+                                <table width="800">
+                                  <tr>
+                                    <td class="w365">
+                                        <p><img src="{$skin_path}images/24.png" /></p>
+                                    </td>
+                                    <td class="430">
+                                        <ul>
+                                            <li>{$dayData.wudian|vstr_replace:"\n":"<br />"}</li>
+                                        </ul>
+                                    </td>
+                                  </tr>
+                                </table>
+                                <h4>今日晚餐</h4>
+                                <table width="800">
+                                  <tr>
+                                    <td class="w365">
+                                        <ul>
+                                            <li>{$dayData.wan|vstr_replace:"\n":"<br />"}</li>
+                                        </ul>
+                                    </td>
+                                    <td class="430"><p><img src="{$skin_path}images/30.png" /></p></td>
+                                  </tr>
+                                </table>
+                           </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="clear"></div>
         </div>
     </div>
+    <script language="javascript">
+    $(function() {
+        var index = 0;
+        $(".tab_title ul li").click(function() {
+            index = $(".tab_title ul li").index(this);
+            $(this).addClass("selected").siblings().removeClass("selected");
+            $(".tab_content .hui").eq(index).show().siblings().hide();
+        });
+        var i = 4; //定义每个面板显示8个菜单
+        var len = $(".u .scrol li").length; //获得LI元素的个数
+        var page = 1;
+        var maxpage = Math.ceil(len / i);
+        var scrollWidth = $(".u").width();
+        $(".vright").click(function(e) {
+            if (!$(".u .scrol").is(":animated")) {
+                if (page == maxpage) {
+                    $(".u .scrol").stop();
+                    $("#div1").css({
+                        "top": (e.pageY + 20) + "px",
+                        "left": (e.pageX + 20) + "px",
+                        "opacity": "0.9"
+                    }).stop(true, false).fadeIn(800).fadeOut(800);
+                } else {
+                    $(".u .scrol").animate({
+                        left: "-=" + scrollWidth + "px"
+                    }, 2000);
+                    page++;
+                }
+            }
+        });
+        $(".vleft").click(function() {
+            if (!$(".u .scrol").is(":animated")) {
+                if (page == 1) {
+                    $(".u .scrol").stop();
+                } else {
+                    $(".u .scrol").animate({
+                        left: "+=" + scrollWidth + "px"
+                    }, 2000);
+                    page--;
+                }
+            }
+        });
+    });
+    </script>
+
 {/block}

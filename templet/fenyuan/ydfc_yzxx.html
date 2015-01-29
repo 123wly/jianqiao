@@ -6,21 +6,42 @@
         <div class="left gy_left">
             {include_php './templet/fenyuan/public/gy_left.php'} {include_php './templet/fenyuan/public/yuyue.php'}
         </div>
+        <style>
+        
+        </style>
         <div class="right gy_right">
-            <h2>{$cTerm.name}</h2>
-            <div>
-                <span>用户姓名 ：</span>
-                <div><input type="text" name="username" /></div>
-            </div>
-            <div>
-                <span>电子邮件 ：</span>
-                <div></div>
-            </div>
-            <div>
-                <span>正文内容 ：</span>
-            </div>
+            <h2>园长信箱</h2>
+            <form action="{spUrl c=publicc a=guestbook}" method="post">
+                <div class="yzxin">
+                    <ul>
+                        <li><span>*</span> 您的称呼：<input type="text" name="username" /></li>
+                        <li><span>*</span> 电子邮件：<input type="text" name="email" /></li>
+                        
+                        <li><span>*</span> 正    文  ：<textarea name="content"></textarea></li>
+                        <div class="clear"></div>
+                        <li class="yzm"><span>*</span> 验 证 码 ：<input type="text" name="vericode" />
+                            <span class="yzmt">
+                                <img src="{spUrl c=main a=vcode t=$time}" class="vericode" onClick="reloadcode('vericode')" title="看不清楚，换一张" id="vericode" />
+                            </span>
+                        </li>
+                        <div class="clear"></div>
+                    </ul>
+                    <p>
+                        <input type="submit" name="" value="" />
+                    </p>
+                </div>
+            </form>
         </div>
         <div class="clear"></div>
     </div>
 </div>
+<script type="text/javascript">
+    function reloadcode(id) 
+    {
+        var url = $('#'+id).attr('src') + '&nowtime=' + new Date().getTime();
+        if($('#'+id).attr('src') != undefined){
+            $('#'+id).attr('src',url);
+        }
+    }
+</script>
 {/block}

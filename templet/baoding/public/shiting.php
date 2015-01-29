@@ -43,11 +43,7 @@
             <tr>
                 <td class="wenz left">选择园所：</td>
                 <td class="text left">
-                    <select name="xuexiao">
-                        <?php foreach ($schools as $key => $vo): ?>
-                            <option value="<?php echo $vo['username']; ?>"><?php echo $vo['username']; ?></option>
-                        <?php endforeach ?>
-                    </select>
+                    <input id="input_schools" type="text" name="xuexiao" class="txt">
                 </td>
             </tr>
             <tr>

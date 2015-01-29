@@ -39,7 +39,12 @@
                                             <?php $ars = spClass("db_article")->findAll(array("term_id"=>$v["id"])); ?>
                                             <?php foreach ($ars as $k1 => $v1): ?>
                                                 <li>
-                                                    <a href="<?php echo $v1['tpl'] ?>"><?php echo $v1["title"]; ?></a>
+                                                    <?php if ($v1["recommend"] == 1): ?>
+                                                        <?php $redLi = ' style="color:red;"'; ?>
+                                                    <?php else: ?>
+                                                        <?php $redLi = ''; ?>
+                                                    <?php endif; ?>
+                                                    <a href="<?php echo $v1['tpl'] ?>" <?php echo $redLi; ?>><?php echo $v1["title"]; ?></a>
                                                 </li>
                                             <?php endforeach ?>
                                             <p>
