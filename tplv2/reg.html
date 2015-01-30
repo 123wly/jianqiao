@@ -70,12 +70,8 @@
 					</div>
 					<div class="login_name in_put">
 				        <input style="background-image:url({$syskin}/image/login/input_other.png)" type="text" id="class" class="input tip"  tabindex="5" value="{$smarty.post.class}" title="选择您的班级" />
-				        <input type="hidden" value="" name="class" />
-				        <ul style="position: absolute;display: none;" id="list_class">
-				        	<li><a href="javascript:;">1</a></li>
-				        	<li><a href="javascript:;">2</a></li>
-				        	<li><a href="javascript:;">3</a></li>
-				        </ul>
+				        <input type="hidden" value="" name="puid" />
+				        <ul style="position: absolute;display: none;" id="list_class"></ul>
 					</div>
 									
 					{if $yb.invite_switch == 1 || $invitemode}
@@ -137,12 +133,15 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 		$("#school").focusin(function(){
+			$("input[name='puid']").val("");
+			$("#class").val("");
 			$("#list_school").show();
 		});
 
 		$("#list_school > li").click(function(){
 			$("#school").val($(this).text());
 			$("input[name='school']").val($(this).attr("value"));
+			$("#list_class > li").remove();
 			$("#list_school").fadeOut();
 		});
 		$("#school").focusout(function(){
@@ -151,9 +150,23 @@
 
 		$("#class").focusin(function(){
 			var schoolId = $("input[name='school']").val();
-			if(schoolId !== ""){
-				
+			if(schoolId !== "" && $("#list_class li").length <= 0){
+				$.post('{spUrl c=api yc=fetch ym=getClass}', { schoolId: schoolId }, function(data) {
+					var data = $.parseJSON(data);
+					$.each(data.body, function(index, val) {
+						$("#list_class").append('<li value="' + val.uid + '">' + val.username + '</li>');
+					});
+				});
 			}
+			$("#list_class").show();
+		});
+		$("#list_class > li").live("click",function(){
+			$("#class").val($(this).text());
+			$("input[name='puid']").val($(this).attr("value"));
+			$("#list_class").fadeOut();
+		});
+		$("#class").focusout(function(){
+			$("#list_class").fadeOut();
 		});
 	});
 	</script>

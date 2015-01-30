@@ -30,7 +30,7 @@
 			<div id="feed_box"></div>
 			<script type="text/javascript">
 				$(document).ready(function(){ 
-					yb_load_feeds('blog','feeds');
+					// yb_load_feeds('blog','feeds');
 				})
 			</script>
 		</div>
@@ -64,5 +64,9 @@
         {include file="require_sider.html"}
     </div>
 </div>
-
+<script>
+	$(document).ready(function() {
+		changeFeeds('followfeeds',$("#myfollow_tab"));
+	});
+</script>
 {include file="require_footer.html" top=yes}

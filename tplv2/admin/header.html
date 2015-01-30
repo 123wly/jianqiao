@@ -19,60 +19,60 @@
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 	<td width="160" valign="top">
-	    <div id="admin_area">
-		    <div id="admin_shadow"></div> 
-		    <div class="logo"><a href="{spUrl c=admin a=index}">logo</a></div>
+		<div id="admin_area">
+			<div id="admin_shadow"></div> 
+			<div class="logo"><a href="{spUrl c=admin a=index}">logo</a></div>
 			<div class="logo_line"></div>
 			<div class="admin_menu">
 
-			    <ul id="nav">
-			        <li>
-			        	<a href="{spUrl c=admin a=index}" {$curr_index}><span class="f_index">管理平台</span></a>
-			        </li>
+				<ul id="nav">
+					<li>
+						<a href="{spUrl c=admin a=index}" {$curr_index}><span class="f_index">管理平台</span></a>
+					</li>
 
-			        <li>
-			        	<a href="{spUrl c=admin a=system}" {$curr_system}><span class="f_system">系统管理</span></a>
-			        </li>
-			        <div {$curr_systemdisplay}>
-			            <a href="{spUrl c=admin a=models}" {$curr_models}>模型管理</a>
-			            <!-- <a href="{spUrl c=admin a=cpage}" {$curr_cpage}>自定义页面管理</a> -->
-			            <a href="{spUrl c=admin a=term}" {$curr_term}>网站栏目管理</a>
-			        </div>
+					<li>
+						<a href="{spUrl c=admin a=system}" {$curr_system}><span class="f_system">系统管理</span></a>
+					</li>
+					<div {$curr_systemdisplay}>
+						<a href="{spUrl c=admin a=models}" {$curr_models}>模型管理</a>
+						<!-- <a href="{spUrl c=admin a=cpage}" {$curr_cpage}>自定义页面管理</a> -->
+						<a href="{spUrl c=admin a=term}" {$curr_term}>网站栏目管理</a>
+					</div>
 
-			        <li>
-			        	<a href="{spUrl c=admin a=blog}" {$curr_blog}><span class="f_blog">博客管理</span></a>
-			        </li>
-			        <div {$curr_blogdisplay}>
-			            <a href="{spUrl c=admin a=blog}" {$curr_ablog}>博客内容</a>
-			            <a href="{spUrl c=admin a=blogverify}" {$curr_ablogverify}>内容审核</a>
-			            <a href="{spUrl c=admin a=systag}" {$curr_systag}>系统标签</a>
-			            <a href="{spUrl c=admin a=usertag}" {$curr_usertag}>用户标签</a>
-			            <!-- <a href="{spUrl c=admin a=sort}" {$curr_sort}>分类管理</a> -->
-			            <!--<a href="{spUrl c=admin a=recommend}" {$curr_recommend}>推荐</a>-->
-			        </div>
+					<li>
+						<a href="{spUrl c=admin a=blog}" {$curr_blog}><span class="f_blog">博客管理</span></a>
+					</li>
+					<div {$curr_blogdisplay}>
+						<a href="{spUrl c=admin a=blog}" {$curr_ablog}>博客内容</a>
+						<a href="{spUrl c=admin a=blogverify}" {$curr_ablogverify}>内容审核</a>
+						<a href="{spUrl c=admin a=systag}" {$curr_systag}>系统标签</a>
+						<a href="{spUrl c=admin a=usertag}" {$curr_usertag}>用户标签</a>
+						<!-- <a href="{spUrl c=admin a=sort}" {$curr_sort}>分类管理</a> -->
+						<!--<a href="{spUrl c=admin a=recommend}" {$curr_recommend}>推荐</a>-->
+					</div>
 					
 					<li>
 						<a href="{spUrl c=admin a=article_list}" {$curr_article}><span class="f_system">文章管理</span></a>
 					</li>
 					<div {$curr_article_div}>
-			            <a href="{spUrl c=admin a=article_list}" {$curr_article_list}>内容列表</a>
-					    <a href="{spUrl c=admin a=article_add}" {$curr_article_add}>增改内容</a>
+						<a href="{spUrl c=admin a=article_list}" {$curr_article_list}>内容列表</a>
+						<a href="{spUrl c=admin a=article_add}" {$curr_article_add}>增改内容</a>
 					</div>
 
 					<li>
 						<a href="{spUrl c=admin a=zhaopin}" {$curr_zhaopin}><span class="f_system">招聘管理</span></a>
 					</li>
 					<div {$curr_zhaopin_div}>
-			            <a href="{spUrl c=admin a=zhaopin do=list}" {$curr_zhaopin_list}>招聘列表</a>
-					    <a href="{spUrl c=admin a=zhaopin do=save}" {$curr_zhaopin_save}>增改岗位</a>
-					    <!-- <a href="{spUrl c=admin a=zhaopin do=jianli}" {$curr_zhaopin_jianli}>简历列表</a> -->
+						<a href="{spUrl c=admin a=zhaopin do=list}" {$curr_zhaopin_list}>招聘列表</a>
+						<a href="{spUrl c=admin a=zhaopin do=save}" {$curr_zhaopin_save}>增改岗位</a>
+						<!-- <a href="{spUrl c=admin a=zhaopin do=jianli}" {$curr_zhaopin_jianli}>简历列表</a> -->
 					</div>
 
 					<li>
 						<a href="{spUrl c=admin a=bmorder}" {$curr_bm}><span class="f_system">报名管理</span></a>
 					</li>
 					<div {$curr_bm_div}>
-			            <a href="{spUrl c=admin a=bmorder}" {$curr_bm_list}>报名列表</a>
+						<a href="{spUrl c=admin a=bmorder}" {$curr_bm_list}>报名列表</a>
 					</div>
 
 					<li>
@@ -85,41 +85,44 @@
 						</a>
 					</li>
 					<div {$curr_cook_div}>
-			            <a href="{spUrl c=admin a=cook do=week year=$cook_year week={$cook_week}}" {$curr_cook_week}>周食谱</a>
-			            <!-- <a href="{spUrl c=admin a=cook do=day}" {$curr_cook_day}>日食谱</a> -->
+						<a href="{spUrl c=admin a=cook do=week year=$cook_year week={$cook_week}}" {$curr_cook_week}>周食谱</a>
+						<!-- <a href="{spUrl c=admin a=cook do=day}" {$curr_cook_day}>日食谱</a> -->
 					</div>
 
-			        <li>
-			        	<a href="{spUrl c=admin a=adUnit}" {$curr_adUnit}><span class="f_ad">广告管理</span></a>
-			        </li>
-			        <div {$curr_addisplay}>
-			            <a href="{spUrl c=admin a=adUnit}" {$curr_aadUnit}>广告位管理</a>
-			            <a href="{spUrl c=admin a=adContent}" {$curr_aadlist}>广告管理</a>
-			        </div>
+					<li>
+						<a href="{spUrl c=admin a=adUnit}" {$curr_adUnit}><span class="f_ad">广告管理</span></a>
+					</li>
+					<div {$curr_addisplay}>
+						<a href="{spUrl c=admin a=adUnit}" {$curr_aadUnit}>广告位管理</a>
+						<a href="{spUrl c=admin a=adContent}" {$curr_aadlist}>广告管理</a>
+					</div>
+					{if isAdminRole()}
+					<li>
+						<a href="{spUrl c=admin a=user}" {$curr_user}><span class="f_user">用户管理</span></a>
+					</li>
+					<div {$curr_noticedisplay}>
+						<a href="{spUrl c=admin a=notice}" {$curr_anotice}>系统通知</a>
+					</div>
 
-			        <li><a href="{spUrl c=admin a=user}" {$curr_user}><span class="f_user">用户管理</span></a>
-			        </li>
-			        <div {$curr_noticedisplay}>
-			            <a href="{spUrl c=admin a=notice}" {$curr_anotice}>系统通知</a>
-
-			        </div>
-			        <li><a href="{spUrl c=admin a=theme}" {$curr_theme}><span class="f_theme">主题管理</span></a>
-			        </li>
-			        <li><a href="{spUrl c=admin a=database}" {$curr_database}><span class="f_database">数据管理</span></a>
-			        </li>
-
-			    </ul>
+					<li>
+						<a href="{spUrl c=admin a=theme}" {$curr_theme}><span class="f_theme">主题管理</span></a>
+					</li>
+					<li>
+						<a href="{spUrl c=admin a=database}" {$curr_database}><span class="f_database">数据管理</span></a>
+					</li>
+					{/if}
+				</ul>
 			</div>
 		</div>
 	</td>
 	<td valign="top">
-    <div id="admin_header">
-	    <div class="administrator">
-		    <li class="headinfo"><a href="{goUserHome uid=$smarty.session.uid}" target="_blank">
-            <img src="{avatar uid=$smarty.session.uid size=middle}" alt="{$info.username}"/></a></li>
+	<div id="admin_header">
+		<div class="administrator">
+			<li class="headinfo"><a href="{goUserHome uid=$smarty.session.uid}" target="_blank">
+			<img src="{avatar uid=$smarty.session.uid size=middle}" alt="{$info.username}"/></a></li>
 			<li><a href="{goUserHome uid=$smarty.session.uid}" target="_blank">欢迎 {$smarty.session.username}</a></li>
 			<li><a href="{spUrl c=main}" target="_blank">返回网站</a></li>
 		</div>
-	    <div class="ws_title">{$yb.site_title}</div>
+		<div class="ws_title">{$yb.site_title}</div>
 	</div>
    {if isset($get.ac)} <script>showprccmsg('{$get.ac}')</script> {/if}

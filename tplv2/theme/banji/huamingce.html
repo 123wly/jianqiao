@@ -7,7 +7,7 @@
         <div class="huamc">
             <h3>老师</h3>
             <ul>
-                {foreach from=$tofollow.2 item=da}
+                {foreach from=$tofollow.teacher item=da}
                     <li>
                         <a href="{goUserHome domain=$da.domain uid=$da.uid}" title="{$da.username}" target="_blank">
                             <img src="{avatar uid=$da.uid size=big}" alt="{$da.username}" />
@@ -18,7 +18,7 @@
             </ul>
             <h3>同班同学</h3>
             <ul>
-                {foreach from=$tofollow.3 item=da}
+                {foreach from=$tofollow.student item=da}
                     <li>
                         <a href="{goUserHome domain=$da.domain uid=$da.uid}" title="{$da.username}" target="_blank">
                             <img src="{avatar uid=$da.uid size=big}" alt="{$da.username}" />

@@ -126,6 +126,11 @@ class db_member extends ybModel
 		spClass('ybCookie')->set_cookie('auth',$password);
 		
 		spClass('db_notice')->sendRegisgtr($uid);
+		
+		//互相关注
+		spClass("db_follow")->createTwoFollow($uid, $row['puid']);
+		////
+
 		return $uid;
 	}
 	

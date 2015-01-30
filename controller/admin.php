@@ -214,6 +214,12 @@ class admin extends top
         $this->display('admin/user.html');
     }
 
+
+    //@@@@@@
+    public function nihao(){
+        print_r($_SESSION);
+    }
+
     private function get_avatar($uid, $size = 'middle', $type = '')
     {
         $size = in_array($size, array('big', 'middle', 'small')) ? $size : 'middle';
@@ -1386,4 +1392,7 @@ class admin extends top
         $this->list = spClass("db_guestbook")->findAll(array("uid"=>$_SESSION["uid"]));
         $this->display("admin/guestbook.html");
     }
+
+
+
 }
