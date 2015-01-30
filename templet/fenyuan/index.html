@@ -99,7 +99,7 @@ $(function() {
                     <div class="xwzx_xian">
                         {foreach $f_news as $vo} 
                             {if $vo@index eq 0}
-                            <h3 class="qdbj"><a href="{spUrl c=$vo.tpl id=$vo.id}">{$vo.title}</a></h3>
+                            <h3 class="qdbj"><a href="{spUrl c=$vo.tpl id=$vo.id}">{$vo.title|msubstr:'0':'10'}</a></h3>
                             <p>{$vo.brief|msubstr:'0':'70'}</p>
                             {else}
                             <h3><a href="{spUrl c=$vo.tpl id=$vo.id}">{$vo.title}</a></h3> 
@@ -128,7 +128,7 @@ $(function() {
                 <div class="p35">
                     <h2>{$f_ju.name}<span>{$f_ju.en_name}</span></h2> 
                     {foreach $f_jiyu as $vo}
-                        <h3><a href="{spUrl c=$vo.tpl id=$vo.id}">{$vo.title}</a></h3>
+                        <h3><a href="{spUrl c=$vo.tpl id=$vo.id}">{$vo.title|msubstr:'0':'10'}</a></h3>
                         <p>{$vo.brief|msubstr:'0':'80'}</p>
                     {/foreach}
                     <div class="genduo">

@@ -73,9 +73,6 @@
 	background:url(../images/lanse.png) no-repeat;
 	color:#ffffff;
 }
-
-
-
 #content .jscyzs{
 	margin-top:13px;
 }
@@ -135,13 +132,6 @@
 	height:172px;
 	background:url(../images/jiakabj.png) no-repeat;
 }
-
-
-
-
-
-
-
 #content .textnr {
 	color: #8888888;
 	font-size: 12px;
@@ -270,6 +260,9 @@
 	background:#ffffff;
 	position:relative;
 	margin-bottom:40px;
+	-moz-box-shadow:3px 4px 10px #b5b3b3;
+	-webkit-box-shadow:3px 4px 10px #b5b3b3; 
+	box-shadow:3px 4px 10px #b5b3b3;
 }
 #content .gy_left .gy_top ul{
 	width:240px;
@@ -281,9 +274,9 @@
 	-moz-border-radius:25px; 
 	-webkit-border-radius:25px; 
 	border-radius: 25px;
-	-moz-box-shadow:0 -1px 5px #b5b3b3;
-	-webkit-box-shadow:0 -1px 5px #b5b3b3; 
-	box-shadow:0 -1px 5px #b5b3b3;
+	-moz-box-shadow: 2px 2px 5px #7b7b7b inset;
+	-webkit-box-shadow:  2px 2px 5px #7b7b7b inset;
+	box-shadow:  2px 2px 5px #7b7b7b inset;
     behavior:url(pie.htc);
 }
 #content .gy_left .gy_top ul h3{

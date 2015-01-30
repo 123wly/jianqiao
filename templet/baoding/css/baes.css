@@ -304,6 +304,15 @@ input{
 	height:386px;
 	z-index:9999999;
 }
+#right_xf ul{
+	height:315px;
+	overflow:hidden;
+	filter:alpha(opacity=80);
+	-moz-opacity:0.80;
+	-khtml-opacity: 0.80;
+	opacity: 0.80;
+	background:#a4bf78;
+}
 #right_xf ul li a{
 	display:block;
 	width:60px;
@@ -312,18 +321,53 @@ input{
 	background:url(../images/cdaoh.png);
 }
 #right_xf ul li.kf a{
-	background-position:0 -62px;
+	background-position:0 -63px;
 }
 #right_xf ul li.hdzs a{
-	background-position:0 -124px;
+	background-position:0 -126px;
 }
 #right_xf ul li.ysfb a{
-	background-position:0 -188px;
+	background-position:0 -190px;
 }
 #right_xf ul li.jrwm a{
-	background-position:0 -250px;
+	background-position:0 -252px;
 }
-#right_xf ul li.fhdb a{
+#right_xf p.fhdb a{
 	background:url(../images/fanhui.png) no-repeat;
 	margin-top:10px;
+	display:block;
+	width:60px;
+	height:60px;
+	overflow:hidden;
+}
+#right_xf ul li a span{
+	background:url(../images/cdaoh.png)  no-repeat 0 -13px #a4bf78;
+    color: #fff;
+	font-family:"微软雅黑";
+    display: none;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 62px;
+    position: absolute;
+	margin-top:5px;
+	cursor:pointer;
+    right: 0;
+    width: 100px;
+    z-index: 1;
+}
+#right_xf ul li.kf a:hover span{
+	background-position:0 -66px;
+}
+#right_xf ul li.hdzs a:hover span{
+	background-position:0 -132px;
+}
+#right_xf ul li.ysfb a:hover span{
+	background-position:0 -190px;
+}
+#right_xf ul li.jrwm a:hover span{
+	background-position:0 -252px;
+}
+#right_xf ul li a:hover span{
+	display:block;
 }
