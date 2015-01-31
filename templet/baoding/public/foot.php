@@ -7,43 +7,22 @@
     }
 </style>
 <div id="footer">
-    <div class="main">
-        <div class="foot_top">
-            <ul>
-                <h3>为什么选择剑桥<span>Why Choose Jianqiao</span></h3>
-                <?php foreach ($articles as $key => $vo): ?>
-                    <li><a href="<?php echo spUrl($vo['tpl'],'',array('id'=>$vo['id'])); ?>"><?php echo $vo['title']; ?></a></li>
-                <?php endforeach ?>
-            </ul>
-            <div class="kongge"></div>
-
-            <ul>
-                <h3>其他产业<span>Other Industries</span></h3>
-                <li>华顿英语培训学校</li>
-                <li>剑桥小学</li>
-                <li>剑桥体育用品有限公司</li>
-            </ul>
-            <div class="kongge"></div>
-
-            <ul>
-                <h3>联系我们<span>Contact Us</span></h3>
-                <li>幼儿园客服热线：400 0312 501</li>
-                <li>培训部客服热线：400 0312 502</li>
-                <li>成人部客服热线：400 0312 503</li>
-                <li>总部地址：高开区盛兴路369号</li>
-                <li>总部电话：2035995 5992828</li>
-            </ul>
-            <div class="kongge"></div>
-            
-            <ul>
-                <h3>为什么选择剑桥<span>Why Choose Jianqiao</span></h3>
-                <li class="weix"><img src="<?php echo $skin_path?>images/wx.png" />
-                </li>
-            </ul>
-        </div>
-        <div class="foot_bottom">
-            <p>北京万虎时代网络科技有限公司版权所有 | Copyright 2014-2015 All rights reserved | <span>技术支持：<a href="http://www.wanhunet.com">万虎网络</a></span> </p>
-        </div>
+    <div class="foot_top">
+         <p>
+            <a href="">保定剑桥幼儿园</a>   |   
+            <a href="">保定教委</a>   |   
+            <a href="">育儿网</a>   |   
+            <a href="">父母网</a>   |   
+            <a href="">童心摄影工作室</a>   |   
+            <a href="">早教网</a>   |   
+            <a href="">新浪教育频道</a>   |   
+            <a href="">腾讯教育</a>
+        </p>  
+    </div>
+    <div class="foot_bottom">
+        <p><a href="">剑桥简介</a>   <a href="">为什么选择剑桥</a>   <a href="">联系我们</a>   <a href="">加盟剑桥</a>   <a href="">招聘信息</a></p>
+        <p>保定剑桥教育集团版权所有 | Copyright 2015-2018 All rights reserved | 技术支持：万虎网络</p>
+        <p>咨询热线：400-850-xxxx</p>
     </div>
 </div>
 <script type="text/javascript">

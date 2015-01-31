@@ -124,17 +124,22 @@ class admin extends top
 
     function blog()
     {
-
+        $where = "1=1 ";
         if ($this->spArgs('submit')) {
             $title = $this->spArgs('title');
 
             $niname = $this->spArgs('niname');
-            $where = "title like '%$title%'";
+            $where .= " and title like '%$title%'";
             if ($niname) {
                 $where .= " and uid = '$niname'";
             }
         }
-        $this->blog = spClass('db_blog')->spLinker()->spPager($this->spArgs('page', 1), 20)->findAll($where, 'bid desc');
+
+        $data = spClass("db_member")->getChilds($_SESSION["uid"]);
+        $ins = "'".implode("','",$data)."'";
+        $where .= " and uid in ($ins)";
+        $rows = array('bid','uid','top','type','tag','title','open',"feedcount","hitcount","replaycount","noreply","time");
+        $this->blog = spClass('db_blog')->spLinker()->spPager($this->spArgs('page', 1), 20)->findAll($where, 'bid desc',implode(',',$rows));
         if ($this->spArgs('submit')) {
             $this->pager = spClass('db_blog')->spPager()->pagerHtml('admin', 'blog', array('title' => $title, 'niname' => $niname, 'submit' => $this->spArgs('submit')));
         } else {
@@ -216,8 +221,10 @@ class admin extends top
 
 
     //@@@@@@
-    public function nihao(){
-        print_r($_SESSION);
+    public function userEdit(){
+        $updateData[$this->spArgs("name")] = $this->spArgs("val");
+        $rs = spClass("db_member")->update(array("uid"=>$this->spArgs("eUid")), $updateData);
+        echo $rs ? 1 : 0;die;
     }
 
     private function get_avatar($uid, $size = 'middle', $type = '')
@@ -1037,7 +1044,7 @@ class admin extends top
 
             $db_term = spClass("db_term");
 
-            $list = $db_term->findAll();
+            $list = $db_term->findAll(array("uid"=>$_SESSION["uid"]));
             $this->list = $list;
             $this->listTree = create_tree($list);
             $this->display("admin/term.html");
@@ -1393,6 +1400,24 @@ class admin extends top
         $this->display("admin/guestbook.html");
     }
 
-
-
+    public function goAdmin(){
+        if(isAdminRole()){
+            $uid = $this->spArgs("uid");
+            $_SESSION["superAdmin"] = $_SESSION['uid'];
+            $rs = spClass("db_member")->find(array("uid"=>$uid));
+            spClass("db_member")->userLogin($rs);
+            $this->success("切换成功",spUrl("admin"));
+        }else {
+            $this->error("错误");
+        }
+       
+    }
+    public function backAdmin(){
+        if(isset($_SESSION["superAdmin"])){
+            $rs = spClass("db_member")->find(array("uid"=>$_SESSION["superAdmin"]));
+            spClass("db_member")->userLogin($rs);
+            unset($_SESSION["superAdmin"]);
+            $this->success("切换成功",spUrl("admin"));
+        }
+    }
 }

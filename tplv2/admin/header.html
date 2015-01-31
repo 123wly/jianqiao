@@ -44,9 +44,11 @@
 					</li>
 					<div {$curr_blogdisplay}>
 						<a href="{spUrl c=admin a=blog}" {$curr_ablog}>博客内容</a>
+						{if isAdminRole()}
 						<a href="{spUrl c=admin a=blogverify}" {$curr_ablogverify}>内容审核</a>
 						<a href="{spUrl c=admin a=systag}" {$curr_systag}>系统标签</a>
 						<a href="{spUrl c=admin a=usertag}" {$curr_usertag}>用户标签</a>
+						{/if}
 						<!-- <a href="{spUrl c=admin a=sort}" {$curr_sort}>分类管理</a> -->
 						<!--<a href="{spUrl c=admin a=recommend}" {$curr_recommend}>推荐</a>-->
 					</div>
@@ -78,7 +80,7 @@
 					<li>
 						<a href="{spUrl c=admin a=guestbook}" {$curr_guestbook}><span class="f_system">留言查看</span></a>
 					</li>
-
+					{if isAdminRole()}
 					<li>
 						<a href="{spUrl c=admin a=cook do=week year=$cook_year week={$cook_week}}" {$curr_cook}>
 							<span class="f_system">食谱管理</span>
@@ -88,7 +90,7 @@
 						<a href="{spUrl c=admin a=cook do=week year=$cook_year week={$cook_week}}" {$curr_cook_week}>周食谱</a>
 						<!-- <a href="{spUrl c=admin a=cook do=day}" {$curr_cook_day}>日食谱</a> -->
 					</div>
-
+					{/if}
 					<li>
 						<a href="{spUrl c=admin a=adUnit}" {$curr_adUnit}><span class="f_ad">广告管理</span></a>
 					</li>
@@ -122,6 +124,9 @@
 			<img src="{avatar uid=$smarty.session.uid size=middle}" alt="{$info.username}"/></a></li>
 			<li><a href="{goUserHome uid=$smarty.session.uid}" target="_blank">欢迎 {$smarty.session.username}</a></li>
 			<li><a href="{spUrl c=main}" target="_blank">返回网站</a></li>
+			{if isset($smarty.session.superAdmin)}
+			<li><a href="{spUrl c=admin a=backAdmin}">返回超级管理员</a></li>
+			{/if}
 		</div>
 		<div class="ws_title">{$yb.site_title}</div>
 	</div>

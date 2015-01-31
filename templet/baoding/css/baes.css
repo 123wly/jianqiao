@@ -6,7 +6,8 @@
 body{
 	font-family:"微软雅黑","宋体";
 	font-size:14px;
-	background:#fafafa;
+	background:url(../images/1.gif);
+	color:#444444;
 	/*background:#FF9;*/
 }
 @media screen and (max-width:1000px) { /*当屏幕尺寸小于1000px时，应用下面的CSS样式*/
@@ -23,6 +24,10 @@ li{
 a{
 	text-decoration:none;
 	outline:none;
+	color:#444444;
+}
+a:hover{
+	color:#fa7523;
 }
 img{
 	border:none;
@@ -44,12 +49,24 @@ input{
 .right{
 	float:right;
 }
-
+#top{
+	width:100%;
+	line-height:40px;
+	height:40px;
+	overflow:hidden;
+	background:url(../images/top_bj.png) repeat-x;
+}
+#top p{
+	text-align:right;
+}
+#top p a{
+	padding:0 10px;
+}
 #header{
 	background:#fff;
 	position:fixed;
 	left:0px;
-	top:0px;
+	top:40px;
 	z-index:9999999; 
 	width:100%; 
 	height:105px;
@@ -62,15 +79,15 @@ input{
     behavior:url(pie.htc);
 }
 #header .logo{
-	width:260px;
-	height:84px;
-	margin:8px 0 0 5px;
+	width:252px;
+	height:89px;
+	margin:8px 0 0 0;
 }
 #header .logo img{
 	width:100%;
 }
 #header .rnav{
-	
+	width:929px;
 }
 #header .rnav .sousuo{
 	_zoom:1;
@@ -82,10 +99,9 @@ input{
 	padding-right:15px;
 }
 #header .rnav .sousuo .wpd a{
-	color:#000;
 	padding:0px 10px;
-	font-size:12px;
 	line-height:27px;
+	height:27px;
 }
 #header .rnav .sousuo .sous{
 	width:262px;
@@ -121,56 +137,30 @@ input{
 #header .nav .jMenu h3{
 	color:#444444;
 	font-size:16px;
+	text-align:center;
 }
-#header .nav .jMenu .drop-menu-effect p a{
-	color:#2d9cb5;
-	font-size:14px;
-}
-#header .nav .jMenu .drop-menu-effect:hover p a{
-	color:#2d9cb5;
-	font-size:14px;
+#header .nav .jMenu p a{
+	text-align:center;
+	display:block;
 }
 #header .nav .jMenu .drop-menu-effect {
 	display: table-cell;
-	font-size: 16px;
 	line-height: 35px;
 	height: 35px;
 	width: 89px;
 	float: left;
 	display: block;
-	text-align: center;
-	background:#2d9cb5;
 	margin-left:8px;
 }
 #header .nav .jMenu .shouye{
 	background:none;
 	width:48px;
 }
-#header .nav .jMenu .drop-menu-effect a {
-	display: block;
-	color: #fff;
-}
-#header .nav .jMenu .drop-menu-effect:hover{
-	background:#ffae00;
-}
-#header .nav .jMenu .hover{
-	background:#ffae00;
-}
-#header .nav .jMenu .drop-menu-effect:hover a{
-	color:#fff;
-}
-#header .nav .jMenu .drop-menu-effect:hover .submenu li a{
-	color:#737373;
-}
-#header .nav .jMenu .shouye:hover{
-	background:none;
-}
 #header .nav .submenu {
 	display: none;
 	height:250px;
-	position: absolute;
 	z-index: 99999;
-	background:#fff;
+	background:#fffbe5;
     -moz-border-radius:8px; 
 	-webkit-border-radius:8px; 
 	border-radius:8px; 
@@ -179,14 +169,17 @@ input{
 	box-shadow:0px 2px 5px #b5b3b3;
     behavior:url(pie.htc);
 	border:1px solid #eeeeee;
-	margin-top:10px;
+	position:absolute;
 	min-width:435px;
+	top:105px;
+	margin-left:-110px;
+	+margin-left:-200px;
 }
 #header .nav .submenu .jiant{
 	width:10px;
 	position:absolute;
 	top:-9px;
-	left:20px;
+	left:145px;
 }
 #header .nav .submenu .left ul{
 	width:135px;
@@ -195,15 +188,9 @@ input{
 #header .nav .submenu .left ul li{
 	font-size:14px;
 	font-family:"微软雅黑";
-	font-weight:bold;
 	line-height:30px;
 	height:30px;
-}
-#header .nav .submenu .left ul li a{
-	color:#737373;
-}
-#header .nav .jMenu .drop-menu-effect .submenu li a:hover{
-	color:#e79f05;
+	text-align:center;
 }
 #header .nav .submenu .sxian{
 	background:url(../images/xian.png) no-repeat;
@@ -235,67 +222,42 @@ input{
 	text-indent: 2em;
 	text-align: left;
 	padding: 0 11px 30px;
-	color:#545454;
+	color:#444444;
 }
 #footer{
-	background:#387897;
 	width:100%;
 }
 #footer .foot_top{
-	padding:40px 0 30px 0;
-	_zoom:1;
-	overflow:hidden;
-}
-#footer .foot_top ul{
-	width:220px;
-	float:left;
-	color:#fff;
-}
-#footer .foot_top ul h3{
-	font-size:18px;
-	line-height:26px;
-	font-weight:600;
-	height:60px;
-	border-bottom:4px solid #14b9d6;
-	margin-bottom:10px;
-}
-#footer .foot_top ul h3 span{
-	display:block;
-	text-transform:capitalize;
-}
-#footer .foot_top ul li{
-	line-height:26px;
-	font-size:12px;
-}
-#footer .foot_top ul li.weix{
-	width:200px;
-	height:197px;
-	overflow:hidden;
-	margin:0 auto;
-}
-#footer .foot_top ul li.weix img{
 	width:100%;
+	height:50px;
+	line-height:50px;
+	background:#ffe721;
 }
-#footer .foot_top .kongge{
-	float:left;
-	width:100px;
-	height:80px;
+#footer p{
+	text-align:center;
+}
+#footer .foot_top p a{
+	padding:0 10px;
 }
 #footer .foot_bottom{
-	background:url(../images/dbx.png);
-	height:45px;
-	overflow:hidden;	
+	width:100%;
+	height:90px;
+	overflow:hidden;
+	background:#3dbcd2;
+	padding:20px 0;
 }
 #footer .foot_bottom p{
-	text-align:center;
-	line-height:45px;
 	font-size:12px;
 	color:#fff;
+	line-height:30px;
 }
 #footer .foot_bottom p a{
+	padding:0 5px;
 	color:#fff;
 }
-
+#footer .foot_bottom p a:hover{
+	color:#fa7523;
+}
 #right_xf{
 	position:fixed;
 	bottom:10%;
@@ -303,6 +265,15 @@ input{
 	width:60px;
 	height:386px;
 	z-index:9999999;
+}
+#right_xf ul{
+	height:315px;
+	overflow:hidden;
+	filter:alpha(opacity=80);
+	-moz-opacity:0.80;
+	-khtml-opacity: 0.80;
+	opacity: 0.80;
+	background:#a4bf78;
 }
 #right_xf ul li a{
 	display:block;
@@ -312,18 +283,53 @@ input{
 	background:url(../images/cdaoh.png);
 }
 #right_xf ul li.kf a{
-	background-position:0 -62px;
+	background-position:0 -63px;
 }
 #right_xf ul li.hdzs a{
-	background-position:0 -124px;
+	background-position:0 -126px;
 }
 #right_xf ul li.ysfb a{
-	background-position:0 -188px;
+	background-position:0 -190px;
 }
 #right_xf ul li.jrwm a{
-	background-position:0 -250px;
+	background-position:0 -252px;
 }
-#right_xf ul li.fhdb a{
+#right_xf p.fhdb a{
 	background:url(../images/fanhui.png) no-repeat;
 	margin-top:10px;
+	display:block;
+	width:60px;
+	height:60px;
+	overflow:hidden;
+}
+#right_xf ul li a span{
+	background:url(../images/cdaoh.png)  no-repeat 0 -13px #a4bf78;
+    color: #fff;
+	font-family:"微软雅黑";
+    display: none;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 62px;
+    position: absolute;
+	margin-top:5px;
+	cursor:pointer;
+    right: 0;
+    width: 100px;
+    z-index: 1;
+}
+#right_xf ul li.kf a:hover span{
+	background-position:0 -66px;
+}
+#right_xf ul li.hdzs a:hover span{
+	background-position:0 -132px;
+}
+#right_xf ul li.ysfb a:hover span{
+	background-position:0 -190px;
+}
+#right_xf ul li.jrwm a:hover span{
+	background-position:0 -252px;
+}
+#right_xf ul li a:hover span{
+	display:block;
 }
