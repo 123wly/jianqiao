@@ -3,53 +3,73 @@
 <div id="content">
 
     <div class="t_con">
-	    <h3>图片管理</h3>
+        <h3>编辑广告</h3>
 
-		<form id="form2" name="form2" method="post" action="" enctype="multipart/form-data">
-		<div class="con_system">
-		       <table width="100%" cellpadding="0" cellspacing="0" border="0" class="table_padding">
-			       <tr>
-				      <td width="70" class="t_title">标题</td>
-					  <td class="c_input">
-				       <input class="textipt" type="text"  name="title" value="{$data.title}" />
-					   </td>
-					</tr>
-					<tr>
-				      <td class="t_title">轮播位置</td>
-					  <td class="c_select">
-				           <select name="auid">
+        <form id="form2" name="form2" method="post" action="" enctype="multipart/form-data">
+        <div class="con_system">
+               <table width="100%" cellpadding="0" cellspacing="0" border="0" class="table_padding">
+                   <tr>
+                      <td width="70" class="t_title">标题</td>
+                      <td class="c_input">
+                       <input class="textipt" type="text"  name="title" value="{$data.title}" />
+                       </td>
+                    </tr>
+                    <tr>
+                      <td class="t_title">广告位</td>
+                      <td class="c_select">
+                           <select name="auid">
                                     {foreach from=$adUnit item=d}
                                     <option value="{$d.id}" {if $data.auid==$d.id}selected{/if}>{$d.title}</option>
                                     {/foreach}
                            </select>
-					  </td>
-					</tr>
-					<tr style="display:none">
-				      <td class="t_title">类型</td>
-					  <td class="c_select">
-				          <input name="type" id="select_type" value="1">
-					   </td>
-					</tr>
-					
-					<tr class="ad_content_1" style="display:none">
-                         <td class="t_title">图片</td>
-                         <td class="co_img">
-                            {if $data.body}
-							<p><img src="{$url}/{$data.body}" style="max-width: 410px;" /></p>
-                            {/if}
-							<textarea name="body_img" style="display:none">{$data.body}</textarea>
-							<p><input type="file" name="filedata"></p>
-							</td>
+                      </td>
                     </tr>
-						 
-						<tr>
-                            <td class="t_title">内容</td>
+                    <tr>
+                      <td class="t_title">广告类型</td>
+                      <td class="c_select">
+                          <select name="type" id="select_type">
+                                    <option value="1" {if $data.type==1}selected{/if}>图片广告</option>
+                                    <option value="2" {if $data.type==2}selected{/if}>HTML广告</option>
+                          </select>
+                    </td>
+                    </tr>
+                    
+                    <tr class="ad_content_1" style="display:none">
+                         <td class="t_title">图片广告</td>
+                         <td class="co_img">
+                            <p><img src="{$url}/{$data.body}" style="max-width: 410px;" /></p>
+                            <textarea name="body_img" style="display:none">{$data.body}</textarea>
+                            <p><input type="file" name="filedata"></p>
+                            </td>
+                    </tr>
+                         <tr class="ad_content_1" style="display:none">
+                            <td class="t_title">跳转地址</td>
+                            <td class="c_input">
+                                <input type="text" name="url" value="{$data.url}">
+
+                            </td>
+                        </tr>
+                        
+                         <tr id="ad_content_2" style="display:none">
+                            <td class="t_title">HTML广告</td>
+                            <td class="c_textarea">
+                                <textarea name="body_html" cols="60" rows="6">{$data.body}</textarea><em>请输入html片段</em>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="t_title">统计代码</td>
                             <td class="c_textarea">
                                 <textarea name="ga" cols="60" rows="6">{$data.ga}</textarea>
                             </td>
                         </tr>
-                  
-                        <tr style="display:none">
+                        <tr>
+                            <td class="t_title">日期限制</td>
+                            <td class="c_input_small c_link">
+                                <input type="input" name="date[]" id="date1" value="{$data.time_date_limit[0]}" readonly /> 至 <input type="input" name="date[]" id="date2" value="{$data.time_date_limit[1]}" readonly /><span id="clear_date"><a href="javascript:void()" style="margin-left:10px;">清除</a></span>
+                            </td>
+                        </tr>
+                        <tr>
                             <td class="t_title">显示: </td>
                             <td class="c_radio">
                                 <label><input type="radio" name="is_show" id="is_show" value="1"{if $data.is_show==1}checked="checked"{/if} />启用</label>
@@ -58,19 +78,19 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="t_title">排序:</td>
+                            <td class="t_title">权重:</td>
                             <td class="c_input_small"><input type="text" name="weight" value="{$data.weight}" /></td>
                         </tr>
-					
-					
-			   </table>
-		</div>
-		<div class="btn_area">
+                    
+                    
+               </table>
+        </div>
+        <div class="btn_area">
              <input type="submit" class="btn_save" value="修改" name="edit_submit"/>
               <input id="_back" class="btn_return"  type="button" value="取消" />
         </div>
-		</form>
-	</div>
+        </form>
+    </div>
 
     
 </div>
@@ -87,7 +107,7 @@
 <link rel="stylesheet" href="{$syskin}/js/kalendae/kalendae.css" type="text/css" charset="utf-8">
 <script type="text/javascript">
     $(function(){
-		_changeShow();//默认初始化类型
+        _changeShow();//默认初始化类型
 
        
      
@@ -123,13 +143,13 @@
    
     //如果是图片则显示上传,
     function _changeShow(){
-		
+        
         if(1 == $("#select_type").val()){
            $('.ad_content_1').show();
-		   $('#ad_content_2').hide();
+           $('#ad_content_2').hide();
         }else{
            $('#ad_content_2').show();
-		   $('.ad_content_1').hide();
+           $('.ad_content_1').hide();
         }
     }
 </script>
