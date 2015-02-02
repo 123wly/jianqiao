@@ -1,0 +1,330 @@
+{extends file='./templet/baoding/public/layout.html'}
+{block name=content}
+    <div id="content">
+        <!-- 代码 开始 -->
+        <div id="banner">
+            <ul id="banner_img">
+                <li class="item1">
+                    <div class="wrapper">
+                        <div class="ad_txt">
+                            <h2><img src="{$skin_path}images/shouye1 2.png" /><span><img src="{$skin_path}images/shouye1 3.png" /></span></h2>
+                            <p>
+                                <span><img src="{$skin_path}images/shouye1 7.png" /></span>
+                                <span><img src="{$skin_path}images/shouye1 8.png" /></span>
+                                <span><img src="{$skin_path}images/shouye1 9.png" /></span>
+                                <span><img src="{$skin_path}images/shouye1 10.png" /></span>
+                            </p>
+                        </div>
+                        <div class="ad_img">
+                            <img src="{$skin_path}images/shouye1.png" width="604" height="544" alt="" />
+                        </div>
+                    </div>
+                </li>
+                <li class="item2">
+                    <div class="wrapper">
+                        <div class="ad_txt">
+                            <h2><img src="{$skin_path}images/shouye1 2.png" /><span><img src="{$skin_path}images/shouye1 3.png" /></span></h2>
+                            <p>
+                                <span><img src="{$skin_path}images/shouye1 7.png" /></span>
+                                <span><img src="{$skin_path}images/shouye1 8.png" /></span>
+                                <span><img src="{$skin_path}images/shouye1 9.png" /></span>
+                                <span><img src="{$skin_path}images/shouye1 10.png" /></span>
+                            </p>
+                        </div>
+                        <div class="ad_img">
+                            <img src="{$skin_path}images/shouye1.png" width="604" height="544" alt="" />
+                        </div>
+                    </div>
+                </li>
+                <li class="item3">
+                    <div class="wrapper">
+                        <div class="ad_txt">
+                            <h2><img src="{$skin_path}images/shouye1 2.png" /><span><img src="{$skin_path}images/shouye1 3.png" /></span></h2>
+                            <p>
+                                <span><img src="{$skin_path}images/shouye1 7.png" /></span>
+                                <span><img src="{$skin_path}images/shouye1 8.png" /></span>
+                                <span><img src="{$skin_path}images/shouye1 9.png" /></span>
+                                <span><img src="{$skin_path}images/shouye1 10.png" /></span>
+                            </p>
+                        </div>
+                        <div class="ad_img">
+                            <img src="{$skin_path}images/shouye1.png" width="604" height="544" alt="" />
+                        </div>
+                    </div>
+                </li>
+                <li class="item4">
+                    <div class="wrapper">
+                        <div class="ad_txt">
+                            <h2><img src="{$skin_path}images/shouye1 2.png" /><span><img src="{$skin_path}images/shouye1 3.png" /></span></h2>
+                            <p>
+                                <span><img src="{$skin_path}images/shouye1 7.png" /></span>
+                                <span><img src="{$skin_path}images/shouye1 8.png" /></span>
+                                <span><img src="{$skin_path}images/shouye1 9.png" /></span>
+                                <span><img src="{$skin_path}images/shouye1 10.png" /></span>
+                            </p>
+                        </div>
+                        <div class="ad_img">
+                            <img src="{$skin_path}images/shouye1.png" width="604" height="544" alt="" />
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div id="banner_ctr">
+                <div id="drag_ctr"></div>
+                <ul>
+                    <li><img src="{$skin_path}images/shouye1 4.png" /></li>
+                    <li><img src="{$skin_path}images/shouye1 5.png" /></li>
+                    <li><img src="{$skin_path}images/shouye1 6.png" /></li>
+                    <li><img src="{$skin_path}images/shouye1 11.png" /></li>
+                </ul>
+                <div id="drag_arrow"></div>
+            </div>
+        </div>
+        <script type="text/javascript" src="{$skin_path}js/fashionfoucs.js"></script>
+        <!-- 代码 结束 -->
+        <div class="main con_dct1">
+            <h1><img src="{$skin_path}images/tttt.png" /></h1>
+            <div class="kz">
+                <h3><img src="{$skin_path}images/jqxw.png" /></h3>
+                <ul class="jqxw">
+                    {foreach $news as $vo}
+                        {if $vo@index eq 0}
+                            <div class="jiane">
+                                <p class="left"><img src="{$vo.cover|upload_echo}" /></p>
+                                <div class="jianr">
+                                    <ul>
+                                        <li>
+                                            <span>{$vo.create_time|date_format:'%m-%d'}</span>
+                                            <a href="{spUrl c=$vo.tpl id=$vo.id}"><b>{$vo@index + 1}.</b>{$vo.title|msubstr:"0":'8'}</a>
+                                        </li>
+                                        <div class="clear"></div>
+                                    </ul>
+                                    <p>{$vo.brief|msubstr:"0":'25'}</p>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        {else}
+                            <li>
+                                <span>{$vo.create_time|date_format:'%m-%d'}</span>
+                                <a href="{spUrl c=$vo.tpl id=$vo.id}"><b>{$vo@index + 1}.</b>{$vo.title|msubstr:"0":'15'}</a>
+                            </li>
+                        {/if}
+                    {/foreach}
+                    <div class="clear"></div>
+                </ul>
+                <p class="gd"><a href="{spUrl c=information_list a=index tid=31}">READ MOER</a>
+                </p>
+            </div>
+            <div class="kz">
+                <h3><img src="{$skin_path}images/bbdt.png" /></h3>
+                <ul class="bbdt">
+                    {foreach $bbdt as $vo}
+                        {if $vo@index eq 0}
+                            <div class="jiane">
+                                <p class="left"><img src="{$vo.cover|upload_echo}" />
+                                </p>
+                                <div class="jianr">
+                                    <ul>
+                                        <li>
+                                            <span>{$vo.create_time|date_format:'%m-%d'}</span>
+                                            <a href="{spUrl c=$vo.tpl id=$vo.id}"><b>{$vo@index + 1}.</b>{$vo.title|msubstr:"0":'8'}</a>
+                                        </li>
+                                        <div class="clear"></div>
+                                    </ul>
+                                    <p>{$vo.brief|msubstr:"0":'25'}</p>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        {else}
+                            <li>
+                                <span>{$vo.create_time|date_format:'%m-%d'}</span>
+                                <a href="{spUrl c=$vo.tpl tid=$vo.id}"><b>{$vo@index + 1}.</b>{$vo.title|msubstr:"0":'15'}</a>
+                            </li>
+                        {/if}
+                    {/foreach}
+                    <div class="clear"></div>
+                </ul>
+                <p class="gd gd1"><a href="{spUrl c=information_list tid=33}">READ MOER</a>
+                </p>
+            </div>
+            <div class="kz">
+                <h3><img src="{$skin_path}images/hlsg.png" /></h3>
+                <div class="hgsg">
+                    <div class="spin">
+                        <embed src="http://player.youku.com/player.php/sid/XMzY5NTMyNjgw/v.swf" allowFullScreen="true" quality="high" width="310" height="243" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+                    </div>
+                    <p>六一活动精彩视频片段</p>
+                </div>
+                <p class="gd gd2"><a href="">READ MOER</a>
+                </p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="con_dct2">
+            <h1><img src="{$skin_path}images/dcddd.png" /></h1>
+            <!-- 代码 开始 -->
+            <div id="main">
+                <div id="index_b_hero">
+                    <div class="hero-wrap">
+                        <ul class="heros clearfix">
+                            {foreach $jiaoyu as $vo}
+                                <li class="hero">
+                                    <a href="javascript:;">
+                                        <img src="{$root}/uploads/{$vo.cover}" class="thumb" />
+                                    </a>
+                                </li>
+                            {/foreach}
+                        </ul>
+                    </div>
+                    <div class="helper">
+                        <div class="mask-left">
+                        </div>
+                        <div class="mask-right">
+                        </div>
+                        <a class="prev icon-arrow-a-left"></a>
+                        <a class="next icon-arrow-a-right"></a>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+            $.foucs({
+                direction: 'right'
+            });
+            </script>
+            <!-- 代码 结束 -->
+        </div>
+        <div class="con_dct3 main">
+            <h1><img src="{$skin_path}images/zzzz.png" /></h1>
+            
+            {foreach $gongyu as $vo}
+
+                {if $vo@index eq 0}
+                    <div class="imagedesc left w350">
+                        <a href="{spUrl c=$vo.tpl tid=$vo.id}">
+                            <img src="{$vo.cover|upload_echo}" />
+                        </a>
+                        <div class="core_desc">
+                            <div class="core_bg"></div>
+                            <div class="core_text">
+                                <span>{$vo.name}</span>
+                                <div class="hide" data-role="j_hover_show" style="display: none;">
+                                    <p>{$vo.brief|msubstr:"0":'25'}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {else}
+                    <div class="left w370">
+                        {foreach $vo as $v}
+                            <div class="imagedesc">
+                                <a href="{spUrl c=$v.tpl tid=$v.id}">
+                                    <img src="{$v.cover|upload_echo}" />
+                                </a>
+                                <div class="core_desc">
+                                    <div class="core_bg"></div>
+                                    <div class="core_text">
+                                        <span class="f16">{$v.name}</span>
+                                        <div class="hide" data-role="j_hover_show" style="display: none;">
+                                            <p>{$v.brief|msubstr:"0":'25'}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {/foreach}
+                    </div>
+                {/if}
+
+            {/foreach}
+            
+            <div class="clear"></div>
+        </div>
+        <div class="con_dct4">
+            <div class="main ggy">
+
+                <div class="ggyk">
+                    <h3><img src="{$skin_path}images/jqgk.png" /></h3>
+                    <div class="hz1">
+                        <div class="left">
+                            <img src="{$zhoukan.cover|upload_echo}" />
+                        </div>
+                        <div class="right">
+                            <h4>{$zhoukan.title|msubstr:"0":'10'}</h4>
+                            <p>{$zhoukan.brief|msubstr:"0":'35'}</p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <p><a class="ys1" href="{spUrl c=education_jqzk tid=39}">READ MORE</a>
+                    </p>
+                </div>
+                <div class="suxa"></div>
+
+
+
+
+                <div class="ggyk">
+                    <h3><img src="{$skin_path}images/mzsp.png" /></h3>
+                    <div class="hz1">
+                        <div class="left">
+                            <img src="{$shipu.cover|upload_echo}" />
+                        </div>
+                        <div class="right">
+                            <h4>{$shipu.title|msubstr:"0":'10'}</h4>
+                            <p>{$shipu.brief|msubstr:"0":'35'}</p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <p><a class="ys2" href="{spUrl c=mzsp tid=24}">READ MORE</a>
+                    </p>
+                </div>
+                <div class="suxa"></div>
+
+                <div class="ggyk">
+                    <h3><img src="{$skin_path}images/yxzp.png" /></h3>
+                    <div class="hz1">
+                        <div class="left">
+                            <img src="{$zuopin.cover|upload_echo}" />
+                        </div>
+                        <div class="right">
+                            <h4>{$zuopin.title|msubstr:"0":'10'}</h4>
+                            <p>{$zuopin.brief|msubstr:"0":'35'}</p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <p><a class="ys3" href="{spUrl c=life tid=20}">READ MORE</a>
+                    </p>
+                </div>
+                <div class="suxa"></div>
+
+
+
+
+                <div class="ggyk">
+                    <h3><img src="{$skin_path}images/jjjyfg.png" /></h3>
+                    <div class="hz1">
+                        <div class="left">
+                            <img src="{$skin_path}images/ggt7.png" />
+                        </div>
+                        <div class="right">
+                            <h4>意见和建议</h4>
+                            <p>意见和建议意见和建议意见和建议意见和建议意见和建议...</p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <p><a class="ys4" href="{spUrl c=wyyy tid=28}">READ MORE</a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="right_xf">
+        <ul>
+            <li class="bm"><a href="{spUrl c=wybm tid=27}" title="报名"></a></li>
+            <li class="kf"><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=435690026&site=qq&menu=yes" title="客服"></a></li>
+            <li class="hdzs"><a href="{spUrl c=life tid=20}" title="活动展示"></a></li>
+            <li class="ysfb"><a href="{spUrl c=park tid=2}" title="园所分布"></a></li>
+            <li class="jrwm"><a href="{spUrl c=jiamenjianqiao tid=8}" title="加入我们"></a></li>
+            <li class="fhdb"><a href="#top" title="返回顶部"></a></li>
+        </ul>
+    </div>
+{/block}
