@@ -1,3 +1,4 @@
+<?php $skin_path = $_smarty_tpl->getVariable('skin_path')->value; ?>
 <?php 
     if(!isset($_GET['tid']) and isset($_GET['id'])){
         $rs = spClass("db_article")->find(array("id"=>intval($_GET['id'])), "","term_id");
@@ -17,8 +18,8 @@
 ?>
 <div class="left lhz">
     <h2>
-        <?php echo $parent['name']; ?>
-        <span><?php echo $parent['en_name']; ?></span>
+        <img src="<?php echo $skin_path; ?>images/nav/<?php echo str_replace(" ","_",strtolower($parent["en_name"])); ?>_ep.png">
+        <span><img src="<?php echo $skin_path; ?>images/nav/<?php echo str_replace(" ","_",strtolower($parent["en_name"])); ?>_en.png"></span>
     </h2>
     <ul>
         <?php foreach ($childNode as $key => $vo): ?>

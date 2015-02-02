@@ -135,6 +135,16 @@
     $(document).ready(function() {
 
         dropMenu(".drop-menu-effect");
+        $(window).scroll(function(){
+            var top = 40 - $(window).scrollTop();
+            if(top > 0){
+                $("#header").css("top", top + "px");
+            }
+            if(top < 0 || top ===0){
+                $("#header").css("top","0px");
+            }
+            
+        });
 
     });
     </script>
