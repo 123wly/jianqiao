@@ -8,6 +8,7 @@ class db_member extends ybModel
 
 	var $pk = "uid"; // 主键
 	var $table = "member"; // 数据表的名称
+	var $childUid = array();
 	
 	var $addrules = array(  
 		'isused' => array('db_member','checkname'), //  检查用户是否重复
@@ -23,52 +24,52 @@ class db_member extends ybModel
 	var $verifier_openConnect_Login  = array(  
        "rules" => array( 
            'email' => array(  
-               'notnull' => TRUE, // username不能为空  
-               'minlength' => 5,  // username长度不能小于5  
-               'maxlength' => 50, // username长度不能大于 
-			  'email' => TRUE,
-			  'isopen'    =>true, //是否被禁用
-             ),  
+				'notnull'   => TRUE, // username不能为空  
+				'minlength' => 5,  // username长度不能小于5  
+				'maxlength' => 50, // username长度不能大于 
+				'email'     => TRUE,
+				'isopen'    =>true, //是否被禁用
+            ),  
            'password' => array(   
-               'notnull' => TRUE, 
-               'minlength' => 6, 
-			   'checklogin' => TRUE
+				'notnull'    => TRUE, 
+				'minlength'  => 6, 
+				'checklogin' => TRUE
             ),  
         ),  
 	   "messages" => array( // 提示信息  
-             'email' => array(  
-              'notnull' => "邮箱不能为空",  
-              'minlength' => "邮箱不能少于5个字符", 
-              'maxlength' => "邮箱不能大于50个字符",  
-			  'email'=>'请输入正确的邮箱',
-			  'isopen'    =>'账号被限制访问',
+            'email' => array(  
+				'notnull'   => "邮箱不能为空",  
+				'minlength' => "邮箱不能少于5个字符", 
+				'maxlength' => "邮箱不能大于50个字符",  
+				'email'     =>'请输入正确的邮箱',
+				'isopen'    =>'账号被限制访问',
             ), 
-			  'password' => array(  
-              'notnull' => "密码不能为空",  
-              'minlength' => "密码不能少于6个字符",
-			  'checklogin' => '用户名密码不正确'				  
-            ) 
-     )  
+			'password'   => array(  
+				'notnull'    => "密码不能为空",  
+				'minlength'  => "密码不能少于6个字符",
+				'checklogin' => '用户名密码不正确'				  
+        	) 
+     	)  
     );
 	
 	var $verifier_openConnect_Reg  = array(  
        "rules" => array( 
            'email' => array(  
-               'notnull' => TRUE, // username不能为空  
-               'minlength' => 5,  // username长度不能小于5  
-               'maxlength' => 50, // username长度不能大于 
-			   'email' => TRUE,
-			   'keepmail'=>TRUE,
-			   'isused' => 'email', //如果真重复了
+				'notnull'   => TRUE, // username不能为空  
+				'minlength' => 5,  // username长度不能小于5  
+				'maxlength' => 50, // username长度不能大于 
+				'email'     => TRUE,
+				'keepmail'  =>TRUE,
+				'isused'    => 'email', //如果真重复了
              ),  
            'password' => array(   
                'notnull' => TRUE, 
                'minlength' => 6, 
             ),
 			'username'=>array(
-			 'minlength' => 2,  // username长度不能小于2  
-			 'maxlength' => 10, // username长度不能大于 
-		     'ninameused' => TRUE,
+				'minlength'  => 2,  // username长度不能小于2  
+				'maxlength'  => 10, // username长度不能大于 
+				'ninameused' => TRUE,
 			),
 		    'password2' => array(  
               'equalto' => 'password',   
@@ -126,6 +127,11 @@ class db_member extends ybModel
 		spClass('ybCookie')->set_cookie('auth',$password);
 		
 		spClass('db_notice')->sendRegisgtr($uid);
+		
+		//互相关注
+		spClass("db_follow")->createTwoFollow($uid, $row['puid']);
+		////
+
 		return $uid;
 	}
 	
@@ -330,5 +336,16 @@ class db_member extends ybModel
 		return $_SERVER['REMOTE_ADDR'];
 	}
 
+	public function getChilds($uid){
+		$this->_getChilds($uid);
+		return $this->childUid;
+	}
+	private function _getChilds($uid){
+		$data = $this->findAll(array("puid"=>$uid),"","uid");
+		foreach ($data as $key => $value) {
+			$this->_getChilds($value['uid']);
+			$this->childUid[]  = $value['uid'];
+		}
+	}
+
 }
-?>

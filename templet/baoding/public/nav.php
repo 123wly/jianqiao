@@ -20,15 +20,18 @@
         <ul class="jMenu">
             <li class="drop-menu-effect shouye">
                 <a href="<?php echo spUrl('index','')?>" title="">
-                    <img src="<?php echo $skin_path;?>images/shouye.png" />
+                    <img src="<?php echo $skin_path;?>images/nav/shouye.png" />
                 </a>
             </li>
             <?php foreach ($terms as $key => $vo): ?>
-                <li class="drop-menu-effect"> 
-                    <a href="<?php echo empty($vo['children']) ? spUrl($vo['tpl'],"",array('tid'=>$vo['id'])) : 'javascript:;' ?>" title="<?php echo $vo['name']; ?>"><?php echo $vo['name']; ?></a>
+                <li class="drop-menu-effect" style="background-color: transparent;"> 
+                    <a style="" href="<?php echo empty($vo['children']) ? spUrl($vo['tpl'],"",array('tid'=>$vo['id'])) : 'javascript:;' ?>" title="<?php echo $vo['name']; ?>">
+                        <?php $imgname = str_replace(" ","_",strtolower($vo["en_name"])); ?>
+                        <img src="<?php echo $skin_path; ?>images/nav/<?php echo $imgname; ?>.png" />
+                    </a>
                     <?php if (!empty($vo['children'])): ?>
-                        <ul class="submenu">
-                            <div class="jiant">
+                        <ul class="submenu" style="margin-left: -100px; +margin-top:6px;">
+                            <div class="jiant" style="left: 129px;+left:90px;+top: -25px;">
                                 <img src="<?php echo $skin_path;?>images/jiantou.png" />
                             </div>
                             <?php if ($vo["name"] == "剑桥分园"): ?>
@@ -90,7 +93,14 @@
 
             function expand() {
                 clearTimeout(t1);
-                theSpan.find('a').addClass("selected");
+                // theSpan.find('a').addClass("selected");
+                
+                var oldSrc = theSpan.find('a').find("img").attr("src");
+                if(oldSrc.indexOf("_h.png") < 0){
+                    var newSrc = oldSrc.replace(".png","_h.png");
+                    theSpan.find('a').find("img").attr("src",newSrc);
+                }
+
                 theMenu.stop().show().animate({
                     height: tarHeight,
                     opacity: 1
@@ -100,7 +110,12 @@
             function collapse() {
                 clearTimeout(t1);
                 t1 = setTimeout(function() {
-                    theSpan.find('a').removeClass("selected");
+                    // theSpan.find('a').removeClass("selected");
+                    
+                    var oldSrc = theSpan.find('a').find("img").attr("src");
+                    var newSrc = oldSrc.replace("_h","");
+                    theSpan.find('a').find("img").attr("src",newSrc);
+
                     theMenu.stop().animate({
                         height: 0,
                         opacity: 0

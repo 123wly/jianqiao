@@ -145,5 +145,18 @@ function console_log($var){
     ));
 }
 function dump_echo ($nihao){
-	var_dump($nihao);
+	ob_start();
+	print_r($nihao);
+	$aa = ob_get_contents();
+	ob_end_clean();
+	return $aa;
+}
+
+function isAdminRole(){
+	$role = spClass("db_member")->find(array("uid"=>$_SESSION["uid"]),"","role");
+	if($role['role'] == 0){
+		return true;
+	}else {
+		return false;
+	}
 }
