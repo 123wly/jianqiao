@@ -41,22 +41,16 @@
 	padding:35px;
 }
 #content .lmkuai .hztk h2{
-	font-size:30px;
-	color:#ffffff;
-	font-weight:600;
-	padding-bottom:15px;
-}
-#content .lmkuai .hztk h2 span{
-	display:block;
-	font-size:18px;
+	height:80px;
+	overflow:hidden;
 }
 #content .lmkuai .hztk h3{
 	background:url(../images/fffgf.png) 0px 10px no-repeat;
 	font-size:18px;
-	height:48px;
-	line-height:48px;
+	height:50px;
+	line-height:50px;
 	padding-left:40px;
-	font-weight:600;
+	font-weight:normal;
 	border-top:1px solid #ffffff;
 }
 #content .lmkuai .hztk h3 a{
@@ -77,15 +71,37 @@
 	height:35px;
 	line-height:35px;
 }
+#content .lmkuai .xwzx .xwzxt{
+	width:110px;
+	height:80px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border-radius: 15px;
+	behavior: url(pie.htc);
+	border:6px solid #b2d42b;
+	overflow:hidden;
+	margin-top:5px;
+}
+#content .lmkuai .xwzx .xwzxt img{
+	width:100%;
+	height:100%;
+}
+#content .lmkuai .xwzx .xwzxw{
+	width:170px;
+	margin-top:5px;
+}
+#content .lmkuai .xwzx .xwzxw h3{
+	line-height:30px;
+	height:30px;
+}
+#content .lmkuai .xwzx .xwzxw p{
+	line-height:30px;
+}
 #content .lmkuai .xwzx{
 	background:url(../images/kuzi1.png) no-repeat;
 }
 #content .lmkuai .xwzx .xwzx_xian{
 	height:310px;
-	border-bottom:1px solid #ffffff;
-}
-#content .lmkuai .xwzx .xwzx_xian p{
-	padding: 0 0 18px 0;
 }
 #content .lmkuai .xwzx .xwzx_xian .qdbj{
 	background:none;
@@ -106,7 +122,7 @@
 	-webkit-border-radius: 15px;
 	border-radius: 15px;
 	behavior: url(pie.htc);
-	margin:0 0 10px 0;
+	margin:5px 0 7px 0;
 }
 #content .lmkuai .fyjs .tupian img{
 	width:100%;
@@ -184,13 +200,22 @@
 	background:url(../images/ffff.png) no-repeat;
 	margin-left:68px;
 }
+#content .cyzs .tab_title li a{
+	color:#fff;
+}
 #content .cyzs .tab_title li:hover {
 	color: #15c1e5;
 	background:url(../images/ffffhover.png) no-repeat;
 }
+#content .cyzs .tab_title li:hover a{
+	color:#15c1e5;
+}
 #content .cyzs .tab_title li.selected {
 	color: #15c1e5;
 	background:url(../images/ffffhover.png) no-repeat;
+}
+#content .cyzs .tab_title li.selected a{
+	color: #15c1e5;
 }
 #content .cyzs .tab_content{
 	margin-top:35px;
@@ -242,8 +267,8 @@
 }
 #content .yxjs{
 	width:100%;
-	background:#ffffff;
-	height:410px;
+	background:url(../images/yuanqbaom.jpg) no-repeat center;
+	height:379px;
 	position:relative;
 }
 #content .yxjs ul li{
@@ -251,7 +276,7 @@
 	width:234px;
 	height:231px;
 	overflow:hidden;
-	margin:100px 33px 76px;
+	margin:40px 33px 0px;
 	position:relative;
 }
 #content .yxjs ul li img{
@@ -266,9 +291,6 @@
 	top:0;
 	left:0;
 }
-
-
-
 #content .bot_top{
 	padding:25px 0;
 }
@@ -304,17 +326,19 @@
 	color:#333333;
 	font-size:14px;
 	text-indent:1em;
+	font-family:"微软雅黑";
 }
 #content .bot_top .biaog p.tijiao{
 	width:680px;
 }
 #content .bot_top .biaog p.tijiao input{
 	width:680px;
-	background:#1f9fba;
+	background:url(../images/wybm.jpg) no-repeat #1f9fba;
 	cursor:pointer;
 	font-size:19px;
 	color:#ffffff;
 	font-weight:600;
+	font-family:"微软雅黑";	
 }
 #content .bot_top .biaog p.zxnr{
 	padding:10px;
@@ -332,12 +356,5 @@
 	text-indent:1em;
 	line-height:24px;
 	outline:none;
+	font-family:"微软雅黑";
 }
-
-
-
-
-
-
-
-

@@ -32,14 +32,15 @@
 <div id="footer">
     <div class="foot_top">
          <p>
-            <a href="">保定剑桥幼儿园</a>   |   
-            <a href="">保定教委</a>   |   
-            <a href="">育儿网</a>   |   
-            <a href="">父母网</a>   |   
-            <a href="">童心摄影工作室</a>   |   
-            <a href="">早教网</a>   |   
-            <a href="">新浪教育频道</a>   |   
-            <a href="">腾讯教育</a>
+            <?php 
+                $foot   = spClass("db_ad_unit")->find(array("title"=>"底部导航"),"","id");
+                $footId = $foot["id"];
+                $foot = spClass("db_ad_list")->findAll(array("auid"=>$footId));
+                // var_dump($foot);
+             ?>
+             <?php foreach ($foot as $key => $value): ?>
+                 <a href="<?php echo $value["body"]; ?>"><?php echo $value["title"]; ?></a>  <?php echo $key != count($foot) - 1 ? "|" : "";  ?> 
+             <?php endforeach ?>
         </p>  
     </div>
     <div class="foot_bottom">

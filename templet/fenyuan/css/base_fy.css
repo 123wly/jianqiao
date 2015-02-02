@@ -1,6 +1,4 @@
 @charset "utf-8";
-
-@charset "utf-8";
 *{
 	margin:0;
 	padding:0;
@@ -8,7 +6,7 @@
 body{
 	font-family:"微软雅黑","宋体";
 	font-size:14px;
-	background:#fafafa;
+	background:url(../images/1.gif);
 	/*background:#FF9;*/
 }
 @media screen and (max-width:1000px) { /*当屏幕尺寸小于1000px时，应用下面的CSS样式*/
@@ -25,6 +23,10 @@ li{
 a{
 	text-decoration:none;
 	outline:none;
+	color:#444444;
+}
+a:hover{
+	color:#fa7523;
 }
 img{
 	border:none;
@@ -78,16 +80,17 @@ input{
 }
 #header .top .top_nav .nav ul li{
 	float:left;
-	font-size:18px;
 }
 #header .top .top_nav .nav ul li a{
-	color:#ffffff;
 	display:block;
 	width:132px;
 	height:80px;
 	line-height:80px;
 	text-align:center;
 	position:relative;
+}
+#header .top .top_nav .nav ul li a img{
+	margin-top:31px;
 }
 #header .top .top_nav .nav ul li a span{
 	display:block;
@@ -163,143 +166,111 @@ input{
 
 
 #footer{
-	background:#387897;
 	width:100%;
 }
 #footer .foot_top{
-	padding:40px 0 30px 0;
-	_zoom:1;
-	overflow:hidden;
-}
-#footer .foot_top ul{
-	width:220px;
-	float:left;
-	color:#fff;
-}
-#footer .foot_top ul h3{
-	font-size:18px;
-	line-height:26px;
-	font-weight:600;
-	height:60px;
-	border-bottom:4px solid #14b9d6;
-	margin-bottom:10px;
-}
-#footer .foot_top ul h3 span{
-	display:block;
-	text-transform:capitalize;
-}
-#footer .foot_top ul li{
-	line-height:26px;
-	font-size:12px;
-}
-#footer .foot_top ul li.weix{
-	width:200px;
-	height:197px;
-	overflow:hidden;
-	margin:0 auto;
-}
-#footer .foot_top ul li.weix img{
 	width:100%;
+	height:50px;
+	line-height:50px;
+	background:#ffe721;
 }
-#footer .foot_top .kongge{
-	float:left;
-	width:100px;
-	height:80px;
+#footer p{
+	text-align:center;
+}
+#footer .foot_top p a{
+	padding:0 10px;
 }
 #footer .foot_bottom{
-	background:url(../images/dbx.png);
-	height:45px;
-	overflow:hidden;	
+	width:100%;
+	height:90px;
+	overflow:hidden;
+	background:#3dbcd2;
+	padding:20px 0;
 }
 #footer .foot_bottom p{
-	text-align:center;
-	line-height:45px;
 	font-size:12px;
 	color:#fff;
+	line-height:30px;
 }
 #footer .foot_bottom p a{
+	padding:0 5px;
 	color:#fff;
 }
-
-#box-kefu {
-    position: fixed;
-    right: 0;
-    top: 30%;
-    z-index: 100;
-    _position: absolute;
-    _top: expression(eval(document.documentElement.scrollTop+100));
+#footer .foot_bottom p a:hover{
+	color:#fa7523;
 }
-#box-kefu .kefu-open {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 138px;
-    padding: 46px 0 0 0;
-    background: url(../images/kefu_icon.png) no-repeat -46px 0;
-    _background-image: url(../images/kefu_icon.gif);
-    /*overflow: hidden;*/
+#right_xf{
+	position:fixed;
+	bottom:10%;
+	right:5px;
+	width:60px;
+	height:386px;
+	z-index:9999999;
 }
-#box-kefu .kefu-open .close {
-    display: block;
-    position: absolute;
-    width: 22px;
-    height: 22px;
-    right: 0;
-    top: 0;
-    text-indent: -9999px;
+#right_xf ul{
+	height:315px;
+	overflow:hidden;
+	filter:alpha(opacity=80);
+	-moz-opacity:0.80;
+	-khtml-opacity: 0.80;
+	opacity: 0.80;
+	background:#a4bf78;
 }
-#box-kefu .kefu-open div {
-    padding-bottom: 5px;
-    background: url(../images/kefu_bg.png) no-repeat -268px bottom;
-    width: 134px;
+#right_xf ul li a{
+	display:block;
+	width:60px;
+	height:63px;
+	line-height:63px;
+	background:url(../images/cdaoh.png);
 }
-#box-kefu .kefu-open ul {
-    background: url(../images/kefu_bg.png) repeat-y 0 0 #939393;
+#right_xf ul li.kf a{
+	background-position:0 -63px;
 }
-#box-kefu .kefu-open li {
-    height: 32px;
-    line-height: 32px;
-    padding: 0 15px 2px;
-    background: url(../images/kefu_bg.png) no-repeat -134px bottom;
+#right_xf ul li.hdzs a{
+	background-position:0 -126px;
 }
-#box-kefu .kefu-open li a {
+#right_xf ul li.ysfb a{
+	background-position:0 -190px;
+}
+#right_xf ul li.jrwm a{
+	background-position:0 -252px;
+}
+#right_xf p.fhdb a{
+	background:url(../images/fanhui.png) no-repeat;
+	margin-top:10px;
+	display:block;
+	width:60px;
+	height:60px;
+	overflow:hidden;
+}
+#right_xf ul li a span{
+	background:url(../images/cdaoh.png)  no-repeat 0 -13px #a4bf78;
     color: #fff;
-    display: block;
-    position: relative;
-    zoom: 1;
-    padding-left: 35px;
-}
-#box-kefu .kefu-open li a:hover {
-    text-decoration: none;
-}
-#box-kefu .kefu-open li a i {
-    display: inline-block;
+	font-family:"微软雅黑";
+    display: none;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 62px;
     position: absolute;
-    left: 10px;
-    top: 6px;
-    width: 21px;
-    height: 21px;
-    background: url(../images/kefu_icon.png) no-repeat 9999px 9999px;
-    _background-image: url(../images/kefu_icon.gif);
-}
-#box-kefu .kefu-open li a i.qq {
-    background-position: -86px -56px;
-}
-#box-kefu .kefu-open li a i.online {
-    background-position: -56px -56px;
-}
-#box-kefu .kefu-open li a i.txt {
-    background-position: -56px -86px;
-}
-#box-kefu .kefu-close {
-    position: absolute;
-    top: 5px;
+	margin-top:5px;
+	cursor:pointer;
     right: 0;
-    width: 0;
-    height: 127px;
-    padding: 0;
-    background: url(../images/kefu_icon.png) no-repeat 0 0;
-    _background-image: url(../images/kefu_icon.gif);
-    cursor: pointer;
-    overflow: hidden;
+    width: 100px;
+    z-index: 1;
+}
+#right_xf ul li.kf a:hover span{
+	background-position:0 -66px;
+}
+#right_xf ul li.hdzs a:hover span{
+	background-position:0 -132px;
+}
+#right_xf ul li.ysfb a:hover span{
+	background-position:0 -190px;
+}
+#right_xf ul li.jrwm a:hover span{
+	background-position:0 -252px;
+}
+#right_xf ul li a:hover span{
+	display:block;
 }
