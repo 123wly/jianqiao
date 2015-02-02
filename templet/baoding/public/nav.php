@@ -4,8 +4,8 @@
     <form action="<?php echo spUrl('search',''); ?>" method="get">
         <div class="sousuo">
             <p class="wpd left">
-                <a href="http://0032.jiaoyinet.com">用户登录</a>
-                <a href="http://0032.jiaoyinet.com">注册</a>
+                <a href="http://0032.jiaoyinet.com"><img src="<?php echo $skin_path; ?>images/yonghu del.png" /></a>
+                <a href="http://0032.jiaoyinet.com"><img src="<?php echo $skin_path; ?>images/zhuce.png" /></a>
             </p>
             <p class="sous left">
                 <input type="hidden" name="c" value="search" />
