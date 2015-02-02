@@ -30,7 +30,7 @@
 			     <tr class="table_title">
 				    <th width="30" class="m_title">UID</th>
 					<th>账号</th>
-					<th width="100"></th>
+					<th width="130"></th>
 					<th width="40">访问</th>
 					<th width="110">昵称</th>
 					<th width="100">注册</th>
@@ -46,6 +46,9 @@
 					      <a href="{goUserHome domain=$d.domain uid=$d.uid}" target="_blank">{$d.email}</a> {if $d.admin == 1}管理员{/if}
 					</td>
 					<td class="fun_con">
+						{if $d.admin == 1}
+						<a class="mtop" href="{spUrl c=admin a=goAdmin uid=$d.uid}" title="进入管理">进入管理</a>
+						{/if}
 					    <a class="f_look mtop" href="{spUrl c=admin a=user mod=info uid=$d.uid}" title="详情">详情</a>
 						{if $d.open == 1}
 						<a class="f_novisit mtop" href="javascript:;" onclick="nologin({$d.uid})" title="禁止访问">禁访</a>

@@ -9,26 +9,29 @@
 		    	<tr class="table_title">
 				  	<th width="10" class="m_title">宝贝名称</th>
 			      	<th width="30">宝贝性别</th>
-				  	<th width="20">学校</th>
-				  	<th width="60">提交时间</th>
-				  	<th width="60">联系电话</th>
+				  	<th width="20">所选学校</th>
 				  	<th width="60">宝贝生日</th>
 				  	<th width="60">入院时间</th>
+				  	<th width="60">联系电话</th>
 				  	<th width="60">地址</th>
 				  	<th width="60">意见</th>
-				  	<th width="60">预约时间</th>
+				  	<th width="60">提交时间</th>
+				  	<th width="60">操作</th>
 			   	</tr>
 			    {foreach from=$list item=d}
 			   	<tr class="table_hover">
 			     	<td style="padding-left: 20px;">{$d.bbname}</td>
 			      	<td>{$d.gender}</td>
 				  	<td>{$d.xuexiao}</td>
-				  	<td>{$d.create_time|date_format:"%Y-%m-%d"}</td>
-				  	<td>{$d.tel}</td>
+				  	<td>{$d.bbsr}</td>
 					<td>{$d.ruyuan}</td>
+					<td>{$d.tel}</td>
 					<td>{$d.address}</td>
 					<td>{$d.yijian}</td>
-					<td>{$d.stdate}</td>
+					<td>{$d.create_time|date_format:"%Y-%m-%d"}</td>
+					<td class="fun_con mfun">
+				      	<a class="f_edit mtop" href="{spUrl c=admin a=chakan id=$d.id}" target="_blank">查看</a>
+					</td>
 			   	</tr>
 			   	{/foreach}
 		  	</table>

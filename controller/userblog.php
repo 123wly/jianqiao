@@ -25,8 +25,15 @@ class userblog extends top
 		$this->getMyLook();
 		$this->isfollow = $this->isFollow();
 		$this->pmNum();
+
+		$this->__getFollows();
 	}
 
+	private function __getFollows(){
+		$num["teacher"] = spClass('db_member')->findCount(array("puid"=>$_GET["uid"], "type"=>"2"));
+		$num["student"] = spClass('db_member')->findCount(array("puid"=>$_GET["uid"], "type"=>"0"));
+		$this->childNum = $num;
+	}
 
 	/*显示用户首页 index 采取domain方式显示*/
 	public function index()
@@ -100,12 +107,14 @@ class userblog extends top
 	}
 	
 	public function huamingce(){
-        $sql = "SELECT member.username,member.uid,member.domain,member.role FROM (wh_follow as follow INNER JOIN wh_member as member ON follow.uid=member.uid) WHERE " . "touid=" . intval($_GET["uid"]) . " ORDER BY `id` DESC";
-		$tofollow = spClass('db_follow')->findSql($sql);
+		$tofollow = spClass('db_member')->findAll(array("puid"=>$_GET["uid"]),"","username,uid,type");
 		$tofollows = array();
 		foreach ($tofollow as $key => $value) {
-			if(!empty($value['role'])){
-				$tofollows[$value['role']][] = $value;
+			if($value['type'] == 2){
+				$tofollows['teacher'][] = $value;
+			}
+			if($value['type'] == 0){
+				$tofollows['student'][] = $value;
 			}
 		}
 		$this->tofollow = $tofollows;

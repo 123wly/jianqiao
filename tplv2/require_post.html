@@ -14,8 +14,8 @@
     </div>
 	{if islogin()}
 	<div class="menu">
-	    <li class="current"><a href="javascript:void(0)" onclick="changeFeeds('feeds',this)"><span>最新博客</span></a></li>
-		<li><a href="javascript:void(0)" onclick="changeFeeds('followfeeds',this)"><span>我的关注</span></a></li>
+		<li><a href="javascript:void(0)" onclick="changeFeeds('followfeeds',this)" id="myfollow_tab"><span>我的关注</span></a></li>
+	    <li><a href="javascript:void(0)" onclick="changeFeeds('feeds',this)"><span>所有博客</span></a></li>
 	</div>
 	{/if}
 </div>

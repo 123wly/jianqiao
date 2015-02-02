@@ -536,8 +536,8 @@ class emptyController extends top
 		$this->__f_page_show();
 	}
 
-	public function __f_ydfc_yzxx(){
-		// $this->__f_term(10);
+	public function __f_zsgg(){
+		 $this->__f_term(10);
 	}
 
 	public function __f_ydfc_jscyzs_zd(){

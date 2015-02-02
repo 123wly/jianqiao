@@ -70,6 +70,7 @@ class login extends top
 		if(!validateEmail($this->spArgs('email'))) return $this->api_error('邮箱格式不符合规范'); 
 		if(strlen($this->spArgs('username')) < 2 || strlen($this->spArgs('username')) > 12) return $this->api_error('昵称最短为2个字符最长为12个字符');
 		if(strlen($this->spArgs('password')) < 6) return $this->api_error('密码最少6位');
+		if($this->spArgs('puid') == '') return $this->api_error('班级不能为空');
 		$keep =  $this->yb['keep_email'];
 		if($keep != ''){
 			$keeparray = explode(',',$keep);
