@@ -1307,17 +1307,35 @@ class admin extends top
         die;
     }
     
-    //@@@预约报名
+    //@@@报名
 
     public function bmorder(){
         $this->curr_bm = ' id="current"';
         $this->curr_bm_div = $this->showclan;
         $this->curr_bm_list = ' id="acurrent"';
 
-        $this->list  =  spClass("db_baoming")->spPager($this->spArgs('page', 1), 10)->findAll("","id desc","");
+        $this->list  =  spClass("db_baoming")->spPager($this->spArgs('page', 1), 10)->findAll(array("type"=>"0"),"id desc","");
         $this->pager = spClass("db_baoming")->spPager()->pagerHtml('admin', 'bmorder');
 
         $this->display("admin/bmorder_list.html");
+    }
+
+    //@@@预约
+    public function yuyue(){
+        $this->curr_bm = ' id="current"';
+        $this->curr_bm_div = $this->showclan;
+        $this->curr_yy_list = ' id="acurrent"';
+        $this->list  =  spClass("db_baoming")->spPager($this->spArgs('page', 1), 10)->findAll(array("type"=>"1"),"id desc","");
+        $this->pager = spClass("db_baoming")->spPager()->pagerHtml('admin', 'bmorder');
+
+        $this->display("admin/bmorder_list.html");
+    }
+
+    //@@@查看
+    public function chakan(){
+        $this->detail=spClass("db_baoming")->find(array("id"=>$_GET['id']));
+        $this->display("admin/bmorder_detail.html");
+
     }
 
     //@@@ 食谱管理
@@ -1395,7 +1413,6 @@ class admin extends top
         $this->curr_guestbook = ' id="current"';
         $this->curr_guestbook_div = $this->showclan;
         $this->curr_guestbook_list = ' id="acurrent"';
-
         $this->list = spClass("db_guestbook")->findAll(array("uid"=>$_SESSION["uid"]));
         $this->display("admin/guestbook.html");
     }
