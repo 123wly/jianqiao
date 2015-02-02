@@ -6,6 +6,16 @@
         color: #FFF;
     }
 </style>
+<div id="right_xf">
+    <ul>
+        <li class="bm"><a href="{spUrl c=wybm tid=27}" title="报名"></a></li>
+        <li class="kf"><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=435690026&site=qq&menu=yes" title="客服"></a></li>
+        <li class="hdzs"><a href="{spUrl c=life tid=20}" title="活动展示"></a></li>
+        <li class="ysfb"><a href="{spUrl c=park tid=2}" title="园所分布"></a></li>
+        <li class="jrwm"><a href="{spUrl c=jiamenjianqiao tid=8}" title="加入我们"></a></li>
+        <li class="fhdb"><a href="#top" title="返回顶部"></a></li>
+    </ul>
+</div>
 <div id="footer">
     <div class="foot_top">
          <p>
