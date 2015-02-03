@@ -423,9 +423,17 @@ class emptyController extends top
         
         $week_data = spClass("db_cook")->findAll($sql,"","zao,zaodian,wu,wudian,wan");
         $data = array();
+        
         foreach ($week_data as $key => $value) {
         	foreach ($value as $k => $vo) {
-        		$data[$k][] = $vo;
+        		if(strstr($vo, "{")){
+        			$strA = explode("{",$vo);
+        			$title = substr($strA[1],0,strlen($strA[1])-1);
+        			$data[$k][] = array("title"=>$title, "cook"=>$strA[0]);
+        		}else {
+        			$data[$k][] = array("title"=>$vo, "cook"=>$vo);
+        		}
+        		
         	}
         }
         $this->assignown("week_data", $data);

@@ -95,8 +95,8 @@
                         <ul class="left ysb_right">
                             {foreach $week_data as $vo}
                                 {foreach $vo as $v}
-                                    <li title="{$v}">
-                                        <span>{$v|vstr_replace:"\n":"<br />"}</span>
+                                    <li title="{$v.title}">
+                                        <span>{$v.cook|vstr_replace:"\n":"<br />"}</span>
                                     </li>
                                 {/foreach}
                             {/foreach}  
