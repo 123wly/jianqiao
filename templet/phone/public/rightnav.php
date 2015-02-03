@@ -37,7 +37,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#page-con").css("min-height",($(window).height()-130));
-		$(".ui-panel").css("min-height",($("#main").height()));
+		$(".ui-panel").css("min-height",($("#main").height()+25));
 
 		$(function() {
 			var Accordion = function(el, multiple) {
