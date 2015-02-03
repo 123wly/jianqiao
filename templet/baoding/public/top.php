@@ -1,14 +1,15 @@
 <div id="top">
     <div class="main">
+        <?php 
+            $head   = spClass("db_ad_unit")->find(array("title"=>"头部导航"),"","id");
+            $headId = $head["id"];
+            $head = spClass("db_ad_list")->findAll(array("auid"=>$headId,"is_show"=>1));
+            // var_dump($foot);
+         ?>
         <p>
-            <a href="" title="">保定剑桥教育集团</a>   |   
-            <a href="" title="">市内分园</a>   |   
-            <a href="" title="">各县分园</a>   |   
-            <a href="" title="">剑桥小学</a>   |   
-            <a href="" title="">培训学校</a>   |   
-            <a href="" title="">成人英语</a>   |   
-            <a href="" title="">留学咨询</a>   |   
-            <a href="" title="">总公司</a>
+            <?php foreach ($head as $key => $value): ?>
+                <a href="<?php echo $value["body"]; ?>" title="<?php echo $value["title"]; ?>"><?php echo $value["title"]; ?></a>  <?php echo $key != count($head) - 1 ? "|" : "";  ?> 
+            <?php endforeach ?>
         </p>
     </div>
 </div>

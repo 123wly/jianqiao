@@ -681,10 +681,10 @@ class admin extends top
      */
     public function adUnit()
     {
-        $db_ad_unit = spClass('db_ad_unit');
-        $this->curr_adUnit = ' id="current"';
+        $db_ad_unit           = spClass('db_ad_unit');
+        $this->curr_adUnit    = ' id="current"';
         $this->curr_addisplay = ' id="addisplay"';
-        $this->curr_aadUnit = 'id="acurrent"';
+        $this->curr_aadUnit   = 'id="acurrent"';
 
         //改变广告位是否显示
         if ($this->spArgs('flag')) {
@@ -838,7 +838,7 @@ class admin extends top
                 //新增
                 if ($param['edit'] == 'add') {
                     if ($row['title'] == '' || $row['body'] == '' || $row['weight'] == '') {
-                        $this->error('标题,广告,权重不能为空', spUrl('admin', 'adContent'));
+                        // $this->error('标题,广告,权重不能为空', spUrl('admin', 'adContent'));
                     }
                     if ($db_ad_list->addList($row)) {
                         $this->success('创建成功', spUrl('admin', 'adContent'));

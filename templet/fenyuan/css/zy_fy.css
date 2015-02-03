@@ -282,8 +282,7 @@
 #content .gy_left .gy_top ul h3{
 	font-size:24px;
 	color:#ffffff;
-	height:68px;
-	line-height:68px;
+	padding:16px 0;
 	text-align:center;
 	font-weight:normal;
 	border-bottom:1px solid #ffffff;
@@ -317,7 +316,7 @@
 #content .gy_left .gy_bottom h4{
 	color:#15c1e5;
 	font-size:20px;
-	background:url(../images/tingerm.png) no-repeat 146px 0;
+	background:url(../images/tingerm.png) no-repeat 172px 0;
 	font-weight:normal;
 	border-bottom:1px solid #e4e4e4;
 	line-height:30px;
@@ -467,13 +466,22 @@
 	border-radius: 25px;
     behavior:url(pie.htc);
 }
+#content .gywm .gy_right .tab_title li a{
+	color:#9bba1f;
+}
 #content .gywm .gy_right .tab_title li:hover {
 	color: #ffffff;
 	background:#9bba1f;
 }
+#content .gywm .gy_right .tab_title li:hover a{
+	color: #ffffff;
+}
 #content .gywm .gy_right .tab_title li.selected {
 	color: #ffffff;
 	background:#9bba1f;
+}
+#content .gywm .gy_right .tab_title li.selected a{
+	color: #ffffff;
 }
 #content .gywm .gy_right .tab_content{
 	margin-top:35px;
