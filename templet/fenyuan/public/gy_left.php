@@ -25,6 +25,7 @@
     <ul>
         <h3>
             <?php $en_name = empty($parent['name']) ? $term['en_name'] : $parent['en_name']; ?>
+            <?php if($pparent) $en_name = $pparent["en_name"]; ?>
             <img src="<?php echo $skin_path; ?>images/nav/<?php echo str_replace(" ","_",strtolower($en_name)); ?>_hy.png" />
         </h3>
         <?php foreach ($childNode as $key => $vo):?>
