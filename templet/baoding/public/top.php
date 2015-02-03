@@ -3,7 +3,7 @@
         <?php 
             $head   = spClass("db_ad_unit")->find(array("title"=>"头部导航"),"","id");
             $headId = $head["id"];
-            $head = spClass("db_ad_list")->findAll(array("auid"=>$headId));
+            $head = spClass("db_ad_list")->findAll(array("auid"=>$headId,"is_show"=>1));
             // var_dump($foot);
          ?>
         <p>

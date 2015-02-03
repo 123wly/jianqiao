@@ -272,12 +272,12 @@
 	position:relative;
 }
 #content .yxjs ul li{
-	float:left;
-	width:234px;
-	height:231px;
-	overflow:hidden;
-	margin:40px 33px 0px;
-	position:relative;
+	float: left;
+    height: 223px;
+    margin: 40px 10px 0;
+    overflow: hidden;
+    position: relative;
+    width: 220px;
 }
 #content .yxjs ul li img{
 	height:100%;

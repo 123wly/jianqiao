@@ -20,11 +20,11 @@
 
 <div id="right_xf">
     <ul>
-        <li class="bm"><a href="" title="报名"><span>我要报名</span></a></li>
-        <li class="kf"><a href="" title="客服"><span>在线客服</span></a></li>
-        <li class="hdzs"><a href="" title="活动展示"><span>活动展示</span></a></li>
-        <li class="ysfb"><a href="" title="园所分布"><span>园所分布</span></a></li>
-        <li class="jrwm"><a href="" title="加入我们"><span>加入我们</span></a></li>
+        <li class="bm"><a href="{spUrl c=wybm tid=27}" title="报名"><span>我要报名</span></a></li>
+        <li class="kf"><a href="http://wpa.qq.com/msgrd?v=3&uin=435690026&site=qq&menu=yes" title="客服"><span>在线客服</span></a></li>
+        <li class="hdzs"><a href="{spUrl c=life tid=20}" title="活动展示"><span>活动展示</span></a></li>
+        <li class="ysfb"><a href="{spUrl c=park tid=2}" title="园所分布"><span>园所分布</span></a></li>
+        <li class="jrwm"><a href="{spUrl c=jiamenjianqiao tid=8}" title="加入我们"><span>加入我们</span></a></li>
     </ul>
     <p class="fhdb"><a href="#top" title="返回顶部"></a></p>
 </div>
@@ -35,7 +35,7 @@
             <?php 
                 $foot   = spClass("db_ad_unit")->find(array("title"=>"底部导航"),"","id");
                 $footId = $foot["id"];
-                $foot = spClass("db_ad_list")->findAll(array("auid"=>$footId));
+                $foot = spClass("db_ad_list")->findAll(array("auid"=>$footId,"is_show"=>1));
                 // var_dump($foot);
              ?>
              <?php foreach ($foot as $key => $value): ?>

@@ -322,21 +322,25 @@ class emptyController extends top
 	///////////////////////////////////////////////////
 
 	public function __f_index(){
+		
 		//分园新闻
-		$f_n=sPclass("db_term")->find(array("id"=>75));
-		$f_news = spClass("db_article")->findAll(array("term_id"=>75),"id desc","id,title,content,create_time,tpl,brief","4");
+		$f_n = spClass("db_term")->find(array("name"=>"新闻动态","uid"=>THEME_UID));
+		$f_news = spClass("db_article")->findAll(array("term_id"=>$f_n["id"]),"id desc","id,title,content,create_time,tpl,brief","4");
 		$this->assignown("f_n",$f_n);
 		$this->assignown("f_news",$f_news);
+		
 		//分园介绍
-		$f_jh=spClass("db_term")->find(array("id"=>56));
-		$f_jieshao = spClass("db_article")->find(array("term_id"=>56));
+		$f_jh=spClass("db_term")->find(array("name"=>"分园介绍","uid"=>THEME_UID));
+		$f_jieshao = spClass("db_article")->find(array("term_id"=>$f_jh["id"]));
 		$this->assignown("f_jh",$f_jh);
 		$this->assignown("f_jieshao",$f_jieshao);
-		//家长寄语
-		$f_ju 	= spClass("db_term")->find(array("id"=>66));
-		$f_jiyu = spClass("db_article")->findAll(array("term_id"=>66),"id desc","id,title,content,tpl,brief","2");
+		
+		//通知公告
+		$f_ju 	= spClass("db_term")->find(array("name"=>"通知公告","uid"=>THEME_UID));
+		$f_jiyu = spClass("db_article")->findAll(array("term_id"=>$f_ju['id']),"id desc","id,title,content,tpl,brief","2");
 		$this->assignown("f_ju",$f_ju);
 		$this->assignown("f_jiyu",$f_jiyu);
+
 		//剑桥生活
 		$f_sh   = spClass("db_term")->find(array("id"=>51));
 		$this->assignown("f_sh",$f_sh);
@@ -352,6 +356,9 @@ class emptyController extends top
 		$f_kt      = spClass("db_article")->findAll(array("term_id"=>64),"id desc","id,title,cover,tpl,brief","8");
 		$this->assignown("f_kt_term",$f_kt_term);
 		$this->assignown("f_kt",$f_kt);
+
+		// 家长寄语
+		$this->jiyu = spClass("db_term")->find(array("name"=>"家长寄语","uid"=>THEME_UID));
 
 		$f_all_index = array_merge($f_hd, $f_kt);
 		$this->assignown("f_all_index",$f_all_index);
