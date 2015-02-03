@@ -99,13 +99,22 @@ $(function() {
                     <div class="xwzx_xian">
                         {foreach $f_news as $vo} 
                             {if $vo@index eq 0}
-                            <h3 class="qdbj"><a href="{spUrl c=$vo.tpl id=$vo.id}">{$vo.title|msubstr:'0':'10'}</a></h3>
-                            <p>{$vo.brief|msubstr:'0':'70'}</p>
+                            <div class="left xwzxt">
+                                <img src="{$vo.cover|upload_echo}" />
+                            </div>
+                            <div class="right xwzxw">
+                                <h3 class="qdbj">
+                                    <a href="{spUrl c=$vo.tpl id=$vo.id}">{$vo.title|msubstr:'0':'10'}</a>
+                                </h3>
+                                <p>{$vo.brief|msubstr:'0':'20'}</p>
+                            </div>
+                            <div class="clear" style="height:20px;"></div>
                             {else}
                             <h3><a href="{spUrl c=$vo.tpl id=$vo.id}">{$vo.title}</a></h3> 
                             {/if}
                         {/foreach}
                     </div>
+                    
                     <div class="genduo">
                         <a href="{spUrl c=$f_n.tpl tid=$f_n.id}"></a>
                     </div>
