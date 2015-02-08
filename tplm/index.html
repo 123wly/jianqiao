@@ -1,68 +1,109 @@
-{include file="require_header.html" gallery=yes}
-{literal}
+<!DOCTYPE HTML>
+<html>
 
-{/literal}
-<div id="index">
-    <div id="article">
-	    {include file="require_post.html"}
-		
-		
-		
-			{if isset($adunit.2) && $adunit.2.is_show == 1}
-			<div id="ad_index_up"></div>
-			<script>
-				$(document).ready(function(){
-					ad_aside('#ad_index_up',2);
-					setInterval(function(){
-						ad_aside('#ad_index_up',2);
-					}, 30000);
-				})
-			</script>
-			{/if}
-	
-	
-	
-		
-		
-        {if islogin() && $yb.wizard_switch == 1} {include file="require_wizard.html"} {/if}
-		<div id="feedArea">
-			<div id="feed_loading"></div>
-			<div id="feed_box"></div>
-			<script type="text/javascript">
-				$(document).ready(function(){ 
-					yb_load_feeds('blog','feeds');
-				})
-			</script>
-		</div>
-		
-		{if $yb.show_page_mode == 1}
-			<div id="feedAjaxTool" page="2" max="{$yb.show_ajax_to}" area="feedArea"  class="feedajax">
-			</div>
-			<script>
-			$.feedToolBar.parm.morepage=true;
-			$.feedToolBar.morepage('feedAjaxTool');
-			</script>
-		{else}
-			
-		<div id="paging"></div>
-		<div class="clear"></div>
-		{/if}
+<head>
+    <title>剑桥幼儿园</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="{$syskin}/css/reset.css">
+    <link rel="stylesheet" href="{$syskin}/css/style.css">
 
-<!--
-	<div id="feedAjaxTool" page="2" max="{$yb.show_ajax_to}" area="feedArea" query="{spUrl c=main a=index ajaxload=true type=$type}" class="feedajax">
-    <a href="javascript:void(0)" onclick="continueShow('feedAjaxTool')" class="more">查看更多</a>
-    <a href="javascript:void(0)" class="loading">loading...</a>
-    <a href="javascript:void(0)" class="nomore">暂时没有更多内容</a>
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="header" class="header-page clearFlaot">
+            <div class="pagehead-box">
+               <a class="arrowLeft" data-ajax="false" href="javascript:history.go(-1);"><img width="43px;" height="35px;" src="{$syskin}/images/logo.png" alt="返回" /></a>
+               <h1 class="pagehead-title">大一班</h1>
+               <a class="arrowRight" href="#defaultpanel"  data-role="button"><img class="prr" width="30px;" height="30px;" src="{$syskin}/images/page-message.png" alt="消息" /><span class="poo new-messages"></span></a>
+           </div>
+        </div>
+        <div id="main" class="page-main">
+            <div  class="img-list clearFloat">
+                <span class="ind-img"><img width="70px" height="70px;" src="{$syskin}/images/teacher.jpg" alt="班级老师"></span>
+                <p class="red-bold">张老师</p>
+                <p>把学生作为独特个体来了解和理解。</p>
+            </div>
+            <ul class="index-main clearFloat">
+                <li class="index-m m-3">
+                    <a class="clearFloat" href="{spUrl c=notice a=index uid=3 tag='通知'}">
+                        <img width="100%" src="{$syskin}/images/menu1.png" />
+                    </a>
+                    <a class="m-word" href="{spUrl c=notice a=index}">
+                        <p>通知公告</p>
+                    </a>
+                </li>
+                <li class="index-m m-2">
+                    <a class="clearFloat" href="{spUrl c=Roster a=index uid=3}">
+                        <img width="100%" src="{$syskin}/images/menu2.png" />
+                    </a>
+                    <a class="m-word" href="{spUrl c=Roster a=index uid=3}">
+                        <p>花名册</p>
+                    </a>
+                </li>
+                <li class="index-m m-4">
+                    <a class="clearFloat" href="{spUrl c=Courseware a=index uid=3 tag='课件'}">
+                        <img width="100%" src="{$syskin}/images/menu3.png" />
+                    </a>
+                    <a class="m-word" href="{spUrl c=Courseware a=index uid=3 tag='课件'}">
+                        <p>我的课件</p>
+                    </a>
+                </li>
+                <li class="index-m m-1">
+                    <a class="clearFloat" href="{spUrl c=album a=index uid=3 type=3}">
+                        <img width="100%" src="{$syskin}/images/menu4.png" />
+                    </a>
+                    <a class="m-word" href="{spUrl c=album a=index uid=3 type=3}">
+                        <p>班级相册</p>
+                    </a>
+                </li>
+                <li class="index-m m-7">
+                    <a class="clearFloat" href="qsjl.html">
+                        <img width="100%" src="{$syskin}/images/menu5.png" />
+                    </a>
+                    <a class="m-word" href="qsjl.html">
+                        <p>私信家长</p>
+                    </a>
+                </li>
+                <li class="index-m m-8">
+                    <a class="clearFloat" href="qsjl.html">
+                        <img width="100%" src="{$syskin}/images/menu6.png" />
+                    </a>
+                    <a class="m-word" href="qsjl.html">
+                        <p>家园联系册</p>
+                    </a>
+                </li>
+                <li class="index-m m-6">
+                    <a class="clearFloat" href="qsjl.html">
+                        <img width="100%" src="{$syskin}/images/menu7.png" />
+                    </a>
+                    <a class="m-word" href="qsjl.html">
+                        <p>今日食谱</p>
+                    </a>
+                </li>
+                <li class="index-m m-5">
+                    <a class="clearFloat" href="{spUrl c=group}">
+                        <img width="100%" src="{$syskin}/images/menu8.png" />
+                    </a>
+                    <a class="m-word" href="{spUrl c=group}">
+                        <p>班级群</p>
+                    </a>
+                </li>
+                <li class="index-m m-5">
+                    <a class="clearFloat" href="qsjl.html">
+                        <img width="100%" src="{$syskin}/images/menu9.png" />
+                    </a>
+                    <a class="m-word" href="qsjl.html">
+                        <p>考勤管理</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="footer"></div>
     </div>
-	-->
-		<script>//$.feedToolBar('feedAjaxTool');</script>
-        
-        
-        
-	</div>
-	<div id="aside">
-        {include file="require_sider.html"}
-    </div>
-</div>
-
-{include file="require_footer.html" top=yes}
+</body>
+</html>

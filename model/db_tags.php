@@ -108,10 +108,12 @@ $rs = $this->findSql($sql);
 				left join `".DBPRE."blog` as b on t.bid=b.bid 
 				left join `".DBPRE."member` as u on t.uid=u.uid 
 				WHERE $where and t.uid = $doUid and b.open = 1 $group order by b.time desc"; 
+
 		$thispage = ($args['page']) ? $args['page'] : 1;
+		$page = ($args['pagenum'] )? $args['pagenum'] : 15;
 	
-		//if(spAccess)
-		$data['blog'] = $this->spPager($thispage,15)->findSql($sql,'tid desc');
+		//if(spAccess)分页显示
+		$data['blog'] = $this->spPager($thispage,$page)->findSql($sql,'tid desc');
 		// echo $this->dumpSql();
 		if($data['blog']) $data['currtid'] = $data['blog'][0]['tid'];
 		$data['isadd']   = (spClass('db_mytag')->find(array('tagid'=>$data['currtid'],'uid'=>$uid),'tagid desc')) ? 1:0; //是否添加

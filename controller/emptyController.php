@@ -554,7 +554,7 @@ class emptyController extends top
 
 
 
-	///////////////////////////////////////////
+	///////////////////////////////////////////主园手机站
 	public function __p_index(){
 	//新闻资讯
 		$new=spClass("db_term")->find(array("id"=>"31","uid"=>"1"));
@@ -573,22 +573,23 @@ class emptyController extends top
 		$this->assignown("choose",$choose);
 
 	}
-	public function __p_term($pagenum=1,$order="id desc"){
+	public function __p_term(){
 
 		$term = spClass("db_term")->find(array("id"=>$_GET['tid']));
 		if(!$term['parent_id']){
 			$term = spClass("db_term")->find(array("parent_id"=>$_GET['tid']));
 		}
-
-		$articles=spClass("db_article")->spPager($this->spArgs('page', 10),$pagenum)->findAll(array("term_id"=>$term['id']),$order);
+		$articles=spClass("db_article")->spPager($this->spArgs('page', 1),6)->findAll(array("term_id"=>$term['id']),"id asc");
 
 		$article=spClass("db_article")->find(array("term_id"=>$term['id']));
 
 		$pager = spClass("db_article")->spPager()->getPager();
+
 		$this->assignown("term",$term);
 		$this->assignown("articles",$articles);
 		$this->assignown("article",$article);
 		$this->assignown("pager",$pager);
+
 	}
 
 	public function __p_pageshow(){
@@ -608,7 +609,7 @@ class emptyController extends top
 			$up['title'] = "没有了";
 		}else {
 			$up['href'] = spUrl($upArticle['ptpl'],"",array("id"=>$upArticle['id']));
-			$up['title'] = $upArticle['title'];
+			$up['title'] = "上一篇";
 		}
 
 		// 下一篇
@@ -618,7 +619,7 @@ class emptyController extends top
 			$next['title'] = "没有了";
 		}else {
 			$next['href'] = spUrl($nextArticle['ptpl'],"",array("id"=>$nextArticle['id']));
-			$next['title'] = $nextArticle['title'];
+			$next['title'] = "下一篇";
 		}
 		// 赋值
 		$this->assignown("up",$up);
@@ -714,6 +715,7 @@ class emptyController extends top
 		//资讯信息
 		$news=spClass("db_term")->find(array("id"=>"58"));
 		$this->assignown("news",$news);
+
 		//设施环境
 		$sheshi=spClass("db_article")->find(array("term_id"=>"15"));
 		$this->assignown("sheshi",$sheshi);
@@ -756,7 +758,7 @@ class emptyController extends top
 			$up['title'] = "没有了";
 		}else {
 			$up['href'] = spUrl($upArticle['ptpl'],"",array("id"=>$upArticle['id']));
-			$up['title'] = $upArticle['title'];
+			$up['title'] = "上一篇";
 		}
 
 		// 下一篇
@@ -766,7 +768,7 @@ class emptyController extends top
 			$next['title'] = "没有了";
 		}else {
 			$next['href'] = spUrl($nextArticle['ptpl'],"",array("id"=>$nextArticle['id']));
-			$next['title'] = $nextArticle['title'];
+			$next['title'] = "下一篇";
 		}
 		// 赋值
 		$this->assignown("up",$up);

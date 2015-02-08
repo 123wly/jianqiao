@@ -41,6 +41,36 @@ class blog extends top
 		}
 	}
 	
+	// 获取通知
+		function notice(){
+		if($this->spArgs('uid')){
+			$uid = (int) $this->spArgs('uid');
+			$cond = "and b.uid = '$uid'";
+		}
+		if($this->spArgs('pagelimit')){
+			$pageLimit = ($this->spArgs('pagelimit') < 30) ? $this->spArgs('pagelimit') : 30 ;  //自定义分页
+		}else{
+			$pageLimit = $this->yb['show_page_num'];
+		}
+
+
+		//LEFT JOIN `".DBPRE."follow` AS f ON ( b.uid = f.touid and f.uid = '$uid' )
+		// $sql = "SELECT b. * , k.id AS likeid  ,m.username,m.domain
+		// 		FROM `".DBPRE."blog` AS b LEFT JOIN `".DBPRE."likes` AS k ON ( b.bid = k.bid AND k.uid ='$this->uid' )
+		// 		LEFT JOIN `".DBPRE."member`  as m on b.uid = m.uid where b.open = 1 $cond ORDER BY b.time desc";
+			
+		$data['blog'] = spClass('db_blog')->spPager($this->spArgs('page',1),$pageLimit)->findAll(array("tag"=>"通知","uid"=>$uid));
+		$data['page'] = spClass('db_blog')->spPager()->getPager();
+		unset($data['page']['all_pages']);
+		if(!empty($data['blog'])){
+			foreach($data['blog'] as &$d){
+				$this->foramt_feeds($d);
+			}
+			$this->api_success($data);
+		}else{
+			$this->api_success("");
+		}
+	}
 	
 	//获取单个博客
 	function getOneBlog(){
@@ -296,15 +326,15 @@ class blog extends top
 	//@@@ 调取单个博客的tag标签
 	public function tagForOne(){
 		$data = spClass('db_tags')->findTagByAttrUid($this->spArgs(), intval($_POST["tuid"]));
-		
 		if(is_array($data['blog'])){
 			foreach($data['blog'] as &$d){
 				$d['h_url'] =  goUserHome(array('uid'=>$d['uid'], 'domain'=>$d['domain']));
 				$d['h_img'] = avatar(array('uid'=>$d['uid'],'size'=>'middle'));
 				$d['b_url'] = goUserBlog(array('bid'=>$d['bid'],'domain'=>$d['domain'],'uid'=>$d['uid']));
 				$d['tag'] =  ($d['tag'] != '') ? explode(',',$d['tag']) : '';
-				
+				$d['time_data']=date('Y.m.d', $d['time']);
 				$d['time']  = ybtime(array('time'=>$d['time']));
+
 				$rs         = split_attribute($d['body']); 
 				$d['attr']  = $rs['attr'];
 				$d['repto'] = $rs['repto'];
@@ -555,9 +585,12 @@ class blog extends top
 				FROM `".DBPRE."blog` AS b LEFT JOIN `".DBPRE."likes` AS k ON ( b.bid = k.bid AND k.uid ='$this->uid' )
 				LEFT JOIN `".DBPRE."member`  as m on b.uid = m.uid where b.open = 1 $tcond $cond ORDER BY b.time desc";
 			
-		$data['blog'] = spClass('db_blog')->spPager($this->spArgs('page',1),$pageLimit)->findSql($sql);
+		$data['blog'] = spClass('db_blog')->spPager($this->spArgs('page',1),1)->findSql($sql);
 		$data['page'] = spClass('db_blog')->spPager()->getPager();
-		unset($data['page']['all_pages']);
+		// echo spClass('db_blog')->dumpSql();
+		if(!isset($_POST["all_pages"])){
+			unset($data['page']['all_pages']);
+		}
 		if(!empty($data['blog'])){
 			foreach($data['blog'] as &$d){
 				$this->foramt_feeds($d);
