@@ -57,7 +57,7 @@
                                                 {/foreach}
                                             {/foreach}
                                         {else}
-                                            <p><img src="{$skin_path}images/shipu-1.png" /></p>
+                                            <p><img src="{$skin_path}images/shipu-1.jpg" /></p>
                                         {/if}
                                     </ul>
                                     <div class="clear"></div>
@@ -69,7 +69,7 @@
                                   <tr>
                                     <td class="w365">
                                         <ul>
-                                            <li>{$dayData.zao|vstr_replace:"\n":"<br />"}</li>
+                                            <li>{$dayData.zao|vstr_replace:"\n":"<br />"|default:"暂无添加"}</li>
                                         </ul>
                                     </td>
                                     <td class="430"><p><img src="{$skin_path}images/06.png" /></p></td>
@@ -83,7 +83,7 @@
                                     </td>
                                     <td class="430">
                                         <ul>
-                                            <li>{$dayData.zaodian|vstr_replace:"\n":"<br />"}</li>
+                                            <li>{$dayData.zaodian|vstr_replace:"\n":"<br />"|default:"暂无添加"}</li>
                                         </ul>
                                     </td>
                                   </tr>
@@ -93,7 +93,7 @@
                                   <tr>
                                     <td class="w365">
                                         <ul>
-                                            <li>{$dayData.wu|vstr_replace:"\n":"<br />"}</li>
+                                            <li>{$dayData.wu|vstr_replace:"\n":"<br />"|default:"暂无添加"}</li>
                                         </ul>
                                     </td>
                                     <td class="430"><p><img src="{$skin_path}images/16.png" /></p></td>
@@ -107,7 +107,7 @@
                                     </td>
                                     <td class="430">
                                         <ul>
-                                            <li>{$dayData.wudian|vstr_replace:"\n":"<br />"}</li>
+                                            <li>{$dayData.wudian|vstr_replace:"\n":"<br />"|default:"暂无添加"}</li>
                                         </ul>
                                     </td>
                                   </tr>
@@ -117,7 +117,7 @@
                                   <tr>
                                     <td class="w365">
                                         <ul>
-                                            <li>{$dayData.wan|vstr_replace:"\n":"<br />"}</li>
+                                            <li>{$dayData.wan|vstr_replace:"\n":"<br />"|default:"暂无添加"}</li>
                                         </ul>
                                     </td>
                                     <td class="430"><p><img src="{$skin_path}images/30.png" /></p></td>
