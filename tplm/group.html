@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>剑桥幼儿园</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="{$syskin}/css/reset.css">
+    <link rel="stylesheet" href="{$syskin}/css/style.css">
+    <script type="text/javascript" src="{$syskin}/js/jquery-1.7.2.js"></script>
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="header" class="header-page clearFlaot">
+            <div class="pagehead-box">
+               <a class="arrowLeft" data-ajax="false" href="javascript:history.go(-1);"><img width="28px;" height="25px;" src="{$syskin}/images/page-back.png" alt="返回" /></a>
+               <h1 class="pagehead-title">班级群</h1>
+               <a class="arrowRight" href="#defaultpanel"  data-role="button"><img class="prr" width="25px;" height="25px;" src="{$syskin}/images/edit.png" alt="编辑" /></a>
+           </div>
+        </div>
+    	<div id="main" style="padding-top:45px;">
+            <div class="finish-top prr">
+                <img class="dblock" style="max-height:400px;" width="100%" src="{$syskin}/images/ffrr-img.jpg" alt="背景图片" />
+                <div class="poo xx-fimg fs_16 red-font" style="right:79px; bottom:0px;">
+                    用户名
+                </div>
+                <div class="poo xx-fimg">
+                   <p class="smallimg"><img height="17px" src="{$syskin}/images/ffrr-simg.jpg" alt="头像图片"></p>
+                </div>
+            </div>
+              <script type="text/javascript">
+              var pageThis = 1;
+              var getPost = function(pageNo){
+                  $.post("{spUrl c=api yc=blog ym=followfeeds}",{
+                      page : pageNo
+                  },function(data){
+                        var data = $.parseJSON(data);
+                        $(".ff-bc").children("li[id!=vo-item]").remove();
+                        
+                        $.each(data.body.blog, function(i, n){
+                            var tpl = $("#vo-item").clone();
+
+                            tpl.find(".red-font").html(n.title);
+
+                            tpl.find(".fs_15").html(n.body);
+
+                            tpl.find(".floatLeft").find("img").attr("src",n.h_img);
+
+                            var href = '{spUrl c=page a=index bid=phpbid}';
+                            tpl.find(".fs_16").children().attr('href',href.replace('phpbid',n.bid));
+                            console.log(n.h_img);
+                            tpl.find(".fs_12").find("span").html(n.time);
+                            tpl.attr("id","post_" + i);
+
+                            tpl.show();
+                            $(".ff-bc").append(tpl);
+                        });
+
+                        if(!jQuery.isEmptyObject(data.body.page)){
+                            var page = data.body.page;
+                            var str = "";
+                            $.each(page.all_pages, function(index, val) {
+                                if( (val - 1) === pageThis || (val + 1) === pageThis || (val === pageThis)){
+                                    if(page.current_page === val){
+                                        val = "<b>" + val + "</b>";
+                                    }
+                                    str += '<a href="javascript:;" id="page_' + val + '">' + val + '</a>';
+                                }
+
+                            });
+                            if(page.current_page==1){
+                                var prev_page = '<a href="javascript:;" id="page_' + page.prev_page + '"></a>'; 
+                            }
+                            else{
+                                 var prev_page = '<a href="javascript:;" id="page_' + page.prev_page + '">上一页</a>'; 
+                            }
+                            if(page.current_page==page.last_page){
+                                var next_page = '<a href="javascript:;" id="page_' + page.next_page + '"></a>';   
+                            }  
+                            else{
+                                var next_page = '<a href="javascript:;" id="page_' + page.next_page + '">下一页</a>';  
+                            }
+                            $(".paper-page").html(prev_page + str + next_page);
+                        }
+                    });
+                }
+                $(document).ready(function(){
+                    getPost(1);
+                });
+            </script>
+            <ul class="ff-bc">
+
+
+                <li class="clearFloat p10 plnone" style="display: none;" id="vo-item">
+                    <div class="floatLeft w-25">
+                        <span class="dblock">
+                            <img class="dblock" style="margin:0 auto 0; max-width:85px;" width="80%" src="" alt="熙宝">
+                        </span>
+                    </div>
+                    <div class="floatRight w-75">
+                        <div class="my-new">
+                            <p class="fs_16"> 
+                                <a href="">
+                                    <span class="red-font"></span>
+                                </a>
+                            </p>
+                            <p class="fs_15 hui6 mb5"></p>
+                        </div>
+                        <div>
+                            <div class="fs_12 hui3 prr">
+                                <span></span>
+                                <p class="ff-huifubox">
+                                    <span><img height="13px;" src="{$syskin}/images/rr-zan.png" alt="">赞</span>
+                                    <span><img height="13px;" src="{$syskin}/images/rr-pl.png" alt="">评论</span>
+                                </p>
+                                <span class="ff-huifu"><img height="17px" src="{$syskin}/images/ff-huifu.png" alt=""></span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+            </ul>
+
+             <div class="paper-page">
+                <!-- <a class="blue-font" href="#">上一页</a>
+                <a href="#" id="ye">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a class="blue-font" href="#">下一页</a> -->
+            </div>
+            <script>
+                $(document).ready(function() {
+                    $(".paper-page").on("click","a",function(){
+                        pageThis = parseInt($(this).attr("id").replace("page_",""));
+                        getPost(pageThis);
+                    });
+                });
+            </script>
+    	</div>
+    	<div id="footer"></div>
+    </div>
+</body>
+<script src="{$syskin}/js/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function($) {
+    var UA = window.navigator.userAgent; //使用设备
+    var CLICK = "click";
+    if (/ipad|iphone|android/.test(UA)) { //判断使用设备
+        CLICK = "tap";
+    }
+    $(".ff-huifu").click(function() {
+        var box = $(this).siblings('.ff-huifubox');
+        $(".ff-huifubox").not(box).fadeOut();
+        box.fadeToggle();
+    });
+});
+
+</script>
+
+</html>
