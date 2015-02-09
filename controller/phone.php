@@ -14,7 +14,8 @@ class phone extends top
         	$this->banjiInfo = spClass("db_member")->find(array("uid"=>$this->userInfo["puid"]));
         }
         if(!method_exists($this,$_GET['a'])){
-        	$this->display($_GET["a"].".html");die;
+        	header('Location:'.spUrl('phone',"index"));
+        	die;
         }
     }
     public function json_return($val){
@@ -61,11 +62,38 @@ class phone extends top
 		for ($i=0; $i < count($tofollows['student']) % 3; $i++) { 
 			$tofollows['student'][] = null;
 		}
-		// print_r($tofollows);
 		$this->tofollow = $tofollows;
 		$this->display("roster.html");
 	}
 	public function notice_post(){
 		$this->display("notice_post.html");
+	}
+	public function login(){
+		if(isset($_GET["openid"])){
+			$this->display("wechat_login.html");
+		}else {
+			$this->display("login.html");
+		}
+	}
+
+	public function letter_post(){
+		if(isset($_GET["id"])){
+			$this->toUserInfo = spClass("db_member")->find(array("uid"=>$_GET["id"]));
+		}
+		$this->display("letter_post.html");
+	}
+	public function parent_list(){
+		$tofollow = spClass('db_member')->findAll(array("puid"=>$this->banjiInfo["uid"]),"","username,uid,blogtag,type");
+		$tofollows = array();
+		foreach ($tofollow as $key => $value) {
+			if($value['type'] == 2){
+				$tofollows['teacher'][] = $value;
+			}
+			if($value['type'] == 0){
+				$tofollows['student'][] = $value;
+			}
+		}
+		$this->tofollow = $tofollows;
+		$this->display("parent_list.html");
 	}
 }

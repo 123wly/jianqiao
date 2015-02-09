@@ -26,14 +26,14 @@ class main extends top
 		if(isset($_GET["openid"])){
 			$rs = spClass("login","","./api/login.php")->wechatLogin($_GET["openid"]);
 			if($rs){
-				$this->display('index.html');
+				header('Location:'.spUrl('phone',"index"));
 			}else {
 				$this->display('wechat_login.html');
 			}
 		}else {
 			///@@@@
 			if(ismobile()){
-				 header('Location:'.spUrl('phone',"index"));
+				header('Location:'.spUrl('phone',"index"));
 			}else {
 				$this->display($display.'.html');
 			}

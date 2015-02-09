@@ -18,7 +18,7 @@
     <div id="wrap">
         <div id="header" class="header-page clearFlaot">
             <div class="pagehead-box">
-                <a class="arrowLeft" data-ajax="false" href="javascript:history.go(-1);">
+                <a class="arrowLeft" data-ajax="false" href="{spUrl c=phone a=index}">
                     <img width="28px;" height="25px;" src="{$syskin}/images/page-back.png" alt="返回" />
                 </a>
                 <h1 class="pagehead-title">花名册</h1>
@@ -61,7 +61,7 @@
                                 <a class="bk-bg" href="javascript:;">
                                     <img src="{avatar uid=$vo.uid size=middle}" alt="{$vo.username}" />
                                     <div class="bk-bg bk-bg{$key%3}"></div>
-                                    <div class="tbtx-word" href="#">
+                                    <div class="tbtx-word">
                                         <ul>
                                             <li>{$vo.username}</li>
                                             <li>{$vo.blogtag}</li>
