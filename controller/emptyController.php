@@ -329,18 +329,18 @@ class emptyController extends top
 		$this->assignown("f_jiyu",$f_jiyu);
 
 		//剑桥生活
-		$f_sh   = spClass("db_term")->find(array("id"=>51));
+		$f_sh   = spClass("db_term")->find(array("name"=>"剑桥生活","uid"=>THEME_UID));
 		$this->assignown("f_sh",$f_sh);
 
 		//精彩活动
-		$f_hd_term 	= sPclass("db_term")->find(array("id"=>62));
-		$f_hd 	 	= spClass("db_article")->findAll(array("term_id"=>62),"id desc","id,title,cover,tpl,brief","8");
+		$f_hd_term 	= sPclass("db_term")->find(array("name"=>"精彩活动","uid"=>THEME_UID));
+		$f_hd 	 	= spClass("db_article")->findAll(array("term_id"=>$f_hd_term['id']),"id desc","id,title,cover,tpl,brief","8");
 		$this->assignown("f_hd_term",$f_hd_term);
 		$this->assignown("f_hd",$f_hd);
 
 		//欢乐课堂
-		$f_kt_term = sPclass("db_term")->find(array("id"=>64));
-		$f_kt      = spClass("db_article")->findAll(array("term_id"=>64),"id desc","id,title,cover,tpl,brief","8");
+		$f_kt_term = sPclass("db_term")->find(array("name"=>"欢乐课堂","uid"=>THEME_UID));
+		$f_kt      = spClass("db_article")->findAll(array("term_id"=>$f_kt_term['id']),"id desc","id,title,cover,tpl,brief","8");
 		$this->assignown("f_kt_term",$f_kt_term);
 		$this->assignown("f_kt",$f_kt);
 
@@ -466,17 +466,17 @@ class emptyController extends top
 
 
 
-		//分园新闻
-		$term_new=spClass("db_term")->find(array("id"=>75));
-		$f_news = spClass("db_article")->spPager($this->spArgs('page', 1), 10)->findAll(array("term_id"=>75),"id desc");
+		//分园--新闻动态
+		$term_new=spClass("db_term")->find(array("name"=>"新闻动态","uid"=>THEME_UID));
+		$f_news = spClass("db_article")->spPager($this->spArgs('page', 1), 10)->findAll(array("term_id"=>$term_new['id']),"id desc");
 		$pager = spClass("db_article")->spPager()->getPager();
 		$this->assignown("term_new",$term_new);
 		$this->assignown("pager",$pager);
 		$this->assignown("f_news",$f_news);
 
-		//分园通知
-		$term_tz=spClass("db_term")->find(array("id"=>74));
-		$f_tz = spClass("db_article")->spPager($this->spArgs('pagetz', 1), 10)->findAll(array("term_id"=>74),"id desc");
+		//分园---通知公告
+		$term_tz=spClass("db_term")->find(array("name"=>"通知公告","uid"=>THEME_UID));
+		$f_tz = spClass("db_article")->spPager($this->spArgs('pagetz', 1), 10)->findAll(array("term_id"=>$term_tz['id']),"id desc");
 		$pager_tz = spClass("db_article")->spPager()->getPager();
 		$this->assignown("term_tz",$term_tz);
 		$this->assignown("pager_tz",$pager_tz);
@@ -717,29 +717,35 @@ class emptyController extends top
 
 
 
-	/////////////////////////
+	/////////////////////////------分园手机站
 	public function __c_index(){
 		//分园简介
-		$jieshao=spClass("db_article")->find(array("term_id"=>"56"));
+		$term=spClass("db_term")->find(array("name"=>"分园介绍","uid"=>THEME_UID));
+		$jieshao=spClass("db_article")->find(array("term_id"=>$term['id']));
 		$this->assignown("jieshao",$jieshao);
 		//资讯信息
-		$news=spClass("db_term")->find(array("id"=>"58"));
+		$news=spClass("db_term")->find(array("name"=>"资讯信息","uid"=>THEME_UID));
 		$this->assignown("news",$news);
 
 		//设施环境
-		$sheshi=spClass("db_article")->find(array("term_id"=>"15"));
+		$term1=spClass("db_term")->find(array("name"=>"剑桥设施","uid"=>THEME_UID));
+		$sheshi=spClass("db_article")->find(array("term_id"=>$term1['id']));
 		$this->assignown("sheshi",$sheshi);
 		//园长介绍
-		$yuanzhang=spClass("db_article")->find(array("term_id"=>"59"));
+		$term2=spClass("db_term")->find(array("name"=>"园长及教师","uid"=>THEME_UID));
+		$yuanzhang=spClass("db_article")->find(array("term_id"=>$term2['id']));
 		$this->assignown("yuanzhang",$yuanzhang);
 		//剑桥生活
-		$huo=spClass("db_term")->findAll(array("parent_id"=>"51","phone"=>"1"));
+		$term3=spClass("db_term")->find(array("name"=>"剑桥生活","uid"=>THEME_UID));
+		$huo=spClass("db_term")->findAll(array("parent_id"=>$term3['id'],"phone"=>"1"));
 		$this->assignown("huo",$huo);
 		//预约报名
-		$baoming=spClass("db_article")->find(array("term_id"=>"54"));
+		$term4=spClass("db_term")->find(array("name"=>"预约报名","uid"=>THEME_UID));
+		$baoming=spClass("db_article")->find(array("term_id"=>$term4['id']));
 		$this->assignown("baoming",$baoming);
-
-		$banjis = $this->dTerm->findAll(array("parent_id"=>55),"","id");
+		//班级直通车
+		$term5=spClass("db_term")->find(array("name"=>"班级直通车","uid"=>THEME_UID));
+		$banjis = $this->dTerm->findAll(array("parent_id"=>$term5['id']),"","id");
 		$whereIn = array();
 		foreach ($banjis as $key => $value) {
 			$whereIn[] = $value["id"];
@@ -803,14 +809,14 @@ class emptyController extends top
 		$term=spClass("db_term")->find(array("id"=>$_GET['tid']));
 		$this->assignown("term",$term);
 		//新闻动态
-		$news_term=spClass("db_term")->find(array("id"=>"75"));
+		$news_term=spClass("db_term")->find(array("name"=>"新闻动态","uid"=>THEME_UID));
 		$news=spClass("db_article")->spPager($this->spArgs('page', 1), 10)->findAll(array("term_id"=>"75"),"`create_time` asc");
 		$pager = spClass("db_article")->spPager()->getPager();
 		$this->assignown("pager",$pager);
 		$this->assignown("news_term",$news_term);
 		$this->assignown("news",$news);
 		//通知通告
-		$notices_term=spClass("db_term")->find(array("id"=>"74"));
+		$notices_term=spClass("db_term")->find(array("name"=>"通知公告","uid"=>THEME_UID));
 		$notices=spClass("db_article")->spPager($this->spArgs('pagetz', 1), 10)->findAll(array("term_id"=>"74"));
 		$pager_tz = spClass("db_article")->spPager()->getPager();
 		$this->assignown("pager_tz",$pager_tz);
