@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>剑桥幼儿园</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="{$syskin}/css/reset.css">
+    <link rel="stylesheet" href="{$syskin}/css/style.css">
+    <script type="text/javascript" src="{$syskin}/js/jquery-1.7.2.js"></script>
+</head>
+
+<body style="background:#eeeeee;">
+    <div id="wrap">
+        <div id="header" class="header-page clearFlaot">
+            <div class="pagehead-box">
+               <a class="arrowLeft" data-ajax="false" href="javascript:history.go(-1);"><img width="28px;" height="25px;" src="{$syskin}/images/page-back.png" alt="返回" /></a>
+               <h1 class="pagehead-title">班级相册</h1>
+               <a class="arrowRight" href="#defaultpanel"  data-role="button"><img class="prr" width="25px;" height="25px;" src="{$syskin}/images/edit.png" alt="编辑" /></a>
+           </div>
+        </div>
+    
+             <script type="text/javascript">
+              var pageThis = 1;
+              var getPost = function(pageNo){
+              	console.log(pageNo);
+                  $.post("{spUrl c=api yc=blog ym=typeForOne}",{
+                      uid  : '{$smarty.get.uid}',
+                      type : '{$smarty.get.type}',
+                      page : pageNo,
+                      all_pages : "1"
+                  },function(data){
+                         var data = $.parseJSON(data);
+
+                        $("#main").children("div[id!='post-item']").remove();
+
+                     	$.each(data.body.blog, function(i, n){
+                     		var tpl = $("#post-item").clone();
+                     		tpl.find(".album-title").html(n.title);
+                     		
+                     		var imgs = "";
+                     		$.each(n.attr.img,function(k, v){
+                     			imgs += '<li style="width:150px;"><img style="width:100%;" src="' + v.url + '" /></li>';
+                     		});
+                     		tpl.find("#album").html(imgs);
+                            tpl.attr("id","a_" + i);
+                     		tpl.show();
+							$("#main").append(tpl);	
+                        });
+
+
+                        if(!jQuery.isEmptyObject(data.body.page)){
+                            var page = data.body.page;
+                            // console.log(page);
+                            var str = "";
+                            $.each(page.all_pages, function(index, val) {
+                                if( (val - 1) === pageThis || (val + 1) === pageThis || (val === pageThis)){
+                                    if(page.current_page === val){
+                                        val = "<b>" + val + "</b>";
+                                    }
+                                    str += '<a href="javascript:;" id="page_' + val + '">' + val + '</a>';
+                                }
+
+                            });
+                            if(page.current_page==1){
+                                var prev_page = '<a href="javascript:;" id="page_' + page.prev_page + '"></a>'; 
+                            }
+                            else{
+                                 var prev_page = '<a href="javascript:;" id="page_' + page.prev_page + '">上一页</a>'; 
+                            }
+                            if(page.current_page==page.last_page){
+                                var next_page = '<a href="javascript:;" id="page_' + page.next_page + '"></a>';   
+                            }  
+                            else{
+                                var next_page = '<a href="javascript:;" id="page_' + page.next_page + '">下一页</a>';  
+                            }
+                            $(".paper-page").html(prev_page + str + next_page);
+                        }
+                    });
+                }
+                $(document).ready(function(){
+                    getPost(1);
+                });
+		</script>
+    	<div id="main" class="page-main" style="padding-top:45px;">
+
+
+			<div class="album-box prr" id="post-item" style="display: none;">
+			    <p class="album-title dash-bor hui-bold"></p>
+			    <div>
+			        <ul class="album clearFloat" id="album"></ul>
+			        <p class="ablum-edit">
+			        	<span><img width="15px;" src="{$syskin}/images/smalledit.png" alt=""></span>
+			        	<span><img width="15px;"  src="{$syskin}/images/smalldel.png" alt=""></span>
+			        </p>
+			    </div>
+			    <div class="album-time poo">
+			    	<p class="album-timetitle">2015.01</p>
+			    	<p class="album-timep">22</p>
+			    </div>
+			</div>
+
+			
+             <script>
+                $(document).ready(function(){
+                    $(".paper-page").on("click","a",function(){
+                        pageThis = parseInt($(this).attr("id").replace("page_",""));
+                        console.log(pageThis);
+                        getPost(pageThis);
+                    });
+                });
+            </script>
+    	</div>
+		<div class="paper-page">
+        </div>
+    	<div id="footer"></div>
+    </div>
+</body>
+</html>

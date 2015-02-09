@@ -32,9 +32,9 @@
                                 {foreach from=$pager.all_pages item=thepage}
                                     {if $thepage eq $pager.current_page -1 or $thepage eq $pager.current_page or $thepage eq $pager.current_page + 1}
                                         {if $thepage != $pager.current_page}      
-                                                <a href="{spUrl c=$term['ptpl'] tid=$tid a=index page=$thepage}" data-ajax='false'>{$thepage}</a>
+                                                <a class="blue-font" href="{spUrl c=$term['ptpl'] tid=$tid a=index page=$thepage}" data-ajax='false'>{$thepage}</a>
                                         {else}
-                                                <a class="blue-font" href="javascript:;">{$thepage}</a>
+                                                <a  href="javascript:;">{$thepage}</a>
                                         {/if}
                                     {/if}
                                 {/foreach}

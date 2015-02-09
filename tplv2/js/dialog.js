@@ -7,7 +7,7 @@
         _isIE6 = window.VBArray && !window.XMLHttpRequest,
         _isMobile = 'createTouch' in document && !('onmousemove' in document) || /(iPhone|iPad|iPod)/i.test(navigator.userAgent),
         _isFixed = !_isIE6 && !_isMobile;
-    var artDialog = function(config, ok, cancel) {
+    var artDialog = function(config, ok, c2ancel) {
         config = config || {};
         if (typeof config === 'string' || config.nodeType === 1) {
             config = {

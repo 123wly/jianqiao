@@ -18,7 +18,7 @@
 	        	<ul class="news-page">
 					{foreach $articles as $vo}
 	        		<li class="clearFloat">
-	        			<a href="{spUrl c=$vo.ptpl id=$vo.id} data-ajax='false'">
+	        			<a href="{spUrl c=$vo.ptpl id=$vo.id} " data-ajax='false'>
 	        				<span class="imag">
 	        					<img width="84px;" height="65px;" src="{$vo.cover|upload_echo}" alt="" />
 	        				</span>

@@ -5,7 +5,8 @@ function yb_load_feeds(c,a,params,customcallback){   //  yc:c    ym :a  yprm:par
 	var mp=$.feedToolBar.parm.morepage;
 	var nc=$.imgCtrl.parm.notCtrl;
     console.log('123');
-	$.paging({ctn1:"#feed_box",ctn2:"#paging",yc:c,ym:a,showpage:true,yprm:params,eclick:function(){$('#feed_loading').show()},ftype:function(data){
+	$.paging(
+		{ctn1:"#feed_box",ctn2:"#paging",yc:c,ym:a,showpage:true,yprm:params,eclick:function(){$('#feed_loading').show()},ftype:function(data){
 		if(data.body.page==null){
 			$.feedToolBar.parm.ttpage=0;
 		}
