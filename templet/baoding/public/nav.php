@@ -47,7 +47,7 @@
                                                     <?php else: ?>
                                                         <?php $redLi = ''; ?>
                                                     <?php endif; ?>
-                                                    <a href="<?php echo $v1['tpl'] ?>" <?php echo $redLi; ?>><?php echo $v1["title"]; ?></a>
+                                                    <a target="_blank" href="<?php echo $v1['tpl'] ?>" <?php echo $redLi; ?>><?php echo $v1["title"]; ?></a>
                                                 </li>
                                             <?php endforeach ?>
                                             <p>

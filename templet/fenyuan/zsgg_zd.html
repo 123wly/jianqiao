@@ -19,22 +19,6 @@
                     <p class="left"><span>时间：{$page_show.create_time|date_format:'%Y-%m-%d'}</span>   <span> 来源：{$page_show.from}</span></p>
                     {include_php './templet/fenyuan/public/share.php'}
 				</div>
-                <!-- 代码 开始 -->
-                <div class="jstx">
-                    <ul id="myGallery">
-				
-                       {foreach $imgs as $img}
-                        <li><img src="{$img|upload_echo}" /></li>
-                        {/foreach}
-                    </ul>
-				
-                </div>
-                <script type="text/javascript">
-                $(function(){
-                    $('#myGallery').galleryView();
-                });
-                </script>
-            <!-- 代码 结束 -->
                 <p style="padding:20px; text-indent:2em; line-height:26px;">
                     {$page_show.content}
                 </p>

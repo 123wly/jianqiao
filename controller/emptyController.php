@@ -325,7 +325,7 @@ class emptyController extends top
 		
 		//分园新闻
 		$f_n = spClass("db_term")->find(array("name"=>"新闻动态","uid"=>THEME_UID));
-		$f_news = spClass("db_article")->findAll(array("term_id"=>$f_n["id"]),"id desc","id,title,content,create_time,tpl,brief,cover","5");
+		$f_news = spClass("db_article")->findAll(array("term_id"=>$f_n["id"]),"id desc","id,title,tpl,brief,cover","5");
 		$this->assignown("f_n",$f_n);
 		$this->assignown("f_news",$f_news);
 		
@@ -554,6 +554,10 @@ class emptyController extends top
 	public function __f_zsgg(){
 		 $this->__f_term(10);
 	}
+	
+	public function __f_zsgg_zd(){
+		$this->__f_page_show();
+	}
 
 	public function __f_ydfc_jscyzs_zd(){
 		$this->__f_page_show();
@@ -588,14 +592,14 @@ class emptyController extends top
 		$this->assignown("choose",$choose);
 
 	}
-	public function __p_term($pagenum=1,$order="id desc"){
+	public function __p_term($pagenum=5,$order="id desc"){
 
 		$term = spClass("db_term")->find(array("id"=>$_GET['tid']));
 		if(!$term['parent_id']){
 			$term = spClass("db_term")->find(array("parent_id"=>$_GET['tid']));
 		}
 
-		$articles=spClass("db_article")->spPager($this->spArgs('page', 10),$pagenum)->findAll(array("term_id"=>$term['id']),$order);
+		$articles=spClass("db_article")->spPager($this->spArgs('page', 1),$pagenum)->findAll(array("term_id"=>$term['id']),$order);
 
 		$article=spClass("db_article")->find(array("term_id"=>$term['id']));
 

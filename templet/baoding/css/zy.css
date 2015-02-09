@@ -558,19 +558,6 @@
 	position:absolute;
 	height:100%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*剑桥分园*/
 #content .jqfeny{}
 #content .jqfeny .hz_top{
@@ -948,10 +935,10 @@
 }
 #content .fxst h4{
 	width:150px;
-	height:42px;
-	line-height:42px;
+	height:51px;
+	line-height:60px;
 	color:#ffffff;
-	background:#2d9cb5;
+	background:url(../images/shipu-bg.png) no-repeat;
 	text-align:center;
 	font-size:16px;
 	font-weight:normal;

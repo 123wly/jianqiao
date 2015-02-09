@@ -104,13 +104,13 @@ $(function() {
                             </div>
                             <div class="right xwzxw">
                                 <h3 class="qdbj">
-                                    <a href="{spUrl c=$vo.tpl id=$vo.id}">{$vo.title|msubstr:'0':'10'}</a>
+                                    <a href="{spUrl c=$vo.tpl id=$vo.id}">{$vo.title|msubstr:'0':'6'}</a>
                                 </h3>
                                 <p>{$vo.brief|msubstr:'0':'20'}</p>
                             </div>
                             <div class="clear" style="height:20px;"></div>
                             {else}
-                            <h3><a href="{spUrl c=$vo.tpl id=$vo.id}">{$vo.title}</a></h3> 
+                            <h3><a href="{spUrl c=$vo.tpl id=$vo.id}">{$vo.title|msubstr:'0':'12'}</a></h3> 
                             {/if}
                         {/foreach}
                     </div>
@@ -164,21 +164,22 @@ $(function() {
                     </div>
                 </div>
                 <div class="tab_content">
-                    <div class="hui">
-                            {foreach $f_all_index as $vo}
-                            {if count($f_all_index) >= 4}
-                            {$break_num=3}
-                            {else}
-                            {$break_num=5}
-                            {/if}
-                                <div class="hz">
-                                    <a href="{spUrl c=$vo.tpl id=$vo.id}"><img src="{$vo.cover|upload_echo}" /></a>
-                                    <p>{$vo.title}</p>
-                                </div>
-                                {if $vo@index eq $break_num} {break} {/if} 
-                            {/foreach}
-                            <div class="clear"></div>
-                        
+                      <div class="hui">
+                        {foreach $f_hd as $vo}
+
+                        <div class="hz">
+                            <a href="{spUrl c=$vo.tpl id=$vo.id}"><img src="{$vo.cover|upload_echo}" />
+                            </a>
+                            <p>{$vo.title}</p>
+                        </div>
+                        {if $vo@index eq 3} {break} {/if} {/foreach} {foreach $f_kt as $vo}
+                        <div class="hz">
+                            <a href="{spUrl c=$vo.tpl id=$vo.id}"><img src="{$vo.cover|upload_echo}" />
+                            </a>
+                            <p>{$vo.title}</p>
+                        </div>
+                        {if $vo@index eq 3} {break} {/if} {/foreach}
+                        <div class="clear"></div>
                         <div class="gengduo">
                             <a href="{spUrl c=$f_sh.tpl tid=$f_sh.id}"><img src="{$skin_path}images/gengduo.png" />
                             </a>

@@ -22,7 +22,7 @@
     <ul>
         <?php $term = spClass("db_term")->find(array("name"=>"我要报名","uid"=>THEME_UID)); ?>
         <li class="bm"><a href="<?php echo spUrl($term['tpl'],'',array('tid'=>$term['id'])) ?>" title="我要报名"><span>我要报名</span></a></li>
-        <li class="kf"><a href="http://wpa.qq.com/msgrd?v=3&uin=435690026&site=qq&menu=yes" title="客服"><span>在线客服</span></a></li>
+        <li class="kf"><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=435690026&site=qq&menu=yes" title="客服"><span>在线客服</span></a></li>
         <?php $term = spClass("db_term")->find(array("name"=>"精彩活动","uid"=>THEME_UID)); ?>
         <li class="hdzs"><a href="<?php echo spUrl($term['tpl'],'',array('tid'=>$term['id'])) ?>" title="精彩活动"><span>精彩活动</span></a></li>
         <?php $term = spClass("db_term")->find(array("name"=>"联系方式","uid"=>THEME_UID)); ?>

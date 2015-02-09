@@ -945,7 +945,7 @@
 	font-weight:600;
 }
 #content .fxst .txtx_top p a{
-	color:#2d9cb5;
+	color:#9bba1f;
 }
 #content .fxst .txtx_top .shangz{
 	}
@@ -1010,10 +1010,10 @@
 }
 #content .fxst h4{
 	width:150px;
-	height:42px;
-	line-height:42px;
+	height:51px;
+	line-height:60px;
 	color:#ffffff;
-	background:#9bba1f;
+	background:url(../images/shipu-bg.png) no-repeat;
 	text-align:center;
 	font-size:16px;
 	font-weight:normal;
@@ -1033,16 +1033,6 @@
 #content .fxst .none tr td.w430{
 	width:430px;
 }
-
-
-
-
-
-
-
-
-
-
 #content .yjfc .yzxin{
     padding:50px;
 }
