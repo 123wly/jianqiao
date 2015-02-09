@@ -11,209 +11,101 @@
     <link rel="stylesheet" href="{$syskin}/css/reset.css">
     <link rel="stylesheet" href="{$syskin}/css/style.css">
 
-     <script type="text/javascript" src="{$syskin}/js/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="{$syskin}/js/jquery-1.7.2.js"></script>
 </head>
 
 <body>
     <div id="wrap">
         <div id="header" class="header-page clearFlaot">
             <div class="pagehead-box">
-               <a class="arrowLeft" data-ajax="false" href="javascript:history.go(-1);"><img width="28px;" height="25px;" src="{$syskin}/images/page-back.png" alt="返回" /></a>
-               <h1 class="pagehead-title">花名册</h1>
-           </div>
+                <a class="arrowLeft" data-ajax="false" href="javascript:history.go(-1);">
+                    <img width="28px;" height="25px;" src="{$syskin}/images/page-back.png" alt="返回" />
+                </a>
+                <h1 class="pagehead-title">花名册</h1>
+            </div>
         </div>
         <script type="text/javascript">
-        var str="";
-                $(document).ready(function(){ 
-                    $.post("{spUrl c=api yc=fetch ym=huamingce}",{ 
-                        uid : '{$smarty.get.uid}' 
-                    },function(data){
-                        var data = $.parseJSON(data);
-                        var tlength=data.body.teacher.length;
-                        var slength=data.body.student.length
-                        console.log();
+        var str = "";
+        $(document).ready(function() {
+            $.post("{spUrl c=api yc=fetch ym=huamingce}", {
+                uid: '{$smarty.get.uid}'
+            }, function(data) {
+                var data = $.parseJSON(data);
+                var tlength = data.body.teacher.length;
+                var slength = data.body.student.length
+                console.log();
 
-                        $.each(data.body.teacher, function(i, n){
-                            console.log(n);
-                        });
-                        $.each(data.body.student, function(i, n){
-                           // console.log(n);
-                        });
-                    });
+                $.each(data.body.teacher, function(i, n) {
+                    console.log(n);
                 });
-            </script>
+                $.each(data.body.student, function(i, n) {
+                    // console.log(n);
+                });
+            });
+        });
+        </script>
         <div id="main" class="roster" style="padding:45px 0 15px;">
             <p class="red-bold mt10 pl10">教师</p>
             <ul class="sz">
                 <li>
                     <table class="list-sz list-tb">
-                        <tr>
-
-                       
-
-                              <td >
-                                <a class="bk-bg" href="sz-page.html">
-                                    <img src="{$syskin}/images/teacher.jpg" alt="" />
-                                    <div class="bk-bg bk-bg3"></div>
+                        {foreach key=key item=vo from=$tofollow.teacher}
+                            {if $key%3 == 0}
+                            <tr>
+                            {/if}
+                            {if is_null($vo)}
+                            <td>
+                            </td>
+                            {else}
+                            <td>
+                                <a class="bk-bg" href="javascript:;">
+                                    <img src="{avatar uid=$vo.uid size=middle}" alt="{$vo.username}" />
+                                    <div class="bk-bg bk-bg{$key%3}"></div>
                                     <div class="tbtx-word" href="#">
                                         <ul>
-                                            <li> 张文（文文）</li>
-                                            <li>兴趣：游泳</li>
+                                            <li>{$vo.username}</li>
+                                            <li>{$vo.blogtag}</li>
                                         </ul>
                                     </div>
                                 </a>
                             </td>
-
-
-                            <td>
-                                <a class="bk-bg" href="sz-page.html">
-                                    <img src="{$syskin}/images/teacher.jpg" alt="" />
-                                    <div class="bk-bg bk-bg4"></div>
-                                    <div class="tbtx-word" href="#">
-                                        <ul>
-                                            <li> 张文（文文）</li>
-                                            <li>兴趣：游泳</li>
-                                        </ul>
-                                    </div>
-                                </a>
-                            </td>
-
-                            <td>
-                            </td>
-                        </tr>
+                            {/if}
+                            {if $key%3 == 2}
+                            </tr>
+                            {/if}
+                        {/foreach}
                     </table>
-
-
                 </li>
             </ul>
-
-
             <p class="red-bold mt10 pl10">同班同学</p>
             <ul class="sz">
                 <li>
                     <table class="list-sz list-tb">
-                        <tr>
+                        {foreach key=key item=vo from=$tofollow.student}
+                            {if $key%3 == 0}
+                            <tr>
+                            {/if}
+                            {if is_null($vo)}
                             <td>
-                                <a class="bk-bg" href="sz-page.html">
-                                    <img src="{$syskin}/images/Classmate1.jpg" alt="" />
-                                    <div class="bk-bg"></div>
+                            </td>
+                            {else}
+                            <td>
+                                <a class="bk-bg" href="javascript:;">
+                                    <img src="{avatar uid=$vo.uid size=middle}" alt="{$vo.username}" />
+                                    <div class="bk-bg bk-bg{$key%3}"></div>
                                     <div class="tbtx-word" href="#">
                                         <ul>
-                                            <li> 张文（文文）</li>
-                                            <li>兴趣：游泳</li>
+                                            <li>{$vo.username}</li>
+                                            <li>{$vo.blogtag}</li>
                                         </ul>
                                     </div>
                                 </a>
                             </td>
-                            <td>
-                                <a class="bk-bg" href="sz-page.html">
-                                    <img src="{$syskin}/images/Classmate2.jpg" alt="" />
-                                    <div class="bk-bg bk-bg2"></div>
-                                    <div class="tbtx-word" href="#">
-                                        <ul>
-                                            <li> 张文（文文）</li>
-                                            <li>兴趣：游泳</li>
-                                        </ul>
-                                    </div>
-                                </a>
-                            </td>
-                            <td>
-                                <a class="bk-bg" href="sz-page.html">
-                                    <img src="{$syskin}/images/Classmate3.jpg" alt="" />
-                                    <div class="bk-bg bk-bg3"></div>
-                                    <div class="tbtx-word" href="#">
-                                        <ul>
-                                            <li> 张文（文文）</li>
-                                            <li>兴趣：游泳</li>
-                                        </ul>
-                                    </div>
-                                </a>
-                            </td>
-                        </tr>
-                    </table>
-                </li>
-                <li>
-                    <table class="list-sz list-tb">
-                        <tr>
-                            <td>
-                                <a class="bk-bg" href="sz-page.html">
-                                    <img src="{$syskin}/images/Classmate4.jpg" alt="" />
-                                    <div class="bk-bg bk-bg4"></div>
-                                    <div class="tbtx-word" href="#">
-                                        <ul>
-                                            <li> 张文（文文）</li>
-                                            <li>兴趣：游泳</li>
-                                        </ul>
-                                    </div>
-                                </a>
-                            </td>
-                            <td>
-                                <a class="bk-bg" href="sz-page.html">
-                                    <img src="{$syskin}/images/Classmate5.jpg" alt="" />
-                                    <div class="bk-bg bk-bg5"></div>
-                                    <div class="tbtx-word" href="#">
-                                        <ul>
-                                            <li> 张文（文文）</li>
-                                            <li>兴趣：游泳</li>
-                                        </ul>
-                                    </div>
-                                </a>
-                            </td>
-                            <td>
-                                <a class="bk-bg" href="sz-page.html">
-                                    <img src="{$syskin}/images/Classmate6.jpg" alt="" />
-                                    <div class="bk-bg"></div>
-                                    <div class="tbtx-word" href="#">
-                                        <ul>
-                                            <li> 张文（文文）</li>
-                                            <li>兴趣：游泳</li>
-                                        </ul>
-                                    </div>
-                                </a>
-                            </td>
-                        </tr>
-                    </table>
-                </li>
-                <li>
-                    <table class="list-sz list-tb">
-                        <tr>
-                            <td>
-                                <a class="bk-bg" href="sz-page.html">
-                                    <img src="{$syskin}/images/Classmate1.jpg" alt="" />
-                                    <div class="bk-bg"></div>
-                                    <div class="tbtx-word" href="#">
-                                        <ul>
-                                            <li> 张文（文文）</li>
-                                            <li>兴趣：游泳</li>
-                                        </ul>
-                                    </div>
-                                </a>
-                            </td>
-                            <td>
-                                <a class="bk-bg" href="sz-page.html">
-                                    <img src="{$syskin}/images/Classmate2.jpg" alt="" />
-                                    <div class="bk-bg bk-bg2"></div>
-                                    <div class="tbtx-word" href="#">
-                                        <ul>
-                                            <li> 张文（文文）</li>
-                                            <li>兴趣：游泳</li>
-                                        </ul>
-                                    </div>
-                                </a>
-                            </td>
-                            <td>
-                                <a class="bk-bg" href="sz-page.html">
-                                    <img src="{$syskin}/images/Classmate3.jpg" alt="" />
-                                    <div class="bk-bg bk-bg3"></div>
-                                    <div class="tbtx-word" href="#">
-                                        <ul>
-                                            <li> 张文（文文）</li>
-                                            <li>兴趣：游泳</li>
-                                        </ul>
-                                    </div>
-                                </a>
-                            </td>
-                        </tr>
+                            {/if}
+                            {if $key%3 == 2}
+                            </tr>
+                            {/if}
+                        {/foreach}
                     </table>
                 </li>
             </ul>
@@ -223,16 +115,16 @@
 </body>
 <script src="{$syskin}/js/jquery.min.js"></script>
 <script type="text/javascript">
-    var a=function(){
-        $(".bk-bg").height($(".bk-bg").width());
-        $("#main").css("min-height", $(window).height());
-    }
-  $(document).ready(function($) {
+var a = function() {
+    $(".bk-bg").height($(".bk-bg").width());
+    $("#main").css("min-height", $(window).height());
+}
+$(document).ready(function($) {
     a();
     window.onresize = function() {
         a();
     };
-  });
+});
 </script>
 
 </html>

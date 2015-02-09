@@ -45,19 +45,6 @@ class emptyController extends top
 		if(method_exists($this,$tpldata[THEME_NAME].$c)){
 			call_user_func_array(array($this,$tpldata[THEME_NAME].$c), array());
 		}
-		// if(method_exists($this,"__f_".$c)){
-		// 	call_user_func_array(array($this,"__f_".$c), array());
-				
-		// }
-
-		// if(method_exists($this,"__p_".$c)){
-		// 		call_user_func_array(array($this,"__p_".$c), array());
-		// }
-		// if(method_exists($this,"__c_".$c)){
-		// 		call_user_func_array(array($this,"__c_".$c), array());
-				
-		// }
-
 		$this->assignown("root",__ROOT__);
 		$this->assignown('skin_path',"".__ROOT__.'/templet/' . THEME_NAME .'/');
 	

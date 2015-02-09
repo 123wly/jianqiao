@@ -10,54 +10,61 @@
     <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" href="{$syskin}/css/reset.css">
     <link rel="stylesheet" href="{$syskin}/css/style.css">
-
+    <script type="text/javascript" src="{$syskin}/js/jquery-1.7.2.js"></script>
 </head>
 
 <body>
     <div id="wrap">
         <div id="header" class="header-page clearFlaot">
             <div class="pagehead-box">
-               <a class="arrowLeft" data-ajax="false" href="javascript:history.go(-1);"><img width="43px;" height="35px;" src="{$syskin}/images/logo.png" alt="返回" /></a>
-               <h1 class="pagehead-title">大一班</h1>
-               <a class="arrowRight" href="#defaultpanel"  data-role="button"><img class="prr" width="30px;" height="30px;" src="{$syskin}/images/page-message.png" alt="消息" /><span class="poo new-messages"></span></a>
+                <a class="arrowLeft" data-ajax="false" href="javascript:history.go(-1);">
+                    <img width="43px;" height="35px;" src="{$syskin}/images/logo.png" alt="返回" />
+                </a>
+                <h1 class="pagehead-title">{$banjiInfo.username}</h1>
+                <a class="arrowRight" href="#defaultpanel"  data-role="button">
+                    <img class="prr" width="30px;" height="30px;" src="{$syskin}/images/page-message.png" alt="消息" />
+                    <span class="poo new-messages"></span>
+                </a>
            </div>
         </div>
         <div id="main" class="page-main">
             <div  class="img-list clearFloat">
-                <span class="ind-img"><img width="70px" height="70px;" src="{$syskin}/images/teacher.jpg" alt="班级老师"></span>
-                <p class="red-bold">张老师</p>
-                <p>把学生作为独特个体来了解和理解。</p>
+                <span class="ind-img">
+                    <img width="70px" height="70px;" src="{avatar uid=$userInfo.uid size=middle}" alt="{$userInfo.username}">
+                </span>
+                <p class="red-bold">{$userInfo.username}</p>
+                <p>{$userInfo.sign}</p>
             </div>
             <ul class="index-main clearFloat">
                 <li class="index-m m-3">
-                    <a class="clearFloat" href="{spUrl c=notice a=index uid=3 tag='通知'}">
+                    <a class="clearFloat" href="{spUrl c=phone a=tagList uid=$banjiInfo.uid tag='通知'}">
                         <img width="100%" src="{$syskin}/images/menu1.png" />
                     </a>
-                    <a class="m-word" href="{spUrl c=notice a=index}">
+                    <a class="m-word" href="{spUrl c=phone a=tagList uid=$banjiInfo.uid tag='通知'}">
                         <p>通知公告</p>
                     </a>
                 </li>
                 <li class="index-m m-2">
-                    <a class="clearFloat" href="{spUrl c=Roster a=index uid=3}">
+                    <a class="clearFloat" href="{spUrl c=phone a=Roster uid=$banjiInfo.uid}">
                         <img width="100%" src="{$syskin}/images/menu2.png" />
                     </a>
-                    <a class="m-word" href="{spUrl c=Roster a=index uid=3}">
+                    <a class="m-word" href="{spUrl c=phone a=Roster uid=$banjiInfo.uid}">
                         <p>花名册</p>
                     </a>
                 </li>
                 <li class="index-m m-4">
-                    <a class="clearFloat" href="{spUrl c=Courseware a=index uid=3 tag='课件'}">
+                    <a class="clearFloat" href="{spUrl c=phone a=tagList uid=$banjiInfo.uid tag='课件'}">
                         <img width="100%" src="{$syskin}/images/menu3.png" />
                     </a>
-                    <a class="m-word" href="{spUrl c=Courseware a=index uid=3 tag='课件'}">
+                    <a class="m-word" href="{spUrl c=phone a=tagList uid=$banjiInfo.uid tag='课件'}">
                         <p>我的课件</p>
                     </a>
                 </li>
                 <li class="index-m m-1">
-                    <a class="clearFloat" href="{spUrl c=album a=index uid=3 type=3}">
+                    <a class="clearFloat" href="{spUrl c=phone a=typeOne uid=$banjiInfo.uid type=3}">
                         <img width="100%" src="{$syskin}/images/menu4.png" />
                     </a>
-                    <a class="m-word" href="{spUrl c=album a=index uid=3 type=3}">
+                    <a class="m-word" href="{spUrl c=phone a=typeOne uid=$banjiInfo.uid type=3}">
                         <p>班级相册</p>
                     </a>
                 </li>
@@ -86,10 +93,10 @@
                     </a>
                 </li>
                 <li class="index-m m-5">
-                    <a class="clearFloat" href="{spUrl c=group}">
+                    <a class="clearFloat" href="{spUrl c=phone a=group}">
                         <img width="100%" src="{$syskin}/images/menu8.png" />
                     </a>
-                    <a class="m-word" href="{spUrl c=group}">
+                    <a class="m-word" href="{spUrl c=phone a=group}">
                         <p>班级群</p>
                     </a>
                 </li>

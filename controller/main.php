@@ -32,10 +32,13 @@ class main extends top
 			}
 		}else {
 			///@@@@
-			$this->display($display.'.html');
+			if(ismobile()){
+				 header('Location:'.spUrl('phone',"index"));
+			}else {
+				$this->display($display.'.html');
+			}
 		}
 	}
-
 
 	public function recommend(){
 		$this->systag = spClass('db_category')->findCate(); //获取系统级别标签

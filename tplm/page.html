@@ -17,9 +17,13 @@
     <div id="wrap">
         <div id="header" class="header-page clearFlaot">
             <div class="pagehead-box">
-               <a class="arrowLeft" data-ajax="false" href="javascript:history.go(-1);"><img width="28px;" height="25px;" src="{$syskin}/images/page-back.png" alt="返回" /></a>
-               <h1 class="pagehead-title">保定剑桥</h1>
-               <a class="arrowRight" href="#defaultpanel"  data-role="button"><img class="prr" width="25px;" height="25px;" src="{$syskin}/images/page-del.png" alt="编辑" /></a>
+                <a class="arrowLeft" data-ajax="false" href="javascript:history.go(-1);">
+                    <img width="28px;" height="25px;" src="{$syskin}/images/page-back.png" alt="返回" />
+                </a>
+                <h1 class="pagehead-title">保定剑桥</h1>
+                <a class="arrowRight" href="#defaultpanel" data-role="button">
+                    <!-- <img class="prr" width="25px;" height="25px;" src="{$syskin}/images/page-del.png" alt="编辑" /> -->
+                </a>
            </div>
         </div>
         <script type="text/javascript">
@@ -28,28 +32,36 @@
 						bid : '{$smarty.get.bid}'
 					},function(data){
 						var data = $.parseJSON(data);
+                        var vo   = data.body.blog[0];
                         var tpl = $("#main");
-                        $.each(data.body.blog, function(i, n){
-                            tpl.find(".album-titlen").html(n.title);  
-                            tpl.find("#content").html(n.body);
-                            tpl.find(".album-timetitle").html(n.time_y);
-                            tpl.find(".album-timep").html(n.time_d);
-                        });
+                        var imgsString = "";
+                        if(!$.isEmptyObject(vo.attr.img)){
+                            imgsString += "<ul>";
+                            $.each(vo.attr.img, function(index, val) {
+                                imgsString += '<li><img src="' + val.url + '" /></li>';
+                            });
+                            imgsString += "</ul>";
+                        }
+
+                        tpl.find(".album-titlen").html(vo.title);  
+                        tpl.find("#content").html(imgsString + vo.body);
+                        tpl.find(".album-timetitle").html(vo.time_y);
+                        tpl.find(".album-timep").html(vo.time_d);
 					});
         	});
         </script>
     	<div id="main" class="page-main" style="padding:5px;padding-top:45px;">
+
 			<div class="album-box prr">
 			    <p class="album-titlen dash-bor"></p>
-			    <div>
+			    <div style="padding-top: 20px;">
                     <p>
-    			    	<div id="content">
-
-    			    	</div>
+    			    	<div id="content">        
+                        </div>
                     </p>
 			        <p class="ablum-edit">
-			        	<span><img width="15px;"  src="{$syskin}/images/smalledit.png" alt=""></span>
-			        	<span><img width="15px;"  src="{$syskin}/images/smalldel.png" alt=""></span>
+			        	<span><!-- <img width="15px;" src="{$syskin}/images/smalledit.png" alt=""> --></span>
+			        	<span><!-- <img width="15px;" src="{$syskin}/images/smalldel.png" alt=""> --></span>
 			        </p>
 			    </div>
 			    <div class="album-time poo">

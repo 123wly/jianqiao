@@ -8,9 +8,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" href="{$syskin}/css/reset1.css">
+    <link rel="stylesheet" href="{$syskin}/css/reset.css">
     <link rel="stylesheet" href="{$syskin}/css/style.css">
-    {include file="require_js.html" login=yes}
 </head>
 
 <body>
@@ -23,30 +22,17 @@
             <div class="mt40">
                 <img width="100%" src="{$syskin}/images/login-logo.png" alt="用户登录">
             </div>
-			<form name="login" action="{spUrl c=main a=login}" method="post" id="loginForm"  callback="{spUrl c=main}">
+            <form name="login" action="index.html" method="get">
                 <ul class="login_form">
                     <li class="l_namber l_input">
-                        <input type="text" name="email"  id="email" value="{if $smarty.post.email}{$smarty.post.email}{else}{$email}{/if}" onfocus="if(this.value==defaultValue) {
-                            this.value=''
-                            }" 
-                        onblur="if(!value) {
-                            value=defaultValue;
-                            }"
-                            />
+                        <input type="text" name="fnamber" value="Username" onfocus="if(this.value==defaultValue) { this.value='' }" onblur="if(!value) { value=defaultValue; }">
                     </li>
-
                     <li class="l_password l_input">
-                        <input type="password" class="text" id="password" name="password" value="{$smarty.post.password}" onfocus="if(this.value==defaultValue) {
-                        this.value='';this.type='password'
-                    }" onblur="if(!value) {
-                    value=defaultValue; this.type='text';
-                }"/>
+                        <input type="text" class="text" value="Password" onfocus="if(this.value==defaultValue) { this.value='';this.type='password' }" onblur="if(!value) { value=defaultValue; this.type='text'; }">
                     </li>
-
                     <li>
                         <button class="l_submit" type="submit" value="绑定微信">绑定微信</button>
                     </li>
-
                 </ul>
             </form>
         </div>
@@ -55,10 +41,10 @@
 </body>
 <script src="{$syskin}/js/jquery.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function($) {
-	    $(".full-bg").width($(window).width());
-	    $(".full-bg").height($(window).height());
-	});
+$(document).ready(function($) {
+    $(".full-bg").width($(window).width());
+    $(".full-bg").height($(window).height());
+});
 </script>
 
 </html>
