@@ -30,12 +30,16 @@
 						$.post("{spUrl c=api yc=blog ym=tagForOne}",{ 
 						tuid : '{$smarty.get.uid}', 
 						tag  : '{$smarty.get.tag}',
-						pagenum : data
+						pagenum : 1,
+                        page : data
 					},function(data){
 						var data = $.parseJSON(data);
 
+                        console.log($("#main").children("div[id!='post-item']").html());
+
 						$("#main").children("div[id!='post-item']").remove();
-						console.log("remone");
+
+					
 
     					$.each(data.body.blog, function(i, n){
 							var tpl = $("#post-item").clone();

@@ -30,7 +30,8 @@
 						$.post("{spUrl c=api yc=blog ym=tagForOne}",{ 
 						tuid : '{$smarty.get.uid}', 
 						tag  : '{$smarty.get.tag}',
-						pagenum : page
+						pagenum : 1,
+                        page : page
 					},function(data){
 						var data = $.parseJSON(data);
 
