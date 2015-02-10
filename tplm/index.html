@@ -21,9 +21,9 @@
                     <img width="43px;" height="35px;" src="{$syskin}/images/logo.png" alt="返回" />
                 </a>
                 <h1 class="pagehead-title">{$banjiInfo.username}</h1>
-                <a class="arrowRight" href="#defaultpanel"  data-role="button">
+                <a class="arrowRight" href="{spUrl c=phone a=letter_list}"  data-role="button">
                     <img class="prr" width="30px;" height="30px;" src="{$syskin}/images/page-message.png" alt="消息" />
-                    <span class="poo new-messages"></span>
+                    <span class="poo new-messages" id="new-messages"></span>
                 </a>
            </div>
         </div>
@@ -68,6 +68,7 @@
                         <p>班级相册</p>
                     </a>
                 </li>
+                {if $userInfo.type == 2}
                 <li class="index-m m-7">
                     <a class="clearFloat" href="{spUrl c=phone a=letter_post}">
                         <img width="100%" src="{$syskin}/images/menu5.png" />
@@ -76,6 +77,7 @@
                         <p>私信家长</p>
                     </a>
                 </li>
+                {/if}
                 <li class="index-m m-8">
                     <a class="clearFloat" href="qsjl.html">
                         <img width="100%" src="{$syskin}/images/menu6.png" />
@@ -113,4 +115,16 @@
         <div id="footer"></div>
     </div>
 </body>
+<script>
+    $(document).ready(function() {
+        $.post('{spUrl c=api yc=user ym=chkNoticPm}', function(data) {
+            var data = $.parseJSON(data);
+            if(data.body.pm > 0){
+                $("#new-messages").show();
+            }else {
+                $("#new-messages").hide();
+            }
+        });
+    });
+</script>
 </html>

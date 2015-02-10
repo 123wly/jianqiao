@@ -96,4 +96,28 @@ class phone extends top
 		$this->tofollow = $tofollows;
 		$this->display("parent_list.html");
 	}
+	public function group(){
+		$this->display("group.html");
+	}
+	public function letter_list(){
+		
+		$rs = spClass('db_pm')->pmlist($this->uid,$this->spArgs('page',1));
+		if($rs){
+			foreach($rs['data'] as &$d){
+				$d['h_url'] = goUserHome(array('uid'=>$d['touid'], 'domain'=>$d['todoman']));
+				$d['h_img'] = avatar(array('uid'=>$d['touid'],'size'=>'small'));
+				$d['time'] = ybtime(array('time'=>$d['time']));
+			}
+		}
+		for ($i=0; $i < count($rs['data']) % 3; $i++) { 
+			$rs["data"][] = null;
+		}
+		$this->rs = $rs;
+		$this->display("letter_list.html");
+	}
+	public function letter_info(){
+		$uid = $this->spArgs("uid");
+		$this->uidInfo = spClass("db_member")->find(array("uid"=>$uid));
+		$this->display("letter_info.html");
+	}
 }

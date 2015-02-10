@@ -15,21 +15,34 @@
 </head>
 
 <body>
+    <style>
+    .roster-img{
+        position: absolute;
+        top: 1%;
+        right: -3px;
+        width: 20px;
+        height: 20px;
+        display: block;
+        border-radius: 10px;
+        text-align: center;
+        background: #f00;
+        z-index: 999;
+    }
+    </style>
     <div id="wrap">
         <div id="header" class="header-page clearFlaot">
             <div class="pagehead-box">
                 <a class="arrowLeft" data-ajax="false" href="{spUrl c=phone a=index}">
                     <img width="28px;" height="25px;" src="{$syskin}/images/page-back.png" alt="返回" />
                 </a>
-                <h1 class="pagehead-title">花名册</h1>
+                <h1 class="pagehead-title">私信列表</h1>
             </div>
         </div>
         <div id="main" class="roster" style="padding:45px 0 15px;">
-            <p class="red-bold mt10 pl10">教师</p>
             <ul class="sz">
                 <li>
                     <table class="list-sz list-tb">
-                        {foreach key=key item=vo from=$tofollow.teacher}
+                        {foreach key=key item=vo from=$rs.data}
                             {if $key%3 == 0}
                             <tr>
                             {/if}
@@ -38,45 +51,15 @@
                             </td>
                             {else}
                             <td>
-                                <a class="bk-bg" href="javascript:;">
-                                    <img src="{avatar uid=$vo.uid size=middle}" alt="{$vo.username}" />
+                                <a class="bk-bg" href="{spUrl c=phone a=letter_info uid=$vo.uid}">
+                                    {if $vo.isnew > 0}
+                                    <span class="roster-img">{$vo.isnew}</span>
+                                    {/if}
+                                    <img src="{avatar uid=$vo.uid size=middle}" alt="{$vo.tousername}" />
                                     <div class="bk-bg bk-bg{$key%3}"></div>
                                     <div class="tbtx-word">
                                         <ul>
-                                            <li>{$vo.username}</li>
-                                            <li>{$vo.blogtag}</li>
-                                        </ul>
-                                    </div>
-                                </a>
-                            </td>
-                            {/if}
-                            {if $key%3 == 2}
-                            </tr>
-                            {/if}
-                        {/foreach}
-                    </table>
-                </li>
-            </ul>
-            <p class="red-bold mt10 pl10">同班同学</p>
-            <ul class="sz">
-                <li>
-                    <table class="list-sz list-tb">
-                        {foreach key=key item=vo from=$tofollow.student}
-                            {if $key%3 == 0}
-                            <tr>
-                            {/if}
-                            {if is_null($vo)}
-                            <td>
-                            </td>
-                            {else}
-                            <td>
-                                <a class="bk-bg" href="javascript:;">
-                                    <img src="{avatar uid=$vo.uid size=middle}" alt="{$vo.username}" />
-                                    <div class="bk-bg bk-bg{$key%3}"></div>
-                                    <div class="tbtx-word" href="#">
-                                        <ul>
-                                            <li>{$vo.username}</li>
-                                            <li>{$vo.blogtag}</li>
+                                            <li>{$vo.tousername}</li>
                                         </ul>
                                     </div>
                                 </a>

@@ -18,25 +18,20 @@
             <div class="pagehead-box">
                 <a class="arrowLeft" data-ajax="false" href="{spUrl c=phone a=index}">取消</a>
                 <h1 class="pagehead-title">私信</h1>
-                <a class="arrowRight" href="#defaultpanel" data-role="button">发送</a>
+                <a class="arrowRight" id="defaultpanel" data-role="button">发送</a>
             </div>
         </div>
         <div id="main" class="page-main style-c" style="padding-top:45px;">
-            <form action="#" method="get">
-                <p class="mt20 fs_16 style-b clearFloat">
-                    <input readonly="readonly" value="To:{$toUserInfo.username}" />
-                    <span>
-                        <a href="{spUrl c=phone a=parent_list}">
-                            <img height="30px" src="{$syskin}/images/frame-people.png" alt="" />
-                        </a>
-                    </span>
-                </p>
-                <p class="mt20 fs_16">
-                    <textarea rows="8" name="body"></textarea>
-                    <input type="hidden" name="username" value="{$toUserInfo.username}" />
-                </p>
-            </form>
-
+            <p class="mt20 fs_16"><span>{$userInfo.username}: </span>
+            </p>
+            <p class="fs_16">
+                <textarea rows="2" readonly="readonly" id="info"></textarea>
+            </p>
+            <p class="mt20 fs_16"><span>回复 :</span>
+            </p>
+            <p class="fs_16">
+                <textarea rows="8" id="content"></textarea>
+            </p>
         </div>
         <div id="footer"></div>
     </div>
@@ -44,11 +39,15 @@
 <script src="{$syskin}/js/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function($) {
-    $(".arrowRight").click(function() {
+    $.post('{spUrl c=api yc=pm ym=pminfo}', { uid : {$smarty.get.uid} }, function(data) {
+        var data = $.parseJSON(data);
+        $("#info").val(data.body.data[0].info);
+    });
+    $("#defaultpanel").click(function(){
         $.post('{spUrl c=api yc=pm ym=sendpm}', {
-            body: $("textarea[name='body']").val(),
-            username: $("input[name='username']").val(),
-        }, function(data, textStatus, xhr) {
+            body     : $("#content").val(),
+            username : '{$uidInfo.username}'
+        }, function(data) {
             var data = $.parseJSON(data);
             if(data.body){
                 alert("发送成功");
@@ -58,7 +57,6 @@ $(document).ready(function($) {
             }
         });
     });
-
 });
 </script>
 
