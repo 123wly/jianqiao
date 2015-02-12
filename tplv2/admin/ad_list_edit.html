@@ -3,7 +3,7 @@
 <div id="content">
 
     <div class="t_con">
-        <h3>编辑广告</h3>
+        <h3>编辑</h3>
 
         <form id="form2" name="form2" method="post" action="" enctype="multipart/form-data">
             <div class="con_system">
@@ -15,7 +15,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="t_title">广告位</td>
+                        <td class="t_title"></td>
                         <td class="c_select">
                             <select name="auid">
                                 {foreach from=$adUnit item=d}
@@ -25,7 +25,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="t_title">广告类型</td>
+                        <td class="t_title">类型</td>
                         <td class="c_select">
                             <select name="type" id="select_type">
                                 <option value="1" {if $data.type==1}selected{/if}>图片广告</option>
