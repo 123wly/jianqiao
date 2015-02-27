@@ -35,8 +35,8 @@
             </div>
              {if $flag}
              <div class="det_handle">
-                 <p class="p_prev"><a href="{$up.href}" data-ajax='false'>上一篇：{$up.title|msubstr:'0':'6'}</a></p> 
-                 <p class="p_next"><a href="{$next.href}" data-ajax='false'>下一篇：{$next.title|msubstr:'0':'6'}</a></p>
+                 <p class="p_prev"><a href="{$up.href}" data-ajax='false'>{$up.title|msubstr:'0':'6'}</a></p> 
+                 <p class="p_next"><a href="{$next.href}" data-ajax='false'>{$next.title|msubstr:'0':'6'}</a></p>
             </div>
             {/if}
        </div>

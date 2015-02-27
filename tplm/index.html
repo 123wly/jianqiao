@@ -77,15 +77,25 @@
                         <p>私信家长</p>
                     </a>
                 </li>
-                {/if}
+               
                 <li class="index-m m-8">
-                    <a class="clearFloat" href="qsjl.html">
+                    <a class="clearFloat" href="{spUrl c=phone a=leave_message}">
                         <img width="100%" src="{$syskin}/images/menu6.png" />
                     </a>
-                    <a class="m-word" href="qsjl.html">
+                    <a class="m-word" href="{spUrl c=phone a=leave_message}">
                         <p>家园联系册</p>
                     </a>
                 </li>
+                {else}
+                 <li class="index-m m-8">
+                    <a class="clearFloat" href="{spUrl c=phone a=message_list}">
+                        <img width="100%" src="{$syskin}/images/menu6.png" />
+                    </a>
+                    <a class="m-word" href="{spUrl c=phone a=message_list}">
+                        <p>家园联系册</p>
+                    </a>
+                </li>
+                 {/if}
                 <li class="index-m m-6">
                     <a class="clearFloat" href="qsjl.html">
                         <img width="100%" src="{$syskin}/images/menu7.png" />
@@ -103,10 +113,10 @@
                     </a>
                 </li>
                 <li class="index-m m-5">
-                    <a class="clearFloat" href="qsjl.html">
+                    <a class="clearFloat" href="">
                         <img width="100%" src="{$syskin}/images/menu9.png" />
                     </a>
-                    <a class="m-word" href="qsjl.html">
+                    <a class="m-word" href="">
                         <p>考勤管理</p>
                     </a>
                 </li>

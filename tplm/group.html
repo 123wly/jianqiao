@@ -54,7 +54,7 @@
                             tpl.find(".floatLeft").find("img").attr("src",n.h_img);
                             var href = '{spUrl c=page a=index bid=phpbid}';
                             tpl.find(".fs_16").children().attr('href',href.replace('phpbid',n.bid));
-                            tpl.find(".fs_12").find("span").html(n.time);
+                            tpl.find(".fs_12").find("span").first().html(n.time);
                             tpl.attr("id","post_" + i);
                             tpl.show();
                             $(".ff-bc").append(tpl);
@@ -113,11 +113,13 @@
                         <div>
                             <div class="fs_12 hui3 prr">
                                 <span></span>
-                                <p class="ff-huifubox">
+                             <!--    <p class="ff-huifubox">
                                     <span><img height="13px;" src="{$syskin}/images/rr-zan.png" alt="">赞</span>
                                     <span><img height="13px;" src="{$syskin}/images/rr-pl.png" alt="">评论</span>
                                 </p>
-                                <span class="ff-huifu"><img height="17px" src="{$syskin}/images/ff-huifu.png" alt=""></span>
+                                <span class="ff-huifu" >
+                                    <img height="17px" id="test" src="{$syskin}/images/ff-huifu.png" alt=""/>
+                                </span> -->
                             </div>
                         </div>
                     </div>
@@ -137,6 +139,9 @@
                 $(document).ready(function() {
                     $(".paper-page").on("click","a",function(){
                         pageThis = parseInt($(this).attr("id").replace("page_",""));
+                        if(isNaN(pageThis)){
+                        pageThis=parseInt($(this).attr("id").replace("page_", "").substr(3,4));
+                    }
                         getPost(pageThis);
                     });
                 });
@@ -145,20 +150,22 @@
     	<div id="footer"></div>
     </div>
 </body>
-<script src="{$syskin}/js/jquery.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function($) {
-    var UA = window.navigator.userAgent; //使用设备
-    var CLICK = "click";
-    if (/ipad|iphone|android/.test(UA)) { //判断使用设备
-        CLICK = "tap";
-    }
-    $(".ff-huifu").click(function() {
+<script>
+$(document).ready(function() {
+    
+    $(".ff-huifu").on("click",function() {
         var box = $(this).siblings('.ff-huifubox');
         $(".ff-huifubox").not(box).fadeOut();
         box.fadeToggle();
     });
+
+    // $(".ff-huifu").click(function() {
+    //     var box = $(this).siblings('.ff-huifubox');
+    //     $(".ff-huifubox").not(box).fadeOut();
+    //     box.fadeToggle();
+    // });
 });
+
 
 </script>
 

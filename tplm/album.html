@@ -30,7 +30,6 @@
         <script type="text/javascript">
         var pageThis = 1;
         var getPost = function(pageNo) {
-            console.log(pageNo);
             $.post("{spUrl c=api yc=blog ym=typeForOne}", {
                 uid: '{$smarty.get.uid}',
                 type: '{$smarty.get.type}',
@@ -111,7 +110,10 @@
             $(document).ready(function() {
                 $(".paper-page").on("click", "a", function() {
                     pageThis = parseInt($(this).attr("id").replace("page_", ""));
-                    console.log(pageThis);
+                    if(isNaN(pageThis)){
+                        pageThis=parseInt($(this).attr("id").replace("page_", "").substr(3,4));
+                    }
+                                       
                     getPost(pageThis);
                 });
             });

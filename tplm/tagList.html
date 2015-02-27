@@ -37,6 +37,7 @@
                         page      : data
 					},function(data){
 						var data = $.parseJSON(data);
+                        console.log(data);
 						$("#main").children("div[id!='post-item']").remove();
                         $(".pagehead-title").html('{$smarty.get.tag}');
     					$.each(data.body.blog, function(i, n){
@@ -108,6 +109,9 @@
                 $(document).ready(function() {
                     $(".paper-page").on("click","a",function(){
                         pageThis = parseInt($(this).attr("id").replace("page_",""));
+                        if(isNaN(pageThis)){
+                        pageThis=parseInt($(this).attr("id").replace("page_", "").substr(3,4));
+                    }
                         getpage(pageThis);
                     });
                 });
