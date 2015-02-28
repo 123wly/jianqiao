@@ -14,12 +14,12 @@ define('LANEWECHAT_VERSION', '1.4');
 define('LANEWECHAT_VERSION_DATE', '2014-11-05');
 
 //微信公众平台相关
-define("WECHAT_URL", 'http://120.27.40.36/weitest/');
-define('WECHAT_TOKEN', 'nihao');
-define('ENCODING_AES_KEY', "1111111111111111111111111111111111111111111");
+define("WECHAT_URL", 'http://115.29.102.204/jianqiao/');
+define('WECHAT_TOKEN', 'wanhunet');
+define('ENCODING_AES_KEY', "rULfBEMVVk7DsAaQxWOWOSWOQBgYOsQFPCPNVXozMuB");
 
-define("WECHAT_APPID", 'wx498d2a7659323940');
-define("WECHAT_APPSECRET", '688bff76af316a75130cf71e1b2e639b');
+define("WECHAT_APPID", 'wxc69c49705cbf4bae');
+define("WECHAT_APPSECRET", '63e2bfdde668b8daaa3e9116f5cc17cb');
 
 
 //-----引入系统所需类库-------------------
