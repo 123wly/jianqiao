@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>剑桥幼儿园</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="{$syskin}/css/reset.css">
+    <link rel="stylesheet" href="{$syskin}/css/style.css">
+</head>
+
+<body style="background:#eeeeee;">
+    <div id="wrap">
+        <div id="header" class="header-page clearFlaot">
+            <div class="pagehead-box">
+                <a class="arrowLeft" data-ajax="false" href="{spUrl c=phone a=index}">取消</a>
+                <h1 class="pagehead-title">家园联系册</h1>
+                <a class="arrowRight" href="#" data-role="button">发送</a>
+            </div>
+        </div>
+        <div id="main" class="page-main style-c" style="padding-top:45px;">
+            <form action="#" method="get">
+                <p class="mt20 fs_16 style-b clearFloat">
+                    <input readonly="readonly" value="To:{$toUserInfo.username}" />
+                    <span>
+                        <a href="{spUrl c=phone a=student_list}">
+                            <img height="30px" src="{$syskin}/images/frame-people.png" alt="" />
+                        </a>
+                    </span>
+                </p>
+                <p class="mt20 fs_16">
+                    <textarea rows="8" name="body"></textarea>
+                    <input type="hidden" name="username" value="{$toUserInfo.username}" />
+                </p>
+            </form>
+
+        </div>
+        <div id="footer"></div>
+    </div>
+</body>
+<script src="{$syskin}/js/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function($) {
+    $(".arrowRight").click(function() {
+        $.post('{spUrl c=api yc=ms ym=sendms}', {
+            body: $("textarea[name='body']").val(),
+            username: $("input[name='username']").val(),
+        }, function(data, textStatus, xhr) {
+            var data = $.parseJSON(data);
+            if(data.body){
+                alert("发送成功");
+                window.location.href = '{spUrl c=phone a=index}';
+            }else {
+                alert(data.msg);
+            }
+        });
+    });
+
+});
+</script>
+
+</html>

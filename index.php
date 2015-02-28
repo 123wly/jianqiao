@@ -3,8 +3,9 @@
 //万虎网络, Copyright (C)   2010 - 2011  www.wanhunet.com 
 
 
+
 define('APP_PATH',dirname(__FILE__));
-define('URL_PATH',$_SERVER['SERVER_NAME'].'/');
+define('URL_PATH',$_SERVER['SERVER_NAME'].'/jianqiao/');
 define('IN_APP',TRUE);
 define('SP_PATH',APP_PATH.'/init');
 
@@ -20,7 +21,7 @@ require(APP_PATH.'/config.php');
 
 //@@@
 $spConfig["view"]["config"]["template_dir"] = ismobile() ? 'tplm' : 'tplv2';
-//$spConfig["view"]["config"]["template_dir"] = ismobile() ? 'tplv2' : 'tplv2';
+// $spConfig["view"]["config"]["template_dir"] = ismobile() ? 'tplv2' : 'tplv2';
 if(file_exists("theme.php")){
 	$wanhu_data = include_once 'theme.php';
 	$wanhu_data = json_decode($wanhu_data, true);

@@ -1,6 +1,6 @@
 <?php
 defined('IN_APP') or die('Access Denied.');
-define('APP_NAME','/');
+define('APP_NAME','/jianqiao/');
 
 
 ///需要设置是否为2级目录， 头像 和上传flash 需要调用那2个地址
@@ -8,15 +8,24 @@ define('APP_NAME','/');
 /*安装日期 2015年 01月 08日 09:29*/
 
 $spConfig = array(
-
+    "urole" => array(
+		"0" => "超级管理员",
+		"1" => "普通管理员",
+		"2" => "用户",
+    ),
+	"utype" => array(
+		"0" =>"学生",
+		"1" =>"家长",
+		"2" =>"老师",
+    ),
 	 'mode' => 'debug',  //系统启动模式 debug 调试模式 release 部署模式
 	 'dispatcher_error' => "err404();", // 定义处理路由错误的函数
 	 'encodestring' =>'b393e4542b9487757d7e8102bcf9aec7',
 	  "db" => array(
 		  'host' => 'localhost', // 数据库地址
 		  'login' => 'root',
-		  'password' => 'wanhunet123!',
-		  'database' => 'jianqiao2-28',
+		  'password' => 'root',
+		  'database' => 'jianqiao',
 		  'prefix'  => 'wh_',
 		  'db_driver_path' => SP_PATH.'/Drivers/mysql.php',
  	 ),
