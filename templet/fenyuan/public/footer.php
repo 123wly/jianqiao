@@ -48,7 +48,7 @@
     </div>
     <div class="foot_bottom">
         <p><a href="">剑桥简介</a>   <a href="">为什么选择剑桥</a>   <a href="">联系我们</a>   <a href="">加盟剑桥</a>   <a href="">招聘信息</a></p>
-        <p>保定剑桥教育集团版权所有 | Copyright 2015-2018 All rights reserved | 技术支持：万虎网络</p>
+        <p>保定剑桥教育集团版权所有 | Copyright 2015-2018 All rights reserved | 技术支持：<a href="http://www.wanhunet.com" style="color:#fff">万虎网络</a></p>
         <p>咨询热线：400-850-xxxx</p>
     </div>
 </div>

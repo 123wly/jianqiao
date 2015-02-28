@@ -21,7 +21,7 @@
                         <td class="t_title">描述</td>
                         <td class="c_input"><input type="text" name="adesc" /></td>
                     </tr>
-                    <tr>
+                <!--     <tr>
                         <td class="t_title">截图</td>
                         <td class="c_input">
                             tpl/admin/style/ad_unit/<input type="text"  name="img" />请上传至目录并只输入文件名称
@@ -37,7 +37,7 @@
                         <label><input type="radio" name="is_show" id="is_show" value="1" checked="checked" />启用</label>
                         <label><input type="radio" name="is_show" id="is_show" value="0" />停用</label>
                       </td>
-                    </tr>
+                    </tr> -->
               </table>
               
               <div class="btn_area">
@@ -57,9 +57,6 @@
                             <th width="60" class="m_title">ID</th>
                             <th>名称</th>
                             <th>描述</th>
-                            <th>排序</th>
-                            <th>系统</th>
-                            <th>状态</th>
                             <th>操作</th>
                         </tr>
                         {foreach from=$adUnit_list item=d}
@@ -67,14 +64,8 @@
                             <td class="m_title">{$d.id}</td>
                             <td>{$d.title}</td>
                             <td>{$d.adesc}</td>
-                            <td>{$d.orders}</td>
-                            <td>{if $d.system==1}是{else}否{/if}</td>
                             <td class="fun_con">
-
-                                {if $d.is_show==1}<a class="f_open" href="{spUrl c=admin a=adUnit flag=close en_show=0 id=$d.id}" title="开启中,点击关闭">开启中,点击关闭</a>{else}<a class="f_close" href="{spUrl c=admin a=adUnit flag=close en_show=1 id=$d.id}" title="关闭中,点击开启">关闭中,点击开启</a>{/if}
-                            </td>
-                            <td class="fun_con">
-                                <a class="f_look" href="{spUrl c=admin a=adUnit show=$d.id}" title="查看广告位">查看</a>
+                                <!-- <a class="f_look" href="{spUrl c=admin a=adUnit show=$d.id}" title="查看广告位">查看</a> -->
                                 {if $d.system!=1}<a class="f_edit" href="{spUrl c=admin a=adUnit edit=$d.id}" title="编辑">编辑</a><a class="f_delete" href="{spUrl c=admin a=adUnit del=$d.id}" onclick="return(confirm('确定删除?'))" title="删除">删除</a>{else}{/if}
                             </td>
                         </tr>

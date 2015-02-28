@@ -73,16 +73,16 @@
 
                             });
                             if(page.current_page==1){
-                                var prev_page = '<a href="javascript:;" id="page_' + page.prev_page + '"></a>'; 
+                                var prev_page = ''; 
                             }
                             else{
-                                 var prev_page = '<a href="javascript:;" id="page_' + page.prev_page + '">上一页</a>'; 
+                                 var prev_page = '<a href="javascript:;" id="page_' + page.prev_page + '"><img width="12px" height="12px" src="{$syskin}/images/icon-left.png" alt="上一页"></a>'; 
                             }
                             if(page.current_page==page.last_page){
-                                var next_page = '<a href="javascript:;" id="page_' + page.next_page + '"></a>';   
+                                var next_page = '';   
                             }  
                             else{
-                                var next_page = '<a href="javascript:;" id="page_' + page.next_page + '">下一页</a>';  
+                                var next_page = '<a href="javascript:;" id="page_' + page.next_page + '"><img width="12px" height="12px" src="{$syskin}/images/icon-right.png" alt="下一页"></a>';  
                             }
                             $(".paper-page").html(prev_page + str + next_page);
                         }
@@ -127,7 +127,32 @@
 
 
             </ul>
-
+<style>
+        .paper-page{
+            text-align: center;
+            padding-left: 60px;
+        }
+        .paper-page a{
+            float: left;
+            padding: 5px;
+            color: #7d7d7d;
+            border: 1px solid #c4c4c4;
+            background: #f0f0f0;
+            margin: 5px;
+            min-width: 20px;
+            height: 20px;
+            line-height: 20px;
+            border-radius: 3px;
+        }
+        .paper-page a img{
+            display: inline-block;
+        }
+        .paper-page a.wh-on{
+            color: #2e70a2;
+            background: #86c7ef;
+            border-color: #6f96b5; 
+        }
+    </style>
              <div class="paper-page">
                 <!-- <a class="blue-font" href="#">上一页</a>
                 <a href="#" id="ye">1</a>

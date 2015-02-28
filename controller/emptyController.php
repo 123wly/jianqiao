@@ -722,18 +722,21 @@ class emptyController extends top
 		//分园简介
 		$term=spClass("db_term")->find(array("name"=>"分园介绍","uid"=>THEME_UID));
 		$jieshao=spClass("db_article")->find(array("term_id"=>$term['id']));
+		$this->assignown("term",$term);
 		$this->assignown("jieshao",$jieshao);
 		//资讯信息
 		$news=spClass("db_term")->find(array("name"=>"资讯信息","uid"=>THEME_UID));
 		$this->assignown("news",$news);
 
-		//设施环境
-		$term1=spClass("db_term")->find(array("name"=>"剑桥设施","uid"=>THEME_UID));
+		//设施环境(调用主园区的)
+		$term1=spClass("db_term")->find(array("name"=>"剑桥设施","uid"=>"1"));
 		$sheshi=spClass("db_article")->find(array("term_id"=>$term1['id']));
+		$this->assignown("term1",$term1);
 		$this->assignown("sheshi",$sheshi);
 		//园长介绍
 		$term2=spClass("db_term")->find(array("name"=>"园长及教师","uid"=>THEME_UID));
 		$yuanzhang=spClass("db_article")->find(array("term_id"=>$term2['id']));
+		$this->assignown("term2",$term2);
 		$this->assignown("yuanzhang",$yuanzhang);
 		//剑桥生活
 		$term3=spClass("db_term")->find(array("name"=>"剑桥生活","uid"=>THEME_UID));

@@ -14,8 +14,7 @@
                         <tr class="table_title">
                             <th class="m_title">标题</th>
                             <th>类型</th>
-                            <th></th>
-                            <th>日期</th>
+                            <th>位置</th>
                             <th>状态</th>
                             <th>编辑</th>
                         </tr>
@@ -24,7 +23,6 @@
                             <td class="m_title">{$d.title}</td>
                             <td>{$d.type}</td>
                             <td>{$d.auid}</td>
-                            <td>{$d.time_date_limit}</td>
                             <td class="fun_con">{if $d.is_show==1}<a class="f_open" href="{spUrl c=admin a=adContent flag=close en_show=0 id=$d.adid}" title="已开启,点击关闭">已开启,点击关闭</a>{else}<a class="f_close" href="{spUrl c=admin a=adContent flag=close en_show=1 id=$d.adid}" title="已关闭,点击开启">已关闭,点击开启</a>{/if}</td>
                             <td class="fun_con"><a class="f_edit" href="{spUrl c=admin a=adContent edit=$d.adid}" title="编辑">编辑</a><a class="f_delete" href="{spUrl c=admin a=adContent del=$d.adid}" onclick="return(confirm('确定删除?'))" title="删除">删除</a></td>
                         </tr>

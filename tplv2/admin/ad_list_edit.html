@@ -28,17 +28,19 @@
                         <td class="t_title">类型</td>
                         <td class="c_select">
                             <select name="type" id="select_type">
-                                <option value="1" {if $data.type==1}selected{/if}>图片广告</option>
-                                <option value="2" {if $data.type==2}selected{/if}>连接广告</option>
+                                <option value="1" {if $data.type==1}selected{/if}>图片链接</option>
+                                <option value="2" {if $data.type==2}selected{/if}>文字链接</option>
                             </select>
                         </td>
                     </tr>
 
                     <tr class="ad_content_1" style="display:none">
-                        <td class="t_title">图片广告</td>
+                        <td class="t_title">添加图片</td>
                         <td class="co_img">
+                            {if $data.body}
                             <p><img src="{$url}/{$data.body}" style="max-width: 410px;" />
                             </p>
+                            {/if}
                             <textarea name="body_img" style="display:none">{$data.body}</textarea>
                             <p>
                                 <input type="file" name="filedata">
@@ -46,17 +48,17 @@
                         </td>
                     </tr>
                     <tr class="ad_content_1" style="display:none">
-                        <td class="t_title">跳转地址</td>
+                        <td class="t_title">链接地址</td>
                         <td class="c_input">
                             <input type="text" name="url" value="{$data.url}">
-
+                            
                         </td>
                     </tr>
 
                     <tr id="ad_content_2" style="display:none">
-                        <td class="t_title">HTML广告</td>
+                        <td class="t_title">链接地址</td>
                         <td class="c_textarea">
-                            <textarea name="body_html" cols="60" rows="6">{$data.body}</textarea><em>请输入html片段</em>
+                            <textarea name="body_html" cols="60" rows="6">{$data.body}</textarea><em>请以http://开头</em>
                         </td>
                     </tr>
 
@@ -69,8 +71,9 @@
                     <tr>
                         <td class="t_title"></td>
                         <td class="c_input_small c_link">
-                            <input type="input" name="date[]" id="date1" value="{$data.time_date_limit[0]}" readonly /> 至
-                            <input type="input" name="date[]" id="date2" value="{$data.time_date_limit[1]}" readonly /><span id="clear_date"><a href="javascript:void()" style="margin-left:10px;">清除</a></span>
+                            <input type="hidden" name="date[]" id="date1" value="{$data.time_date_limit[0]}" readonly />
+                            <input type="hidden" name="date[]" id="date2" value="{$data.time_date_limit[1]}" readonly />
+                           
                         </td>
                     </tr>
                     <tr>

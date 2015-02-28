@@ -29,7 +29,9 @@
                 // var_dump($foot);
              ?>
              <?php foreach ($foot as $key => $value): ?>
-                 <a href="<?php echo $value["body"]; ?>"><?php echo $value["title"]; ?></a>  <?php echo $key != count($foot) - 1 ? "|" : "";  ?> 
+                 <a href="<?php echo $value["body"]; ?>" target="_blank">
+                    <?php echo $value["title"]; ?></a>  
+                    <?php echo $key != count($foot) - 1 ? "|" : "";  ?> 
              <?php endforeach ?>
         </p>  
     </div>

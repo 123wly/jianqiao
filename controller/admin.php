@@ -876,10 +876,10 @@ class admin extends top
             $_type = '';
             switch ($val['type']) {
                 case 1:
-                    $val['type'] = '图片广告';
+                    $val['type'] = '图片链接';
                     break;
                 case 2:
-                    $val['type'] = 'html广告';
+                    $val['type'] = '文字链接';
                     break;
                 case 3:
                     $val['type'] = '右下角弹出广告';

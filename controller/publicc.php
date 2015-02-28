@@ -31,7 +31,7 @@ class publicc extends spController
         }
     }
 
-    public function bmorder(){
+    public function bmorder(){;
         $rs = spClass("db_baoming")->create($_POST);
         if ($rs) {
             $this->success("保存成功", spUrl("index","index"));
