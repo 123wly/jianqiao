@@ -7,14 +7,12 @@ class wechat extends spController
     public function index(){
 
         include './wechat/lanewechat.php';
-
-        //获取自定义菜单列表
-
-        $wechat = new LaneWeChat\core\WeChat(WECHAT_TOKEN, TRUE, $this);
-//        print_r($wechat);
-        echo $wechat->run($this);
-//        $wechat->checkSignature();
+        $wechat = new \LaneWeChat\core\WeChat(WECHAT_TOKEN, TRUE, $this);
+        // print_r($wechat);
+        // echo $wechat->run($this);
+        $wechat->checkSignature();
         die;
+        
     }
     public function __text(&$request){
 //        console_log($request);
