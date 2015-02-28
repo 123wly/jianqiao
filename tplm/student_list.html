@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>剑桥幼儿园</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="{$syskin}/css/reset.css">
+    <link rel="stylesheet" href="{$syskin}/css/style.css">
+</head>
+
+<body style="background:#eeeeee;">
+    <div id="wrap">
+        <div id="header" class="header-page clearFlaot">
+            <div class="pagehead-box">
+                <a class="arrowLeft" data-ajax="false" href="{spUrl c=phone a=index}">
+                    <img width="28px;" height="25px;" src="{$syskin}/images/logo.png" alt="返回" />
+                </a>
+                <h1 class="pagehead-title">学生列表</h1>
+                <a class="arrowRight" href="{spUrl c=phone a=leave_message}" data-role="button">返回</a>
+            </div>
+        </div>
+        <div id="main" class="page-main">
+            <ul class="index-main clearFloat letter">
+                {foreach $tofollow.student as $vo}
+                <li class="index-m m-3">
+                    <a class="clearFloat" href="{spUrl c=phone a=leave_message id=$vo.uid}">
+                        <img width="100%" src="{avatar uid=$vo.uid size=middle}" />
+                    </a>
+                    <a class="m-word" href="{spUrl c=phone a=leave_message id=$vo.uid}">
+                        <p>{$vo.username}</p>
+                    </a>
+                </li>
+                {/foreach}
+            </ul>
+        </div>
+        <div id="footer"></div>
+    </div>
+</body>
+<script src="{$syskin}/js/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function($) {});
+</script>
+
+</html>

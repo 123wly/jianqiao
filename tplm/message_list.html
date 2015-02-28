@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>剑桥幼儿园</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="{$syskin}/css/reset.css">
+    <link rel="stylesheet" href="{$syskin}/css/style.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="header" class="header-page clearFlaot">
+            <div class="pagehead-box">
+                <a class="arrowLeft" data-ajax="false" href="{spUrl c=phone a=index}">
+                    <img width="28px;" height="25px;" src="{$syskin}/images/page-back.png" alt="返回" />
+                </a>
+                <h1 class="pagehead-title">家园联系册</h1>
+           </div>
+        </div>
+        <div id="main" style="padding-top:45px;">
+            <div class="finish-top prr">
+                <img class="dblock" style="max-height:400px;" width="100%" src="{$syskin}/images/ffrr-img.jpg" alt="背景图片" />
+                <div class="poo xx-fimg fs_16 red-font" style="right:79px; bottom:0px;">
+                    {$userInfo.username}
+                </div>
+                <div class="poo xx-fimg">
+                   <p class="smallimg"><img height="17px" src="{avatar uid=$userInfo.uid size=middle}" alt="头像图片"></p>
+                </div>
+            </div>
+                 
+            <ul class="ff-bc">
+            {foreach key=key item=vo from=$rs.data}
+                <li class="clearFloat p10 plnone">
+                    <div class="floatLeft w-25">
+                        <span class="dblock">
+                            <img class="dblock" style="margin:0 auto 0; max-width:85px;" width="80%" src="{avatar uid=$vo.from size=middle}" alt="">
+                        </span>
+                    </div>
+                    <div class="floatRight w-75">
+                        <div class="my-new">
+                            <p class="fs_16"> 
+                                <a href="">
+                                    <span class="red-font">{$vo.formusername}联系了{$userInfo.username}并说</span>
+                                </a>
+                            </p>
+                            <p class="fs_15 hui6 mb5">{$vo.info}</p>
+                        </div>
+                          <div class="fs_12 hui3 prr">
+                                <span>发布于：{$vo.time}</span>
+                            </div>
+                    </div>
+                </li>
+               {/foreach}
+            </ul>
+             
+
+             <div class="paper-page">
+                 {if $rs.page}
+                                <!--在当前页不是第一页的时候，显示前页和上一页-->
+                                {if $rs.page.current_page != $rs.page.first_page}
+                                        <a class="blue-font" 
+                                        href="{spUrl c=phone  a=message_list page=$rs.page.prev_page}" data-ajax="false"> 上一页 </a>
+                                {/if}
+                                <!--开始循环页码，同时如果循环到当前页则不显示链接-->
+                                {foreach from=$rs.page.all_pages item=thepage}
+                                    {if $thepage eq $rs.page.current_page -1 or $thepage eq $rs.page.current_page or $thepage eq $rs.page.current_page + 1}
+                                        {if $thepage != $rs.page.current_page}      
+                                                <a class="blue-font" href="{spUrl c=phone  a=message_list page=$thepage}" data-ajax="false">{$thepage}</a>
+                                        {else}
+                                                <a  href="javascript:;">{$thepage}</a>
+                                        {/if}
+                                    {/if}
+                                {/foreach}
+                                <!--在当前页不是最后一页的时候，显示下一页和后页-->
+                                {if $rs.page.current_page != $rs.page.last_page}
+                                        <a  class="blue-font" href="{spUrl c=phone  a=message_list page=$rs.page.next_page}" data-ajax="false"> 下一页 </a>
+                                {/if}
+                            {/if} 
+            </div>
+        </div>
+        <div id="footer"></div>
+    </div>
+</body>
+</html>
